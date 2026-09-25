@@ -4,12 +4,12 @@
 // third party project keys here. The only thing the app needs to know is where
 // that server is.
 
-// Where the GreenPulse server runs. Set EXPO_PUBLIC_GREENPULSE_API in .env (or
-// in the EAS build profile) to point a build at production. The value can also
-// be changed in Settings, which is how you test against a laptop on the same
-// wifi without rebuilding.
+// Where the GreenPulse server runs: the deployed one on the Contabo box unless
+// EXPO_PUBLIC_GREENPULSE_API (in .env or the EAS build profile) says otherwise.
+// The value can also be changed in Settings, which is how you test against a
+// laptop on the same wifi without rebuilding.
 export const DEFAULT_API_URL =
-  process.env.EXPO_PUBLIC_GREENPULSE_API ?? 'http://192.168.1.67:8000';
+  process.env.EXPO_PUBLIC_GREENPULSE_API ?? 'https://greenpulse.5.189.178.58.sslip.io';
 
 // OAuth client id for "Continue with Google". The server verifies the token it
 // issues, so this id must match GP_GOOGLE_CLIENT_ID on the server. Empty hides
