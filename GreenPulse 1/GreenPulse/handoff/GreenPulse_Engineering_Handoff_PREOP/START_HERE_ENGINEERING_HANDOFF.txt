@@ -1,0 +1,73 @@
+GreenPulse Engineering Handoff - PRE-OPERATIONAL
+
+PURPOSE
+
+This package is intended for:
+1. Backend / AI integration developer
+2. Hardware / Edge engineer
+3. Real measurement and validation team
+
+START HERE
+
+Read these files in order:
+1. release/README.md
+2. jury_evidence/real_measurements/TEAM_REAL_TEST_HANDOFF_CHECKLIST.md
+3. jury_evidence/real_measurements/README_REAL_MEASUREMENTS.md
+4. release/backend_handoff_v1.json
+5. release/hardware_handoff_v1.json
+
+INSTALL
+
+Create a virtual environment and install requirements:
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+
+SOFTWARE HANDOFF TEST
+
+Run:
+python -m unittest discover -s tests -p test_final_release_handoff.py -v
+
+API
+
+OpenAPI specification:
+release/openapi_v1.json
+
+Current exported API:
+OpenAPI 3.1.0
+GreenPulse AI API
+11 routes
+
+REAL MEASUREMENT KIT
+
+Templates:
+jury_evidence/real_measurements/templates/
+
+Never populate measurement templates with synthetic or guessed values.
+
+IMPORTANT STATUS
+
+This is a PRE-OPERATIONAL engineering handoff.
+
+This package does NOT claim:
+- Engineer 1 Hailo approval
+- completed ONNX to HEF deployment
+- Hailo versus ONNX parity validation
+- Raspberry Pi 5 plus AI HAT+ validation
+- physical hardware end-to-end validation
+- real greenhouse validation
+- validated real multimodal superiority
+- validated water or carbon savings
+- final Git or GitHub release provenance
+
+HARDWARE SAFETY
+
+- Do not drive a pump directly from Raspberry Pi GPIO.
+- TIMEOUT must never be treated as successful actuation.
+- Simulated ACK is not a physical ACK.
+- Invalid, stale or uncertain input must not cause blind actuation.
+
+FROZEN VISION EVIDENCE
+
+Do not reopen or use the frozen Tomato final test set for tuning.
+Use existing reports as immutable evidence sources.

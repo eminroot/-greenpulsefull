@@ -1,0 +1,331 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T22:29:32.425908+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "clean_images": 18146,
+  "raw_csv_files": [
+    {
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Bacterial Spot Bacteria.csv",
+      "rows": 2128,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "filename_columns": [
+        "File Name"
+      ]
+    },
+    {
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Early Blight Fungus.csv",
+      "rows": 1000,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "filename_columns": [
+        "File Name"
+      ]
+    },
+    {
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Healthy.csv",
+      "rows": 1000,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "filename_columns": [
+        "File Name"
+      ]
+    },
+    {
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Late Blight Water Mold.csv",
+      "rows": 920,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "filename_columns": [
+        "File Name"
+      ]
+    },
+    {
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Leaf Mold Fungus.csv",
+      "rows": 952,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "filename_columns": [
+        "File Name"
+      ]
+    },
+    {
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Septoria Leaf Spot Fungus.csv",
+      "rows": 1000,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "filename_columns": [
+        "File Name"
+      ]
+    },
+    {
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Spider Mite Damage Insect.csv",
+      "rows": 1676,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "filename_columns": [
+        "File Name"
+      ]
+    },
+    {
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Target Spot Bacteria.csv",
+      "rows": 1404,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "filename_columns": [
+        "File Name"
+      ]
+    },
+    {
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_YLCV Virus.csv",
+      "rows": 2740,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "filename_columns": [
+        "File Name"
+      ]
+    }
+  ],
+  "class_reports": {
+    "Tomato___Bacterial_spot": {
+      "images": 2127,
+      "raw_candidates": [
+        {
+          "file": "Tomato_Bacterial Spot Bacteria.csv",
+          "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Bacterial Spot Bacteria.csv",
+          "filename_columns": [
+            "File Name"
+          ],
+          "matched_images": 2127,
+          "coverage": 1.0,
+          "ambiguous_keys": 0
+        }
+      ]
+    },
+    "Tomato___Early_blight": {
+      "images": 1000,
+      "raw_candidates": [
+        {
+          "file": "Tomato_Early Blight Fungus.csv",
+          "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Early Blight Fungus.csv",
+          "filename_columns": [
+            "File Name"
+          ],
+          "matched_images": 999,
+          "coverage": 0.999,
+          "ambiguous_keys": 0
+        }
+      ]
+    },
+    "Tomato___Late_blight": {
+      "images": 1901,
+      "raw_candidates": [
+        {
+          "file": "Tomato_Late Blight Water Mold.csv",
+          "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Late Blight Water Mold.csv",
+          "filename_columns": [
+            "File Name"
+          ],
+          "matched_images": 920,
+          "coverage": 0.48395581273014204,
+          "ambiguous_keys": 0
+        }
+      ]
+    },
+    "Tomato___Leaf_Mold": {
+      "images": 952,
+      "raw_candidates": [
+        {
+          "file": "Tomato_Leaf Mold Fungus.csv",
+          "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Leaf Mold Fungus.csv",
+          "filename_columns": [
+            "File Name"
+          ],
+          "matched_images": 952,
+          "coverage": 1.0,
+          "ambiguous_keys": 0
+        }
+      ]
+    },
+    "Tomato___Septoria_leaf_spot": {
+      "images": 1771,
+      "raw_candidates": [
+        {
+          "file": "Tomato_Septoria Leaf Spot Fungus.csv",
+          "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Septoria Leaf Spot Fungus.csv",
+          "filename_columns": [
+            "File Name"
+          ],
+          "matched_images": 1000,
+          "coverage": 0.564652738565782,
+          "ambiguous_keys": 0
+        }
+      ]
+    },
+    "Tomato___Spider_mites Two-spotted_spider_mite": {
+      "images": 1676,
+      "raw_candidates": [
+        {
+          "file": "Tomato_Spider Mite Damage Insect.csv",
+          "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Spider Mite Damage Insect.csv",
+          "filename_columns": [
+            "File Name"
+          ],
+          "matched_images": 1676,
+          "coverage": 1.0,
+          "ambiguous_keys": 0
+        }
+      ]
+    },
+    "Tomato___Target_Spot": {
+      "images": 1404,
+      "raw_candidates": []
+    },
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+      "images": 5357,
+      "raw_candidates": [
+        {
+          "file": "Tomato_YLCV Virus.csv",
+          "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_YLCV Virus.csv",
+          "filename_columns": [
+            "File Name"
+          ],
+          "matched_images": 2738,
+          "coverage": 0.5111069628523427,
+          "ambiguous_keys": 0
+        }
+      ]
+    },
+    "Tomato___Tomato_mosaic_virus": {
+      "images": 373,
+      "raw_candidates": []
+    },
+    "Tomato___healthy": {
+      "images": 1585,
+      "raw_candidates": [
+        {
+          "file": "Tomato_Healthy.csv",
+          "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Healthy.csv",
+          "filename_columns": [
+            "File Name"
+          ],
+          "matched_images": 999,
+          "coverage": 0.6302839116719243,
+          "ambiguous_keys": 0
+        }
+      ]
+    }
+  },
+  "best_raw_match_per_class": {
+    "Tomato___Bacterial_spot": {
+      "file": "Tomato_Bacterial Spot Bacteria.csv",
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Bacterial Spot Bacteria.csv",
+      "filename_columns": [
+        "File Name"
+      ],
+      "matched_images": 2127,
+      "coverage": 1.0,
+      "ambiguous_keys": 0
+    },
+    "Tomato___Early_blight": {
+      "file": "Tomato_Early Blight Fungus.csv",
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Early Blight Fungus.csv",
+      "filename_columns": [
+        "File Name"
+      ],
+      "matched_images": 999,
+      "coverage": 0.999,
+      "ambiguous_keys": 0
+    },
+    "Tomato___Late_blight": {
+      "file": "Tomato_Late Blight Water Mold.csv",
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Late Blight Water Mold.csv",
+      "filename_columns": [
+        "File Name"
+      ],
+      "matched_images": 920,
+      "coverage": 0.48395581273014204,
+      "ambiguous_keys": 0
+    },
+    "Tomato___Leaf_Mold": {
+      "file": "Tomato_Leaf Mold Fungus.csv",
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Leaf Mold Fungus.csv",
+      "filename_columns": [
+        "File Name"
+      ],
+      "matched_images": 952,
+      "coverage": 1.0,
+      "ambiguous_keys": 0
+    },
+    "Tomato___Septoria_leaf_spot": {
+      "file": "Tomato_Septoria Leaf Spot Fungus.csv",
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Septoria Leaf Spot Fungus.csv",
+      "filename_columns": [
+        "File Name"
+      ],
+      "matched_images": 1000,
+      "coverage": 0.564652738565782,
+      "ambiguous_keys": 0
+    },
+    "Tomato___Spider_mites Two-spotted_spider_mite": {
+      "file": "Tomato_Spider Mite Damage Insect.csv",
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Spider Mite Damage Insect.csv",
+      "filename_columns": [
+        "File Name"
+      ],
+      "matched_images": 1676,
+      "coverage": 1.0,
+      "ambiguous_keys": 0
+    },
+    "Tomato___Target_Spot": null,
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+      "file": "Tomato_YLCV Virus.csv",
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_YLCV Virus.csv",
+      "filename_columns": [
+        "File Name"
+      ],
+      "matched_images": 2738,
+      "coverage": 0.5111069628523427,
+      "ambiguous_keys": 0
+    },
+    "Tomato___Tomato_mosaic_virus": null,
+    "Tomato___healthy": {
+      "file": "Tomato_Healthy.csv",
+      "path": "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Healthy.csv",
+      "filename_columns": [
+        "File Name"
+      ],
+      "matched_images": 999,
+      "coverage": 0.6302839116719243,
+      "ambiguous_keys": 0
+    }
+  },
+  "best_candidate_match_total": 11411,
+  "scientific_status": {
+    "audit_only": true,
+    "dataset_modified": false,
+    "training_executed": false,
+    "inference_executed": false,
+    "raw_mapping_not_yet_accepted": true,
+    "physical_leaf_identity_verified_for_all": false
+  }
+}

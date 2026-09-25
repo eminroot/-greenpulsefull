@@ -1,0 +1,54 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T00:08:49.698561+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "operation": "MIGRATE_ACTIVE_RESEARCH_REGISTRY_TO_CLEAN_TOMATO_V1",
+  "historical_registry_report_preserved": true,
+  "historical_model_sha256": "a34db932236be048a56816a3a664d4c38ad8663157d1886075e5dca152e51e41",
+  "old_registry_tomato": {
+    "pytorch": {
+      "path": "models/greenpulse_tomato_yolo11n_cls_v1.0.pt",
+      "sha256": "a34db932236be048a56816a3a664d4c38ad8663157d1886075e5dca152e51e41"
+    },
+    "onnx": {
+      "path": "models/greenpulse_tomato_yolo11n_cls_v1.0.onnx",
+      "sha256": "8c5ebdcf44d31ec8109774fcd2ecbcf6954223254cedf40dcb44cba6bbbd62e7"
+    }
+  },
+  "new_registry_tomato": {
+    "pytorch": {
+      "path": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.pt",
+      "sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687"
+    },
+    "onnx": {
+      "path": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.onnx",
+      "sha256": "537db352736bae025d9c91813bb38efea174fe4937952bc2598bc6d68fcf27d9"
+    },
+    "evidence_count": 8,
+    "model_card_sha256": "37d634fb4a2afba5c272e4370b4390fb2e917a7fe15ee99d8c929e4528102afb"
+  },
+  "registry": {
+    "path": "configs/vision_model_registry_v1.json",
+    "before_sha256": "0801d895b03e09f63daa0511d29d03c0ae80dbc50f524252b8e168fe3c7e7d00",
+    "after_sha256": "e3a2cde97f073fb8ed35209e877ae106e41ebb77dbf3f2644dafc7f26964398f",
+    "backup": "configs/vision_model_registry_v1.json.bak_before_tomato_clean_v1",
+    "mode": "RESEARCH_ONLY",
+    "unknown_crop_policy": "ABSTAIN",
+    "actuation_authorized": false
+  },
+  "integration_test": {
+    "tomato_status": "RESEARCH_MODEL_AVAILABLE",
+    "pepper_status": "RESEARCH_MODEL_AVAILABLE",
+    "unknown_crop_status": "BLOCKED",
+    "tomato_crop_identity_verified": false,
+    "tomato_autonomous_actuation_allowed": false,
+    "tomato_physical_actuation_allowed": false
+  },
+  "execution": {
+    "model_loaded": false,
+    "inference_executed": false,
+    "training_executed": false,
+    "frozen_test_accessed": false
+  }
+}

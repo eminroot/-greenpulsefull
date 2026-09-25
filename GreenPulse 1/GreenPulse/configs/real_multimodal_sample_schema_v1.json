@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GreenPulse Real Data Candidate Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "sample_id",
+    "plant_id",
+    "session_id",
+    "crop",
+    "data_origin",
+    "camera",
+    "sensor",
+    "ground_truth"
+  ],
+  "properties": {
+    "sample_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "plant_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "crop": {
+      "const": "tomato"
+    },
+    "data_origin": {
+      "const": "UNVERIFIED_CANDIDATE"
+    },
+    "camera": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "camera_model",
+        "device_id",
+        "captured_at",
+        "image_sha256",
+        "provenance"
+      ],
+      "properties": {
+        "camera_model": {
+          "const": "ESP32-CAM+OV2640"
+        },
+        "device_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "captured_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "image_sha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "provenance": {
+          "const": "UNVERIFIED_DEVICE_CLAIM"
+        }
+      }
+    },
+    "sensor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "device_id",
+        "observed_at",
+        "soil_moisture_pct",
+        "air_temperature_c",
+        "relative_humidity_pct",
+        "calibration_record_id",
+        "provenance"
+      ],
+      "properties": {
+        "device_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "soil_moisture_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "air_temperature_c": {
+          "type": "number",
+          "minimum": -20,
+          "maximum": 70
+        },
+        "relative_humidity_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "calibration_record_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provenance": {
+          "const": "UNVERIFIED_DEVICE_CLAIM"
+        }
+      }
+    },
+    "ground_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "verification"
+      ],
+      "properties": {
+        "label": {
+          "const": "UNLABELLED"
+        },
+        "verification": {
+          "const": "NONE"
+        }
+      }
+    }
+  }
+}

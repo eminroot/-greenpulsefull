@@ -1,0 +1,253 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T22:21:35.895568+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "clean_manifest": {
+    "rows": 18146,
+    "columns": [
+      "image_path",
+      "class_name",
+      "sha256"
+    ],
+    "unique_sha256": 18146,
+    "duplicate_sha_rows": 0,
+    "class_counts": {
+      "Tomato___Bacterial_spot": 2127,
+      "Tomato___Early_blight": 1000,
+      "Tomato___healthy": 1585,
+      "Tomato___Late_blight": 1901,
+      "Tomato___Leaf_Mold": 952,
+      "Tomato___Septoria_leaf_spot": 1771,
+      "Tomato___Spider_mites Two-spotted_spider_mite": 1676,
+      "Tomato___Target_Spot": 1404,
+      "Tomato___Tomato_mosaic_virus": 373,
+      "Tomato___Tomato_Yellow_Leaf_Curl_Virus": 5357
+    }
+  },
+  "mapping_coverage": {
+    "exists": true,
+    "rows": 10,
+    "columns": [
+      "class",
+      "train_mapped",
+      "train_unmapped",
+      "test_mapped",
+      "test_unmapped"
+    ]
+  },
+  "filtered_leafmaps": [
+    {
+      "file": "Tomato___Bacterial_spot.csv",
+      "rows": 2128,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "sample_rows": [
+        {
+          "File Name": "GCREC_Bact.Sp 2946.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "GCREC_Bact.Sp 2947.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "GCREC_Bact.Sp 2948.JPG",
+          "Leaf #": "1.0"
+        }
+      ]
+    },
+    {
+      "file": "Tomato___Early_blight.csv",
+      "rows": 1000,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "sample_rows": [
+        {
+          "File Name": "RS_Erly.B 6330.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "RS_Erly.B 6331.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "RS_Erly.B 6332.JPG",
+          "Leaf #": "1.0"
+        }
+      ]
+    },
+    {
+      "file": "Tomato___healthy.csv",
+      "rows": 1000,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "sample_rows": [
+        {
+          "File Name": "RS_HL 0003.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "RS_HL 0004.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "RS_HL 0005.JPG",
+          "Leaf #": "1.0"
+        }
+      ]
+    },
+    {
+      "file": "Tomato___Late_blight.csv",
+      "rows": 920,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "sample_rows": [
+        {
+          "File Name": "RS_Late.B 4827.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "RS_Late.B 4828.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "RS_Late.B 4829.JPG",
+          "Leaf #": "1.0"
+        }
+      ]
+    },
+    {
+      "file": "Tomato___Leaf_Mold.csv",
+      "rows": 952,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "sample_rows": [
+        {
+          "File Name": "Crnl_L.Mold 6496.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "Crnl_L.Mold 6497.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "Crnl_L.Mold 6498.JPG",
+          "Leaf #": "1.0"
+        }
+      ]
+    },
+    {
+      "file": "Tomato___Septoria_leaf_spot.csv",
+      "rows": 1000,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "sample_rows": [
+        {
+          "File Name": "Matt.S_CG 0662.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "Matt.S_CG 0663.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "Matt.S_CG 0665.JPG",
+          "Leaf #": "1.0"
+        }
+      ]
+    },
+    {
+      "file": "Tomato___Spider_mites Two-spotted_spider_mite.csv",
+      "rows": 1676,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "sample_rows": [
+        {
+          "File Name": "Com.G_SpM_FL 1133.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "Com.G_SpM_FL 1134.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "Com.G_SpM_FL 1135.JPG",
+          "Leaf #": "1.0"
+        }
+      ]
+    },
+    {
+      "file": "Tomato___Target_Spot.csv",
+      "rows": 1404,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "sample_rows": [
+        {
+          "File Name": "Com.G_FL 0004.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "Com.G_FL 0005.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "Com.G_FL 0006.JPG",
+          "Leaf #": "1.0"
+        }
+      ]
+    },
+    {
+      "file": "Tomato___Tomato_Yellow_Leaf_Curl_Virus.csv",
+      "rows": 2740,
+      "columns": [
+        "File Name",
+        "Leaf #"
+      ],
+      "sample_rows": [
+        {
+          "File Name": "YLCV_GCREC 1895.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "YLCV_GCREC 1896.JPG",
+          "Leaf #": "1.0"
+        },
+        {
+          "File Name": "YLCV_GCREC 1897.JPG",
+          "Leaf #": "1.0"
+        }
+      ]
+    }
+  ],
+  "split_policy": {
+    "use_old_test_as_new_final_test": false,
+    "reuse_historical_99_34_as_clean_final_metric": false,
+    "retrain_required_for_new_clean_experiment": true,
+    "exact_hash_overlap_allowed": false,
+    "known_leaf_group_overlap_allowed": false,
+    "unmapped_physical_leaf_identity": "MUST_NOT_BE_TREATED_AS_VERIFIED_INDEPENDENT",
+    "preferred_next_split": "GROUP_AWARE_ON_MAPPED_IMAGES",
+    "unmapped_images_policy": "DECIDE_AFTER_MAPPING_AUDIT",
+    "future_test_policy": "SINGLE_FINAL_EVALUATION_AFTER_MODEL_SELECTION"
+  },
+  "model_training_executed": false,
+  "inference_executed": false,
+  "dataset_modified": false
+}

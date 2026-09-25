@@ -1,0 +1,57 @@
+# dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+
+# Env / secrets
+.env*.local
+
+# Python ML (kept in repo separately; ignore its build artifacts)
+greenpulse/**/venv/
+greenpulse/**/__pycache__/
+greenpulse/**/runs/
+
+# The ML team's handoff: the zip and the training images are gigabytes, far
+# past any git host's file limit. Their models, reports and code stay tracked.
+GreenPulse 1.zip
+GreenPulse 1/GreenPulse/datasets/
+# The same engineering handoff sits unpacked right next to this copy.
+GreenPulse 1/GreenPulse/handoff/*.zip
+
+# Python, wherever it lives
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+
+# A clone of Expo's own skills repository, used as editor tooling. It is not
+# part of GreenPulse and has its own git history.
+skills/
+
+# Per-machine editor and agent settings
+.claude/settings.local.json
+
+# LeafNode firmware build output (arduino-cli --export-binaries)
+leafnode/firmware/leafnode/build/

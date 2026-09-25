@@ -1,0 +1,126 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T15:16:46.605737+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 39,
+  "layer_name": "Hardware ACK & Action State",
+  "status": "SOFTWARE_ACK_STATE_COMPLETE_REAL_HARDWARE_ACK_VALIDATION_PENDING",
+  "canonical_schema": "greenpulse.hardware_action_state.v1",
+  "canonical_states": [
+    "EXECUTED",
+    "REJECTED",
+    "FAILED",
+    "TIMEOUT"
+  ],
+  "required_state_fields": {
+    "command_id": true,
+    "timestamp": true,
+    "error_code": true,
+    "action_state": true
+  },
+  "simulated_ack_mapping": {
+    "SIMULATED_EXECUTED": "EXECUTED",
+    "SIMULATED_REJECTED": "REJECTED",
+    "SIMULATED_FAILED": "FAILED",
+    "SIMULATED_TIMEOUT": "TIMEOUT"
+  },
+  "command_linkage": {
+    "command_id_required": true,
+    "request_ack_linkage_supported": true,
+    "mismatch_detected": true
+  },
+  "audit_trail": {
+    "canonical_table": "hardware_action_states",
+    "storage_supported": true,
+    "duplicate_command_overwrite": false,
+    "read_recent": true,
+    "read_by_command_id": true
+  },
+  "backend_surface": {
+    "/actions": "READ_ONLY_COLLECTION",
+    "/actions/{command_id}": "READ_ONLY_DETAIL",
+    "openapi_documented": true
+  },
+  "real_hardware_truth": {
+    "real_hardware_ack_received": false,
+    "real_hardware_ack_validated": false,
+    "transport_validated": false,
+    "hardware_identity_validated": false,
+    "relay_state_verified": false,
+    "pump_state_verified": false,
+    "physical_actuation_verified": false
+  },
+  "simulation_truth": {
+    "simulated_ack_supported": true,
+    "simulation_promoted_to_real_ack": false,
+    "simulated_executed_promoted_to_real_physical_execution": false
+  },
+  "tests": {
+    "action_state_contract": {
+      "count": 12,
+      "result": "PASS"
+    },
+    "canonical_audit": {
+      "count": 10,
+      "result": "PASS"
+    },
+    "backend_surface": {
+      "count": 8,
+      "result": "PASS"
+    },
+    "total": {
+      "count": 30,
+      "result": "PASS"
+    }
+  },
+  "artifacts": {
+    "ack_state_source": {
+      "path": "src/hardware_ack_state.py",
+      "sha256": "1b286cb4442750e6d4057c171214121ebcc13c56fd62a93483a0242dd8c722ea"
+    },
+    "audit_source": {
+      "path": "src/hardware_action_audit.py",
+      "sha256": "5688ba723f2c2659981a4f72b51f4c978e86928b34cbe298105ee574678217b5"
+    },
+    "gateway_source": {
+      "path": "src/ai_gateway_service.py",
+      "sha256": "94b7f55fb10d1342e0b316e9b75d107b8f0dc1c3e45950196533de299e2fc92b"
+    },
+    "api_source": {
+      "path": "src/api.py",
+      "sha256": "10c4d786bcca9201071d580c590d2dd8f5cf3af7a9fe19cffcc264775b4b2f8d"
+    },
+    "state_schema": {
+      "path": "configs/hardware_action_state_schema_v1.json",
+      "sha256": "6042a05dd1a57a1c3a273a2b6410614354b86c22f5fa85e2cf185bfb856f6e61"
+    },
+    "ack_tests": {
+      "path": "tests/test_hardware_ack_state.py",
+      "sha256": "efb265a4012571154bee05e905d066c73bdf20da866eaa5e53913b46ff165f5f"
+    },
+    "audit_tests": {
+      "path": "tests/test_hardware_action_audit.py",
+      "sha256": "c28925ccd9bc1cd1e2a8e0fbd160f9c34e99e9daca4995c30e383c1b08fcd9be"
+    },
+    "backend_tests": {
+      "path": "tests/test_hardware_action_backend.py",
+      "sha256": "b94a4ac3ea23b911307b5c376725cd9a6b06cacfdcc5b72f20af106287fc0418"
+    }
+  },
+  "execution": {
+    "production_database_modified": false,
+    "server_started": false,
+    "vision_model_loaded": false,
+    "vision_inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "hardware_command_dispatched": false,
+    "real_hardware_ack_received": false,
+    "physical_action_executed": false
+  },
+  "scientific_guardrails": {
+    "simulated_ack_claimed_as_real_ack": false,
+    "unverified_real_ack_claimed_as_validated": false,
+    "executed_state_claimed_as_verified_pump_execution": false,
+    "physical_action_claimed": false
+  }
+}

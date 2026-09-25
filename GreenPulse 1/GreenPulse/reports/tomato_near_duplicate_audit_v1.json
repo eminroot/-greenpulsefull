@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T22:42:59.777123+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "experiment": "NEW_TOMATO_CLEAN_EXPERIMENT_V1",
+  "images": 18146,
+  "split_counts": {
+    "test": 2737,
+    "train": 12684,
+    "val": 2725
+  },
+  "method": {
+    "dhash": "64_BIT_DIFFERENCE_HASH",
+    "dhash_threshold": 3,
+    "phash": "64_BIT_LOW_FREQUENCY_DCT_PERCEPTUAL_HASH",
+    "phash_threshold": 5,
+    "candidate_generation": "BK_TREE_HAMMING_SEARCH",
+    "scope": "CROSS_SPLIT_ONLY"
+  },
+  "results": {
+    "unreadable_images": 0,
+    "dhash_candidate_pairs": 5,
+    "flagged_near_duplicate_pairs": 0,
+    "same_class_flagged_pairs": 0,
+    "cross_class_flagged_pairs": 0,
+    "pairs_involving_unmapped_image": 0,
+    "split_pair_counts": {},
+    "screen_status": "PASS",
+    "training_gate": "OPEN"
+  },
+  "scientific_scope": {
+    "heuristic_screen_not_exhaustive_proof": true,
+    "mapped_leaf_group_disjointness_already_verified": true,
+    "exact_sha_disjointness_already_verified": true,
+    "unmapped_physical_leaf_identity_verified": false,
+    "full_physical_leaf_independence_claim_allowed": false,
+    "absence_of_flagged_pairs_if_pass": "No pair met the declared dHash+pHash near-duplicate thresholds."
+  },
+  "execution": {
+    "dataset_modified": false,
+    "split_modified": false,
+    "training_executed": false,
+    "model_inference_executed": false,
+    "test_used_for_model_selection": false
+  },
+  "evidence": {
+    "split_manifest_sha256": "567ec8ddc3678887cfbba106279efc94ec3d1d6f900aebbe211bd5bbf9b87934",
+    "perceptual_hash_manifest_sha256": "49d945ca1dedd2f07229b22bc3fdeb3f2a0aa4e62aea1b0c834f1de0e21a1fb9",
+    "candidate_csv_sha256": "40b4662e20ec0dde0996a537cde48940a048fa92966edc4656a05e43795741bc"
+  }
+}

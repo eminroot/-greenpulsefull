@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T23:56:49.406706+00:00",
+  "method": "GRAD_CAM",
+  "checkpoint_sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687",
+  "image_sha256": "c77b4c14dc33e9d380aeccb7faa6536ae3f09049504c143c3c88f5166f2ecaee",
+  "image_path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\tomato_hybrid_v1\\val\\Tomato___Spider_mites Two-spotted_spider_mite\\c77b4c14dc33e9d380aeccb7faa6536ae3f09049504c143c3c88f5166f2ecaee.jpg",
+  "imgsz": 224,
+  "class_names": [
+    "Tomato___Bacterial_spot",
+    "Tomato___Early_blight",
+    "Tomato___Late_blight",
+    "Tomato___Leaf_Mold",
+    "Tomato___Septoria_leaf_spot",
+    "Tomato___Spider_mites Two-spotted_spider_mite",
+    "Tomato___Target_Spot",
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+    "Tomato___Tomato_mosaic_virus",
+    "Tomato___healthy"
+  ],
+  "predicted_class_id": 8,
+  "predicted_class_name": "Tomato___Tomato_mosaic_virus",
+  "target_class_id": 8,
+  "target_class_name": "Tomato___Tomato_mosaic_virus",
+  "confidence": 0.9999710321426392,
+  "explanation_type": "QUALITATIVE_DIAGNOSTIC",
+  "pixel_level_localization_validated": false,
+  "causal_explanation": false,
+  "real_greenhouse_validation": false,
+  "operational_decision_allowed": false,
+  "physical_actuation_allowed": false
+}

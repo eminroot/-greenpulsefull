@@ -1,0 +1,77 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T12:21:45.611073+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 28,
+  "layer_name": "Temporal Intelligence Engine",
+  "status": "SOFTWARE_ENGINE_COMPLETE_REAL_TEMPORAL_VALIDATION_PENDING",
+  "schema_version": "greenpulse.temporal_intelligence.v1",
+  "feature_vector_version": "temporal_feature_vector_v1",
+  "feature_vector_names": [
+    "risk_trend_code",
+    "risk_velocity",
+    "risk_acceleration",
+    "temporal_consistency_code"
+  ],
+  "feature_vector_length": 4,
+  "implemented_capabilities": [
+    "bounded validated observation window",
+    "plant identity consistency",
+    "timezone-aware ordering",
+    "duplicate timestamp rejection",
+    "risk trend",
+    "risk velocity",
+    "risk acceleration",
+    "FALLING/STABLE/RISING states",
+    "soil-moisture trend",
+    "temperature trend",
+    "humidity trend",
+    "RECHECK temporal consistency state",
+    "CONFIRMED_STRESS framework",
+    "validated ACTION-threshold gate",
+    "Layer-22 temporal feature-vector compatibility"
+  ],
+  "temporal_units": {
+    "risk_velocity": "RISK_SCORE_POINTS_PER_HOUR",
+    "risk_acceleration": "RISK_SCORE_POINTS_PER_HOUR_SQUARED"
+  },
+  "scientific_guardrails": {
+    "validated_observations_only": true,
+    "candidate_threshold_can_confirm_stress": false,
+    "confirmed_stress_requires_validated_action_threshold": true,
+    "real_validated_action_threshold_available": false,
+    "real_confirmed_stress_claim_currently_allowed": false,
+    "heavy_lstm_or_transformer_required": false,
+    "real_temporal_performance_validated": false,
+    "physical_action_authorized": false
+  },
+  "real_evaluation": {
+    "status": "PENDING",
+    "reason": "No real validated calibrated-risk temporal series with validated operational thresholds is currently available."
+  },
+  "tests": {
+    "framework": "unittest",
+    "test_count": 12,
+    "result": "PASS",
+    "validated_threshold_fixture": "SYNTHETIC_UNIT_TEST_ONLY"
+  },
+  "artifacts": {
+    "source": {
+      "path": "src/temporal_intelligence.py",
+      "sha256": "e8ea7c90a296b2a15cf7b6163ff8edf548798cf5b64352da7ba750fda63843c5"
+    },
+    "tests": {
+      "path": "tests/test_temporal_intelligence.py",
+      "sha256": "b7b7ec68a8527f7086972fb929e8000236550f59631b258ba5db21670db99208"
+    }
+  },
+  "execution": {
+    "real_temporal_data_used": false,
+    "temporal_model_trained": false,
+    "real_confirmed_stress_generated": false,
+    "vision_model_loaded": false,
+    "vision_inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false
+  }
+}

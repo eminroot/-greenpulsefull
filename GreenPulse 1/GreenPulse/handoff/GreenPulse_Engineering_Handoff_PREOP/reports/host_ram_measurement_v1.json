@@ -1,0 +1,39 @@
+{
+  "schema_version": "greenpulse.host_ram_measurement.v1",
+  "measured_at_utc": "2026-09-24T22:13:26.376711+00:00",
+  "environment": "HOST_DEVELOPMENT_MACHINE",
+  "platform": "Windows AMD64",
+  "python": "3.11.9",
+  "model": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.onnx",
+  "runtime": "onnxruntime CPUExecutionProvider",
+  "inferences": 30,
+  "stages_bytes": {
+    "empty_python": 19824640,
+    "api_and_pipeline": 73781248,
+    "onnx_model_loaded": 109436928,
+    "peak_after_30_inferences": 116789248
+  },
+  "stages_mb": {
+    "empty_python": 19.8,
+    "api_and_pipeline": 73.8,
+    "onnx_model_loaded": 109.4,
+    "peak_after_30_inferences": 116.8
+  },
+  "budget": {
+    "schema_version": "greenpulse.resource_budget.v1",
+    "rss_bytes": 116789248,
+    "rss_gb_decimal": 0.116789,
+    "ram_limit_bytes": 3000000000,
+    "ram_limit_gb_decimal": 3.0,
+    "acceptance_rule": "TOTAL_AI_RUNTIME_RAM_STRICTLY_BELOW_3_GB",
+    "within_budget": true,
+    "status": "PASS"
+  },
+  "CLAIM_BOUNDARY": "Bu olcum HOST gelistirme bilgisayarindadir, Raspberry Pi 5 + AI HAT+ uzerinde DEGILDIR. Pi olcumu ayri ve bagimsiz olarak yapilmalidir; ARM derlemesi ve Hailo calisma zamani ek bellek kullanir. Bu sonuc Pi butcesinin karsilandigini KANITLAMAZ.",
+  "NOT_MEASURED": [
+    "raspberry_pi_5_runtime",
+    "hailo_hef_runtime",
+    "long_run_stability",
+    "peak_under_camera_load"
+  ]
+}

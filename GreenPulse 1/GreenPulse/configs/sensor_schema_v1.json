@@ -1,0 +1,52 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "GreenPulse Sensor Packet",
+    "description": "AI-Hardware sensor interface v1.0",
+    "type": "object",
+    "required": [
+        "plant_id",
+        "timestamp",
+        "soil_moisture_pct",
+        "temperature_c",
+        "humidity_pct",
+        "soil_calibrated",
+        "source"
+    ],
+    "properties": {
+        "plant_id": {
+            "type": "string",
+            "minLength": 1
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timezone-aware ISO 8601 timestamp"
+        },
+        "soil_moisture_pct": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "temperature_c": {
+            "type": "number",
+            "minimum": -10,
+            "maximum": 65
+        },
+        "humidity_pct": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "soil_calibrated": {
+            "type": "boolean"
+        },
+        "source": {
+            "type": "string",
+            "enum": [
+                "REAL",
+                "SIMULATED"
+            ]
+        }
+    },
+    "additionalProperties": false
+}

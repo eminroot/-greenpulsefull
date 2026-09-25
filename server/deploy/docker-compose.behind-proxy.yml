@@ -1,0 +1,20 @@
+# For a server where another web server already owns ports 80 and 443, like the
+# shared Contabo VPS, whose own Caddy serves several sites.
+#
+# This stack's Caddy then listens on a loopback port with plain http, and the
+# front server does TLS for the domain and proxies to it. Use it by adding it
+# to COMPOSE_FILE in .env:
+#
+#     COMPOSE_FILE=docker-compose.yml:deploy/docker-compose.behind-proxy.yml
+#     PANEL_PORT=8095
+#
+# and give the front server a block like deploy/host-caddy.example.
+services:
+  caddy:
+    ports: !override
+      - "127.0.0.1:${PANEL_PORT:-8095}:80"
+    environment:
+      DOMAIN: ":80"
+      # The front server reaches this container from the Docker bridge, a
+      # private address. Only its forwarded client address is believed.
+      TRUSTED_PROXIES: private_ranges

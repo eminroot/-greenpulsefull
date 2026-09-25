@@ -1,0 +1,33 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        "profile": {
+          ".validate": "newData.hasChildren(['email'])"
+        }
+      }
+    },
+    "emailVerifications": {
+      ".read": false,
+      ".write": false
+    },
+    "analyses": {
+      ".read": true,
+      ".write": "auth != null"
+    },
+    "counters": {
+      ".read": true,
+      ".write": "auth != null"
+    },
+    "greenpulse": {
+      "users": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid"
+        }
+      }
+    }
+  }
+}

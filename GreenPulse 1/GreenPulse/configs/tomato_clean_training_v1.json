@@ -1,0 +1,72 @@
+{
+  "version": "1.0",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "experiment": "NEW_TOMATO_CLEAN_EXPERIMENT_V1",
+  "task": "leaf_disease_classification",
+  "dataset": {
+    "path": "datasets/processed/tomato_hybrid_v1",
+    "train_images": 12684,
+    "validation_images": 2725,
+    "frozen_test_images": 2737,
+    "test_materialized": false,
+    "classes": [
+      "Tomato___Bacterial_spot",
+      "Tomato___Early_blight",
+      "Tomato___Late_blight",
+      "Tomato___Leaf_Mold",
+      "Tomato___Septoria_leaf_spot",
+      "Tomato___Spider_mites Two-spotted_spider_mite",
+      "Tomato___Target_Spot",
+      "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+      "Tomato___Tomato_mosaic_virus",
+      "Tomato___healthy"
+    ]
+  },
+  "initialization": {
+    "type": "GENERIC_PRETRAINED_BASE_ONLY",
+    "model": "yolo11n-cls.pt",
+    "historical_tomato_checkpoint_allowed": false,
+    "historical_tomato_checkpoint_reason": "Historical tomato checkpoint may have seen images belonging to the new frozen split."
+  },
+  "training": {
+    "image_size": 224,
+    "epochs_max": 15,
+    "batch": 32,
+    "seed": 42,
+    "deterministic": true,
+    "patience": 5,
+    "optimizer": "AdamW",
+    "initial_learning_rate": 0.001,
+    "final_lr_fraction": 0.01,
+    "weight_decay": 0.0005,
+    "workers": 4,
+    "device": "cpu"
+  },
+  "model_selection": {
+    "selection_partition": "validation",
+    "primary_metric": "validation_top1_accuracy",
+    "test_used_for_selection": false,
+    "test_used_for_threshold_tuning": false,
+    "test_used_for_early_stopping": false
+  },
+  "final_test_policy": {
+    "status": "FROZEN",
+    "evaluation_count": "ONE_FINAL_EVALUATION",
+    "evaluate_only_after_model_selection": true,
+    "post_test_model_selection": false,
+    "post_test_retraining": false
+  },
+  "output": {
+    "project": "runs/tomato_clean",
+    "run_name": "tomato_clean_v1"
+  },
+  "scientific_scope": {
+    "plantvillage_leaf_disease_classification": true,
+    "real_greenhouse_validation": false,
+    "water_stress_detection": false,
+    "early_stress_detection": false,
+    "physical_leaf_identity_verified_for_all": false,
+    "autonomous_irrigation_evidence": false
+  }
+}

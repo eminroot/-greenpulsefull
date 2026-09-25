@@ -1,0 +1,56 @@
+{
+  "expo": {
+    "name": "GreenPulse",
+    "slug": "greenpulse",
+    "version": "2.0.0",
+    "orientation": "portrait",
+    "scheme": "greenpulse",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#08120D"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.greenpulse.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "GreenPulse uses the camera to capture leaf images for plant-stress analysis.",
+        "NSPhotoLibraryUsageDescription": "GreenPulse reads leaf photos from your library to run plant-stress analysis.",
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "com.greenpulse.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#08120D"
+      }
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "GreenPulse uses the camera to capture leaf images for plant-stress analysis."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "GreenPulse reads leaf photos from your library to run plant-stress analysis."
+        }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": []
+        }
+      ],
+      "expo-web-browser"
+    ]
+  }
+}

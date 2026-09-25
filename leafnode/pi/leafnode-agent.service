@@ -1,0 +1,22 @@
+# Answers leaf photos the farmer takes in the app. Installed by setup.sh once
+# LEAFNODE_UPSTREAM_URL and LEAFNODE_UPSTREAM_TOKEN are set in .env.
+#   journalctl -u leafnode-agent -f
+[Unit]
+Description=LeafNode phone scan agent
+After=leafnode.service network-online.target
+Wants=leafnode.service network-online.target
+
+[Service]
+Type=simple
+User=__USER__
+WorkingDirectory=__DIR__
+EnvironmentFile=__DIR__/.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=__DIR__/.venv/bin/python agent.py
+Restart=always
+RestartSec=10
+# Exit 2 means .env is incomplete. Restarting will not fix that.
+RestartPreventExitStatus=2
+
+[Install]
+WantedBy=multi-user.target

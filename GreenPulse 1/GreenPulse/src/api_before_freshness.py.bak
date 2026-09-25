@@ -1,0 +1,258 @@
+import json
+import tempfile
+
+from pathlib import Path
+from functools import lru_cache
+from datetime import datetime, timezone
+from uuid import uuid4
+from io import BytesIO
+
+from PIL import Image
+from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Query
+
+from src.vision_inference import GreenPulseVision
+from src.sensor_validator import validate_sensor
+from src.sensor_contract_guard import check_sensor_contract
+from src.time_sync import synchronize
+from src.audit_db import log_observation, get_latest_observation, get_plant_history
+from src.safety_gate import evaluate_safety
+
+
+app = FastAPI(
+    title="GreenPulse AI API",
+    version="0.1.0",
+    description="GreenPulse Vision and Sensor Integration"
+)
+
+
+@lru_cache(maxsize=1)
+def get_vision():
+    return GreenPulseVision()
+
+
+@app.get("/status")
+def status():
+    return {
+        "system": "GreenPulse",
+        "status": "RUNNING",
+        "vision_model": "YOLO11n Classification",
+        "supported_crops": ["tomato"],
+        "hardware": "NOT_CONNECTED",
+        "autonomous_irrigation": False
+    }
+
+
+@app.post("/inference")
+async def inference(
+    image: UploadFile = File(...),
+    plant_id: str = Form(...),
+    crop: str = Form("tomato"),
+    sensor_json: str | None = Form(None),
+    image_captured_at: str | None = Form(None)
+):
+
+    if crop != "tomato":
+        raise HTTPException(
+            status_code=422,
+            detail="This model currently supports tomato only."
+        )
+
+    if not plant_id.strip():
+        raise HTTPException(
+            status_code=422,
+            detail="Plant ID is required."
+        )
+
+    content = await image.read(8 * 1024 * 1024 + 1)
+    await image.close()
+
+    if len(content) > 8 * 1024 * 1024:
+        raise HTTPException(
+            status_code=413,
+            detail="Image exceeds 8 MB."
+        )
+
+    try:
+        with Image.open(BytesIO(content)) as img:
+            if img.format not in ("JPEG", "PNG"):
+                raise ValueError("Unsupported image format")
+
+            if min(img.size) < 96:
+                raise ValueError("Image resolution too low")
+
+            image_format = img.format
+            img.verify()
+
+    except Exception:
+        raise HTTPException(
+            status_code=422,
+            detail="Invalid or unsupported image."
+        )
+
+    sensor_status = "MISSING"
+    sensor_reason = "sensor_packet_not_provided"
+    sensor_data = None
+
+    if sensor_json is not None:
+        try:
+            sensor_data = json.loads(sensor_json)
+
+            if not isinstance(sensor_data, dict):
+                raise ValueError()
+
+        except (ValueError, TypeError):
+            raise HTTPException(
+                status_code=422,
+                detail="Invalid sensor JSON."
+            )
+
+        contract_valid, contract_errors = check_sensor_contract(
+            sensor_data
+        )
+
+        if not contract_valid:
+            raise HTTPException(
+                status_code=422,
+                detail={
+                    "error": "Sensor schema validation failed.",
+                    "issues": contract_errors
+                }
+            )
+
+        sensor_status, sensor_reason = validate_sensor(
+            sensor_data
+        )
+
+        if sensor_data.get("plant_id") != plant_id:
+            raise HTTPException(
+                status_code=422,
+                detail="Sensor and image plant IDs differ."
+            )
+
+
+    if sensor_data is None:
+        sync_result = {
+            "status": "NO_SENSOR_DATA",
+            "delta_seconds": None
+        }
+    elif sensor_status not in ("VALID", "VALID_SIMULATED"):
+        sync_result = {
+            "status": "SENSOR_NOT_VALID",
+            "delta_seconds": None
+        }
+    else:
+        sync_result = synchronize(
+            image_captured_at,
+            sensor_data["timestamp"]
+        )
+
+    suffix = ".jpg" if image_format == "JPEG" else ".png"
+
+    with tempfile.TemporaryDirectory() as temp_dir:
+        image_path = Path(temp_dir) / ("input" + suffix)
+        image_path.write_bytes(content)
+
+        result = get_vision().predict(
+            image_path=image_path,
+            crop=crop
+        )
+
+    observation_id = str(uuid4())
+
+    response = {
+        "schema_version": "0.1.0",
+        "observation_id": observation_id,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "plant_id": plant_id,
+        "crop": crop,
+        "image_capture": {
+            "timestamp": image_captured_at,
+            "source": (
+                "CLIENT_DECLARED" if image_captured_at
+                else "UNKNOWN"
+            ),
+            "verified": False
+        },
+        "time_sync": sync_result,
+        "vision": result["vision"],
+        "sensor": {
+            "status": sensor_status,
+            "reason": sensor_reason,
+            "data": sensor_data
+        },
+        "water_stress_risk": None,
+        "forecast": None,
+        "decision": {
+            "action": "NO_AUTONOMOUS_ACTION",
+            "reason_codes": [
+                "WATER_STRESS_MODEL_NOT_VALIDATED"
+            ]
+        },
+        "model": result["model"]
+    }
+
+    response['decision'] = evaluate_safety(response)
+
+    try:
+        log_observation(response, content)
+    except Exception:
+        raise HTTPException(
+            status_code=503,
+            detail="Audit logging unavailable."
+        )
+
+    return response
+
+
+
+@app.get("/latest")
+def latest():
+
+    try:
+        result = get_latest_observation()
+
+    except Exception:
+        raise HTTPException(
+            status_code=503,
+            detail="Observation database unavailable."
+        )
+
+    if result is None:
+        raise HTTPException(
+            status_code=404,
+            detail="No observations available."
+        )
+
+    return result
+
+
+
+@app.get("/plants/{plant_id}")
+def plant_history(
+    plant_id: str,
+    limit: int = Query(default=10, ge=1, le=100)
+):
+
+    if not plant_id.strip() or len(plant_id) > 64:
+        raise HTTPException(
+            status_code=422,
+            detail="Invalid plant ID."
+        )
+
+    try:
+        observations = get_plant_history(
+            plant_id,
+            limit
+        )
+
+    except Exception:
+        raise HTTPException(
+            status_code=503,
+            detail="Observation database unavailable."
+        )
+
+    return {
+        "plant_id": plant_id,
+        "count": len(observations),
+        "observations": observations
+    }

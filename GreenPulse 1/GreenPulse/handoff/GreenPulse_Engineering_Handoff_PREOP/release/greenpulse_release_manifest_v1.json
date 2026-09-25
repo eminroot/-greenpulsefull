@@ -1,0 +1,48 @@
+{
+  "schema_version": "greenpulse.final_release_manifest.v1",
+  "release_status": "PRE_OPERATIONAL_HANDOFF_PACKAGE",
+  "final_operational_release_complete": false,
+  "package": {
+    "edge_models": [
+      "models/release_candidates/tomato_clean_v1/tomato_clean_v1.onnx",
+      "models/release_candidates/pepper_transfer_v1/pepper_transfer_v1.onnx"
+    ],
+    "inference_service": [
+      "src/master_inference_pipeline.py",
+      "src/ai_gateway_service.py",
+      "src/api.py"
+    ],
+    "intelligence_modules": [
+      "src/multimodal_fusion_model.py",
+      "src/predictive_risk.py",
+      "src/decision_intelligence.py"
+    ],
+    "configs": "configs/",
+    "tests": "tests/",
+    "schemas": "release/schemas/",
+    "examples": "release/examples/",
+    "readme": "release/README.md",
+    "install_script": "release/install.ps1",
+    "start_script": "release/start.ps1"
+  },
+  "handoffs": {
+    "backend": "release/backend_handoff_v1.json",
+    "frontend": "release/frontend_field_dictionary_v1.json",
+    "hardware": "release/hardware_handoff_v1.json"
+  },
+  "blockers": {
+    "engineer1_hailo_approval": false,
+    "hef_available": false,
+    "raspberry_pi5_ai_hat_plus_validation": false,
+    "real_hardware_end_to_end_validation": false,
+    "final_git_provenance": false,
+    "final_github_push": false
+  },
+  "claim_boundary": {
+    "software_handoff_structure_prepared": true,
+    "hailo_deployment_complete": false,
+    "physical_hardware_validated": false,
+    "final_release_provenance_complete": false,
+    "operational_release_complete": false
+  }
+}

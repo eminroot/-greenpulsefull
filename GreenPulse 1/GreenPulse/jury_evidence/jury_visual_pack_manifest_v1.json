@@ -1,0 +1,29 @@
+{
+  "schema_version": "greenpulse.jury_visual_pack.v1",
+  "visual_format": "1920x1080 PNG / 16:9",
+  "visuals": [
+    "01_system_architecture.png",
+    "02_model_performance_comparison.png",
+    "03_model_evidence_cards.png",
+    "04_failure_safe_state_matrix.png",
+    "05_release_handoff_readiness.png",
+    "06_evidence_readiness_board.png",
+    "07_proof_dashboard.png",
+    "08_layer_readiness_matrix.png",
+    "09_traceability_chain.png",
+    "10_claim_boundary.png",
+    "11_real_validation_roadmap.png",
+    "12_final_jury_summary.png"
+  ],
+  "claim_policy": {
+    "measured_results_are_explicit": true,
+    "software_validation_is_explicit": true,
+    "pending_real_tests_are_explicit": true,
+    "synthetic_or_framework_results_presented_as_real": false
+  },
+  "visual_count": 12,
+  "language": "en",
+  "superseded_by": "jury_evidence/visuals_tr/jury_visual_pack_manifest_v2.json",
+  "note": "Bu, INGILIZCE gorsel setidir ve ARTIK SUNUM SETI DEGILDIR. Sunum TURKCE yapilacagi ve bu gorsellerde uzun tire '?' olarak basildigi icin yerini `visuals_tr/` almistir. Manifest onceden 12 gorselden yalnizca 6 tanesini listeliyordu; liste diskle esitlendi.",
+  "updated_at_utc": "2026-09-24T21:48:03.340604+00:00"
+}

@@ -1,0 +1,45 @@
+{
+  "audit_version": "0.1.0",
+  "generated_at_utc": "2026-09-23T21:23:12.689869+00:00",
+  "project": "GreenPulse",
+  "crop": "bell_pepper",
+  "task": "DISEASE_CLASSIFICATION",
+  "total_images": 2475,
+  "total_pairs_compared": 3061575,
+  "screening_method": {
+    "algorithms": [
+      "dHash",
+      "pHash"
+    ],
+    "maximum_dhash_distance": 3,
+    "maximum_phash_distance": 5,
+    "thresholds_validated": false
+  },
+  "candidate_pair_counts": {
+    "same_leaf_group": 1
+  },
+  "flagged_cross_group_image_count": 0,
+  "flagged_cross_group_image_paths": [],
+  "candidate_examples": {
+    "same_leaf_group": [
+      {
+        "image_a": "raw/color/Pepper,_bell___healthy/49b4fd49-ffc0-40c3-ad76-452b933d58c7___JR_HL 8267.JPG",
+        "image_b": "raw/color/Pepper,_bell___healthy/b39dd01c-b297-4d3f-ad79-c06a488a99cd___JR_HL 8268.JPG",
+        "leaf_group_a": "Pepper,_bell___healthy:::99.0",
+        "leaf_group_b": "Pepper,_bell___healthy:::99.0",
+        "dhash_distance": 3,
+        "phash_distance": 4
+      }
+    ],
+    "different_mapped_groups": [],
+    "unknown_leaf_group": [],
+    "cross_class": []
+  },
+  "human_review_completed": false,
+  "physical_plant_identity_verified": false,
+  "leakage_safe_split_verified": false,
+  "images_automatically_removed": 0,
+  "transfer_learning_started": false,
+  "real_greenhouse_validation": false,
+  "water_stress_validated": false
+}

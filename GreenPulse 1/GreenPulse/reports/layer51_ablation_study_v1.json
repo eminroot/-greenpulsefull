@@ -1,0 +1,57 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T19:48:43.650971+00:00",
+  "architecture_layer": 51,
+  "layer_name": "Ablation Study",
+  "status": "SOFTWARE_ABLATION_FRAMEWORK_COMPLETE_REAL_THREE_WAY_EVALUATION_PENDING",
+  "comparison_modes": {
+    "sensor_only": "SUPPORTED",
+    "vision_only": "SUPPORTED",
+    "vision_sensor_fusion": "SUPPORTED"
+  },
+  "metrics": {
+    "precision": "SUPPORTED",
+    "recall": "SUPPORTED",
+    "f1": "SUPPORTED",
+    "false_positive_rate": "SUPPORTED",
+    "false_negative_rate": "SUPPORTED"
+  },
+  "existing_component_evidence": {
+    "sensor_only": {
+      "report": "reports/layer23_sensor_only_baseline_v1.json",
+      "real_evaluation": "PENDING"
+    },
+    "vision_only": {
+      "report": "reports/layer24_vision_only_risk_baseline_v1.json",
+      "real_evaluation": "PENDING"
+    },
+    "vision_sensor_fusion": {
+      "report": "reports/layer25_multimodal_stress_fusion_v1.json",
+      "real_evaluation": "PENDING"
+    }
+  },
+  "tests": {
+    "count": 12,
+    "result": "PASS"
+  },
+  "artifacts": {
+    "src/ablation_study.py": "f58f7f619cec548c3a981735a0c07d58d59286b4714b5e1e927c570b5fe21c2e",
+    "tests/test_ablation_study.py": "140847ee213601988fec3539fa4cdc03c3470ff95016e91b191760bdc26d5d12",
+    "reports/layer23_sensor_only_baseline_v1.json": "a41a5b54fe5290fe576e0f3cf3d84a43faa694df4417b645848c8af9959f8ab6",
+    "reports/layer24_vision_only_risk_baseline_v1.json": "191b376cf641b65ab724f6e6ba9e55a56f07d8586e3353c35f8096112a6d6909",
+    "reports/layer25_multimodal_stress_fusion_v1.json": "8d801a8288ebb8102ecbc89e13c4961472ea3c452e0bcdf78d53a39beb3d3bc9"
+  },
+  "production_database": {
+    "modified": false,
+    "sha256_before": "f76bdabc80c2b7aa2e537ba760f040dca721d9f0c8ce99e5c393a67f91d95218",
+    "sha256_after": "f76bdabc80c2b7aa2e537ba760f040dca721d9f0c8ce99e5c393a67f91d95218"
+  },
+  "claim_boundary": {
+    "software_ablation_framework_complete": true,
+    "real_three_way_ablation_executed": false,
+    "real_multimodal_benefit_established": false,
+    "multimodal_superiority_claim_permitted": false,
+    "synthetic_results_may_be_claimed_real": false,
+    "layer51_operationally_validated": false
+  }
+}

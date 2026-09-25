@@ -1,0 +1,760 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T11:26:31.659170+00:00",
+  "project": "GreenPulse",
+  "authority": "GreenPulse AI/ML Final Implementation Architecture v2.0",
+  "total_layers": 56,
+  "status_counts": {
+    "DONE": 10,
+    "PARTIAL": 28,
+    "SOFTWARE_TODO": 10,
+    "HARDWARE_BLOCKED": 8
+  },
+  "computer_side_backlog_layers": 38,
+  "hardware_blocked_layers": 8,
+  "important_interpretation": "Previous 21/21 closure referred only to the two-crop pre-hardware disease-classification scope. This 56-layer master status supersedes that scope for full GreenPulse implementation tracking.",
+  "layers": [
+    {
+      "layer": 1,
+      "title": "Plant Image Data Engineering",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 87,
+      "artifact_filename_match_count": 40,
+      "reason": "Dataset cleaning, manifests, source tracking and leakage work exist, but real ESP32-CAM greenhouse ingestion and verified plant/session identity are not yet completed."
+    },
+    {
+      "layer": 2,
+      "title": "Annotation & Dataset Quality Layer",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 33,
+      "artifact_filename_match_count": 12,
+      "reason": "Dataset QA, duplicates and split auditing exist, but the authoritative architecture requires YOLO bounding-box annotation/validation; current production evidence is classification-oriented."
+    },
+    {
+      "layer": 3,
+      "title": "Image Quality Gate",
+      "status": "DONE",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 6,
+      "artifact_filename_match_count": 0,
+      "reason": "Computer-side image-quality gate and recapture/failure handling are implemented."
+    },
+    {
+      "layer": 4,
+      "title": "Image Preprocessing",
+      "status": "DONE",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 18,
+      "artifact_filename_match_count": 4,
+      "reason": "Preprocessing is implemented and classification preprocessing parity was explicitly repaired and validated."
+    },
+    {
+      "layer": 5,
+      "title": "Controlled Data Augmentation",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 3,
+      "artifact_filename_match_count": 0,
+      "reason": "Training used controlled augmentation, but the full architecture-level versioned augmentation experiment matrix is not yet closed."
+    },
+    {
+      "layer": 6,
+      "title": "Core Computer Vision Engine - YOLO11n",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 83,
+      "artifact_filename_match_count": 63,
+      "reason": "YOLO11n classification is trained and validated for tomato and pepper, but the PDF architecture also requires region/bounding-box and affected-area outputs."
+    },
+    {
+      "layer": 7,
+      "title": "Visual Stress Feature Engine",
+      "status": "SOFTWARE_TODO",
+      "repository_evidence_level": "NO_DIRECT_EVIDENCE_FOUND",
+      "text_match_count": 0,
+      "artifact_filename_match_count": 0,
+      "reason": "No direct implementation evidence for the required visual feature vector including affected-area, color, texture and relative visual change."
+    },
+    {
+      "layer": 8,
+      "title": "Plant Baseline / Delta Intelligence",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 37,
+      "artifact_filename_match_count": 19,
+      "reason": "Baseline/delta concepts and contracts exist, but reproducible per-plant healthy baseline and validated color/texture/affected-area deltas are not fully closed."
+    },
+    {
+      "layer": 9,
+      "title": "Temporal Plant Analysis Dataset",
+      "status": "HARDWARE_BLOCKED",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 14,
+      "artifact_filename_match_count": 0,
+      "reason": "A valid temporal plant dataset requires repeated time-aligned observations of the same real plant under controlled conditions."
+    },
+    {
+      "layer": 10,
+      "title": "Early Stress Detection Analysis",
+      "status": "HARDWARE_BLOCKED",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 9,
+      "artifact_filename_match_count": 0,
+      "reason": "Early-stress lead-time validation requires real temporal plant evidence; classification data cannot establish pre-symptomatic lead time."
+    },
+    {
+      "layer": 11,
+      "title": "Model Training & Experiment Management",
+      "status": "DONE",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 79,
+      "artifact_filename_match_count": 0,
+      "reason": "Config-driven training, experiment evidence, seeds and reproducible tomato/pepper training records are present."
+    },
+    {
+      "layer": 12,
+      "title": "Computer Vision Model Evaluation",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 68,
+      "artifact_filename_match_count": 8,
+      "reason": "Held-out classification evaluation, confusion matrices, accuracy and Macro F1 are complete, but PDF detection-oriented mAP/region evaluation is not applicable to the current classification-only branch."
+    },
+    {
+      "layer": 13,
+      "title": "Computer Vision Error Analytics",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 47,
+      "artifact_filename_match_count": 0,
+      "reason": "Saved error predictions and confusion/error-pair analytics exist, but full causal/environmental error categorization and required FP/FN report structure are not yet fully closed."
+    },
+    {
+      "layer": 14,
+      "title": "Active Learning Layer",
+      "status": "DONE",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 20,
+      "artifact_filename_match_count": 0,
+      "reason": "Human-review active-learning queue is implemented; automatic labeling, retraining and actuation are explicitly disabled."
+    },
+    {
+      "layer": 15,
+      "title": "Vision Explainability Layer",
+      "status": "DONE",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 32,
+      "artifact_filename_match_count": 0,
+      "reason": "Validation-only Grad-CAM explainability with preprocessing parity is complete for tomato and pepper."
+    },
+    {
+      "layer": 16,
+      "title": "Transfer Learning & Crop Adaptation Layer",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 43,
+      "artifact_filename_match_count": 40,
+      "reason": "Tomato-to-pepper adaptation experiment and held-out pepper evaluation exist, but selected-backbone freezing was not documented and transfer superiority was not established."
+    },
+    {
+      "layer": 17,
+      "title": "Model Export & Portability",
+      "status": "DONE",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 41,
+      "artifact_filename_match_count": 3,
+      "reason": "PyTorch-to-ONNX export and prediction parity are validated for both crops."
+    },
+    {
+      "layer": 18,
+      "title": "Vision Model Registry & Release",
+      "status": "DONE",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 36,
+      "artifact_filename_match_count": 4,
+      "reason": "Versioned research-only registry, model hashes, routing and abstention behavior are implemented."
+    },
+    {
+      "layer": 19,
+      "title": "Sensor Data Ingestion",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 13,
+      "artifact_filename_match_count": 0,
+      "reason": "Sensor schema/validation contracts exist, but real physically-present sensor ingestion has not yet been validated."
+    },
+    {
+      "layer": 20,
+      "title": "Sensor Feature Engineering",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 4,
+      "artifact_filename_match_count": 0,
+      "reason": "Sensor validation infrastructure exists, but the complete versioned feature-engineering pipeline with moving averages/deltas/rates is not closed."
+    },
+    {
+      "layer": 21,
+      "title": "Image / Sensor Time Synchronization",
+      "status": "DONE",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 18,
+      "artifact_filename_match_count": 0,
+      "reason": "Image/sensor timestamp synchronization and stale/missing-window handling are implemented computer-side."
+    },
+    {
+      "layer": 22,
+      "title": "Multimodal Feature Fusion",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 18,
+      "artifact_filename_match_count": 0,
+      "reason": "Fusion contracts/schema exist, but no validated multimodal feature model has yet been trained/calibrated."
+    },
+    {
+      "layer": 23,
+      "title": "Sensor-Only Baseline Model",
+      "status": "SOFTWARE_TODO",
+      "repository_evidence_level": "NO_DIRECT_EVIDENCE_FOUND",
+      "text_match_count": 0,
+      "artifact_filename_match_count": 0,
+      "reason": "Sensor-only baseline model required for ablation is not implemented."
+    },
+    {
+      "layer": 24,
+      "title": "Vision-Only Risk Baseline",
+      "status": "SOFTWARE_TODO",
+      "repository_evidence_level": "NO_DIRECT_EVIDENCE_FOUND",
+      "text_match_count": 0,
+      "artifact_filename_match_count": 0,
+      "reason": "Vision-only operational risk baseline is not implemented as a comparable risk estimator."
+    },
+    {
+      "layer": 25,
+      "title": "Multimodal Stress Fusion Engine",
+      "status": "PARTIAL",
+      "repository_evidence_level": "SOME_CANDIDATE_EVIDENCE",
+      "text_match_count": 2,
+      "artifact_filename_match_count": 0,
+      "reason": "Fusion contracts exist, but a trained lightweight multimodal stress fusion model with validated metrics is still missing."
+    },
+    {
+      "layer": 26,
+      "title": "Stress Risk Score Engine",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 9,
+      "artifact_filename_match_count": 0,
+      "reason": "Risk/output scaffolding exists, but a calibrated fused 0-100 Stress Risk Score is not yet validated."
+    },
+    {
+      "layer": 27,
+      "title": "Risk Calibration & Threshold Optimization",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 39,
+      "artifact_filename_match_count": 0,
+      "reason": "Threshold/safety concepts exist, but probability calibration and validation-derived operational thresholds are not closed."
+    },
+    {
+      "layer": 28,
+      "title": "Temporal Intelligence Engine",
+      "status": "SOFTWARE_TODO",
+      "repository_evidence_level": "NO_DIRECT_EVIDENCE_FOUND",
+      "text_match_count": 0,
+      "artifact_filename_match_count": 0,
+      "reason": "Required bounded-memory risk trend, velocity and acceleration engine has no direct implementation evidence."
+    },
+    {
+      "layer": 29,
+      "title": "Predictive Risk Forecasting Engine",
+      "status": "SOFTWARE_TODO",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 3,
+      "artifact_filename_match_count": 0,
+      "reason": "Predictive Risk Engine with configurable horizons and naive-baseline comparison is not implemented."
+    },
+    {
+      "layer": 30,
+      "title": "AI Uncertainty & Out-of-Distribution Layer",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 11,
+      "artifact_filename_match_count": 0,
+      "reason": "Low-confidence/image-quality/missing-data safety behavior exists, but complete explicit uncertainty/OOD state handling is not yet closed."
+    },
+    {
+      "layer": 31,
+      "title": "Vision / Sensor Conflict Detection",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 4,
+      "artifact_filename_match_count": 0,
+      "reason": "Conflict-safe behavior is represented in contracts/safety logic, but formal validated vision-vs-sensor conflict detection is not yet closed."
+    },
+    {
+      "layer": 32,
+      "title": "Decision Intelligence Engine",
+      "status": "PARTIAL",
+      "repository_evidence_level": "SOME_CANDIDATE_EVIDENCE",
+      "text_match_count": 1,
+      "artifact_filename_match_count": 0,
+      "reason": "Decision/safety scaffolding exists, but the complete deterministic multimodal decision engine depends on unfinished risk/forecast layers."
+    },
+    {
+      "layer": 33,
+      "title": "Decision Safety Layer",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 16,
+      "artifact_filename_match_count": 0,
+      "reason": "Safety gate blocks autonomous action, but the full config-driven operational policy with calibrated risk, confirmation counts and cooldown is not yet closed."
+    },
+    {
+      "layer": 34,
+      "title": "Decision Reason & Multimodal Explainability",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 6,
+      "artifact_filename_match_count": 0,
+      "reason": "Structured reasoning concepts exist, but full multimodal reason codes and technically valid fusion feature-contribution explanations are unfinished."
+    },
+    {
+      "layer": 35,
+      "title": "Master AI Inference Pipeline",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 49,
+      "artifact_filename_match_count": 8,
+      "reason": "Vision inference exists, but the complete master pipeline through sensor validation, fusion, risk, temporal forecast and decision cannot be complete until upstream missing modules are implemented."
+    },
+    {
+      "layer": 36,
+      "title": "AI Gateway & Backend API",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 4,
+      "artifact_filename_match_count": 0,
+      "reason": "FastAPI gateway exists with core endpoints, but the final architecture API surface and completed intelligence fields are not yet fully delivered."
+    },
+    {
+      "layer": 37,
+      "title": "Standard AI Output Contract",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 17,
+      "artifact_filename_match_count": 0,
+      "reason": "Versioned output schema exists, but risk/forecast/fusion fields are not yet backed by completed models."
+    },
+    {
+      "layer": 38,
+      "title": "Hardware Integration Interface",
+      "status": "DONE",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 16,
+      "artifact_filename_match_count": 0,
+      "reason": "Computer-side standardized actuator/hardware contract exists and direct electrical actuation is correctly separated from AI."
+    },
+    {
+      "layer": 39,
+      "title": "Hardware ACK & Action State",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 73,
+      "artifact_filename_match_count": 0,
+      "reason": "Simulated ACK/failure behavior exists, but real hardware acknowledgements have not yet been validated."
+    },
+    {
+      "layer": 40,
+      "title": "Closed-Loop Feedback Intelligence",
+      "status": "HARDWARE_BLOCKED",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 13,
+      "artifact_filename_match_count": 0,
+      "reason": "Synthetic closed-loop testing exists, but validated pre/post physical intervention feedback requires real plants, sensors and actuator hardware."
+    },
+    {
+      "layer": 41,
+      "title": "Hailo Edge AI Deployment",
+      "status": "HARDWARE_BLOCKED",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 29,
+      "artifact_filename_match_count": 0,
+      "reason": "ONNX is ready, but final HEF regression and Raspberry Pi 5 + AI HAT+ runtime validation require the target Hailo environment/hardware."
+    },
+    {
+      "layer": 42,
+      "title": "Resource Optimization (<3 GB RAM)",
+      "status": "HARDWARE_BLOCKED",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 25,
+      "artifact_filename_match_count": 0,
+      "reason": "The final <3 GB acceptance criterion must be measured during target-edge runtime stability testing."
+    },
+    {
+      "layer": 43,
+      "title": "Adaptive Image Sampling",
+      "status": "SOFTWARE_TODO",
+      "repository_evidence_level": "NO_DIRECT_EVIDENCE_FOUND",
+      "text_match_count": 0,
+      "artifact_filename_match_count": 0,
+      "reason": "Adaptive image-sampling policy is computer-side implementable but currently has no direct implementation evidence."
+    },
+    {
+      "layer": 44,
+      "title": "Edge Benchmarking",
+      "status": "HARDWARE_BLOCKED",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 6,
+      "artifact_filename_match_count": 0,
+      "reason": "Final preprocessing/Hailo/postprocessing/end-to-end latency and device resource measurements require the target edge hardware."
+    },
+    {
+      "layer": 45,
+      "title": "Long-Run Stability Test",
+      "status": "HARDWARE_BLOCKED",
+      "repository_evidence_level": "NO_DIRECT_EVIDENCE_FOUND",
+      "text_match_count": 0,
+      "artifact_filename_match_count": 0,
+      "reason": "Final long-run stability acceptance requires real edge runtime and hardware camera/sensor behavior."
+    },
+    {
+      "layer": 46,
+      "title": "Failure & Safe-State Engine",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 21,
+      "artifact_filename_match_count": 0,
+      "reason": "Safe blocking and simulator regression exist, but the complete failure matrix including all camera/network/database/hardware scenarios is not yet closed."
+    },
+    {
+      "layer": 47,
+      "title": "Data Logging & Audit Layer",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 11,
+      "artifact_filename_match_count": 0,
+      "reason": "Audit database exists, but the full authoritative table/traceability schema covering risk, forecasts, commands, actions and sustainability is unfinished."
+    },
+    {
+      "layer": 48,
+      "title": "Model & System Versioning (MLOps-Lite)",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 5,
+      "artifact_filename_match_count": 0,
+      "reason": "Vision models/configs/hashes are strongly versioned, but system-wide fusion, forecast, API and final-release versioning cannot be complete yet."
+    },
+    {
+      "layer": 49,
+      "title": "AI Testing Infrastructure",
+      "status": "PARTIAL",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 109,
+      "artifact_filename_match_count": 0,
+      "reason": "Unit/regression tests exist, but the complete image+sensor+fusion+risk+forecast+decision+API+DB+simulated-hardware integration suite is not yet possible."
+    },
+    {
+      "layer": 50,
+      "title": "Sensor & Hardware Simulators",
+      "status": "DONE",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 14,
+      "artifact_filename_match_count": 0,
+      "reason": "Computer-side sensor/actuator simulation and deterministic simulated hardware behavior are implemented."
+    },
+    {
+      "layer": 51,
+      "title": "Ablation Study",
+      "status": "SOFTWARE_TODO",
+      "repository_evidence_level": "NO_DIRECT_EVIDENCE_FOUND",
+      "text_match_count": 0,
+      "artifact_filename_match_count": 0,
+      "reason": "Required SENSOR ONLY vs VISION ONLY vs FUSION ablation cannot run until the three comparable baselines exist."
+    },
+    {
+      "layer": 52,
+      "title": "Temporal & Predictive Evaluation",
+      "status": "HARDWARE_BLOCKED",
+      "repository_evidence_level": "NO_DIRECT_EVIDENCE_FOUND",
+      "text_match_count": 0,
+      "artifact_filename_match_count": 0,
+      "reason": "Software evaluation framework can be prepared, but meaningful temporal forecast validation and lead-time evidence require real temporal plant data."
+    },
+    {
+      "layer": 53,
+      "title": "Sustainability Intelligence Layer",
+      "status": "SOFTWARE_TODO",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 8,
+      "artifact_filename_match_count": 0,
+      "reason": "Sustainability analytics engine and measured-vs-estimated baseline methodology still need computer-side implementation; real savings remain future evidence."
+    },
+    {
+      "layer": 54,
+      "title": "Backend & Frontend Intelligence Outputs",
+      "status": "PARTIAL",
+      "repository_evidence_level": "NO_DIRECT_EVIDENCE_FOUND",
+      "text_match_count": 0,
+      "artifact_filename_match_count": 0,
+      "reason": "Backend/API outputs exist, but final risk/trend/forecast/sustainability and system-health intelligence fields are not fully backed by completed modules."
+    },
+    {
+      "layer": 55,
+      "title": "System Monitoring & Lightweight Drift Monitoring",
+      "status": "SOFTWARE_TODO",
+      "repository_evidence_level": "SOME_CANDIDATE_EVIDENCE",
+      "text_match_count": 1,
+      "artifact_filename_match_count": 0,
+      "reason": "Lightweight prediction/sensor/resource distribution drift monitoring remains to be implemented."
+    },
+    {
+      "layer": 56,
+      "title": "Final Release & Team Handoffs",
+      "status": "SOFTWARE_TODO",
+      "repository_evidence_level": "STRONG_CANDIDATE_EVIDENCE",
+      "text_match_count": 9,
+      "artifact_filename_match_count": 0,
+      "reason": "Final packaged release, install/start scripts, complete handoff schemas and README can only be finalized after remaining computer-side modules are closed."
+    }
+  ],
+  "software_execution_queue": [
+    {
+      "priority": 1,
+      "layer": 7,
+      "title": "Visual Stress Feature Engine",
+      "current_status": "SOFTWARE_TODO"
+    },
+    {
+      "priority": 2,
+      "layer": 8,
+      "title": "Plant Baseline / Delta Intelligence",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 3,
+      "layer": 20,
+      "title": "Sensor Feature Engineering",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 4,
+      "layer": 23,
+      "title": "Sensor-Only Baseline Model",
+      "current_status": "SOFTWARE_TODO"
+    },
+    {
+      "priority": 5,
+      "layer": 24,
+      "title": "Vision-Only Risk Baseline",
+      "current_status": "SOFTWARE_TODO"
+    },
+    {
+      "priority": 6,
+      "layer": 22,
+      "title": "Multimodal Feature Fusion",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 7,
+      "layer": 25,
+      "title": "Multimodal Stress Fusion Engine",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 8,
+      "layer": 26,
+      "title": "Stress Risk Score Engine",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 9,
+      "layer": 27,
+      "title": "Risk Calibration & Threshold Optimization",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 10,
+      "layer": 28,
+      "title": "Temporal Intelligence Engine",
+      "current_status": "SOFTWARE_TODO"
+    },
+    {
+      "priority": 11,
+      "layer": 29,
+      "title": "Predictive Risk Forecasting Engine",
+      "current_status": "SOFTWARE_TODO"
+    },
+    {
+      "priority": 12,
+      "layer": 30,
+      "title": "AI Uncertainty & Out-of-Distribution Layer",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 13,
+      "layer": 31,
+      "title": "Vision / Sensor Conflict Detection",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 14,
+      "layer": 32,
+      "title": "Decision Intelligence Engine",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 15,
+      "layer": 33,
+      "title": "Decision Safety Layer",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 16,
+      "layer": 34,
+      "title": "Decision Reason & Multimodal Explainability",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 17,
+      "layer": 35,
+      "title": "Master AI Inference Pipeline",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 18,
+      "layer": 36,
+      "title": "AI Gateway & Backend API",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 19,
+      "layer": 37,
+      "title": "Standard AI Output Contract",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 20,
+      "layer": 43,
+      "title": "Adaptive Image Sampling",
+      "current_status": "SOFTWARE_TODO"
+    },
+    {
+      "priority": 21,
+      "layer": 46,
+      "title": "Failure & Safe-State Engine",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 22,
+      "layer": 47,
+      "title": "Data Logging & Audit Layer",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 23,
+      "layer": 48,
+      "title": "Model & System Versioning (MLOps-Lite)",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 24,
+      "layer": 49,
+      "title": "AI Testing Infrastructure",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 25,
+      "layer": 51,
+      "title": "Ablation Study",
+      "current_status": "SOFTWARE_TODO"
+    },
+    {
+      "priority": 26,
+      "layer": 53,
+      "title": "Sustainability Intelligence Layer",
+      "current_status": "SOFTWARE_TODO"
+    },
+    {
+      "priority": 27,
+      "layer": 54,
+      "title": "Backend & Frontend Intelligence Outputs",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 28,
+      "layer": 55,
+      "title": "System Monitoring & Lightweight Drift Monitoring",
+      "current_status": "SOFTWARE_TODO"
+    },
+    {
+      "priority": 29,
+      "layer": 56,
+      "title": "Final Release & Team Handoffs",
+      "current_status": "SOFTWARE_TODO"
+    },
+    {
+      "priority": 30,
+      "layer": 2,
+      "title": "Annotation & Dataset Quality Layer",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 31,
+      "layer": 6,
+      "title": "Core Computer Vision Engine - YOLO11n",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 32,
+      "layer": 5,
+      "title": "Controlled Data Augmentation",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 33,
+      "layer": 12,
+      "title": "Computer Vision Model Evaluation",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 34,
+      "layer": 13,
+      "title": "Computer Vision Error Analytics",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 35,
+      "layer": 16,
+      "title": "Transfer Learning & Crop Adaptation Layer",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 36,
+      "layer": 1,
+      "title": "Plant Image Data Engineering",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 37,
+      "layer": 19,
+      "title": "Sensor Data Ingestion",
+      "current_status": "PARTIAL"
+    },
+    {
+      "priority": 38,
+      "layer": 39,
+      "title": "Hardware ACK & Action State",
+      "current_status": "PARTIAL"
+    }
+  ],
+  "execution": {
+    "model_loaded": false,
+    "inference_executed": false,
+    "training_executed": false,
+    "frozen_test_images_accessed": false,
+    "source_code_modified": false,
+    "model_artifacts_modified": false
+  }
+}

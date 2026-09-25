@@ -1,0 +1,64 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T12:05:02.121193+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 26,
+  "layer_name": "Stress Risk Score Engine",
+  "status": "SOFTWARE_ENGINE_COMPLETE_OPERATIONAL_SCORING_PENDING_LAYER27",
+  "schema_version": "greenpulse.stress_risk_score.v1",
+  "score_range": [
+    0,
+    100
+  ],
+  "implemented_capabilities": [
+    "calibrated fusion probability input",
+    "0-100 stress risk score conversion",
+    "calibration artifact validation",
+    "model-version binding",
+    "feature-vector-version binding",
+    "timestamp normalization",
+    "blocked state without validated calibration",
+    "explicit Layer-27 threshold ownership"
+  ],
+  "scientific_guardrails": {
+    "raw_yolo_confidence_accepted": false,
+    "raw_disease_confidence_accepted": false,
+    "uncalibrated_fusion_probability_accepted": false,
+    "thresholds_defined_in_layer_26": false,
+    "real_calibration_available": false,
+    "operational_score_currently_claimed": false,
+    "physical_action_authorized": false
+  },
+  "layer_27_dependency": {
+    "status": "PENDING",
+    "required_artifact_schema": "greenpulse.risk_calibration.v1",
+    "required_status": "VALIDATED"
+  },
+  "tests": {
+    "framework": "unittest",
+    "test_count": 10,
+    "result": "PASS",
+    "synthetic_calibration_artifact_used": true,
+    "synthetic_artifact_is_real_calibration": false
+  },
+  "artifacts": {
+    "source": {
+      "path": "src/stress_risk_score.py",
+      "sha256": "75aa6e9753356edec1c1ce4b80722d8b330192477defeba3273dd36f4a5c7b66"
+    },
+    "tests": {
+      "path": "tests/test_stress_risk_score.py",
+      "sha256": "6f4a878052ce1fd13696b492d47983f36c740fdebf0906fcbf780b8773d81707"
+    }
+  },
+  "execution": {
+    "real_calibration_performed": false,
+    "real_operational_score_produced": false,
+    "fusion_model_trained": false,
+    "real_multimodal_data_used": false,
+    "vision_model_loaded": false,
+    "vision_inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T15:55:34.782641+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 42,
+  "layer_name": "Resource Optimization (<3 GB RAM)",
+  "status": "SOFTWARE_RESOURCE_GUARDS_COMPLETE_PI5_HAILO_RAM_STABILITY_PENDING",
+  "software_architecture": {
+    "single_frame_architecture_supported": true,
+    "large_video_buffer_detected": false,
+    "video_buffer_implementation_hits": [],
+    "temporal_window_default": 5,
+    "small_temporal_buffer_verified": true,
+    "sqlite_present": true,
+    "fastapi_present": true,
+    "local_llm_import_detected": false,
+    "software_resource_guard_pass": true
+  },
+  "lightweight_models_source_check": {
+    "fusion_module": "src/multimodal_fusion_model.py",
+    "fusion_imports": [
+      "__future__",
+      "dataclasses",
+      "math",
+      "numpy",
+      "src.feature_fusion",
+      "typing"
+    ],
+    "fusion_heavy_framework_detected": false,
+    "forecast_module": "src/predictive_risk.py",
+    "forecast_imports": [
+      "__future__",
+      "dataclasses",
+      "math",
+      "numpy",
+      "typing"
+    ],
+    "forecast_heavy_framework_detected": false,
+    "source_level_lightweight_evidence": true,
+    "runtime_memory_proof": false
+  },
+  "ram_budget": {
+    "acceptance_rule": "TOTAL_AI_SOFTWARE_RUNTIME_RAM_STRICTLY_BELOW_3_GB",
+    "limit_bytes": 3000000000,
+    "peak_process_tree_rss_monitor_supported": true,
+    "recursive_children_included": true,
+    "desktop_full_runtime_stability_verified": false,
+    "raspberry_pi_5_runtime_measured": false,
+    "hailo_runtime_measured": false,
+    "hard_acceptance_verified": false
+  },
+  "hailo_dependency": {
+    "hailo_acceleration_required_by_architecture": true,
+    "hailo_toolchain_available": false,
+    "hef_available": false,
+    "hailo_runtime_verified": false,
+    "blocked_by_layer41": true
+  },
+  "tests": {
+    "resource_budget": {
+      "count": 11,
+      "result": "PASS"
+    },
+    "corrected_resource_architecture_guard": {
+      "count": 11,
+      "result": "PASS"
+    },
+    "total": {
+      "count": 22,
+      "result": "PASS"
+    }
+  },
+  "prior_report_note": {
+    "path": "reports/layer42_software_resource_architecture_v1.json",
+    "status": "SUPERSEDED_FOR_SOURCE_GUARD_RESULT",
+    "reason": "Earlier guard produced false-positive video-buffer detection and failed to parse keyword-only window_size default. Corrected guard tests now pass."
+  },
+  "artifacts": {
+    "src/resource_budget.py": "566adfe25b8fa851521e5194703a1f2c56c06bcbce8211d2120ce9064a8144fd",
+    "src/resource_monitor.py": "f3b14381bff2cbec4a5e6f4830ef120ecbbce3170536c87edd5a72e1dcd3a039",
+    "src/resource_architecture_guard.py": "2ecd0a9e29541285bbe77ea50c56b65df35bad9609f4c9ca2e3dd51453ed9fc2",
+    "src/multimodal_fusion_model.py": "109638f6373ca68d85c467112e8d0fa5eb63159c706f7a89c45e3aaf4c3ae7db",
+    "src/predictive_risk.py": "87d5e5ab9692e72db9cc7f744731c355f7df8e331634f16b37dceacd833f0745",
+    "tests/test_resource_budget.py": "6c37be9f0502efe6ab4d0d74b9830d6a6d519b36e226b52b3ebb5af8aa382eff",
+    "tests/test_resource_architecture_guard.py": "5b9e74dcf02cd194d24535ba2bb53f1ec2148e6ec9805407f31728c8199ec39a"
+  },
+  "execution": {
+    "model_loaded": false,
+    "inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "runtime_stability_test_executed": false,
+    "raspberry_pi_contacted": false,
+    "hailo_device_contacted": false,
+    "hardware_command_dispatched": false,
+    "physical_actuation": false
+  },
+  "claim_boundary": {
+    "software_resource_architecture_complete": true,
+    "under_3gb_runtime_verified": false,
+    "pi5_hailo_resource_optimization_verified": false,
+    "layer42_fully_complete": false
+  }
+}

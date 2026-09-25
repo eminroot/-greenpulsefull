@@ -1,0 +1,23 @@
+{
+  "manifest_version": "0.1.1",
+  "project": "GreenPulse",
+  "target_crop": "bell_pepper",
+  "source_repository": "https://github.com/spMohanty/PlantVillage-Dataset",
+  "source_revision": "7f7ecc7e1eaca78107e3affe7cb5abd9427e139a",
+  "dataset_root": "datasets\\external\\plantvillage_pepper_source",
+  "recovered_at_utc": "2026-09-23T21:19:19.730345+00:00",
+  "classes": {
+    "Pepper,_bell___Bacterial_spot": 997,
+    "Pepper,_bell___healthy": 1478
+  },
+  "total_images": 2475,
+  "file_hash_integrity_verified": true,
+  "leaf_grouping_file_integrity_verified": true,
+  "leaf_grouping_completeness_verified": false,
+  "source_license_review_completed": false,
+  "duplicate_check_completed": false,
+  "plant_level_split_verified": false,
+  "transfer_learning_completed": false,
+  "real_greenhouse_validation": false,
+  "water_stress_validated": false
+}

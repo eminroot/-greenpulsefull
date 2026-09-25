@@ -1,0 +1,61 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T11:29:26.581059+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 7,
+  "layer_name": "Visual Stress Feature Engine",
+  "status": "SOFTWARE_ENGINE_COMPLETE",
+  "schema_version": "greenpulse.visual_features.v1",
+  "feature_vector_version": "visual_feature_vector_v1",
+  "feature_vector_length": 23,
+  "implemented_capabilities": [
+    "visual confidence input",
+    "RGB color statistics",
+    "HSV color statistics",
+    "grayscale statistics",
+    "gradient texture statistics",
+    "edge density",
+    "laplacian texture energy",
+    "optional ROI analysis",
+    "affected image area from affected mask",
+    "affected leaf area ratio only from validated leaf + affected masks",
+    "relative visual change against baseline signature",
+    "stable versioned fusion feature vector",
+    "explicit missing-feature availability flags"
+  ],
+  "scientific_guardrails": {
+    "classification_confidence_not_called_detection_confidence": true,
+    "bbox_alone_not_used_as_affected_leaf_area": true,
+    "affected_leaf_area_requires_validated_masks": true,
+    "relative_visual_change_not_early_stress_proof": true,
+    "physical_action_authorized": false
+  },
+  "integration_dependencies": {
+    "layer_6_region_or_mask_output": "PENDING",
+    "real_plant_baseline": "PENDING",
+    "multimodal_fusion": "PENDING"
+  },
+  "tests": {
+    "framework": "unittest",
+    "test_count": 8,
+    "expected_result": "PASS"
+  },
+  "artifacts": {
+    "source": {
+      "path": "src/visual_features.py",
+      "sha256": "8f892faaf61f6445ebc3bb49cc5f55cd17b7940b7ecaecbc143a62336a0d8701"
+    },
+    "tests": {
+      "path": "tests/test_visual_features.py",
+      "sha256": "aac0d8965d99e563613e848c02084bfdcb815679c1e0032556b8e86cb3dabc5b"
+    }
+  },
+  "execution": {
+    "model_loaded": false,
+    "inference_executed": false,
+    "training_executed": false,
+    "frozen_test_images_accessed": false,
+    "real_greenhouse_images_accessed": false,
+    "model_artifacts_modified": false
+  }
+}

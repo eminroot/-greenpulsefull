@@ -1,0 +1,27 @@
+{
+  "report_version": "1.0",
+  "generated_at_utc": "2026-09-23T21:33:09.910918+00:00",
+  "source_model_verified": true,
+  "source_model_classes": 10,
+  "target_model_classes": 2,
+  "training_images": 1731,
+  "validation_images": 371,
+  "reserved_test_images": 371,
+  "dataset_integrity_verified": true,
+  "test_isolation_verified": true,
+  "training_environment": {
+    "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+    "pytorch": "2.14.0+cpu",
+    "ultralytics": "8.4.160",
+    "cuda_available": false,
+    "gpu_name": null,
+    "gpu_memory_gb": null,
+    "selected_device": "cpu",
+    "planned_batch_size": 8
+  },
+  "experiment_config_created": true,
+  "training_started": false,
+  "pepper_model_trained": false,
+  "real_greenhouse_validation": false,
+  "water_stress_validation": false
+}

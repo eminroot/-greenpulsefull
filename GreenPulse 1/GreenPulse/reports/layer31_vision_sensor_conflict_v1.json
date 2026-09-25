@@ -1,0 +1,61 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T12:40:28.562271+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 31,
+  "layer_name": "Vision / Sensor Conflict Detection",
+  "status": "SOFTWARE_ENGINE_COMPLETE_REAL_CONFLICT_VALIDATION_PENDING",
+  "schema_version": "greenpulse.vision_sensor_conflict.v1",
+  "accepted_states": [
+    "HIGH_STRESS",
+    "NORMAL",
+    "UNKNOWN"
+  ],
+  "implemented_conflicts": [
+    "vision HIGH_STRESS vs sensor NORMAL",
+    "vision NORMAL vs sensor HIGH_STRESS"
+  ],
+  "routing": {
+    "conflict": "RECHECK",
+    "not_evaluable": "RECHECK",
+    "no_conflict": "MONITOR"
+  },
+  "validation_policy": {
+    "vision_signal_must_be_explicitly_validated": true,
+    "sensor_signal_must_be_explicitly_validated": true,
+    "unknown_state_can_create_conflict": false,
+    "numeric_thresholds_derived_inside_layer31": false
+  },
+  "scientific_guardrails": {
+    "real_vision_water_stress_signal_available": false,
+    "real_conflict_thresholds_validated": false,
+    "real_vision_sensor_conflict_evaluated": false,
+    "disease_confidence_used_as_water_stress": false,
+    "forced_actuation_allowed": false,
+    "physical_action_authorized": false
+  },
+  "tests": {
+    "framework": "unittest",
+    "test_count": 12,
+    "result": "PASS",
+    "synthetic_state_fixtures_only": true
+  },
+  "artifacts": {
+    "source": {
+      "path": "src/vision_sensor_conflict.py",
+      "sha256": "d0765543ad47317703383986d76516c7782df04c792a77a3dc1d753b64c970a1"
+    },
+    "tests": {
+      "path": "tests/test_vision_sensor_conflict.py",
+      "sha256": "add1139a2bc6fa476c521ff479113e61b4bc3d4cbfc313e229a915d0a485c4b8"
+    }
+  },
+  "execution": {
+    "real_conflict_data_used": false,
+    "vision_model_loaded": false,
+    "vision_inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false,
+    "physical_action_executed": false
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": "greenpulse.example_response.v1",
+  "illustrative_only": true,
+  "plant_state": null,
+  "confidence": null,
+  "risk": null,
+  "trend": null,
+  "forecast": null,
+  "sensors": null,
+  "uncertainty": null,
+  "decision": null,
+  "reasons": null,
+  "model_version": null,
+  "latency": null,
+  "system_status": null
+}

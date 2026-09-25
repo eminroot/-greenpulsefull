@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GreenPulse Simulated Closed-Loop Feedback",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "mode",
+    "status",
+    "data_origin",
+    "command_id",
+    "observation_id",
+    "plant_id",
+    "actuator_status",
+    "moisture_before_pct",
+    "moisture_after_pct",
+    "synthetic_delta_pct_points",
+    "water_stress_risk_before",
+    "water_stress_risk_after",
+    "measured_water_ml",
+    "real_hardware_ack",
+    "physical_actuation",
+    "real_intervention_verified",
+    "operational_effectiveness_verified",
+    "recorded_at_utc"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "mode": {
+      "const": "SIMULATION_ONLY"
+    },
+    "status": {
+      "const": "SIMULATED_FEEDBACK_RECORDED"
+    },
+    "data_origin": {
+      "const": "SYNTHETIC_FIXTURE"
+    },
+    "command_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "observation_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "plant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actuator_status": {
+      "const": "SIMULATED_EXECUTED"
+    },
+    "moisture_before_pct": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "moisture_after_pct": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "synthetic_delta_pct_points": {
+      "type": "number",
+      "minimum": -100,
+      "maximum": 100
+    },
+    "water_stress_risk_before": {
+      "type": "null"
+    },
+    "water_stress_risk_after": {
+      "type": "null"
+    },
+    "measured_water_ml": {
+      "type": "null"
+    },
+    "real_hardware_ack": {
+      "type": "null"
+    },
+    "physical_actuation": {
+      "const": false
+    },
+    "real_intervention_verified": {
+      "const": false
+    },
+    "operational_effectiveness_verified": {
+      "const": false
+    },
+    "recorded_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+# Everything under pi/ runs on Linux. CRLF breaks bash scripts and puts a
+# stray \r on the end of every .env value.
+*.sh        text eol=lf
+*.service   text eol=lf
+*.py        text eol=lf
+pi/.env*    text eol=lf
+*.json      text eol=lf
+# The model weights. Never let a line-ending rule touch them: one changed byte
+# and the sha256 check in leaf_classifier.py refuses to load the model.
+*.onnx      binary

@@ -1,0 +1,365 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T00:02:48.659628+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "experiment": "NEW_TOMATO_CLEAN_EXPERIMENT_V1",
+  "status": "FINAL_TEST_COMPLETED_AND_CONSUMED",
+  "evaluation": {
+    "partition": "FROZEN_TEST",
+    "evaluation_number_for_new_model": 1,
+    "images": 2737,
+    "correct": 2714,
+    "errors": 23,
+    "high_confidence_errors_ge_0_90": 3
+  },
+  "metrics": {
+    "accuracy": 0.9915966386554622,
+    "balanced_accuracy": 0.9908985098371288,
+    "macro_precision": 0.9890671267991993,
+    "macro_recall": 0.9908985098371288,
+    "macro_f1": 0.9899329671056343,
+    "mean_top1_confidence": 0.9915771169147659
+  },
+  "per_class": {
+    "Tomato___Bacterial_spot": {
+      "support": 320,
+      "tp": 317,
+      "fp": 4,
+      "fn": 3,
+      "precision": 0.9875389408099688,
+      "recall": 0.990625,
+      "f1": 0.9890795631825272
+    },
+    "Tomato___Early_blight": {
+      "support": 152,
+      "tp": 151,
+      "fp": 6,
+      "fn": 1,
+      "precision": 0.9617834394904459,
+      "recall": 0.993421052631579,
+      "f1": 0.9773462783171522
+    },
+    "Tomato___Late_blight": {
+      "support": 286,
+      "tp": 281,
+      "fp": 3,
+      "fn": 5,
+      "precision": 0.9894366197183099,
+      "recall": 0.9825174825174825,
+      "f1": 0.9859649122807017
+    },
+    "Tomato___Leaf_Mold": {
+      "support": 144,
+      "tp": 143,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.9930555555555556,
+      "f1": 0.9965156794425087
+    },
+    "Tomato___Septoria_leaf_spot": {
+      "support": 267,
+      "tp": 264,
+      "fp": 1,
+      "fn": 3,
+      "precision": 0.9962264150943396,
+      "recall": 0.9887640449438202,
+      "f1": 0.9924812030075187
+    },
+    "Tomato___Spider_mites Two-spotted_spider_mite": {
+      "support": 252,
+      "tp": 247,
+      "fp": 0,
+      "fn": 5,
+      "precision": 1.0,
+      "recall": 0.9801587301587301,
+      "f1": 0.9899799599198396
+    },
+    "Tomato___Target_Spot": {
+      "support": 212,
+      "tp": 209,
+      "fp": 5,
+      "fn": 3,
+      "precision": 0.9766355140186916,
+      "recall": 0.9858490566037735,
+      "f1": 0.9812206572769953
+    },
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+      "support": 807,
+      "tp": 806,
+      "fp": 3,
+      "fn": 1,
+      "precision": 0.9962917181705809,
+      "recall": 0.9987608426270136,
+      "f1": 0.9975247524752475
+    },
+    "Tomato___Tomato_mosaic_virus": {
+      "support": 57,
+      "tp": 57,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.9827586206896551,
+      "recall": 1.0,
+      "f1": 0.9913043478260869
+    },
+    "Tomato___healthy": {
+      "support": 240,
+      "tp": 239,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.9958333333333333,
+      "f1": 0.9979123173277662
+    }
+  },
+  "confusion_matrix": {
+    "class_order": [
+      "Tomato___Bacterial_spot",
+      "Tomato___Early_blight",
+      "Tomato___Late_blight",
+      "Tomato___Leaf_Mold",
+      "Tomato___Septoria_leaf_spot",
+      "Tomato___Spider_mites Two-spotted_spider_mite",
+      "Tomato___Target_Spot",
+      "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+      "Tomato___Tomato_mosaic_virus",
+      "Tomato___healthy"
+    ],
+    "matrix": [
+      [
+        317,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        151,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        281,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        143,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        0,
+        264,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        247,
+        3,
+        2,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        209,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        806,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        57,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        239
+      ]
+    ]
+  },
+  "top_error_pairs": [
+    {
+      "true_class": "Tomato___Late_blight",
+      "predicted_class": "Tomato___Early_blight",
+      "count": 5
+    },
+    {
+      "true_class": "Tomato___Spider_mites Two-spotted_spider_mite",
+      "predicted_class": "Tomato___Target_Spot",
+      "count": 3
+    },
+    {
+      "true_class": "Tomato___Target_Spot",
+      "predicted_class": "Tomato___Bacterial_spot",
+      "count": 3
+    },
+    {
+      "true_class": "Tomato___Bacterial_spot",
+      "predicted_class": "Tomato___Target_Spot",
+      "count": 2
+    },
+    {
+      "true_class": "Tomato___Septoria_leaf_spot",
+      "predicted_class": "Tomato___Late_blight",
+      "count": 2
+    },
+    {
+      "true_class": "Tomato___Spider_mites Two-spotted_spider_mite",
+      "predicted_class": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+      "count": 2
+    },
+    {
+      "true_class": "Tomato___Bacterial_spot",
+      "predicted_class": "Tomato___Early_blight",
+      "count": 1
+    },
+    {
+      "true_class": "Tomato___Early_blight",
+      "predicted_class": "Tomato___Septoria_leaf_spot",
+      "count": 1
+    },
+    {
+      "true_class": "Tomato___Leaf_Mold",
+      "predicted_class": "Tomato___Late_blight",
+      "count": 1
+    },
+    {
+      "true_class": "Tomato___Septoria_leaf_spot",
+      "predicted_class": "Tomato___Tomato_mosaic_virus",
+      "count": 1
+    },
+    {
+      "true_class": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+      "predicted_class": "Tomato___Bacterial_spot",
+      "count": 1
+    },
+    {
+      "true_class": "Tomato___healthy",
+      "predicted_class": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+      "count": 1
+    }
+  ],
+  "model": {
+    "path": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.pt",
+    "sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687"
+  },
+  "test_identity": {
+    "images": 2737,
+    "manifest_digest": "84ac50126c685e8e11fd0adafb873e57d9f8786ac69dcfed4f5f5080e1e5f97b",
+    "missing_files": 0,
+    "sha_mismatches": 0
+  },
+  "preserved_outputs": {
+    "predictions_csv": "reports/tomato_final_test_predictions_v1.csv",
+    "errors_csv": "reports/tomato_final_test_errors_v1.csv",
+    "probability_class_order": {
+      "prob_0": "Tomato___Bacterial_spot",
+      "prob_1": "Tomato___Early_blight",
+      "prob_2": "Tomato___Late_blight",
+      "prob_3": "Tomato___Leaf_Mold",
+      "prob_4": "Tomato___Septoria_leaf_spot",
+      "prob_5": "Tomato___Spider_mites Two-spotted_spider_mite",
+      "prob_6": "Tomato___Target_Spot",
+      "prob_7": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+      "prob_8": "Tomato___Tomato_mosaic_virus",
+      "prob_9": "Tomato___healthy"
+    }
+  },
+  "timing": {
+    "development_cpu_evaluation_seconds": 7.20200389996171,
+    "hardware_benchmark": false
+  },
+  "post_test_policy": {
+    "test_is_now_consumed": true,
+    "model_reselection_from_test": false,
+    "test_driven_retraining": false,
+    "test_driven_hyperparameter_tuning": false,
+    "test_driven_threshold_tuning": false,
+    "future_error_analysis_must_reuse_saved_predictions": true
+  },
+  "scientific_scope": {
+    "plantvillage_leaf_disease_classification": true,
+    "new_model_frozen_test_protocol_followed": true,
+    "mapped_leaf_groups_disjoint": true,
+    "near_duplicate_screen_passed": true,
+    "full_physical_leaf_independence_verified": false,
+    "globally_pristine_relative_to_all_historical_models": false,
+    "real_greenhouse_validation": false,
+    "water_stress_validation": false,
+    "early_stress_validation": false,
+    "hailo_runtime_validation": false,
+    "operational_release_authorized": false
+  }
+}

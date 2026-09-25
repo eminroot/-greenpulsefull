@@ -1,0 +1,61 @@
+{
+  "version": "1.2",
+  "generated_at_utc": "2026-09-23T23:56:49.517052+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "task": "DISEASE_CLASSIFICATION_EXPLAINABILITY",
+  "method": "GRAD_CAM",
+  "checkpoint": "runs/tomato_clean/tomato_clean_v1/weights/best.pt",
+  "checkpoint_sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687",
+  "explainability_module_sha256": "4bd7c63cb10bbb82b91146dd67ec866e0c02c5c2f6b3fe0a617e8b42b787993c",
+  "preprocessing_parity_verified": true,
+  "smoke_test_samples": [
+    {
+      "role": "VALIDATION_ERROR_SAMPLE",
+      "source_partition": "VALIDATION",
+      "expected_folder_class": "Tomato___Spider_mites Two-spotted_spider_mite",
+      "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Spider_mites Two-spotted_spider_mite/c77b4c14dc33e9d380aeccb7faa6536ae3f09049504c143c3c88f5166f2ecaee.jpg",
+      "image_sha256": "c77b4c14dc33e9d380aeccb7faa6536ae3f09049504c143c3c88f5166f2ecaee",
+      "predicted_class": "Tomato___Tomato_mosaic_virus",
+      "predicted_class_id": 8,
+      "confidence": 0.9999710321426392,
+      "target_class": "Tomato___Tomato_mosaic_virus",
+      "heatmap": "reports/tomato_explainability_v1/sample_1/gradcam_heatmap.png",
+      "overlay": "reports/tomato_explainability_v1/sample_1/gradcam_overlay.png",
+      "metadata": "reports/tomato_explainability_v1/sample_1/metadata.json"
+    },
+    {
+      "role": "KNOWN_CORRECT_VALIDATION_SAMPLE",
+      "source_partition": "VALIDATION",
+      "expected_folder_class": "Tomato___Bacterial_spot",
+      "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Bacterial_spot/001d647b60e356ac7f9285f9e2db44d00c73f816668f0e51fedde74550607a2e.jpg",
+      "image_sha256": "001d647b60e356ac7f9285f9e2db44d00c73f816668f0e51fedde74550607a2e",
+      "predicted_class": "Tomato___Bacterial_spot",
+      "predicted_class_id": 0,
+      "confidence": 0.9999456405639648,
+      "target_class": "Tomato___Bacterial_spot",
+      "heatmap": "reports/tomato_explainability_v1/sample_2/gradcam_heatmap.png",
+      "overlay": "reports/tomato_explainability_v1/sample_2/gradcam_overlay.png",
+      "metadata": "reports/tomato_explainability_v1/sample_2/metadata.json"
+    }
+  ],
+  "sample_count": 2,
+  "source_partition": "VALIDATION_ONLY",
+  "final_test_images_used": 0,
+  "frozen_checkpoint_supported": true,
+  "model_weights_modified": false,
+  "model_retrained": false,
+  "pixel_level_ground_truth_available": false,
+  "lesion_localization_accuracy_validated": false,
+  "causal_explanation": false,
+  "qualitative_diagnostic_only": true,
+  "real_greenhouse_validation": false,
+  "operational_release_authorized": false,
+  "physical_actuation_allowed": false,
+  "scientific_scope": {
+    "gradcam_is_not_segmentation": true,
+    "gradcam_is_not_causal_evidence": true,
+    "gradcam_does_not_validate_water_stress": true,
+    "gradcam_does_not_validate_real_greenhouse_behavior": true
+  }
+}

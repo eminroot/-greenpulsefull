@@ -1,0 +1,48 @@
+# ============================================================
+# GreenPulse Git Safety Policy
+# ============================================================
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local runtime databases
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+
+# Database backups
+backups/
+
+# Raw / large datasets
+datasets/raw/
+
+# Training run outputs
+runs/
+
+# Environment / secret files
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# IDE / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log

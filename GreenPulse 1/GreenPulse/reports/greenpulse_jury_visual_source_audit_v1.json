@@ -1,0 +1,585 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T10:52:48.841195+00:00",
+  "project": "GreenPulse",
+  "purpose": "JURY_VISUAL_EVIDENCE_SOURCE_AUDIT",
+  "scope": [
+    "tomato",
+    "bell_pepper"
+  ],
+  "cucumber": "EXCLUDED",
+  "core_files_present": 16,
+  "core_files_missing": 0,
+  "training_curve_sources": [
+    {
+      "path": "runs/classify/runs/greenpulse/tomato_cpu_smoke/results.csv",
+      "rows": 1,
+      "columns": [
+        "epoch",
+        "time",
+        "train/loss",
+        "metrics/accuracy_top1",
+        "metrics/accuracy_top5",
+        "val/loss",
+        "lr/pg0",
+        "lr/pg1",
+        "lr/pg2"
+      ],
+      "sha256": "c1551e945deb9d0f7aedf953bbe338eae618043746614068d203d7dea1e55d85"
+    },
+    {
+      "path": "runs/greenpulse/tomato_cpu_v1/results.csv",
+      "rows": 15,
+      "columns": [
+        "epoch",
+        "time",
+        "train/loss",
+        "metrics/accuracy_top1",
+        "metrics/accuracy_top5",
+        "val/loss",
+        "lr/pg0",
+        "lr/pg1",
+        "lr/pg2"
+      ],
+      "sha256": "562abe55f4b5d0e091e87a5ffa15f160ca1281fc3f8fac065046a6ff483cff00"
+    },
+    {
+      "path": "runs/pepper_transfer/pepper_generic_baseline_v1/results.csv",
+      "rows": 9,
+      "columns": [
+        "epoch",
+        "time",
+        "train/loss",
+        "metrics/accuracy_top1",
+        "metrics/accuracy_top5",
+        "val/loss",
+        "lr/pg0",
+        "lr/pg1",
+        "lr/pg2"
+      ],
+      "sha256": "67ff7dd25c576444ab7fca16ce0c8fa4a84cbfdbb242e8decab5ab58a7c9c076"
+    },
+    {
+      "path": "runs/pepper_transfer/pepper_tomato_transfer_v1/results.csv",
+      "rows": 11,
+      "columns": [
+        "epoch",
+        "time",
+        "train/loss",
+        "metrics/accuracy_top1",
+        "metrics/accuracy_top5",
+        "val/loss",
+        "lr/pg0",
+        "lr/pg1",
+        "lr/pg2"
+      ],
+      "sha256": "bd4950198d5c2a3981cbdf903a87db48b431f967010851a94f05bf047efe37c3"
+    },
+    {
+      "path": "runs/tomato_clean/tomato_clean_v1/results.csv",
+      "rows": 15,
+      "columns": [
+        "epoch",
+        "time",
+        "train/loss",
+        "metrics/accuracy_top1",
+        "metrics/accuracy_top5",
+        "val/loss",
+        "lr/pg0",
+        "lr/pg1",
+        "lr/pg2"
+      ],
+      "sha256": "ab4a140574a047e2eb3c9324fc89f8037a669fa19f0597ffd0f697b3f94f4d7c"
+    }
+  ],
+  "gradcam_visual_sources": {
+    "tomato": [
+      {
+        "sample": 1,
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Spider_mites Two-spotted_spider_mite/c77b4c14dc33e9d380aeccb7faa6536ae3f09049504c143c3c88f5166f2ecaee.jpg",
+        "heatmap": "reports/tomato_explainability_v1/sample_1/gradcam_heatmap.png",
+        "overlay": "reports/tomato_explainability_v1/sample_1/gradcam_overlay.png",
+        "true_class": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "predicted_class": "Tomato___Tomato_mosaic_virus",
+        "confidence": 0.9999710321426392
+      },
+      {
+        "sample": 2,
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Bacterial_spot/001d647b60e356ac7f9285f9e2db44d00c73f816668f0e51fedde74550607a2e.jpg",
+        "heatmap": "reports/tomato_explainability_v1/sample_2/gradcam_heatmap.png",
+        "overlay": "reports/tomato_explainability_v1/sample_2/gradcam_overlay.png",
+        "true_class": "Tomato___Bacterial_spot",
+        "predicted_class": "Tomato___Bacterial_spot",
+        "confidence": 0.9999456405639648
+      }
+    ],
+    "bell_pepper": [
+      {
+        "sample": 1,
+        "image": "datasets/processed/pepper_cls_leafgroup_v1/val/bacterial_spot/00f2e69a-1e56-412d-8a79-fdce794a17e4___JR_B.Spot 3132.JPG",
+        "heatmap": "reports/pepper_explainability_v2/bacterial_spot/gradcam_heatmap.png",
+        "overlay": "reports/pepper_explainability_v2/bacterial_spot/gradcam_overlay.png",
+        "true_class": "bacterial_spot",
+        "predicted_class": "bacterial_spot",
+        "confidence": 0.9999436140060425
+      },
+      {
+        "sample": 2,
+        "image": "datasets/processed/pepper_cls_leafgroup_v1/val/healthy/01482fdd-5dfd-4190-bbc0-6189a3161fae___JR_HL 7983.JPG",
+        "heatmap": "reports/pepper_explainability_v2/healthy/gradcam_heatmap.png",
+        "overlay": "reports/pepper_explainability_v2/healthy/gradcam_overlay.png",
+        "true_class": "healthy",
+        "predicted_class": "healthy",
+        "confidence": 1.0
+      }
+    ]
+  },
+  "metric_sources": {
+    "tomato": {
+      "metrics": {
+        "accuracy": 0.9915966386554622,
+        "balanced_accuracy": 0.9908985098371288,
+        "macro_precision": 0.9890671267991993,
+        "macro_recall": 0.9908985098371288,
+        "macro_f1": 0.9899329671056343,
+        "mean_top1_confidence": 0.9915771169147659
+      },
+      "evaluation": {
+        "partition": "FROZEN_TEST",
+        "evaluation_number_for_new_model": 1,
+        "images": 2737,
+        "correct": 2714,
+        "errors": 23,
+        "high_confidence_errors_ge_0_90": 3
+      },
+      "confusion_matrix": {
+        "class_order": [
+          "Tomato___Bacterial_spot",
+          "Tomato___Early_blight",
+          "Tomato___Late_blight",
+          "Tomato___Leaf_Mold",
+          "Tomato___Septoria_leaf_spot",
+          "Tomato___Spider_mites Two-spotted_spider_mite",
+          "Tomato___Target_Spot",
+          "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+          "Tomato___Tomato_mosaic_virus",
+          "Tomato___healthy"
+        ],
+        "matrix": [
+          [
+            317,
+            1,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            151,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            5,
+            281,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            143,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0,
+            264,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            247,
+            3,
+            2,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            209,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            806,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            57,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            239
+          ]
+        ]
+      },
+      "top_error_pairs": [
+        {
+          "true_class": "Tomato___Late_blight",
+          "predicted_class": "Tomato___Early_blight",
+          "count": 5
+        },
+        {
+          "true_class": "Tomato___Spider_mites Two-spotted_spider_mite",
+          "predicted_class": "Tomato___Target_Spot",
+          "count": 3
+        },
+        {
+          "true_class": "Tomato___Target_Spot",
+          "predicted_class": "Tomato___Bacterial_spot",
+          "count": 3
+        },
+        {
+          "true_class": "Tomato___Bacterial_spot",
+          "predicted_class": "Tomato___Target_Spot",
+          "count": 2
+        },
+        {
+          "true_class": "Tomato___Septoria_leaf_spot",
+          "predicted_class": "Tomato___Late_blight",
+          "count": 2
+        },
+        {
+          "true_class": "Tomato___Spider_mites Two-spotted_spider_mite",
+          "predicted_class": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+          "count": 2
+        },
+        {
+          "true_class": "Tomato___Bacterial_spot",
+          "predicted_class": "Tomato___Early_blight",
+          "count": 1
+        },
+        {
+          "true_class": "Tomato___Early_blight",
+          "predicted_class": "Tomato___Septoria_leaf_spot",
+          "count": 1
+        },
+        {
+          "true_class": "Tomato___Leaf_Mold",
+          "predicted_class": "Tomato___Late_blight",
+          "count": 1
+        },
+        {
+          "true_class": "Tomato___Septoria_leaf_spot",
+          "predicted_class": "Tomato___Tomato_mosaic_virus",
+          "count": 1
+        },
+        {
+          "true_class": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+          "predicted_class": "Tomato___Bacterial_spot",
+          "count": 1
+        },
+        {
+          "true_class": "Tomato___healthy",
+          "predicted_class": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+          "count": 1
+        }
+      ]
+    },
+    "bell_pepper": {
+      "raw_top_level_keys": [
+        "report_version",
+        "evaluated_at_utc",
+        "project",
+        "crop",
+        "task",
+        "evaluation_split",
+        "selected_model",
+        "checkpoint_sha256",
+        "protocol_sha256",
+        "freeze_record_sha256",
+        "split_manifest_sha256",
+        "test_sample_manifest_sha256",
+        "evaluated_images",
+        "claimed_leaf_groups",
+        "confusion_matrix",
+        "metrics",
+        "error_analysis",
+        "test_used_for_model_selection",
+        "transfer_advantage_established",
+        "physical_plant_identity_verified",
+        "independent_greenhouse_validation",
+        "water_stress_model_validated",
+        "hailo_deployment_validated",
+        "physical_actuation_authorized",
+        "limitation"
+      ]
+    }
+  },
+  "onnx_sources": {
+    "tomato": {
+      "path": "reports/tomato_onnx_parity_v1.json",
+      "sha256": "11efb0986adbc863332ac5328d4ede8166226dc161546274d85536de7a8ebf8a",
+      "top_level_keys": [
+        "version",
+        "generated_at_utc",
+        "project",
+        "crop",
+        "experiment",
+        "task",
+        "status",
+        "source_checkpoint",
+        "release_candidate",
+        "onnx_validation",
+        "parity",
+        "test_policy",
+        "scientific_scope",
+        "execution"
+      ]
+    },
+    "bell_pepper": {
+      "path": "reports/pepper_onnx_parity_v1.json",
+      "sha256": "2d9d811a85f82b3277e7d1078c0f904462b222eef1ee22f29f07a87193653fe1",
+      "top_level_keys": [
+        "version",
+        "generated_at_utc",
+        "task",
+        "candidate_selection_reason",
+        "transfer_advantage_demonstrated",
+        "source_checkpoint_sha256",
+        "onnx_checkpoint_sha256",
+        "onnx_opset",
+        "onnx_structural_check_passed",
+        "parity_samples",
+        "parity_sample_manifest",
+        "matching_top1_predictions",
+        "maximum_probability_difference",
+        "maximum_allowed_difference",
+        "validation_only",
+        "test_images_evaluated",
+        "onnx_runtime_checked_on_cpu",
+        "hailo_conversion_completed",
+        "raspberry_pi_validated",
+        "real_greenhouse_validated",
+        "water_stress_validated",
+        "operational_release_approved"
+      ]
+    }
+  },
+  "architecture_sources": [
+    {
+      "path": "src/vision_inference.py",
+      "sha256": "56764f7df485b67df312baa6b4520b488a3de6c97171e15efe4a8a79103e385c"
+    },
+    {
+      "path": "src/sensor_validator.py",
+      "sha256": "58d80bdfd902fb43a01ab64fe3a1ea4d05a72d1536b42680bd8dcfcd4b1954f8"
+    },
+    {
+      "path": "src/sensor_contract_guard.py",
+      "sha256": "169e5b010b2c79e84d7cf3511cfe4c2557481d8e755a7d126a708e84a356c552"
+    },
+    {
+      "path": "src/time_sync.py",
+      "sha256": "ac8b8d72387103ee78080a7817517845d3159b4f1ffbfb61368cee3590cde40a"
+    },
+    {
+      "path": "src/fusion_contract.py",
+      "sha256": "c077a4f0eb31b1523e5b0b21024e152d05efe62a848369f5600b6ac4b65db51f"
+    },
+    {
+      "path": "src/safety_gate.py",
+      "sha256": "ca0b7cc868a0dad4e63412f8d8da333b7684b958e2ccb79a043f9ecc64de03e5"
+    },
+    {
+      "path": "src/hardware_contract.py",
+      "sha256": "154dbe44be60e59d6032d10014dfe088d73f76a031e54722b8a6607c5e48ea38"
+    },
+    {
+      "path": "src/active_learning.py",
+      "sha256": "b2dab47a197edf67423b5689b2602e7995087f73bd0bf637bb819a0c81103f27"
+    },
+    {
+      "path": "src/review_queue.py",
+      "sha256": "9903868bf76231d7b844b772357df42cd56eb5abed048c01361d563c9dc76e07"
+    },
+    {
+      "path": "src/vision_model_registry.py",
+      "sha256": "7f94709ef5d3a74847184361b426c59effac7a203064f283394e1be0d8d6cc47"
+    },
+    {
+      "path": "src/audit_db.py",
+      "sha256": "c56119a298f6810e3c07e82a5566a948c98d96729b0e6d375da6657ed840d068"
+    },
+    {
+      "path": "src/api.py",
+      "sha256": "b287282f28cf8eb5926d7d0ea9cf65bb592e6c0831f7f5f8c4208a497969ea15"
+    }
+  ],
+  "visual_plan": [
+    {
+      "id": "V01",
+      "visual": "Two-crop system architecture",
+      "source": "real source-code modules + registry/safety policies",
+      "jury_value": "Shows end-to-end AI architecture and safety boundaries"
+    },
+    {
+      "id": "V02",
+      "visual": "Tomato dataset split + leakage controls",
+      "source": "tomato hybrid split + near-duplicate audit",
+      "jury_value": "Proves disciplined dataset methodology"
+    },
+    {
+      "id": "V03",
+      "visual": "Tomato training / validation curves",
+      "source": "Ultralytics results.csv if available",
+      "jury_value": "Shows convergence and model behavior"
+    },
+    {
+      "id": "V04",
+      "visual": "Tomato final confusion matrix",
+      "source": "saved one-time frozen-test confusion matrix",
+      "jury_value": "Shows where the 10-class classifier actually fails"
+    },
+    {
+      "id": "V05",
+      "visual": "Tomato error-pair chart",
+      "source": "saved final-test predictions/errors only",
+      "jury_value": "Shows post-test error analysis without test reuse"
+    },
+    {
+      "id": "V06",
+      "visual": "Tomato confidence separation",
+      "source": "saved 2737 final predictions",
+      "jury_value": "Correct vs error confidence/margin evidence"
+    },
+    {
+      "id": "V07",
+      "visual": "Tomato Grad-CAM panel",
+      "source": "validation original + heatmap + overlay",
+      "jury_value": "Makes model reasoning visually inspectable"
+    },
+    {
+      "id": "V08",
+      "visual": "Pepper final confusion matrix",
+      "source": "frozen pepper final-test evidence",
+      "jury_value": "Shows 142/7/0/222 final error structure"
+    },
+    {
+      "id": "V09",
+      "visual": "Pepper transfer vs generic baseline",
+      "source": "paired validation / baseline reports",
+      "jury_value": "Shows scientific honesty: no unsupported transfer advantage"
+    },
+    {
+      "id": "V10",
+      "visual": "Pepper Grad-CAM panel",
+      "source": "refreshed v2 validation evidence",
+      "jury_value": "Shows corrected preprocessing parity"
+    },
+    {
+      "id": "V11",
+      "visual": "PyTorch vs ONNX parity",
+      "source": "cross-crop ONNX parity reports",
+      "jury_value": "Proves edge-export consistency"
+    },
+    {
+      "id": "V12",
+      "visual": "Frozen-test protocol timeline",
+      "source": "freeze + final-test + post-test audit evidence",
+      "jury_value": "Strong anti-leakage methodological proof"
+    },
+    {
+      "id": "V13",
+      "visual": "Active-learning human-review flow",
+      "source": "active-learning contract + policy",
+      "jury_value": "Shows safe uncertainty handling without auto retraining"
+    },
+    {
+      "id": "V14",
+      "visual": "Computer-side complete vs real-world pending matrix",
+      "source": "overall closure report",
+      "jury_value": "Separates verified software from future hardware claims"
+    }
+  ],
+  "scientific_guardrails": {
+    "real_greenhouse_claim_allowed": false,
+    "water_stress_validation_claim_allowed": false,
+    "hailo_runtime_claim_allowed": false,
+    "measured_water_savings_claim_allowed": false,
+    "gradcam_as_segmentation_allowed": false,
+    "all_presentation_metrics_must_trace_to_saved_evidence": true
+  },
+  "execution": {
+    "model_loaded": false,
+    "inference_executed": false,
+    "training_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T20:29:02.105301+00:00",
+  "architecture_layer": 56,
+  "layer_name": "Final Release & Team Handoffs",
+  "status": "SOFTWARE_HANDOFF_PACKAGE_COMPLETE_FINAL_OPERATIONAL_RELEASE_BLOCKED",
+  "software_handoff": {
+    "release_manifest": true,
+    "edge_model_references": true,
+    "inference_service_references": true,
+    "fusion_forecast_decision_references": true,
+    "configs": true,
+    "schemas": true,
+    "tests": true,
+    "examples": true,
+    "install_script": true,
+    "start_script": true,
+    "readme": true
+  },
+  "backend_handoff": {
+    "openapi_exported": true,
+    "openapi_version": "3.1.0",
+    "api_title": "GreenPulse AI API",
+    "route_count": 11,
+    "standard_output_fields": 12,
+    "json_schemas": true,
+    "reason_error_codes": true,
+    "example_request_response": true
+  },
+  "frontend_handoff": {
+    "field_dictionary": true,
+    "field_count": 12,
+    "datatype": true,
+    "unit": true,
+    "range": true,
+    "null_behavior": true,
+    "update_frequency": true,
+    "actual_frontend_rendering": false
+  },
+  "hardware_handoff": {
+    "sensor_payload_schema": true,
+    "actuator_request_schema": true,
+    "ack_error_schema": true,
+    "timeout_expectations": true,
+    "safety_expectations": true,
+    "real_hardware_integration_complete": false
+  },
+  "tests": {
+    "count": 14,
+    "result": "PASS"
+  },
+  "artifacts": {
+    "release/greenpulse_release_manifest_v1.json": "24c41b36aedff845f2b269d39085f61f9b44c9168dabacbbc0ffe9dfc43ee0c3",
+    "release/backend_handoff_v1.json": "cb9d3f35f686b13af3cd290a68e6343e47ac0a320cc82c972a4948cb77e3767c",
+    "release/frontend_field_dictionary_v1.json": "9a226454e0e9b529554c659634eadd73772b2ec7d3f3e49b1f26cc0316b2dc44",
+    "release/hardware_handoff_v1.json": "8b55884f5cbe99cf4d3d9ea840c0585bb03e795b3353de28e695cc0cb1d7658e",
+    "release/openapi_v1.json": "3d468ba7b6b3232be96156ea421a71ac16c65bff521bfcd544e9248ade1b5b44",
+    "release/README.md": "e5dfc52e9ca0b022db64a2e7135feae2ed3ce7d6da33db17e336a98aa8d2d063",
+    "release/install.ps1": "17df7ab4d106df39e324da7681adca848b7d9abff70c540599b7d296726bc8c9",
+    "release/start.ps1": "3af9ff6efa6d6e9764ab8d0737327eabeaf66140cf173ac18336f825d3519c51",
+    "release/schemas/sensor_payload_schema_v1.json": "8206648a9a2db51baad76e47736927b8140004ca94b8127ebc817ec54bac70bd",
+    "release/schemas/actuator_request_schema_v1.json": "5bb5b65ee7ba22382c160e7e336b2154d80101a135c4632f13d6800e7f6453fe",
+    "release/schemas/ack_error_schema_v1.json": "19a9f596aecd9c57acdbfdf7dad815447c7cd7545b7e311121712cec6117b93a",
+    "release/examples/example_request_v1.json": "55bfa301912043627757a44e850e87fa679d2e927b2033e75326a2e5e883dbca",
+    "release/examples/example_response_v1.json": "4ccb422f92f9d5cb1e37252ec1f587b4394bdc964602628945079e05cfae7d14",
+    "tests/test_final_release_handoff.py": "2c640ad8c00e4fe39acfd32ece5f6b0bbb0d8801cf357887bc9fff32076d059a"
+  },
+  "production_database": {
+    "modified": false,
+    "sha256_before": "f76bdabc80c2b7aa2e537ba760f040dca721d9f0c8ce99e5c393a67f91d95218",
+    "sha256_after": "f76bdabc80c2b7aa2e537ba760f040dca721d9f0c8ce99e5c393a67f91d95218"
+  },
+  "remaining_external_or_operational_blockers": {
+    "engineer1_hailo_approval": true,
+    "hef_generation": true,
+    "hailo_vs_onnx_parity": true,
+    "raspberry_pi5_ai_hat_plus_validation": true,
+    "real_edge_benchmark": true,
+    "real_long_run_stability": true,
+    "real_hardware_end_to_end_validation": true,
+    "real_sensor_model_binding": true,
+    "final_git_commit": true,
+    "final_github_push": true
+  },
+  "claim_boundary": {
+    "software_handoff_package_complete": true,
+    "backend_handoff_complete": true,
+    "frontend_contract_handoff_complete": true,
+    "hardware_contract_handoff_complete": true,
+    "real_hardware_validated": false,
+    "hailo_deployment_complete": false,
+    "final_release_provenance_complete": false,
+    "final_operational_release_complete": false,
+    "layer56_software_handoff_complete": true,
+    "layer56_operationally_complete": false
+  }
+}

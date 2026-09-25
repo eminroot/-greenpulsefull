@@ -1,0 +1,67 @@
+{
+  "schema_version": "greenpulse.presentation_selection.v1",
+  "presentation_duration_minutes": 5,
+  "main_visual_count": 7,
+  "backup_visual_count": 5,
+  "main_5min": [
+    {
+      "order": 1,
+      "visual": "01_system_architecture.png",
+      "purpose": "Explain the GreenPulse end-to-end system in one visual."
+    },
+    {
+      "order": 2,
+      "visual": "03_model_evidence_cards.png",
+      "purpose": "Show measured Tomato and Bell Pepper evidence immediately."
+    },
+    {
+      "order": 3,
+      "visual": "04_failure_safe_state_matrix.png",
+      "purpose": "Demonstrate that uncertain or failed inputs do not trigger blind action."
+    },
+    {
+      "order": 4,
+      "visual": "09_traceability_chain.png",
+      "purpose": "Show explainability and command-level auditability."
+    },
+    {
+      "order": 5,
+      "visual": "07_proof_dashboard.png",
+      "purpose": "Prove engineering maturity with API, contracts, tests and real-test infrastructure."
+    },
+    {
+      "order": 6,
+      "visual": "11_real_validation_roadmap.png",
+      "purpose": "Present remaining hardware/scientific validation as a controlled evidence campaign."
+    },
+    {
+      "order": 7,
+      "visual": "12_final_jury_summary.png",
+      "purpose": "Close with the three strongest GreenPulse pillars."
+    }
+  ],
+  "backup_qa": [
+    {
+      "visual": "02_model_performance_comparison.png",
+      "use_when": "Jury asks for direct model metric comparison."
+    },
+    {
+      "visual": "05_release_handoff_readiness.png",
+      "use_when": "Jury asks whether backend/hardware teams can integrate the project."
+    },
+    {
+      "visual": "06_evidence_readiness_board.png",
+      "use_when": "Jury asks what is measured versus software validated versus pending."
+    },
+    {
+      "visual": "08_layer_readiness_matrix.png",
+      "use_when": "Jury asks for detailed architecture/layer completion status."
+    },
+    {
+      "visual": "10_claim_boundary.png",
+      "use_when": "Jury challenges scientific claims or asks what has not yet been validated."
+    }
+  ],
+  "presentation_rule": "Main deck prioritizes clarity and persuasion. Technical completeness remains available in backup evidence.",
+  "unsupported_real_claims_allowed": false
+}

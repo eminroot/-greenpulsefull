@@ -1,0 +1,103 @@
+{
+  "version": "1.0",
+  "mode": "RESEARCH_ONLY",
+  "crop_identity_source": "UNVERIFIED_EXTERNAL_CLAIM",
+  "unknown_crop_policy": "ABSTAIN",
+  "actuation_authorized": false,
+  "models": {
+    "tomato": {
+      "crop": "tomato",
+      "class_count": 10,
+      "class_names": [
+        "Tomato___Bacterial_spot",
+        "Tomato___Early_blight",
+        "Tomato___Late_blight",
+        "Tomato___Leaf_Mold",
+        "Tomato___Septoria_leaf_spot",
+        "Tomato___Spider_mites Two-spotted_spider_mite",
+        "Tomato___Target_Spot",
+        "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "Tomato___Tomato_mosaic_virus",
+        "Tomato___healthy"
+      ],
+      "pytorch": {
+        "path": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.pt",
+        "sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687"
+      },
+      "onnx": {
+        "path": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.onnx",
+        "sha256": "537db352736bae025d9c91813bb38efea174fe4937952bc2598bc6d68fcf27d9"
+      },
+      "evidence": [
+        {
+          "path": "reports/tomato_hybrid_split_v1.json",
+          "sha256": "1c0da3e4cec35d0e4d7b9180bb32ea4a7a76293105dc2457db6e1dab5e13fbe9"
+        },
+        {
+          "path": "reports/tomato_near_duplicate_audit_v1.json",
+          "sha256": "68998e5ae785a3c371bde9cf2163150d103c4de4d21853a05178fa93b79ba0ab"
+        },
+        {
+          "path": "reports/tomato_final_model_freeze_v1.json",
+          "sha256": "de8fd89dace2479031829b965874e0bdf9b406e66ee767b913f43b3bc90011ec"
+        },
+        {
+          "path": "reports/tomato_final_test_v1.json",
+          "sha256": "cbfca02f2eee81ccf09512ba65906167fc68754ad8887dc84eaa1bfa8af2de0c"
+        },
+        {
+          "path": "reports/tomato_post_test_error_analysis_v1.json",
+          "sha256": "714e56fcff0ac826079ba7e6a48e6391a187b52a0f339490ab497ba6f92683fe"
+        },
+        {
+          "path": "reports/tomato_onnx_parity_v1.json",
+          "sha256": "11efb0986adbc863332ac5328d4ede8166226dc161546274d85536de7a8ebf8a"
+        },
+        {
+          "path": "reports/tomato_explainability_v1.json",
+          "sha256": "96789beeab1e14ecde2ccb77a0e3427171ef44607a4d631b1dabef676d1490e7"
+        },
+        {
+          "path": "reports/tomato_model_card_v1.json",
+          "sha256": "37d634fb4a2afba5c272e4370b4390fb2e917a7fe15ee99d8c929e4528102afb"
+        }
+      ],
+      "operational_release_approved": false
+    },
+    "bell_pepper": {
+      "crop": "bell_pepper",
+      "class_count": 2,
+      "class_names": [
+        "bacterial_spot",
+        "healthy"
+      ],
+      "pytorch": {
+        "path": "models/release_candidates/pepper_transfer_v1/pepper_transfer_v1.pt",
+        "sha256": "7d04ff121734eb00fc972bbb98e7e0db6101fe68da982e1b8e7fe17992881f9f"
+      },
+      "onnx": {
+        "path": "models/release_candidates/pepper_transfer_v1/pepper_transfer_v1.onnx",
+        "sha256": "3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7"
+      },
+      "evidence": [
+        {
+          "path": "reports/pepper_candidate_freeze_v1.json",
+          "sha256": "30e6b8bff76a3a63530ba8cb3f88a3872ffac5d570a5946f05506b0c4c8767b8"
+        },
+        {
+          "path": "reports/pepper_final_test_v1/final_test_report.json",
+          "sha256": "47565809bfad1960f9d41808a4aac50c4c5f38a9655e004dd07dd69e0f2ef34e"
+        },
+        {
+          "path": "reports/pepper_posttest_review_v1/posttest_audit.json",
+          "sha256": "eac7ab289345c466ecbf5a5c026f277fdef52b841688f9e0772d5d4abf4e5de1"
+        },
+        {
+          "path": "reports/pepper_onnx_parity_v1.json",
+          "sha256": "2d9d811a85f82b3277e7d1078c0f904462b222eef1ee22f29f07a87193653fe1"
+        }
+      ],
+      "operational_release_approved": false
+    }
+  }
+}

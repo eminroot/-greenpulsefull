@@ -1,0 +1,8 @@
+# Runtime data, never commit captures or the outbox
+pi/data/
+pi/weights/*.pt
+pi/.venv/
+pi/.env
+firmware/leafnode/secrets.h
+__pycache__/
+*.pyc

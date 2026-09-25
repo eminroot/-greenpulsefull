@@ -1,0 +1,41 @@
+{
+  "protocol_version": "1.0",
+  "task": "PEPPER_DISEASE_CLASSIFICATION",
+  "evaluation_type": "HELD_OUT_FINAL_TEST",
+  "selected_model": "pepper_tomato_transfer_v1",
+  "selection_reason": "CONTINUITY_WITH_GREENPULSE_ARCHITECTURE",
+  "selection_based_on_test_data": false,
+  "selected_checkpoint_sha256": "7d04ff121734eb00fc972bbb98e7e0db6101fe68da982e1b8e7fe17992881f9f",
+  "onnx_checkpoint_sha256": "3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7",
+  "split_manifest_sha256": "c9d599bfdbf0c193fe1dc19e8f520f3ea5d41be351797533162a5b1da2100507",
+  "test_sample_manifest_sha256": "82e41203eb9ecc0f6d1ced0905515aeec19c9e748779aa34de807bf07086c27e",
+  "expected_test_images": 371,
+  "expected_test_leaf_groups": 51,
+  "class_order": [
+    "bacterial_spot",
+    "healthy"
+  ],
+  "inference": {
+    "checkpoint_format": "PYTORCH",
+    "imgsz": 224,
+    "tta": false,
+    "threshold_tuning": false
+  },
+  "evaluation_metrics": [
+    "accuracy",
+    "balanced_accuracy",
+    "macro_precision",
+    "macro_recall",
+    "macro_f1",
+    "per_class_precision",
+    "per_class_recall",
+    "per_class_f1",
+    "confusion_matrix"
+  ],
+  "test_set_policy": "SINGLE_FINAL_EVALUATION",
+  "post_test_model_selection_allowed": false,
+  "physical_plant_identity_verified": false,
+  "real_greenhouse_validation": false,
+  "water_stress_validation": false,
+  "operational_release_authorized": false
+}

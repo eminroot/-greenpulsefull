@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "project": "GreenPulse",
+  "purpose": "JURY_GRADE_QUANTITATIVE_VISUAL_EVIDENCE",
+  "scope": [
+    "tomato",
+    "bell_pepper"
+  ],
+  "cucumber": "EXCLUDED_FROM_CURRENT_SCOPE",
+  "visual_count": 10,
+  "visuals": [
+    {
+      "file": "reports/jury_visuals_v1/01_tomato_training_evidence.png",
+      "sha256": "eaaaca087ad289767feee617f3c04af8e074423b31177b8d33781f775bd3afb7"
+    },
+    {
+      "file": "reports/jury_visuals_v1/02_pepper_transfer_vs_generic.png",
+      "sha256": "dfdf62152e56f8daf745acb4a144292b9a822d252527b0ad7b4910adba1f7382"
+    },
+    {
+      "file": "reports/jury_visuals_v1/03_tomato_final_confusion_matrix.png",
+      "sha256": "c986c9c3a6d936c2e2182f156ae11e183c57852812214366f2847ce75d3d84c0"
+    },
+    {
+      "file": "reports/jury_visuals_v1/04_pepper_final_confusion_matrix.png",
+      "sha256": "209ebeda83050d01e5d7200886b59694ae21145c48bf9b03f629c06ce76c433e"
+    },
+    {
+      "file": "reports/jury_visuals_v1/05_tomato_error_pairs.png",
+      "sha256": "0309e17bb16017d5e52e9038b1ad4ea25a922c0f1aadb12c1b66605b5126ff26"
+    },
+    {
+      "file": "reports/jury_visuals_v1/06_tomato_confidence_profile.png",
+      "sha256": "50793d272f7e61230a15d4cbb25f2dc6255c85ceff4672853528de58accd1cbc"
+    },
+    {
+      "file": "reports/jury_visuals_v1/07_tomato_gradcam_evidence.png",
+      "sha256": "d3d10acc46bc48cbbf25f841cf571c7a2c2cdf8ed0dc9f89ee016b75eb2a5d9a"
+    },
+    {
+      "file": "reports/jury_visuals_v1/08_pepper_gradcam_evidence.png",
+      "sha256": "46b7754cced7f1e37092fe3be904d7e874ce8cb3d9a7f55bcc76bcf19c5af844"
+    },
+    {
+      "file": "reports/jury_visuals_v1/09_onnx_parity_evidence.png",
+      "sha256": "b5ab32a288ae00b8e49f46c6be62be71d16691260e34109d00b57d527b5c8b4c"
+    },
+    {
+      "file": "reports/jury_visuals_v1/10_two_crop_final_scorecard.png",
+      "sha256": "90fe3540b961594bd40c74b71b7b6df17f37d274f1586de708afd84c0ffef912"
+    }
+  ],
+  "scientific_guardrails": {
+    "generated_from_saved_evidence": true,
+    "model_loaded": false,
+    "inference_executed": false,
+    "training_executed": false,
+    "frozen_test_images_accessed": false,
+    "gradcam_source_partition": "VALIDATION_ONLY",
+    "gradcam_is_not_segmentation": true,
+    "real_greenhouse_validated": false,
+    "water_stress_validated": false,
+    "hailo_runtime_validated": false,
+    "physical_actuation_validated": false
+  }
+}

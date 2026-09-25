@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+data/
+*.db
+*.db-shm
+*.db-wal
+smoke-tmp/
+# scratch output from tools/pentest.py
+sec-tmp/
+.pytest_cache/

@@ -1,0 +1,60 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T23:40:09.466923+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "experiment": "NEW_TOMATO_CLEAN_EXPERIMENT_V1",
+  "status": "FINAL_MODEL_SELECTED_BEFORE_TEST",
+  "selected_model": {
+    "path": "runs/tomato_clean/tomato_clean_v1/weights/best.pt",
+    "sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687",
+    "selection_basis": "VALIDATION_ONLY",
+    "selected_after_test": false
+  },
+  "validation": {
+    "images": 2725,
+    "correct": 2711,
+    "errors": 14,
+    "accuracy": 0.9948623853211009,
+    "balanced_accuracy": 0.9940436783783358,
+    "macro_precision": 0.9868398016069809,
+    "macro_recall": 0.9940436783783358,
+    "macro_f1": 0.9902441791704533,
+    "high_confidence_errors_ge_0_90": 6
+  },
+  "frozen_test": {
+    "images": 2737,
+    "image_sha_manifest_digest": "84ac50126c685e8e11fd0adafb873e57d9f8786ac69dcfed4f5f5080e1e5f97b",
+    "used_before_freeze": false,
+    "used_for_training": false,
+    "used_for_validation": false,
+    "used_for_model_selection": false,
+    "allowed_evaluation_count": 1
+  },
+  "post_freeze_policy": {
+    "model_reselection_after_test": false,
+    "test_driven_retraining": false,
+    "test_driven_hyperparameter_tuning": false,
+    "test_driven_threshold_tuning": false,
+    "checkpoint_modification_before_final_test": false
+  },
+  "scientific_scope": {
+    "plantvillage_classification": true,
+    "fully_physical_leaf_independent_split": false,
+    "real_greenhouse_validation": false,
+    "water_stress_validation": false,
+    "operational_release": false
+  },
+  "evidence": {
+    "training_report_sha256": "baf0d53820f61f8e6e39f75e983133c2165c4d47fa8afed73b26169007275bcf",
+    "validation_report_sha256": "3984b45cba3f3e1067006361132580ded60b7990598f747446d71417d9412483",
+    "validation_error_csv_sha256": "941b8bef641c1f67f6c65f20f8c4d7c7fa39fdf817471ae11589f23bc7c7d620",
+    "split_manifest_sha256": "567ec8ddc3678887cfbba106279efc94ec3d1d6f900aebbe211bd5bbf9b87934"
+  },
+  "execution": {
+    "training_executed": false,
+    "inference_executed": false,
+    "test_inference_executed": false,
+    "model_modified": false
+  }
+}

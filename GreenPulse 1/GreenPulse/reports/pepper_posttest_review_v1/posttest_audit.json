@@ -1,0 +1,40 @@
+{
+  "audit_version": "1.0",
+  "created_at_utc": "2026-09-23T22:01:33.215534+00:00",
+  "project": "GreenPulse",
+  "crop": "bell_pepper",
+  "task": "DISEASE_CLASSIFICATION",
+  "checkpoint_sha256": "7d04ff121734eb00fc972bbb98e7e0db6101fe68da982e1b8e7fe17992881f9f",
+  "final_test_report_sha256": "47565809bfad1960f9d41808a4aac50c4c5f38a9655e004dd07dd69e0f2ef34e",
+  "predictions_sha256": "f39be4f76bd2b81aade6bb5a4057e2a766e6af6ec450a4f4685bdd01b3adebc2",
+  "errors_sha256": "64dedaf9d4eca7baec76fd19cd21a78d7fe91c57ba9d490d03e657685fa0310c",
+  "test_images": 371,
+  "test_accuracy": 0.9811320754716981,
+  "test_macro_f1": 0.9802119764402892,
+  "confusion_matrix": [
+    [
+      142,
+      7
+    ],
+    [
+      0,
+      222
+    ]
+  ],
+  "false_negatives": 7,
+  "false_positives": 0,
+  "affected_leaf_group_count": 2,
+  "errors_per_claimed_leaf_group": {
+    "Pepper,_bell___Bacterial_spot:::JR_33.0": 5,
+    "Pepper,_bell___Bacterial_spot:::94.0": 2
+  },
+  "high_confidence_errors": 3,
+  "mean_error_confidence": 0.8405618667602539,
+  "original_test_predictions_reused": false,
+  "existing_test_records_audited": true,
+  "test_driven_model_modification": false,
+  "real_greenhouse_validation": false,
+  "water_stress_validation": false,
+  "physical_plant_identity_verified": false,
+  "operational_release_authorized": false
+}

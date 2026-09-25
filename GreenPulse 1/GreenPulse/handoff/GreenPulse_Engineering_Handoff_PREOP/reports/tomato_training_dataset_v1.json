@@ -1,0 +1,76 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T22:48:03.522419+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "experiment": "NEW_TOMATO_CLEAN_EXPERIMENT_V1",
+  "dataset_path": "datasets/processed/tomato_hybrid_v1",
+  "counts": {
+    "train": 12684,
+    "val": 2725,
+    "materialized_total": 15409,
+    "frozen_test": 2737,
+    "frozen_test_materialized": 0
+  },
+  "class_counts": {
+    "train": {
+      "Tomato___Bacterial_spot": 1487,
+      "Tomato___Early_blight": 696,
+      "Tomato___Late_blight": 1330,
+      "Tomato___Leaf_Mold": 664,
+      "Tomato___Septoria_leaf_spot": 1239,
+      "Tomato___Spider_mites Two-spotted_spider_mite": 1172,
+      "Tomato___Target_Spot": 980,
+      "Tomato___Tomato_Yellow_Leaf_Curl_Virus": 3747,
+      "Tomato___Tomato_mosaic_virus": 261,
+      "Tomato___healthy": 1108
+    },
+    "val": {
+      "Tomato___Bacterial_spot": 320,
+      "Tomato___Early_blight": 152,
+      "Tomato___Late_blight": 285,
+      "Tomato___Leaf_Mold": 144,
+      "Tomato___Septoria_leaf_spot": 265,
+      "Tomato___Spider_mites Two-spotted_spider_mite": 252,
+      "Tomato___Target_Spot": 212,
+      "Tomato___Tomato_Yellow_Leaf_Curl_Virus": 803,
+      "Tomato___Tomato_mosaic_virus": 55,
+      "Tomato___healthy": 237
+    }
+  },
+  "integrity": {
+    "missing_sources": 0,
+    "source_sha_mismatches": 0,
+    "copied_files_sha_verified": 15409,
+    "frozen_test_hash_overlap": 0,
+    "near_duplicate_screen": "PASS",
+    "training_gate": "OPEN",
+    "mapped_leaf_group_cross_split_overlap": 0
+  },
+  "test_policy": {
+    "materialized": false,
+    "used_for_training": false,
+    "used_for_validation": false,
+    "used_for_model_selection": false,
+    "evaluate_only_after_final_model_selection": true
+  },
+  "model_policy": {
+    "historical_tomato_checkpoint_allowed": false,
+    "training_initialization": "GENERIC_PRETRAINED_BASE_ONLY"
+  },
+  "scientific_scope": {
+    "mapped_leaf_groups_disjoint": true,
+    "near_duplicate_heuristic_screen_passed": true,
+    "unmapped_physical_leaf_independence_verified": false,
+    "full_physical_leaf_independence_verified": false
+  },
+  "execution": {
+    "dataset_materialized": true,
+    "training_executed": false,
+    "model_inference_executed": false
+  },
+  "evidence": {
+    "split_manifest_sha256": "567ec8ddc3678887cfbba106279efc94ec3d1d6f900aebbe211bd5bbf9b87934",
+    "near_duplicate_report_sha256": "68998e5ae785a3c371bde9cf2163150d103c4de4d21853a05178fa93b79ba0ab"
+  }
+}

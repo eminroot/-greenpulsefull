@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "greenpulse.actuator_request.v1",
+  "title": "GreenPulse Actuator Request Handoff",
+  "type": "object",
+  "required": [
+    "command_id",
+    "action"
+  ],
+  "properties": {
+    "command_id": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string"
+    },
+    "parameters": {
+      "type": "object"
+    },
+    "requested_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true,
+  "x-greenpulse-status": "SOFTWARE_HANDOFF_CONTRACT_REAL_HARDWARE_BINDING_PENDING"
+}

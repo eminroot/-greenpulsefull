@@ -1,0 +1,10 @@
+{
+    "pt_sha256": "a34db932236be048a56816a3a664d4c38ad8663157d1886075e5dca152e51e41",
+    "onnx_sha256": "8c5ebdcf44d31ec8109774fcd2ecbcf6954223254cedf40dcb44cba6bbbd62e7",
+    "validation_manifest_sha256": "89903d68db229b975aafa0523d58a5df40f35a1f6e393bd1834739ff9f9d7ece",
+    "images_tested": 50,
+    "agreement_rate": 1.0,
+    "mean_probability_difference": 3.137160272085812e-08,
+    "maximum_probability_difference": 2.384185791015625e-07,
+    "status": "PASS"
+}

@@ -1,0 +1,130 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T10:51:24.663933+00:00",
+  "project": "GreenPulse",
+  "purpose": "SOURCE_OF_TRUTH_FOR_PRESENTATION_VISUALS",
+  "scope": {
+    "included_crops": [
+      "tomato",
+      "bell_pepper"
+    ],
+    "cucumber": "EXCLUDED_FROM_CURRENT_SCOPE",
+    "computer_side": "COMPLETE_FOR_CURRENT_TWO_CROP_DISEASE_CLASSIFICATION_SCOPE",
+    "operational_release": false
+  },
+  "headline_metrics": {
+    "tomato": {
+      "classes": 10,
+      "train": 12684,
+      "validation": 2725,
+      "frozen_test": 2737,
+      "accuracy": 0.9915966386554622,
+      "macro_f1": 0.9899329671056343,
+      "errors": 23,
+      "frozen_test_status": "CONSUMED_ONCE"
+    },
+    "bell_pepper": {
+      "classes": 2,
+      "train": 1731,
+      "validation": 371,
+      "frozen_test": 371,
+      "accuracy": 0.9811320754716981,
+      "macro_f1": 0.9802119764402892,
+      "errors": 7
+    }
+  },
+  "model_artifacts": {
+    "tomato": {
+      "pytorch": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.pt",
+      "pytorch_sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687",
+      "onnx": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.onnx",
+      "onnx_sha256": "537db352736bae025d9c91813bb38efea174fe4937952bc2598bc6d68fcf27d9"
+    },
+    "bell_pepper": {
+      "pytorch": "models/release_candidates/pepper_transfer_v1/pepper_transfer_v1.pt",
+      "pytorch_sha256": "7d04ff121734eb00fc972bbb98e7e0db6101fe68da982e1b8e7fe17992881f9f",
+      "onnx": "models/release_candidates/pepper_transfer_v1/pepper_transfer_v1.onnx",
+      "onnx_sha256": "3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7"
+    }
+  },
+  "presentation_evidence": {
+    "tomato_gradcam": [
+      {
+        "type": "GRAD_CAM_HEATMAP",
+        "path": "reports/tomato_explainability_v1/sample_1/gradcam_heatmap.png",
+        "sha256": "4251a61893a9f4f7733ecfeb1cbea027c92a8ac6c4a94e0c66988b4400945df0"
+      },
+      {
+        "type": "GRAD_CAM_OVERLAY",
+        "path": "reports/tomato_explainability_v1/sample_1/gradcam_overlay.png",
+        "sha256": "17131be8019194817174d4357fe6341a3fdb51f97220c46786196c0c38602458"
+      },
+      {
+        "type": "GRAD_CAM_HEATMAP",
+        "path": "reports/tomato_explainability_v1/sample_2/gradcam_heatmap.png",
+        "sha256": "c83ceac772d15a482b35716cdcc68af7d82af97b68b352b2428915b5858c2837"
+      },
+      {
+        "type": "GRAD_CAM_OVERLAY",
+        "path": "reports/tomato_explainability_v1/sample_2/gradcam_overlay.png",
+        "sha256": "9e782e066d35dcf5d224540a97dcffc881b2e3398724b5bec69bd4677f404857"
+      }
+    ],
+    "pepper_gradcam": [
+      {
+        "type": "GRAD_CAM_HEATMAP",
+        "path": "reports/pepper_explainability_v2/bacterial_spot/gradcam_heatmap.png",
+        "sha256": "2e1d87076887f253115d4ed042a911b0466c8b4d852e16fa4a76b4f0a4e435b3"
+      },
+      {
+        "type": "GRAD_CAM_OVERLAY",
+        "path": "reports/pepper_explainability_v2/bacterial_spot/gradcam_overlay.png",
+        "sha256": "bfa909ff5a685e2bc96ffb326f91d674754d84cc1afe8b44cf61d7cf8ea6dbaa"
+      },
+      {
+        "type": "GRAD_CAM_HEATMAP",
+        "path": "reports/pepper_explainability_v2/healthy/gradcam_heatmap.png",
+        "sha256": "24f95f052bdd25d84f4bf062dcec94042126b478f5e4af10c28b9e114ba08de4"
+      },
+      {
+        "type": "GRAD_CAM_OVERLAY",
+        "path": "reports/pepper_explainability_v2/healthy/gradcam_overlay.png",
+        "sha256": "ccd0a0654d787380a257f34d6dcf86f3885351515ec576d082e0aaa248effaca"
+      }
+    ],
+    "tomato_final_error_csv": "reports/tomato_final_test_errors_v1.csv",
+    "tomato_full_prediction_csv": "reports/tomato_final_test_predictions_v1.csv",
+    "pepper_final_error_source": null,
+    "tomato_post_test_analysis": "reports/tomato_post_test_error_analysis_v1.json",
+    "pepper_post_test_analysis": "reports/pepper_posttest_review_v1/posttest_audit.json",
+    "tomato_onnx_parity": "reports/tomato_onnx_parity_v1.json",
+    "pepper_onnx_parity": "reports/pepper_onnx_parity_v1.json",
+    "tomato_completion": "reports/tomato_computer_side_completion_v1.json",
+    "pepper_completion": "reports/pepper_computer_side_completion_v3.json"
+  },
+  "recommended_jury_visuals": [
+    "two-crop AI architecture diagram",
+    "tomato dataset split + leakage-control diagram",
+    "tomato final metric dashboard",
+    "tomato confusion/error-pair visualization",
+    "tomato Grad-CAM before/heatmap/overlay panel",
+    "pepper transfer-vs-generic comparison",
+    "pepper final confusion matrix",
+    "pepper Grad-CAM evidence panel",
+    "PyTorch-vs-ONNX parity evidence",
+    "frozen-test protocol timeline",
+    "active-learning human-review flow",
+    "research-only registry and safety-gate architecture",
+    "computer-side complete vs real-world pending matrix"
+  ],
+  "scientific_display_rules": {
+    "do_not_claim_real_greenhouse_validation": true,
+    "do_not_claim_water_stress_validation": true,
+    "do_not_claim_hailo_deployment": true,
+    "do_not_claim_measured_water_savings": true,
+    "do_not_claim_measured_energy_savings": true,
+    "do_not_present_gradcam_as_segmentation": true,
+    "do_not_present_confidence_as_water_stress": true,
+    "show_research_only_status": true
+  }
+}

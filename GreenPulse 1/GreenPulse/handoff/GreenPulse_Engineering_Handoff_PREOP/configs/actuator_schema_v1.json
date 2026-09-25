@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GreenPulse Simulated Actuator Command",
+  "description": "Development-only command contract. Does not authorize physical actuation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "command_id",
+    "observation_id",
+    "plant_id",
+    "mode",
+    "test_only",
+    "origin",
+    "action",
+    "target"
+  ],
+  "properties": {
+    "command_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "observation_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "plant_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "mode": {
+      "const": "SIMULATION_ONLY"
+    },
+    "test_only": {
+      "const": true
+    },
+    "origin": {
+      "const": "TEST_HARNESS"
+    },
+    "action": {
+      "const": "IRRIGATION_TEST"
+    },
+    "target": {
+      "const": "MAIN_IRRIGATION_PUMP"
+    }
+  }
+}

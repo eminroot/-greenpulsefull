@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GreenPulse Simulated Actuator Result",
+  "description": "Simulator result only. Never represents a real hardware acknowledgement.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "simulator_version",
+    "command_id",
+    "observation_id",
+    "plant_id",
+    "target",
+    "status",
+    "error_code",
+    "timestamp",
+    "simulated",
+    "physical_actuation",
+    "real_hardware_ack"
+  ],
+  "properties": {
+    "simulator_version": {
+      "type": "string"
+    },
+    "command_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observation_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "plant_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "enum": [
+        "SIMULATED_EXECUTED",
+        "SIMULATED_FAILED",
+        "SIMULATED_TIMEOUT",
+        "SIMULATED_REJECTED"
+      ]
+    },
+    "error_code": {
+      "enum": [
+        null,
+        "SIMULATED_PUMP_FAILURE",
+        "SIMULATED_CONTROLLER_TIMEOUT",
+        "COMMAND_NOT_AUTHORIZED",
+        "UNKNOWN_TEST_SCENARIO"
+      ]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "simulated": {
+      "const": true
+    },
+    "physical_actuation": {
+      "const": false
+    },
+    "real_hardware_ack": {
+      "type": "null"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "SIMULATED_EXECUTED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "error_code": {
+            "type": "null"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "error_code": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T13:40:25.576433+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 36,
+  "layer_name": "AI Gateway & Backend API",
+  "status": "SOFTWARE_GATEWAY_COMPLETE_OPERATIONAL_INTEGRATION_VALIDATION_PENDING",
+  "framework": "FastAPI",
+  "api_version": "0.1.0",
+  "required_routes": {
+    "/status": true,
+    "/latest": true,
+    "/events": true,
+    "/plants/{plant_id}": true,
+    "/model/info": true,
+    "/inference": true,
+    "/sensors": true
+  },
+  "openapi": {
+    "generated": true,
+    "version": "3.1.0",
+    "required_routes_documented": true
+  },
+  "gateway_boundary": {
+    "api_directly_imports_vision_model": false,
+    "vision_runtime_boundary": "src.ai_gateway_service",
+    "model_loading": "LAZY_GATEWAY_RUNTIME_ONLY",
+    "backend_model_direct_import": false,
+    "frontend_model_direct_import": false
+  },
+  "data_views": {
+    "events": {
+      "route": "/events",
+      "source": "OBSERVATION_AUDIT_LOG",
+      "read_only": true
+    },
+    "sensors": {
+      "route": "/sensors",
+      "source": "OBSERVATION_AUDIT_LOG",
+      "read_only": true,
+      "device_authentication_claimed": false
+    },
+    "model_info": {
+      "route": "/model/info",
+      "source": "RESEARCH_ONLY_MODEL_REGISTRY",
+      "artifact_paths_exposed": false,
+      "operational_release_claimed": false
+    }
+  },
+  "existing_routes_preserved": [
+    "/status",
+    "/latest",
+    "/plants/{plant_id}",
+    "/inference",
+    "/simulated-actuator/events",
+    "/simulated-actuator/feedback/{command_id}"
+  ],
+  "scientific_guardrails": {
+    "current_vision_scope": "DISEASE_CLASSIFICATION",
+    "disease_classification_is_water_stress": false,
+    "operational_water_stress_model_validated": false,
+    "real_autonomous_irrigation_authorized": false,
+    "hardware_dispatch_authorized": false,
+    "physical_action_authorized": false
+  },
+  "tests": {
+    "gateway_service_tests": 8,
+    "api_contract_tests": 10,
+    "total": 18,
+    "result": "PASS"
+  },
+  "artifacts": {
+    "api": {
+      "path": "src/api.py",
+      "sha256": "b94458a8fc266f6da4ebe87ddfc13b3bbc1421055dba79f50f900f3b2955f15a"
+    },
+    "gateway_service": {
+      "path": "src/ai_gateway_service.py",
+      "sha256": "9f4f87abb12231c2791663798964421e2ba3c959a14d03b679cad3534c565e33"
+    },
+    "api_contract_tests": {
+      "path": "tests/test_ai_gateway_api_contract.py",
+      "sha256": "9a55adcaee378a5b6c9bcfde2a1ef40ae730b02a5d85fe70dc452f3f18ca6c87"
+    },
+    "gateway_service_tests": {
+      "path": "tests/test_ai_gateway_service.py",
+      "sha256": "ad2042cf63afcdb5968725b4d285553bf135492663ea320b8c1fe55b0c794a22"
+    }
+  },
+  "execution": {
+    "server_started": false,
+    "vision_model_instantiated": false,
+    "vision_inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false,
+    "production_database_modified": false,
+    "hardware_command_generated": false,
+    "hardware_dispatch_performed": false,
+    "physical_action_executed": false
+  }
+}

@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 820" width="1120" height="820" font-family="ui-sans-serif, -apple-system, Segoe UI, Roboto, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/>
+    </marker>
+  </defs>
+
+  <rect width="1120" height="820" fill="#ffffff"/>
+
+  <!-- ================= TITLE ================= -->
+  <text x="40" y="46" font-size="24" font-weight="700" fill="#0f172a">LeafNode wiring</text>
+  <text x="40" y="70" font-size="14" fill="#64748b">Image and risk score travel over Wi-Fi. The wires only carry power.</text>
+
+  <!-- ================= SECTION A ================= -->
+  <text x="40" y="112" font-size="15" font-weight="700" fill="#0f172a">1. Running setup &#8212; two wires</text>
+
+  <!-- Wi-Fi link -->
+  <path d="M 200 150 C 340 84, 800 84, 950 150" fill="none" stroke="#0891b2" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <rect x="470" y="88" width="212" height="46" rx="8" fill="#ecfeff" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="576" y="107" font-size="13" font-weight="600" fill="#0e7490" text-anchor="middle">Wi-Fi, same network</text>
+  <text x="576" y="125" font-size="12" fill="#0e7490" text-anchor="middle">JPEG out &#8594;&#160;&#160;&#160;&#8592; risk score back</text>
+
+  <!-- Raspberry Pi -->
+  <rect x="60" y="160" width="250" height="230" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="185" y="190" font-size="16" font-weight="700" fill="#0f172a" text-anchor="middle">Raspberry Pi</text>
+  <text x="185" y="210" font-size="12" fill="#64748b" text-anchor="middle">runs pi/server.py on :8000</text>
+
+  <!-- Pi 40 pin header -->
+  <rect x="88" y="230" width="194" height="52" rx="5" fill="#1e293b"/>
+  <text x="185" y="252" font-size="11" fill="#cbd5e1" text-anchor="middle">40-pin header</text>
+  <circle cx="120" cy="268" r="6" fill="#ef4444"/>
+  <circle cx="160" cy="268" r="6" fill="#ef4444"/>
+  <circle cx="205" cy="268" r="6" fill="#3b82f6"/>
+  <text x="120" y="300" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">pin 2</text>
+  <text x="120" y="314" font-size="11" fill="#b91c1c" text-anchor="middle">5V</text>
+  <text x="160" y="300" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">pin 4</text>
+  <text x="160" y="314" font-size="11" fill="#b91c1c" text-anchor="middle">5V</text>
+  <text x="205" y="300" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">pin 6</text>
+  <text x="205" y="314" font-size="11" fill="#1d4ed8" text-anchor="middle">GND</text>
+  <text x="185" y="352" font-size="11" fill="#64748b" text-anchor="middle">use the official PSU,</text>
+  <text x="185" y="368" font-size="11" fill="#64748b" text-anchor="middle">not a phone charger</text>
+
+  <!-- Breadboard -->
+  <rect x="400" y="160" width="300" height="230" rx="10" fill="#fefce8" stroke="#a16207" stroke-width="2"/>
+  <text x="550" y="186" font-size="15" font-weight="700" fill="#713f12" text-anchor="middle">Breadboard</text>
+
+  <!-- + rail -->
+  <line x1="420" y1="228" x2="680" y2="228" stroke="#ef4444" stroke-width="4"/>
+  <text x="412" y="222" font-size="16" font-weight="700" fill="#b91c1c" text-anchor="end">+</text>
+  <text x="550" y="218" font-size="11" fill="#b91c1c" text-anchor="middle">5 V rail</text>
+
+  <!-- - rail -->
+  <line x1="420" y1="340" x2="680" y2="340" stroke="#3b82f6" stroke-width="4"/>
+  <text x="412" y="346" font-size="18" font-weight="700" fill="#1d4ed8" text-anchor="end">&#8722;</text>
+  <text x="550" y="360" font-size="11" fill="#1d4ed8" text-anchor="middle">GND rail</text>
+
+  <!-- capacitor -->
+  <line x1="550" y1="228" x2="550" y2="268" stroke="#1e293b" stroke-width="2"/>
+  <line x1="528" y1="268" x2="572" y2="268" stroke="#1e293b" stroke-width="3.5"/>
+  <line x1="528" y1="282" x2="572" y2="282" stroke="#1e293b" stroke-width="3.5"/>
+  <line x1="550" y1="282" x2="550" y2="340" stroke="#1e293b" stroke-width="2"/>
+  <text x="586" y="268" font-size="12" font-weight="700" fill="#0f172a">1000 &#181;F</text>
+  <text x="586" y="284" font-size="11" fill="#64748b">long leg to +</text>
+  <text x="586" y="299" font-size="11" fill="#64748b">as close to the</text>
+  <text x="586" y="313" font-size="11" fill="#64748b">ESP32 as possible</text>
+
+  <!-- ESP32-CAM -->
+  <rect x="790" y="160" width="250" height="230" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="915" y="190" font-size="16" font-weight="700" fill="#0f172a" text-anchor="middle">ESP32-CAM</text>
+  <text x="915" y="209" font-size="12" fill="#64748b" text-anchor="middle">AI-Thinker</text>
+  <circle cx="915" cy="258" r="26" fill="#1e293b"/>
+  <circle cx="915" cy="258" r="13" fill="#475569"/>
+  <circle cx="909" cy="252" r="4" fill="#94a3b8"/>
+  <text x="915" y="302" font-size="11" fill="#64748b" text-anchor="middle">OV2640 camera</text>
+
+  <rect x="812" y="318" width="60" height="26" rx="4" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="842" y="336" font-size="12" font-weight="700" fill="#b91c1c" text-anchor="middle">5V</text>
+  <rect x="958" y="318" width="60" height="26" rx="4" fill="#dbeafe" stroke="#3b82f6"/>
+  <text x="988" y="336" font-size="12" font-weight="700" fill="#1d4ed8" text-anchor="middle">GND</text>
+  <text x="915" y="366" font-size="11" font-weight="600" fill="#b91c1c" text-anchor="middle">never feed 5 V into the 3V3 pin</text>
+
+  <!-- wires Pi -> breadboard -->
+  <path d="M 120 268 L 120 410 L 420 410 L 420 232" fill="none" stroke="#ef4444" stroke-width="3"/>
+  <path d="M 205 268 L 205 436 L 396 436 L 396 340" fill="none" stroke="#3b82f6" stroke-width="3"/>
+
+  <!-- wires breadboard -> ESP32 -->
+  <path d="M 680 228 L 720 228 L 720 300 L 842 300 L 842 318" fill="none" stroke="#ef4444" stroke-width="3"/>
+  <path d="M 680 340 L 760 340 L 760 302 L 988 302 L 988 318" fill="none" stroke="#3b82f6" stroke-width="3"/>
+
+  <!-- ================= SECTION B ================= -->
+  <line x1="40" y1="476" x2="1080" y2="476" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="40" y="512" font-size="15" font-weight="700" fill="#0f172a">2. Flashing &#8212; one time only, then unplug it all</text>
+  <text x="40" y="533" font-size="13" fill="#64748b">The ESP32-CAM has no USB port. TX goes to RX on both sides.</text>
+
+  <!-- USB TTL -->
+  <rect x="60" y="560" width="230" height="190" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="175" y="588" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">USB-to-TTL</text>
+  <text x="175" y="606" font-size="11" fill="#64748b" text-anchor="middle">CP2102 / FTDI / CH340</text>
+  <text x="270" y="640" font-size="12" font-weight="600" fill="#334155" text-anchor="end">5V</text>
+  <text x="270" y="672" font-size="12" font-weight="600" fill="#334155" text-anchor="end">GND</text>
+  <text x="270" y="704" font-size="12" font-weight="600" fill="#334155" text-anchor="end">TX</text>
+  <text x="270" y="736" font-size="12" font-weight="600" fill="#334155" text-anchor="end">RX</text>
+
+  <!-- ESP32 for flashing -->
+  <rect x="640" y="560" width="230" height="190" rx="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="755" y="588" font-size="15" font-weight="700" fill="#0f172a" text-anchor="middle">ESP32-CAM</text>
+  <text x="660" y="640" font-size="12" font-weight="600" fill="#334155">5V</text>
+  <text x="660" y="672" font-size="12" font-weight="600" fill="#334155">GND</text>
+  <text x="660" y="704" font-size="12" font-weight="600" fill="#334155">U0R &#160;(GPIO 3)</text>
+  <text x="660" y="736" font-size="12" font-weight="600" fill="#334155">U0T &#160;(GPIO 1)</text>
+
+  <!-- straight wires -->
+  <line x1="290" y1="636" x2="640" y2="636" stroke="#ef4444" stroke-width="2.5"/>
+  <line x1="290" y1="668" x2="640" y2="668" stroke="#3b82f6" stroke-width="2.5"/>
+  <!-- crossed TX/RX -->
+  <path d="M 290 700 C 420 700, 500 732, 640 732" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <path d="M 290 732 C 420 732, 500 700, 640 700" fill="none" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="465" y="694" font-size="11" font-weight="600" fill="#15803d" text-anchor="middle">TX and RX cross over</text>
+
+  <!-- GPIO0 callout -->
+  <rect x="900" y="560" width="180" height="190" rx="10" fill="#fffbeb" stroke="#b45309" stroke-width="2"/>
+  <text x="990" y="590" font-size="14" font-weight="700" fill="#92400e" text-anchor="middle">Do not forget</text>
+  <line x1="920" y1="614" x2="1060" y2="614" stroke="#fcd34d" stroke-width="2"/>
+  <text x="990" y="640" font-size="13" font-weight="700" fill="#92400e" text-anchor="middle">GPIO 0 &#8594; GND</text>
+  <text x="990" y="662" font-size="11" fill="#92400e" text-anchor="middle">before uploading,</text>
+  <text x="990" y="678" font-size="11" fill="#92400e" text-anchor="middle">then press RST</text>
+  <line x1="920" y1="696" x2="1060" y2="696" stroke="#fcd34d" stroke-width="2"/>
+  <text x="990" y="718" font-size="11" font-weight="700" fill="#92400e" text-anchor="middle">Remove the jumper</text>
+  <text x="990" y="734" font-size="11" fill="#92400e" text-anchor="middle">after, or it will not boot</text>
+  <path d="M 870 655 L 896 655" fill="none" stroke="#b45309" stroke-width="2.5" marker-end="url(#arrowAmber)"/>
+
+  <!-- footer -->
+  <text x="40" y="790" font-size="12" fill="#94a3b8">Pin-by-pin tables, sensor wiring and the fault table are in WIRING.md</text>
+</svg>

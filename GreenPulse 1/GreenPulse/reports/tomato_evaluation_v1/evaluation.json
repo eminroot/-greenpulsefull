@@ -1,0 +1,93 @@
+{
+    "model_sha256": "a34db932236be048a56816a3a664d4c38ad8663157d1886075e5dca152e51e41",
+    "test_manifest_sha256": "cec810e5c37232b5c4150a90f8ea2d3bbc5a2e217987308de4300a1c4109633f",
+    "test_images": 3639,
+    "accuracy": 0.9934047815333883,
+    "balanced_accuracy": 0.9925620032197372,
+    "top5_accuracy": 1.0,
+    "macro_precision": 0.9892231940530982,
+    "macro_recall": 0.9925620032197372,
+    "macro_f1": 0.990864268369579,
+    "disease_as_healthy_errors": 0,
+    "classification_report": {
+        "Tomato___Bacterial_spot": {
+            "precision": 0.9977011494252873,
+            "recall": 0.9954128440366973,
+            "f1-score": 0.9965556831228473,
+            "support": 436.0
+        },
+        "Tomato___Early_blight": {
+            "precision": 0.9813084112149533,
+            "recall": 0.9767441860465116,
+            "f1-score": 0.9790209790209791,
+            "support": 215.0
+        },
+        "Tomato___Late_blight": {
+            "precision": 0.9893333333333333,
+            "recall": 0.9893333333333333,
+            "f1-score": 0.9893333333333333,
+            "support": 375.0
+        },
+        "Tomato___Leaf_Mold": {
+            "precision": 0.9826589595375722,
+            "recall": 0.9883720930232558,
+            "f1-score": 0.9855072463768116,
+            "support": 172.0
+        },
+        "Tomato___Septoria_leaf_spot": {
+            "precision": 0.9970414201183432,
+            "recall": 1.0,
+            "f1-score": 0.9985185185185185,
+            "support": 337.0
+        },
+        "Tomato___Spider_mites Two-spotted_spider_mite": {
+            "precision": 0.9814814814814815,
+            "recall": 0.99375,
+            "f1-score": 0.9875776397515528,
+            "support": 320.0
+        },
+        "Tomato___Target_Spot": {
+            "precision": 0.9930313588850174,
+            "recall": 0.9895833333333334,
+            "f1-score": 0.991304347826087,
+            "support": 288.0
+        },
+        "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+            "precision": 0.9990875912408759,
+            "recall": 0.9954545454545455,
+            "f1-score": 0.9972677595628415,
+            "support": 1100.0
+        },
+        "Tomato___Tomato_mosaic_virus": {
+            "precision": 0.9705882352941176,
+            "recall": 1.0,
+            "f1-score": 0.9850746268656716,
+            "support": 66.0
+        },
+        "Tomato___healthy": {
+            "precision": 1.0,
+            "recall": 0.996969696969697,
+            "f1-score": 0.9984825493171472,
+            "support": 330.0
+        },
+        "accuracy": 0.9934047815333883,
+        "macro avg": {
+            "precision": 0.9892231940530982,
+            "recall": 0.9925620032197372,
+            "f1-score": 0.990864268369579,
+            "support": 3639.0
+        },
+        "weighted avg": {
+            "precision": 0.9934381941490296,
+            "recall": 0.9934047815333883,
+            "f1-score": 0.9934116445479397,
+            "support": 3639.0
+        }
+    },
+    "limitations": [
+        "PlantVillage domain",
+        "1348 test images have unverified leaf grouping",
+        "Real greenhouse performance not established",
+        "Water stress detection not evaluated"
+    ]
+}

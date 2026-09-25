@@ -1,0 +1,68 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: greenpulse
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: greenpulse
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U greenpulse -d greenpulse"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # Not published to the host: only the api container reaches it.
+    expose:
+      - "5432"
+
+  api:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      GP_ENV: production
+      GP_SECRET_KEY: ${GP_SECRET_KEY:?set GP_SECRET_KEY in .env}
+      GP_DATABASE_URL: postgresql+asyncpg://greenpulse:${POSTGRES_PASSWORD}@db:5432/greenpulse
+      GP_DATA_DIR: /srv/data
+      GP_GOOGLE_CLIENT_ID: ${GP_GOOGLE_CLIENT_ID:-}
+      GP_GOOGLE_EXTRA_CLIENT_IDS: ${GP_GOOGLE_EXTRA_CLIENT_IDS:-}
+      GP_GEMINI_API_KEY: ${GP_GEMINI_API_KEY:-}
+      GP_CORS_ORIGINS: ${GP_CORS_ORIGINS:-}
+    volumes:
+      - leaf-images:/srv/data
+    expose:
+      - "8000"
+
+  # Caddy terminates TLS, serves the web panel, and proxies /api to the API.
+  # The panel is baked into this image at build time, which is what puts it on
+  # the same origin as the API.
+  caddy:
+    build:
+      context: ..
+      dockerfile: server/deploy/Dockerfile.caddy
+      args:
+        VITE_GOOGLE_CLIENT_ID: ${GP_GOOGLE_CLIENT_ID:-}
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      # The domain pointed at this Contabo box. Caddy gets the TLS certificate
+      # for it automatically on first start.
+      DOMAIN: ${DOMAIN:?set DOMAIN in .env}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+volumes:
+  db-data:
+  leaf-images:
+  caddy-data:
+  caddy-config:

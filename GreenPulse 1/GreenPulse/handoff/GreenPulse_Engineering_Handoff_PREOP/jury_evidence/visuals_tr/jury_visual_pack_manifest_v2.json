@@ -1,0 +1,23 @@
+{
+  "schema_version": "greenpulse.jury_visual_pack.v2",
+  "generated_at_utc": "2026-09-24T21:46:47.815967+00:00",
+  "generated_by": "scripts/build_jury_visuals_tr.py",
+  "language": "tr",
+  "visual_format": "1920x1080 PNG / 16:9",
+  "visual_count": 12,
+  "visuals": [
+    "01_sistem_mimarisi.png",
+    "02_model_performansi.png",
+    "03_model_kanit_kartlari.png",
+    "04_guvenli_durum_matrisi.png",
+    "05_teslim_hazirligi.png",
+    "06_kanit_hazirlik_panosu.png",
+    "07_kanit_panosu.png",
+    "08_katman_hazirlik_matrisi.png",
+    "09_izlenebilirlik_zinciri.png",
+    "10_iddia_siniri.png",
+    "11_gercek_dogrulama_yol_haritasi.png",
+    "12_final_juri_ozeti.png"
+  ],
+  "note": "Tum sayilar reports/ altindaki rapor dosyalarindan okunur; bu betikte elle yazilmis metrik yoktur."
+}

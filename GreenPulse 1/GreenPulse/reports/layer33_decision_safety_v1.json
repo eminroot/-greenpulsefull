@@ -1,0 +1,83 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T12:59:00.195814+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 33,
+  "layer_name": "Decision Safety Layer",
+  "status": "SOFTWARE_ENGINE_COMPLETE_REAL_SAFETY_VALIDATION_PENDING",
+  "schema_version": "greenpulse.decision_safety.v1",
+  "policy_schema_version": "greenpulse.safety_policy.v1",
+  "policy_file": "configs/safety_policy.yaml",
+  "policy_serialization": "YAML_1_2_JSON_SUBSET",
+  "current_policy_status": "DEVELOPMENT_ONLY_UNVALIDATED",
+  "implemented_constraints": [
+    "minimum model confidence",
+    "minimum stress risk",
+    "temporal confirmation count",
+    "cooldown",
+    "maximum requested action duration",
+    "camera validity requirement",
+    "sensor validity requirement",
+    "manual FORCE_BLOCK",
+    "manual MANUAL_REVIEW"
+  ],
+  "manual_override": {
+    "implemented": true,
+    "physical_safety_bypass_allowed": false,
+    "force_allow_physical_actuation_supported": false
+  },
+  "request_boundary": {
+    "input": "Layer-32 logical IRRIGATION_REQUEST",
+    "successful_policy_result": "eligible only for downstream hardware safety checks",
+    "hardware_command_created": false,
+    "hardware_dispatch_permitted": false,
+    "physical_actuation_authorized": false
+  },
+  "current_operational_policy": {
+    "autonomous_request_enabled": false,
+    "minimum_confidence": null,
+    "minimum_risk_score": null,
+    "confirmation_count": null,
+    "cooldown_seconds": null,
+    "maximum_requested_action_duration_seconds": null,
+    "reason": "Operational safety parameters require real validation and hardware commissioning."
+  },
+  "scientific_guardrails": {
+    "operational_safety_policy_validated": false,
+    "real_hardware_controller_safety_validated": false,
+    "synthetic_policy_counts_as_operational_validation": false,
+    "manual_override_bypasses_physical_safety": false,
+    "real_autonomous_irrigation_authorized": false,
+    "physical_action_authorized": false
+  },
+  "tests": {
+    "framework": "unittest",
+    "test_count": 15,
+    "result": "PASS",
+    "synthetic_policy_logic_tests_only": true
+  },
+  "artifacts": {
+    "source": {
+      "path": "src/decision_safety.py",
+      "sha256": "ae1049685679d87272a2249634689b19a2f2e83ff078d59854a1cf2cfbdccece"
+    },
+    "tests": {
+      "path": "tests/test_decision_safety.py",
+      "sha256": "664522c347a773e9e477323873eaafd662bc50fd5675db89d5e476d7b4f60135"
+    },
+    "config": {
+      "path": "configs/safety_policy.yaml",
+      "sha256": "dfffb39dcbc888600ceeaebcc5d8283827ad17566ba47655948930b403181082"
+    }
+  },
+  "execution": {
+    "real_safety_policy_validated": false,
+    "hardware_command_generated": false,
+    "hardware_dispatch_performed": false,
+    "physical_action_executed": false,
+    "vision_model_loaded": false,
+    "vision_inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false
+  }
+}

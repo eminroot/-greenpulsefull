@@ -1,0 +1,274 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T22:37:17.426848+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "experiment": "NEW_TOMATO_CLEAN_EXPERIMENT_V1",
+  "seed": "GREENPULSE_TOMATO_HYBRID_SPLIT_V1",
+  "ratios": {
+    "train": 0.7,
+    "val": 0.15,
+    "test": 0.15
+  },
+  "total_images": 18146,
+  "global_split_counts": {
+    "train": 12684,
+    "test": 2737,
+    "val": 2725
+  },
+  "mapped_split_counts": {
+    "train": 8853,
+    "val": 2007,
+    "test": 1955
+  },
+  "unmapped_split_counts": {
+    "train": 3831,
+    "val": 718,
+    "test": 782
+  },
+  "class_statistics": {
+    "Tomato___Bacterial_spot": {
+      "images": 2127,
+      "target_counts": {
+        "train": 1488,
+        "val": 319,
+        "test": 320
+      },
+      "actual_counts": {
+        "train": 1487,
+        "val": 320,
+        "test": 320
+      },
+      "metadata_leaf_groups": 532,
+      "atomic_units": 532
+    },
+    "Tomato___Early_blight": {
+      "images": 1000,
+      "target_counts": {
+        "train": 700,
+        "val": 150,
+        "test": 150
+      },
+      "actual_counts": {
+        "train": 696,
+        "val": 152,
+        "test": 152
+      },
+      "metadata_leaf_groups": 250,
+      "atomic_units": 251
+    },
+    "Tomato___Late_blight": {
+      "images": 1901,
+      "target_counts": {
+        "train": 1330,
+        "val": 285,
+        "test": 286
+      },
+      "actual_counts": {
+        "train": 1330,
+        "val": 285,
+        "test": 286
+      },
+      "metadata_leaf_groups": 230,
+      "atomic_units": 1211
+    },
+    "Tomato___Leaf_Mold": {
+      "images": 952,
+      "target_counts": {
+        "train": 666,
+        "val": 142,
+        "test": 144
+      },
+      "actual_counts": {
+        "train": 664,
+        "val": 144,
+        "test": 144
+      },
+      "metadata_leaf_groups": 238,
+      "atomic_units": 238
+    },
+    "Tomato___Septoria_leaf_spot": {
+      "images": 1771,
+      "target_counts": {
+        "train": 1239,
+        "val": 265,
+        "test": 267
+      },
+      "actual_counts": {
+        "train": 1239,
+        "val": 265,
+        "test": 267
+      },
+      "metadata_leaf_groups": 250,
+      "atomic_units": 1021
+    },
+    "Tomato___Spider_mites Two-spotted_spider_mite": {
+      "images": 1676,
+      "target_counts": {
+        "train": 1173,
+        "val": 251,
+        "test": 252
+      },
+      "actual_counts": {
+        "train": 1172,
+        "val": 252,
+        "test": 252
+      },
+      "metadata_leaf_groups": 419,
+      "atomic_units": 419
+    },
+    "Tomato___Target_Spot": {
+      "images": 1404,
+      "target_counts": {
+        "train": 982,
+        "val": 210,
+        "test": 212
+      },
+      "actual_counts": {
+        "train": 980,
+        "val": 212,
+        "test": 212
+      },
+      "metadata_leaf_groups": 351,
+      "atomic_units": 351
+    },
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+      "images": 5357,
+      "target_counts": {
+        "train": 3749,
+        "val": 803,
+        "test": 805
+      },
+      "actual_counts": {
+        "train": 3747,
+        "val": 803,
+        "test": 807
+      },
+      "metadata_leaf_groups": 685,
+      "atomic_units": 3304
+    },
+    "Tomato___Tomato_mosaic_virus": {
+      "images": 373,
+      "target_counts": {
+        "train": 261,
+        "val": 55,
+        "test": 57
+      },
+      "actual_counts": {
+        "train": 261,
+        "val": 55,
+        "test": 57
+      },
+      "metadata_leaf_groups": 0,
+      "atomic_units": 373
+    },
+    "Tomato___healthy": {
+      "images": 1585,
+      "target_counts": {
+        "train": 1109,
+        "val": 237,
+        "test": 239
+      },
+      "actual_counts": {
+        "train": 1108,
+        "val": 237,
+        "test": 240
+      },
+      "metadata_leaf_groups": 250,
+      "atomic_units": 836
+    }
+  },
+  "class_split_counts": {
+    "Tomato___Bacterial_spot": {
+      "train": 1487,
+      "val": 320,
+      "test": 320
+    },
+    "Tomato___Early_blight": {
+      "train": 696,
+      "val": 152,
+      "test": 152
+    },
+    "Tomato___Late_blight": {
+      "train": 1330,
+      "val": 285,
+      "test": 286
+    },
+    "Tomato___Leaf_Mold": {
+      "train": 664,
+      "val": 144,
+      "test": 144
+    },
+    "Tomato___Septoria_leaf_spot": {
+      "train": 1239,
+      "val": 265,
+      "test": 267
+    },
+    "Tomato___Spider_mites Two-spotted_spider_mite": {
+      "train": 1172,
+      "val": 252,
+      "test": 252
+    },
+    "Tomato___Target_Spot": {
+      "train": 980,
+      "val": 212,
+      "test": 212
+    },
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+      "train": 3747,
+      "val": 803,
+      "test": 807
+    },
+    "Tomato___Tomato_mosaic_virus": {
+      "train": 261,
+      "val": 55,
+      "test": 57
+    },
+    "Tomato___healthy": {
+      "train": 1108,
+      "val": 237,
+      "test": 240
+    }
+  },
+  "leakage_checks": {
+    "exact_sha_overlap": {
+      "train_val": 0,
+      "train_test": 0,
+      "val_test": 0
+    },
+    "mapped_leaf_group_cross_split_overlap": 0,
+    "mapped_leaf_group_split_rule": "ATOMIC_GROUP_ASSIGNMENT",
+    "unmapped_physical_leaf_identity": "UNKNOWN",
+    "near_duplicate_cross_split_audit": "PENDING"
+  },
+  "test_policy": {
+    "status": "FROZEN_FOR_NEW_EXPERIMENT",
+    "use_for_training": false,
+    "use_for_model_selection": false,
+    "use_for_threshold_tuning": false,
+    "evaluate": "ONCE_AFTER_FINAL_MODEL_SELECTION",
+    "globally_pristine_from_historical_models": false
+  },
+  "initialization_policy": {
+    "historical_tomato_checkpoint_allowed": false,
+    "reason": "Historical tomato model may have seen images that now belong to the new train/val/test split.",
+    "new_experiment_initialization": "GENERIC_PRETRAINED_BASE_ONLY"
+  },
+  "scientific_scope": {
+    "mapped_subset_group_disjoint": true,
+    "unmapped_subset_physical_leaf_independence_verified": false,
+    "full_dataset_physical_leaf_independence_verified": false,
+    "safe_claim": "Metadata-aware hybrid split with exact-hash disjointness and mapped leaf-group disjointness.",
+    "not_safe_claim": "Fully physical-leaf-independent 10-class split."
+  },
+  "execution": {
+    "dataset_materialized": false,
+    "training_executed": false,
+    "inference_executed": false,
+    "historical_test_reused_for_inference": false
+  },
+  "evidence": {
+    "source_manifest_sha256": "f1b3c88f33632778ac1581958e5c4048342c74e4c6b634dd8b0135dbe7d97205",
+    "split_manifest_sha256": "567ec8ddc3678887cfbba106279efc94ec3d1d6f900aebbe211bd5bbf9b87934"
+  }
+}

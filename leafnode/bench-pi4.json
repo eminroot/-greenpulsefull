@@ -1,0 +1,57 @@
+{
+  "board": "Raspberry Pi 4 Model B Rev 1.5",
+  "machine": "aarch64",
+  "python": "3.13.5",
+  "onnxruntime": "1.30.0",
+  "model": "tomato_clean_v1",
+  "crop": "tomato",
+  "threads": 4,
+  "load_ms": 780.0,
+  "rss_mb": {
+    "before_model": 47.0,
+    "model_loaded": 89.3,
+    "peak_after_runs": 112.5
+  },
+  "cpu_temp_c_start": 56.5,
+  "frames": {
+    "esp32_800x600": {
+      "size": "800x600",
+      "decode": {
+        "median_ms": 8.6,
+        "p95_ms": 9.6
+      },
+      "prepare": {
+        "median_ms": 11.7,
+        "p95_ms": 11.8
+      },
+      "network": {
+        "median_ms": 30.8,
+        "p95_ms": 32.1
+      },
+      "total": {
+        "median_ms": 51.1,
+        "p95_ms": 52.9
+      }
+    },
+    "phone_1280x960": {
+      "size": "1280x960",
+      "decode": {
+        "median_ms": 19.9,
+        "p95_ms": 22.6
+      },
+      "prepare": {
+        "median_ms": 19.4,
+        "p95_ms": 19.7
+      },
+      "network": {
+        "median_ms": 30.7,
+        "p95_ms": 31.0
+      },
+      "total": {
+        "median_ms": 70.0,
+        "p95_ms": 72.9
+      }
+    }
+  },
+  "cpu_temp_c_end": 63.3
+}

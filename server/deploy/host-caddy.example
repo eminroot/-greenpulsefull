@@ -1,0 +1,34 @@
+# GreenPulse, behind the host's own Caddy. Append to /etc/caddy/Caddyfile,
+# then:  caddy validate --config /etc/caddy/Caddyfile && systemctl reload caddy
+#
+# The stack publishes its Caddy on 127.0.0.1:8095 (PANEL_PORT in server/.env),
+# so this block is the only way in from outside. Replace the address with your
+# own domain once its DNS points at the server; an sslip.io name works with no
+# DNS at all, because it resolves to the IP written inside it.
+
+greenpulse.5.189.178.58.sslip.io {
+	encode zstd gzip
+
+	# Leaf photos are capped at 8 MB by the API and 10 MB by the stack's Caddy.
+	request_body {
+		max_size 10MB
+	}
+
+	reverse_proxy 127.0.0.1:8095 {
+		# Set, never appended: the stack trusts this address for its rate
+		# limits, so a client must not be able to choose it.
+		header_up X-Forwarded-For {remote_host}
+		header_up X-Real-IP {remote_host}
+
+		transport http {
+			dial_timeout 5s
+			# No read timeout: the live dashboard is a long lived websocket,
+			# and the Pi holds /ingest/jobs open for 25 s waiting for work.
+		}
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		-Server
+	}
+}

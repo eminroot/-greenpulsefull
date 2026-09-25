@@ -1,0 +1,22 @@
+# Installed by setup.sh, which fills in __USER__ and __DIR__. By hand:
+#   sed -e "s|__USER__|$USER|g" -e "s|__DIR__|$PWD|g" leafnode.service \
+#     | sudo tee /etc/systemd/system/leafnode.service
+#   sudo systemctl daemon-reload && sudo systemctl enable --now leafnode
+#   journalctl -u leafnode -f
+[Unit]
+Description=LeafNode Pi inference service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__USER__
+WorkingDirectory=__DIR__
+EnvironmentFile=__DIR__/.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=__DIR__/.venv/bin/uvicorn server:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

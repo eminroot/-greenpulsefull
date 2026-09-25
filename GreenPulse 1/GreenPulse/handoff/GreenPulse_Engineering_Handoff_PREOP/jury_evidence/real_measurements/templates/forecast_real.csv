@@ -1,0 +1,1 @@
+sample_id,timestamp_utc,true_future_risk,forecast_risk,naive_baseline_risk,event_flag,forecast_alert,lead_time_minutes,false_alarm

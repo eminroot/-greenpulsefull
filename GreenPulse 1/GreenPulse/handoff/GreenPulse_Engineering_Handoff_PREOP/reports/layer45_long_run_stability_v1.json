@@ -1,0 +1,97 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T18:17:00.317626+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 45,
+  "layer_name": "Long-Run Stability Test",
+  "status": "SOFTWARE_STABILITY_FRAMEWORK_COMPLETE_REAL_LONG_RUN_VALIDATION_PENDING",
+  "schema_version": "greenpulse.long_run_stability.v1",
+  "framework": {
+    "30_minute_profile": true,
+    "1_hour_profile": true,
+    "multi_hour_profile": true,
+    "process_tree_rss_monitoring": true,
+    "hard_ram_limit_check": true,
+    "increasing_ram_observation": true,
+    "memory_leak_not_inferred_from_single_growth": true,
+    "model_crash_monitoring_contract": true,
+    "api_crash_monitoring_contract": true,
+    "database_growth_measurement": true,
+    "camera_timeout_monitoring_contract": true,
+    "sensor_timeout_monitoring_contract": true,
+    "csv_export_supported": true
+  },
+  "required_real_runs": {
+    "30_minute": {
+      "required": true,
+      "executed": false
+    },
+    "1_hour": {
+      "required": true,
+      "executed": false
+    },
+    "multi_hour": {
+      "required": true,
+      "executed": false
+    }
+  },
+  "runtime_validation": {
+    "memory_leak_evaluated_on_real_long_run": false,
+    "increasing_ram_evaluated_on_real_long_run": false,
+    "model_crashes_monitored_on_real_long_run": false,
+    "api_crashes_monitored_on_real_long_run": false,
+    "database_growth_measured_on_real_long_run": false,
+    "camera_timeouts_monitored_on_real_long_run": false,
+    "sensor_timeouts_monitored_on_real_long_run": false,
+    "stable_memory_below_hard_limit_verified": false,
+    "raspberry_pi_5_runtime_verified": false,
+    "hailo_runtime_verified": false,
+    "final_release_stability_criterion_met": false
+  },
+  "tests": {
+    "long_run_stability_framework": {
+      "count": 18,
+      "result": "PASS"
+    }
+  },
+  "artifacts": {
+    "src/long_run_stability.py": "9bf97cbfb0941f28ecf53ec84af68a6ab6b3baee027635587be8d778c5117e1d",
+    "tests/test_long_run_stability.py": "401f2f17a9942a4d518829590ffab4e935a051a6468fbed11e073994b232b06d",
+    "src/resource_monitor.py": "f3b14381bff2cbec4a5e6f4830ef120ecbbce3170536c87edd5a72e1dcd3a039",
+    "src/resource_budget.py": "566adfe25b8fa851521e5194703a1f2c56c06bcbce8211d2120ce9064a8144fd"
+  },
+  "execution": {
+    "30_minute_run_executed": false,
+    "1_hour_run_executed": false,
+    "multi_hour_run_executed": false,
+    "production_database_modified": false,
+    "model_loaded": false,
+    "inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "api_server_started": false,
+    "camera_contacted": false,
+    "sensor_contacted": false,
+    "hailo_device_contacted": false,
+    "raspberry_pi_contacted": false
+  },
+  "scientific_guardrails": {
+    "positive_rss_growth_claimed_as_memory_leak": false,
+    "unit_tests_claimed_as_long_run_validation": false,
+    "desktop_measurement_claimed_as_pi5_hailo_validation": false,
+    "short_runtime_claimed_as_30_minute_test": false
+  },
+  "claim_boundary": {
+    "software_stability_framework_complete": true,
+    "real_30_minute_stability_complete": false,
+    "real_1_hour_stability_complete": false,
+    "real_multi_hour_stability_complete": false,
+    "final_release_memory_stability_verified": false,
+    "layer45_fully_complete": false
+  },
+  "blockers": [
+    "REAL_30_MINUTE_STABILITY_RUN_NOT_EXECUTED",
+    "REAL_1_HOUR_STABILITY_RUN_NOT_EXECUTED",
+    "REAL_MULTI_HOUR_STABILITY_RUN_NOT_EXECUTED",
+    "FINAL_PI5_HAILO_RUNTIME_NOT_AVAILABLE"
+  ]
+}

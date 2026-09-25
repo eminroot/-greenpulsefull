@@ -1,0 +1,19 @@
+{
+    "status": "PASS",
+    "split_sizes": {
+        "train": 12321,
+        "validation": 2186,
+        "test": 3639
+    },
+    "issues": {
+        "cross_split_exact_duplicates": 0,
+        "cross_split_original_names": 0,
+        "cross_split_known_leaf_groups": 0,
+        "classes_missing_from_a_split": 0
+    },
+    "unknown_leaf_groups": {
+        "train": 4581,
+        "validation": 806,
+        "test": 1348
+    }
+}

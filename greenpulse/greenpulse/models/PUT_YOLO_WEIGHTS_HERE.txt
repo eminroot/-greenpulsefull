@@ -1,0 +1,6 @@
+Bu qovluğa öz yolo11n-seg.pt (və ya yolo11n.pt) çəki faylınızı qoyun.
+Default path: models/yolo11n-seg.pt
+
+Fərqli yerdə saxlamaq istəsəniz:
+  - Streamlit: sidebar-dakı "YOLOv11n-Seg çəki faylı yolu" sahəsindən dəyişin
+  - CLI: python run_cli_demo.py image.jpg --weights /path/to/your/weights.pt

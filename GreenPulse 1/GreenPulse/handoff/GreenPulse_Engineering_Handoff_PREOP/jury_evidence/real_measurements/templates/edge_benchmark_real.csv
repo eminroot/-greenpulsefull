@@ -1,0 +1,1 @@
+run_id,timestamp_utc,device,accelerator,model,preprocessing_ms,hailo_inference_ms,postprocessing_ms,fusion_ms,forecasting_ms,decision_ms,api_ms,end_to_end_ms,ram_mb,peak_ram_mb,cpu_percent,accelerator_util_percent,device_temperature_c

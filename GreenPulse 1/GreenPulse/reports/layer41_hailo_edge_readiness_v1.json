@@ -1,0 +1,73 @@
+{
+  "generated_at_utc": "2026-09-24T15:38:36.095510+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 41,
+  "layer_name": "Hailo Edge AI Deployment",
+  "phase": "PRE_DEPLOYMENT_READINESS",
+  "schema_version": "greenpulse.hailo_deployment_readiness.v1",
+  "status": "BLOCKED_PRE_DEPLOYMENT_REQUIREMENTS",
+  "registry_path": "configs/vision_model_registry_v1.json",
+  "approval_path": "configs/hailo_edge_approval_v1.json",
+  "approval_evidence_present": false,
+  "approved_candidate": null,
+  "candidate_models": [
+    {
+      "crop": "tomato",
+      "onnx_path": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.onnx",
+      "expected_sha256": "537db352736bae025d9c91813bb38efea174fe4937952bc2598bc6d68fcf27d9",
+      "actual_sha256": "537db352736bae025d9c91813bb38efea174fe4937952bc2598bc6d68fcf27d9",
+      "artifact_exists": true,
+      "hash_verified": true,
+      "operational_release_approved": false
+    },
+    {
+      "crop": "bell_pepper",
+      "onnx_path": "models/release_candidates/pepper_transfer_v1/pepper_transfer_v1.onnx",
+      "expected_sha256": "3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7",
+      "actual_sha256": "3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7",
+      "artifact_exists": true,
+      "hash_verified": true,
+      "operational_release_approved": false
+    }
+  ],
+  "toolchain": {
+    "packages": {
+      "hailo_platform": false,
+      "hailo_sdk_client": false
+    },
+    "executables": {
+      "hailortcli": null,
+      "hailo": null,
+      "hailo-parse-hef": null
+    },
+    "conversion_toolchain_detected": false,
+    "runtime_detected": false
+  },
+  "hef_files": [],
+  "ready_for_conversion": false,
+  "onnx_to_hef_conversion_verified": false,
+  "hailo_onnx_regression_verified": false,
+  "raspberry_pi_5_inference_verified": false,
+  "ai_hat_plus_inference_verified": false,
+  "training_stack_absent_from_edge_verified": false,
+  "layer41_complete": false,
+  "blockers": [
+    "ENGINEER1_HAILO_APPROVAL_EVIDENCE_MISSING",
+    "HAILO_CONVERSION_TOOLCHAIN_NOT_AVAILABLE"
+  ],
+  "scientific_guardrails": {
+    "registry_candidate_equals_engineer1_approval": false,
+    "onnx_presence_equals_hef_conversion": false,
+    "hef_presence_equals_regression_pass": false,
+    "desktop_test_equals_pi_hailo_validation": false,
+    "classification_model_claimed_as_water_stress_model": false
+  },
+  "current_environment_claim": {
+    "onnx_to_hef_executed": false,
+    "hef_generated": false,
+    "hailo_regression_executed": false,
+    "raspberry_pi_contacted": false,
+    "ai_hat_plus_contacted": false,
+    "frozen_final_test_reopened": false
+  }
+}

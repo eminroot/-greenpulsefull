@@ -1,0 +1,126 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T15:29:57.551929+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 40,
+  "layer_name": "Closed-Loop Feedback Intelligence",
+  "status": "SOFTWARE_CLOSED_LOOP_FRAMEWORK_COMPLETE_REAL_OPERATIONAL_VALIDATION_PENDING",
+  "canonical_contracts": {
+    "intelligence": "greenpulse.closed_loop_intelligence.v1",
+    "followup_plan": "greenpulse.closed_loop_followup_plan.v1",
+    "scheduler": "greenpulse.closed_loop_followup_scheduler.v1"
+  },
+  "architecture_requirements": {
+    "followup_plan_after_executed_action": true,
+    "durable_followup_queue": true,
+    "before_after_risk_comparison": true,
+    "before_after_sensor_response": true,
+    "intervention_success_not_assumed": true,
+    "validated_outcome_gate": true,
+    "analytics_eligibility_only_when_validated": true,
+    "future_model_improvement_eligibility_only_when_validated": true
+  },
+  "followup_scheduler": {
+    "pending_state_supported": true,
+    "consumed_state_supported": true,
+    "duplicate_command_schedule_blocked": true,
+    "synthetic_followup": "TEST_ONLY",
+    "operational_followup_requires_verified_intervention": true,
+    "scheduler_executes_inference": false,
+    "scheduler_dispatches_hardware": false,
+    "scheduler_triggers_physical_action": false
+  },
+  "closed_loop_analysis": {
+    "risk_before_supported": true,
+    "risk_after_supported": true,
+    "risk_delta_supported": true,
+    "sensor_response_supported": true,
+    "plant_identity_guard": true,
+    "chronology_guard": true,
+    "causal_effect_claimed": false,
+    "success_automatically_assumed": false
+  },
+  "current_real_world_state": {
+    "real_operational_stress_risk_available": false,
+    "real_hardware_action_verified": false,
+    "real_post_intervention_observation_available": false,
+    "real_new_risk_computed_after_intervention": false,
+    "real_before_after_outcome_validated": false,
+    "real_closed_loop_effectiveness_verified": false,
+    "measured_water_savings_available": false
+  },
+  "analytics_and_model_improvement": {
+    "eligibility_flag_supported": true,
+    "synthetic_outcome_eligible": false,
+    "unverified_intervention_eligible": false,
+    "real_validated_outcome_currently_available": false,
+    "real_outcome_ingested_into_training": false
+  },
+  "legacy_simulation": {
+    "preserved": true,
+    "synthetic_moisture_feedback_only": true,
+    "water_stress_risk_before": null,
+    "water_stress_risk_after": null,
+    "real_intervention_verified": false,
+    "operational_effectiveness_verified": false
+  },
+  "tests": {
+    "closed_loop_intelligence": {
+      "count": 11,
+      "result": "PASS"
+    },
+    "followup_scheduler": {
+      "count": 10,
+      "result": "PASS"
+    },
+    "total": {
+      "count": 21,
+      "result": "PASS"
+    }
+  },
+  "artifacts": {
+    "intelligence_source": {
+      "path": "src/closed_loop_intelligence.py",
+      "sha256": "998bf514ea3f58183d40b422633f68a049f2e305f5b7bddce8a1c258c710de90"
+    },
+    "scheduler_source": {
+      "path": "src/closed_loop_followup_scheduler.py",
+      "sha256": "e1acba1699ee615caf63474cfe7bee0a6ba9d286c3d477a65d7e0bd47ce9d2e2"
+    },
+    "intelligence_tests": {
+      "path": "tests/test_closed_loop_intelligence.py",
+      "sha256": "e903ec9d139466e3d57a164f08554022179dd7cbcf8a527c38527b7f3da5703b"
+    },
+    "scheduler_tests": {
+      "path": "tests/test_closed_loop_followup_scheduler.py",
+      "sha256": "7b479b1d8b110ffc91a8a534687ff718953288423a951e14824d43a9043e2a02"
+    },
+    "legacy_simulator": {
+      "path": "src/closed_loop_simulator.py",
+      "sha256": "a9bc7692ee82898a1111bfe5b48f9922cd8248c6ba35e92d351fb8cd22931246"
+    },
+    "legacy_feedback_contract": {
+      "path": "src/closed_loop_feedback_contract.py",
+      "sha256": "a647e86b9d86d348df05baf968c1dd65a572d4f9f480a5b2f58802e0c0f9935e"
+    }
+  },
+  "execution": {
+    "production_database_modified": false,
+    "real_followup_scheduled": false,
+    "real_followup_observation_acquired": false,
+    "vision_model_loaded": false,
+    "inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "hardware_command_dispatched": false,
+    "real_hardware_ack_received": false,
+    "physical_action_executed": false
+  },
+  "scientific_guardrails": {
+    "synthetic_change_claimed_as_real_recovery": false,
+    "risk_decrease_claimed_as_causal_irrigation_effect": false,
+    "sensor_change_claimed_as_intervention_success": false,
+    "unverified_action_claimed_as_real_intervention": false,
+    "water_savings_claimed": false,
+    "real_closed_loop_success_claimed": false
+  }
+}

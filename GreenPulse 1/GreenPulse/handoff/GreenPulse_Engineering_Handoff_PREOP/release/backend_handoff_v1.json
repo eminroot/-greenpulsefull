@@ -1,0 +1,56 @@
+{
+  "schema_version": "greenpulse.backend_handoff.v1",
+  "status": "SOFTWARE_HANDOFF_PREPARED_FINAL_OPERATIONAL_BINDING_PENDING",
+  "openapi": {
+    "exported": true,
+    "path": "release/openapi_v1.json",
+    "source": "src.api:app",
+    "openapi_version": "3.1.0",
+    "api_title": "GreenPulse AI API",
+    "route_count": 11,
+    "export_error": null
+  },
+  "standard_output_fields": [
+    "plant_state",
+    "confidence",
+    "risk",
+    "trend",
+    "forecast",
+    "sensors",
+    "uncertainty",
+    "decision",
+    "reasons",
+    "model_version",
+    "latency",
+    "system_status"
+  ],
+  "output_contract_source": "src/ai_output_contract.py",
+  "frontend_adapter_source": "src/intelligence_output_view.py",
+  "reason_code_sources": [
+    "src/decision_intelligence.py",
+    "src/ai_output_contract.py",
+    "src/failure_safe_state.py"
+  ],
+  "failure_error_codes": [
+    "CAMERA_MISSING",
+    "CAMERA_TIMEOUT",
+    "BLURRED_IMAGE",
+    "SENSOR_MISSING",
+    "SENSOR_INVALID",
+    "SENSOR_STALE",
+    "WIFI_FAILURE",
+    "LOW_CONFIDENCE",
+    "VISION_SENSOR_CONFLICT",
+    "DB_FAILURE",
+    "HARDWARE_TIMEOUT"
+  ],
+  "examples": {
+    "request": "release/examples/example_request_v1.json",
+    "response": "release/examples/example_response_v1.json",
+    "route_binding_status": "PENDING_FINAL_API_ROUTE_FREEZE"
+  },
+  "claim_boundary": {
+    "final_backend_operational_handoff": false,
+    "example_request_is_final_route_contract": false
+  }
+}

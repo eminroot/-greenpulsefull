@@ -1,0 +1,115 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T00:08:49.591641+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "model_name": "YOLO11n Classification",
+  "experiment": "NEW_TOMATO_CLEAN_EXPERIMENT_V1",
+  "task": "PLANTVILLAGE_LEAF_DISEASE_CLASSIFICATION",
+  "status": "COMPUTER_SIDE_RESEARCH_MODEL",
+  "class_count": 10,
+  "class_names": [
+    "Tomato___Bacterial_spot",
+    "Tomato___Early_blight",
+    "Tomato___Late_blight",
+    "Tomato___Leaf_Mold",
+    "Tomato___Septoria_leaf_spot",
+    "Tomato___Spider_mites Two-spotted_spider_mite",
+    "Tomato___Target_Spot",
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+    "Tomato___Tomato_mosaic_virus",
+    "Tomato___healthy"
+  ],
+  "artifacts": {
+    "pytorch": {
+      "path": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.pt",
+      "sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687"
+    },
+    "onnx": {
+      "path": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.onnx",
+      "sha256": "537db352736bae025d9c91813bb38efea174fe4937952bc2598bc6d68fcf27d9"
+    }
+  },
+  "training": {
+    "initialization": "GENERIC_PRETRAINED_BASE_ONLY",
+    "historical_tomato_checkpoint_used": false,
+    "image_size": 224,
+    "epochs_completed": 15,
+    "training_device": "CPU"
+  },
+  "dataset": {
+    "train_images": 12684,
+    "validation_images": 2725,
+    "frozen_test_images": 2737,
+    "mapped_leaf_group_cross_split_overlap": 0,
+    "near_duplicate_screen": "PASS",
+    "full_physical_leaf_independence_verified": false
+  },
+  "validation": {
+    "accuracy": 0.994862,
+    "macro_f1": 0.990244,
+    "errors": 14
+  },
+  "final_test": {
+    "status": "CONSUMED",
+    "evaluation_count_for_new_model": 1,
+    "images": 2737,
+    "correct": 2714,
+    "errors": 23,
+    "accuracy": 0.9915966386554622,
+    "balanced_accuracy": 0.9908985098371288,
+    "macro_precision": 0.9890671267991993,
+    "macro_recall": 0.9908985098371288,
+    "macro_f1": 0.9899329671056343,
+    "high_confidence_errors_ge_0_90": 3
+  },
+  "onnx": {
+    "checker": "PASS",
+    "runtime": "PASS",
+    "parity_samples": 50,
+    "class_mismatches": 0,
+    "max_probability_absolute_difference": 5.364418029785156e-07
+  },
+  "explainability": {
+    "method": "GRAD_CAM",
+    "available": true,
+    "preprocessing_parity_verified": true,
+    "qualitative_only": true,
+    "pixel_level_localization_validated": false,
+    "causal_explanation": false
+  },
+  "test_policy": {
+    "test_is_consumed": true,
+    "additional_test_inference_allowed": false,
+    "test_driven_model_reselection": false,
+    "test_driven_retraining": false,
+    "test_driven_threshold_tuning": false
+  },
+  "historical_context": {
+    "historical_registry_report": {
+      "path": "reports/model_registry.json",
+      "sha256": "407b71432315429107ef7180203059f41548aae6b6842fd558aacc20c1a38042"
+    },
+    "historical_model_sha256": "a34db932236be048a56816a3a664d4c38ad8663157d1886075e5dca152e51e41",
+    "historical_status": "VALIDATION_COMPLETE_TEST_PENDING",
+    "historical_result_not_reused_as_new_clean_benchmark": true
+  },
+  "scientific_scope": {
+    "plantvillage_leaf_disease_classification": true,
+    "real_greenhouse_validation": false,
+    "water_stress_detection_validated": false,
+    "early_stress_detection_validated": false,
+    "physical_leaf_identity_verified_for_all": false,
+    "globally_pristine_relative_to_all_historical_models": false,
+    "raspberry_pi_runtime_validated": false,
+    "hailo_hef_created": false,
+    "physical_actuation_validated": false
+  },
+  "release_policy": {
+    "registry_mode": "RESEARCH_ONLY",
+    "crop_identity_verified": false,
+    "operational_release_approved": false,
+    "autonomous_actuation_allowed": false,
+    "physical_actuation_allowed": false
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "greenpulse.hardware_handoff.v1",
+  "status": "SOFTWARE_HANDOFF_PREPARED_REAL_HARDWARE_BINDING_PENDING",
+  "discovered_sensor_sources": [
+    "src/create_sensor_contract.py",
+    "src/sensor_contract_guard.py",
+    "src/sensor_feature_engineering.py",
+    "src/sensor_features.py",
+    "src/sensor_history.py",
+    "src/sensor_only_baseline.py",
+    "src/sensor_validator.py",
+    "src/sensor_window.py",
+    "src/vision_sensor_conflict.py"
+  ],
+  "discovered_hardware_sources": [
+    "src/actuator_audit.py",
+    "src/actuator_query.py",
+    "src/actuator_request_contract.py",
+    "src/actuator_simulator.py",
+    "src/hardware_ack_state.py",
+    "src/hardware_action_audit.py",
+    "src/hardware_contract.py"
+  ],
+  "schemas": {
+    "sensor_payload": "release/schemas/sensor_payload_schema_v1.json",
+    "actuator_request": "release/schemas/actuator_request_schema_v1.json",
+    "ack_error": "release/schemas/ack_error_schema_v1.json"
+  },
+  "ack_states": [
+    "ACK",
+    "FAIL",
+    "TIMEOUT"
+  ],
+  "timeout_expectations": {
+    "hardware_timeout_must_not_be_treated_as_success": true,
+    "timeout_must_enter_safe_handling_path": true
+  },
+  "safety_expectations": {
+    "blind_actuation_allowed": false,
+    "actuation_on_invalid_or_stale_input_allowed": false,
+    "safe_mode_monitor_or_manual_review_supported": true,
+    "physical_hardware_validation_complete": false
+  },
+  "claim_boundary": {
+    "simulated_ack_equals_real_ack": false,
+    "real_hardware_integration_complete": false
+  }
+}

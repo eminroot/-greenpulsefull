@@ -1,0 +1,304 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T11:09:13.792034+00:00",
+  "project": "GreenPulse",
+  "purpose": "FINAL_AI_ML_JURY_PACKAGE_CONSISTENCY_QA",
+  "checks_total": 46,
+  "checks_passed": 46,
+  "checks_failed": 0,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "tomato_pt",
+      "category": "MODEL_IDENTITY",
+      "passed": true,
+      "detail": "expected=7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687 actual=7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687"
+    },
+    {
+      "name": "tomato_onnx",
+      "category": "MODEL_IDENTITY",
+      "passed": true,
+      "detail": "expected=537db352736bae025d9c91813bb38efea174fe4937952bc2598bc6d68fcf27d9 actual=537db352736bae025d9c91813bb38efea174fe4937952bc2598bc6d68fcf27d9"
+    },
+    {
+      "name": "pepper_pt",
+      "category": "MODEL_IDENTITY",
+      "passed": true,
+      "detail": "expected=7d04ff121734eb00fc972bbb98e7e0db6101fe68da982e1b8e7fe17992881f9f actual=7d04ff121734eb00fc972bbb98e7e0db6101fe68da982e1b8e7fe17992881f9f"
+    },
+    {
+      "name": "pepper_onnx",
+      "category": "MODEL_IDENTITY",
+      "passed": true,
+      "detail": "expected=3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7 actual=3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7"
+    },
+    {
+      "name": "Tomato frozen-test image count",
+      "category": "TOMATO_METRICS",
+      "passed": true,
+      "detail": "2737"
+    },
+    {
+      "name": "Tomato final accuracy",
+      "category": "TOMATO_METRICS",
+      "passed": true,
+      "detail": "0.9915966386554622"
+    },
+    {
+      "name": "Tomato final Macro F1",
+      "category": "TOMATO_METRICS",
+      "passed": true,
+      "detail": "0.9899329671056343"
+    },
+    {
+      "name": "Tomato final error count",
+      "category": "TOMATO_METRICS",
+      "passed": true,
+      "detail": "23"
+    },
+    {
+      "name": "Tomato final test consumed exactly once",
+      "category": "TOMATO_TEST_POLICY",
+      "passed": true,
+      "detail": "status=CONSUMED, count=1"
+    },
+    {
+      "name": "Pepper frozen-test image count",
+      "category": "PEPPER_METRICS",
+      "passed": true,
+      "detail": "371"
+    },
+    {
+      "name": "Pepper final accuracy",
+      "category": "PEPPER_METRICS",
+      "passed": true,
+      "detail": "0.9811320754716981"
+    },
+    {
+      "name": "Pepper final Macro F1",
+      "category": "PEPPER_METRICS",
+      "passed": true,
+      "detail": "0.9802119764402892"
+    },
+    {
+      "name": "Pepper final error count",
+      "category": "PEPPER_METRICS",
+      "passed": true,
+      "detail": "7"
+    },
+    {
+      "name": "Pepper final test not rerun during refresh",
+      "category": "PEPPER_TEST_POLICY",
+      "passed": true,
+      "detail": "False"
+    },
+    {
+      "name": "Tomato ONNX class mismatches = 0",
+      "category": "ONNX",
+      "passed": true,
+      "detail": "0"
+    },
+    {
+      "name": "Tomato ONNX max probability diff <= 1e-4",
+      "category": "ONNX",
+      "passed": true,
+      "detail": "5.364418029785156e-07"
+    },
+    {
+      "name": "Pepper ONNX Top-1 parity complete",
+      "category": "ONNX",
+      "passed": true,
+      "detail": "50/50"
+    },
+    {
+      "name": "Pepper ONNX maximum probability diff <= threshold",
+      "category": "ONNX",
+      "passed": true,
+      "detail": "1.1920928955078125e-07 <= 0.01"
+    },
+    {
+      "name": "Tomato Grad-CAM uses no frozen-test images",
+      "category": "EXPLAINABILITY",
+      "passed": true,
+      "detail": "0"
+    },
+    {
+      "name": "Tomato Grad-CAM is qualitative only",
+      "category": "EXPLAINABILITY",
+      "passed": true,
+      "detail": "True"
+    },
+    {
+      "name": "Tomato Grad-CAM is not causal explanation",
+      "category": "EXPLAINABILITY",
+      "passed": true,
+      "detail": "False"
+    },
+    {
+      "name": "Pepper Grad-CAM uses no frozen-test images",
+      "category": "EXPLAINABILITY",
+      "passed": true,
+      "detail": "0"
+    },
+    {
+      "name": "Pepper Grad-CAM is qualitative only",
+      "category": "EXPLAINABILITY",
+      "passed": true,
+      "detail": "True"
+    },
+    {
+      "name": "Pepper Grad-CAM is not causal explanation",
+      "category": "EXPLAINABILITY",
+      "passed": true,
+      "detail": "False"
+    },
+    {
+      "name": "Registry mode RESEARCH_ONLY",
+      "category": "REGISTRY",
+      "passed": true,
+      "detail": "RESEARCH_ONLY"
+    },
+    {
+      "name": "Unknown crop policy ABSTAIN",
+      "category": "REGISTRY",
+      "passed": true,
+      "detail": "ABSTAIN"
+    },
+    {
+      "name": "Physical actuation unauthorized",
+      "category": "REGISTRY",
+      "passed": true,
+      "detail": "False"
+    },
+    {
+      "name": "Registry contains exactly tomato + bell_pepper",
+      "category": "REGISTRY",
+      "passed": true,
+      "detail": "['bell_pepper', 'tomato']"
+    },
+    {
+      "name": "Cucumber excluded from current completion scope",
+      "category": "SCOPE",
+      "passed": true,
+      "detail": "['cucumber']"
+    },
+    {
+      "name": "Active learning RESEARCH_ONLY",
+      "category": "ACTIVE_LEARNING",
+      "passed": true,
+      "detail": "RESEARCH_ONLY"
+    },
+    {
+      "name": "Automatic labeling disabled",
+      "category": "ACTIVE_LEARNING",
+      "passed": true,
+      "detail": "False"
+    },
+    {
+      "name": "Automatic retraining disabled",
+      "category": "ACTIVE_LEARNING",
+      "passed": true,
+      "detail": "False"
+    },
+    {
+      "name": "Physical actuation disabled in active learning",
+      "category": "ACTIVE_LEARNING",
+      "passed": true,
+      "detail": "False"
+    },
+    {
+      "name": "All 16 presentation visual hashes intact",
+      "category": "VISUALS",
+      "passed": true,
+      "detail": "16 visual artifacts"
+    },
+    {
+      "name": "Storyline references all 16 visuals exactly",
+      "category": "STORYLINE",
+      "passed": true,
+      "detail": "story=16, available=16"
+    },
+    {
+      "name": "No unsupported operational claims in speaker/proof text",
+      "category": "CLAIM_SAFETY",
+      "passed": true,
+      "detail": "none"
+    },
+    {
+      "name": "transfer advantage not established",
+      "category": "SCIENTIFIC_HONESTY",
+      "passed": true,
+      "detail": "True"
+    },
+    {
+      "name": "Grad-CAM qualitative",
+      "category": "SCIENTIFIC_HONESTY",
+      "passed": true,
+      "detail": "True"
+    },
+    {
+      "name": "research-only / no operation",
+      "category": "SCIENTIFIC_HONESTY",
+      "passed": true,
+      "detail": "True"
+    },
+    {
+      "name": "hardware pending",
+      "category": "SCIENTIFIC_HONESTY",
+      "passed": true,
+      "detail": "True"
+    },
+    {
+      "name": "Current computer-side scope complete",
+      "category": "OVERALL",
+      "passed": true,
+      "detail": "CURRENT_COMPUTER_SIDE_SCOPE_COMPLETE"
+    },
+    {
+      "name": "Real greenhouse remains incomplete",
+      "category": "OVERALL_BOUNDARY",
+      "passed": true,
+      "detail": "False"
+    },
+    {
+      "name": "Water stress remains incomplete",
+      "category": "OVERALL_BOUNDARY",
+      "passed": true,
+      "detail": "False"
+    },
+    {
+      "name": "Hailo deployment remains incomplete",
+      "category": "OVERALL_BOUNDARY",
+      "passed": true,
+      "detail": "False"
+    },
+    {
+      "name": "Physical closed loop remains incomplete",
+      "category": "OVERALL_BOUNDARY",
+      "passed": true,
+      "detail": "False"
+    },
+    {
+      "name": "Operational release remains unapproved",
+      "category": "OVERALL_BOUNDARY",
+      "passed": true,
+      "detail": "False"
+    }
+  ],
+  "scientific_scope": {
+    "verified_scope": "Tomato + Bell Pepper computer-side disease classification",
+    "operational_release_approved": false,
+    "real_greenhouse_validated": false,
+    "water_stress_validated": false,
+    "hailo_runtime_validated": false,
+    "physical_actuation_validated": false
+  },
+  "execution": {
+    "model_loaded": false,
+    "inference_executed": false,
+    "training_executed": false,
+    "frozen_test_images_accessed": false,
+    "source_code_modified": false,
+    "model_artifacts_modified": false
+  }
+}

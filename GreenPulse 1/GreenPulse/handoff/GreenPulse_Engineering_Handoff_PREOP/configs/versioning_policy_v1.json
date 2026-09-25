@@ -1,0 +1,26 @@
+{
+  "schema_version": "greenpulse.versioning_policy.v1",
+  "policy_version": "1.0.0",
+  "mode": "MLOPS_LITE",
+  "full_mlflow_server_required": false,
+  "required_component_categories": [
+    "vision_model",
+    "fusion_model",
+    "forecast_model",
+    "dataset",
+    "config",
+    "api_schema",
+    "system_release"
+  ],
+  "release_requirements": {
+    "git_commit_required": true,
+    "metrics_required": true,
+    "file_hashes_required": true
+  },
+  "claim_guards": {
+    "schema_version_equals_trained_model_version": false,
+    "onnx_exists_equals_operational_release": false,
+    "release_candidate_equals_hailo_approved": false,
+    "missing_git_commit_may_be_fabricated": false
+  }
+}

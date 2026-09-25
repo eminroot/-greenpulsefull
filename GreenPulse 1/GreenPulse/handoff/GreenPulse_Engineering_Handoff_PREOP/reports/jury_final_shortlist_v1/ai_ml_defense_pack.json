@@ -1,0 +1,207 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T11:11:59.503854+00:00",
+  "project": "GreenPulse",
+  "audience": "AI_ML_ARCHITECT_JURY",
+  "source_qa_status": "PASS",
+  "main_visual_count": 7,
+  "defense": [
+    {
+      "slide": 1,
+      "visual": "S01_end_to_end_ai_architecture.png",
+      "purpose": "Prove this is an AI system architecture, not a model demo.",
+      "point_at": [
+        "Vision Pipeline",
+        "Disease Classifier",
+        "Safety Gate",
+        "Human Review",
+        "Hardware BLOCKED"
+      ],
+      "architect_attack_question": "Is your fusion actually trained/calibrated, or is this architecture mostly conceptual?",
+      "backup_visual": "15_verified_vs_pending_matrix.png",
+      "never_say": [
+        "Fully autonomous greenhouse is complete",
+        "Real multimodal fusion is validated",
+        "Closed-loop irrigation is already validated"
+      ],
+      "opening_line_tr": "GreenPulse'un yapay zekâ tarafını tek bir model olarak değil, modüler bir karar sistemi olarak kurduk.",
+      "technical_line_tr": "Görüntü çıkarımı, sensör doğrulama, zaman senkronizasyonu, model kayıt defteri, güvenlik kapısı, aktif öğrenme kuyruğu ve denetim katmanları birbirinden ayrılmıştır.",
+      "answer_tr": "Şu anda hastalık sınıflandırma dalı gerçek kanıta bağlanmıştır. Füzyon için yazılım sözleşmesi mevcuttur; ancak gerçek senkronize sensör-kamera veri kümesi olmadığı için kalibre edilmiş çok modlu füzyon iddiasında bulunmuyoruz. Bu bölümü operasyonel değil, arayüze hazır durumda tutuyoruz."
+    },
+    {
+      "slide": 2,
+      "visual": "S02_frozen_test_protocol.png",
+      "purpose": "Defend final metrics against leakage / test overfitting criticism.",
+      "point_at": [
+        "Validate",
+        "Freeze",
+        "Final Test",
+        "Consume",
+        "Saved predictions only"
+      ],
+      "architect_attack_question": "Did you inspect the test errors and then retrain or tune thresholds?",
+      "backup_visual": "16_model_lifecycle_traceability.png",
+      "never_say": [
+        "The test set was used for optimization",
+        "We improved the model after seeing final-test errors"
+      ],
+      "opening_line_tr": "En güçlü metodolojik yanımız, nihai testin model seçiminden tamamen ayrılmış olmasıdır.",
+      "technical_line_tr": "Aday model, kontrol noktası doğrulama sonuçlarına göre seçildi; test açılmadan önce SHA ile donduruldu, dondurulmuş test bir kez çalıştırıldı ve ardından CONSUMED durumuna geçirildi.",
+      "answer_tr": "Hayır. Testten sonraki hata analizi yalnızca önceden kaydedilmiş tahmin CSV dosyaları üzerinden yapıldı. Test görüntüleri üzerinde ikinci bir çıkarım, yeniden eğitim, yeniden model seçimi veya eşik ayarı yapmadık."
+    },
+    {
+      "slide": 3,
+      "visual": "S03_tomato_final_confusion_matrix.png",
+      "purpose": "Show primary 10-class model performance and failure structure.",
+      "point_at": [
+        "99.1597% accuracy",
+        "Macro F1 = 0.989933",
+        "diagonal cells",
+        "off-diagonal error cells"
+      ],
+      "architect_attack_question": "Why should I trust 99% accuracy on PlantVillage-style data?",
+      "backup_visual": "05_tomato_error_pairs.png",
+      "never_say": [
+        "99.16% real greenhouse accuracy",
+        "The model generalizes to every greenhouse"
+      ],
+      "opening_line_tr": "Ana domates modelimizi 2.737 görüntüden oluşan dondurulmuş nihai testte değerlendirdik.",
+      "technical_line_tr": "Nihai doğruluk %99,1597 ve Makro F1 0,989933'tür. Toplam 23 hata vardır; bu nedenle yalnızca doğruluğu değil, sınıf düzeyindeki karışıklık yapısını da gösteriyoruz.",
+      "answer_tr": "Bu sonucu gerçek sera doğruluğu olarak sunmuyoruz. Bu, sızıntı denetiminden geçirilmiş, ayrılmış bir veri kümesi ölçütüdür. Alan kayması ve gerçek sera doğrulaması ayrı bir bekleyen aşama olarak kayıt altına alınmıştır."
+    },
+    {
+      "slide": 4,
+      "visual": "S04_tomato_gradcam.png",
+      "purpose": "Show qualitative explainability without overstating localization.",
+      "point_at": [
+        "Original image",
+        "Grad-CAM heatmap",
+        "Overlay",
+        "Predicted class"
+      ],
+      "architect_attack_question": "Are you claiming the red regions are segmented disease lesions?",
+      "backup_visual": "08_pepper_gradcam_evidence.png",
+      "never_say": [
+        "Grad-CAM segments the lesion",
+        "Heatmap proves causality"
+      ],
+      "opening_line_tr": "Tahminin yanı sıra modelin hangi bölgelere dikkat ettiğini Grad-CAM ile görsel olarak denetliyoruz.",
+      "technical_line_tr": "Grad-CAM ön işleme adımı, standart Ultralytics sınıflandırma çıkarımı ile eşitlik testinden geçirilmiştir.",
+      "answer_tr": "Hayır. Grad-CAM yalnızca niteliksel bir dikkat tanılamasıdır. Piksel düzeyinde lezyon bölütleme, konumlandırma doğruluğu veya nedensel açıklama iddiasında bulunmuyoruz."
+    },
+    {
+      "slide": 5,
+      "visual": "S05_pepper_transfer_vs_generic.png",
+      "purpose": "Demonstrate scientifically controlled transfer-learning comparison.",
+      "point_at": [
+        "Tomato-initialized curve",
+        "Generic pretrained curve",
+        "identical final validation accuracy"
+      ],
+      "architect_attack_question": "So did transfer learning actually help?",
+      "backup_visual": "04_pepper_final_confusion_matrix.png",
+      "never_say": [
+        "Transfer learning significantly outperformed the baseline",
+        "Backbone freezing proved the advantage"
+      ],
+      "opening_line_tr": "Transfer öğrenmeyi üstün varsayarak kabul etmedik; genel bir temel modelle karşılaştırdık.",
+      "technical_line_tr": "Aynı hedef veri kümesi üzerinde domatesle başlatılan ve genel ön eğitimli adaylar, doğrulamada aynı nihai doğruluğa ulaştı.",
+      "answer_tr": "Doğrulama kanıtı transferin üstünlüğünü göstermedi. Bu nedenle transfer avantajı iddiasında bulunmuyoruz. Transfer deneyi uyarlama yapılabilirliğini gösterir, üstünlüğü değil."
+    },
+    {
+      "slide": 6,
+      "visual": "S06_onnx_parity.png",
+      "purpose": "Prove export consistency before future edge deployment.",
+      "point_at": [
+        "Tomato Top-1 agreement",
+        "Pepper Top-1 agreement",
+        "maximum probability difference"
+      ],
+      "architect_attack_question": "Does this mean your Hailo deployment is already complete?",
+      "backup_visual": "15_verified_vs_pending_matrix.png",
+      "never_say": [
+        "ONNX parity proves Hailo deployment",
+        "Pi latency is validated"
+      ],
+      "opening_line_tr": "Uç birim dağıtımı için modelin yalnızca ONNX dosyasını üretmekle yetinmedik.",
+      "technical_line_tr": "PyTorch ve ONNX çıktıları doğrulama örnekleri üzerinde örnek örnek karşılaştırıldı; her iki üründe de Top-1 tahmin eşitliği elde ettik.",
+      "answer_tr": "Hayır. ONNX eşitliği yalnızca dışa aktarma düzeyindeki tutarlılığı kanıtlar. HEF dönüşümü, Raspberry Pi 5 + Hailo çıkarım gecikmesi, RAM kullanımı ve gerçek donanım çalışma zamanı ayrıca beklemededir."
+    },
+    {
+      "slide": 7,
+      "visual": "S07_final_two_crop_scorecard.png",
+      "purpose": "Close with exact verified scope and numbers.",
+      "point_at": [
+        "Tomato 99.16%",
+        "Tomato Macro F1 0.9899",
+        "Pepper 98.11%",
+        "Pepper Macro F1 0.9802",
+        "RESEARCH_ONLY",
+        "Physical actuation DISABLED"
+      ],
+      "architect_attack_question": "What exactly remains unfinished?",
+      "backup_visual": "15_verified_vs_pending_matrix.png",
+      "never_say": [
+        "GreenPulse is fully finished",
+        "Operational release is approved",
+        "Autonomous irrigation is enabled"
+      ],
+      "opening_line_tr": "Sonuç olarak mevcut bilgisayar tarafı kapsamını iki ürün için kapattık.",
+      "technical_line_tr": "Domates nihai test doğruluğu %99,16, biber ise %98,11'dir. Her iki model için dondurulmuş değerlendirme, ONNX eşitliği, açıklanabilirlik ve kayıt defteri kanıtı mevcuttur.",
+      "answer_tr": "Gerçek sera doğrulaması, kalibre edilmiş su stresi modeli, gerçek çok modlu füzyon, Pi/Hailo donanım doğrulaması, pompa kalibrasyonu ve fiziksel kapalı döngü, operasyonel sürümden önce tamamlanmalıdır."
+    }
+  ],
+  "rapid_fire": [
+    {
+      "question": "Why YOLO11n instead of a standard CNN?",
+      "answer_tr": "YOLO11n sınıflandırma, Ultralytics ekosisteminde hafif bir dağıtım yolu sunduğu için seçildi. Burada nesne tespiti değil, sınıflandırma görevi kullanıyoruz. Seçimin temel pratik nedeni, ileride yapılacak uç birim dışa aktarımıyla uyumluluktur."
+    },
+    {
+      "question": "Is crop recognition automatic?",
+      "answer_tr": "Mevcut sistemde ürün kimliği bağımsız olarak doğrulanmıyor; dışarıdan gelen bir bildirim olarak kabul ediliyor. Bu nedenle yanlış ürün yönlendirme riskini gizlemiyoruz ve bilinmeyen ürün politikasını ABSTAIN olarak bırakıyoruz."
+    },
+    {
+      "question": "What protects you from duplicate leakage?",
+      "answer_tr": "Tam SHA çakışması kontrol edildi, eşlenmiş domates alt kümesinde yaprak grubu ayrık bölme kuruldu ve ek olarak dHash/pHash yakın kopya taraması yapıldı. Ancak eşlenmemiş bölüm için fiziksel yaprak kimliğini kanıtlanmış saymıyoruz."
+    },
+    {
+      "question": "Why is Macro F1 important if accuracy is already high?",
+      "answer_tr": "Doğruluk, baskın sınıfların etkisini gizleyebilir. Makro F1 her sınıfa eşit ağırlık verir ve 10 sınıflı domates modelinde daha dengeli bir genelleme göstergesidir."
+    },
+    {
+      "question": "Do you automatically retrain on difficult samples?",
+      "answer_tr": "Hayır. Düşük güvenli, dağılım dışı ve çelişen durumlar yalnızca insan inceleme kuyruğuna gider. Otomatik etiketleme ve otomatik yeniden eğitim mevcut politikada açıkça devre dışıdır."
+    },
+    {
+      "question": "Can disease confidence directly trigger irrigation?",
+      "answer_tr": "Hayır. Hastalık sınıflandırması su stresi kanıtı değildir. Mevcut güvenlik kapısı özerk fiziksel eyleme izin vermez."
+    },
+    {
+      "question": "Why no cucumber?",
+      "answer_tr": "Mevcut doğrulanmış kapsamı iki üründe bilimsel olarak tam kapatmayı, üçüncü ürünü yarım eklemeye tercih ettik. Salatalık kayıt defterinde yoktur ve ABSTAIN/BLOCK uygulanır."
+    },
+    {
+      "question": "What is your strongest technical contribution?",
+      "answer_tr": "Tek başına yüksek doğruluk değil; sızıntıya duyarlı değerlendirme, dondurulmuş test disiplini, model izlenebilirliği, ONNX eşitliği, açıklanabilirlik ve güvenlik yönetimli yönlendirmeyi aynı yapay zekâ hattında birleştirmemizdir."
+    }
+  ],
+  "terminology": {
+    "say": "YOLO11n classification",
+    "do_not_say": "YOLO object detection",
+    "gradcam": "qualitative attention diagnostic",
+    "onnx": "export parity evidence",
+    "deployment": "RESEARCH_ONLY",
+    "physical_actuation": "DISABLED",
+    "complete_scope": "computer-side disease classification for tomato + bell pepper"
+  },
+  "execution": {
+    "model_loaded": false,
+    "inference_executed": false,
+    "training_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false
+  },
+  "presentation_language": "tr",
+  "language_note": "Sunum metinleri Türkçedir. Önceki sürümde metin Azerice idi ve dosya cp1252/ASCII bir akışa yazıldığı için tüm özel harfler '?' karakterine dönüşmüştü (1.384 karakter). Kayıplı bozulma geri getirilemediği için metin tahmin edilerek onarılmadı; TEKNOFEST sunum dili olan Türkçe ile yeniden yazıldı.",
+  "regenerated_at_utc": "2026-09-24T21:36:17.009472+00:00"
+}

@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "experiment": "NEW_TOMATO_CLEAN_EXPERIMENT_V1",
+  "status": "COMPLETED",
+  "started_at_utc": "2026-09-24T00:02:41.416375+00:00",
+  "model_sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687",
+  "test_manifest_digest": "84ac50126c685e8e11fd0adafb873e57d9f8786ac69dcfed4f5f5080e1e5f97b",
+  "test_images": 2737,
+  "policy": {
+    "one_time_final_evaluation": true,
+    "test_driven_model_reselection": false,
+    "test_driven_retraining": false,
+    "test_driven_threshold_tuning": false
+  },
+  "completed_at_utc": "2026-09-24T00:02:48.659628+00:00",
+  "test_consumed": true,
+  "predictions_saved": 2737,
+  "final_report_sha256": "cbfca02f2eee81ccf09512ba65906167fc68754ad8887dc84eaa1bfa8af2de0c"
+}

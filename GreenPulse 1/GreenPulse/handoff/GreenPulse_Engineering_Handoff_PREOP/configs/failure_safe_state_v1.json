@@ -1,0 +1,39 @@
+{
+  "schema_version": "greenpulse.failure_safe_state_policy.v1",
+  "policy_version": "1.0.0-development",
+  "policy_status": "DEVELOPMENT_ONLY_UNVALIDATED",
+  "allowed_safe_states": [
+    "SAFE_MODE",
+    "MONITOR",
+    "MANUAL_REVIEW"
+  ],
+  "state_priority": [
+    "MONITOR",
+    "MANUAL_REVIEW",
+    "SAFE_MODE"
+  ],
+  "failure_mapping": {
+    "CAMERA_MISSING": "SAFE_MODE",
+    "CAMERA_TIMEOUT": "SAFE_MODE",
+    "BLURRED_IMAGE": "MANUAL_REVIEW",
+    "SENSOR_MISSING": "MANUAL_REVIEW",
+    "SENSOR_INVALID": "MANUAL_REVIEW",
+    "SENSOR_STALE": "MONITOR",
+    "WIFI_FAILURE": "SAFE_MODE",
+    "LOW_CONFIDENCE": "MANUAL_REVIEW",
+    "VISION_SENSOR_CONFLICT": "MANUAL_REVIEW",
+    "DB_FAILURE": "SAFE_MODE",
+    "HARDWARE_TIMEOUT": "SAFE_MODE"
+  },
+  "actuation_policy": {
+    "hardware_dispatch_permitted": false,
+    "physical_actuation_authorized": false,
+    "direct_electrical_control": false,
+    "blind_actuation_permitted": false
+  },
+  "scientific_guardrails": {
+    "policy_operationally_validated": false,
+    "failure_mapping_claimed_optimal": false,
+    "safe_state_engine_claims_real_hardware_validation": false
+  }
+}

@@ -1,0 +1,309 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T23:38:40.788283+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "experiment": "NEW_TOMATO_CLEAN_EXPERIMENT_V1",
+  "partition": "validation",
+  "model": {
+    "checkpoint": "runs/tomato_clean/tomato_clean_v1/weights/best.pt",
+    "sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687"
+  },
+  "counts": {
+    "images": 2725,
+    "correct": 2711,
+    "errors": 14,
+    "high_confidence_errors_ge_0_90": 6
+  },
+  "metrics": {
+    "accuracy": 0.9948623853211009,
+    "balanced_accuracy": 0.9940436783783358,
+    "macro_precision": 0.9868398016069809,
+    "macro_recall": 0.9940436783783358,
+    "macro_f1": 0.9902441791704533,
+    "mean_top1_confidence": 0.9936269995597524
+  },
+  "per_class": {
+    "Tomato___Bacterial_spot": {
+      "support": 320,
+      "tp": 320,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.9968847352024922,
+      "recall": 1.0,
+      "f1": 0.9984399375975038
+    },
+    "Tomato___Early_blight": {
+      "support": 152,
+      "tp": 150,
+      "fp": 4,
+      "fn": 2,
+      "precision": 0.974025974025974,
+      "recall": 0.9868421052631579,
+      "f1": 0.9803921568627451
+    },
+    "Tomato___Late_blight": {
+      "support": 285,
+      "tp": 282,
+      "fp": 1,
+      "fn": 3,
+      "precision": 0.9964664310954063,
+      "recall": 0.9894736842105263,
+      "f1": 0.9929577464788732
+    },
+    "Tomato___Leaf_Mold": {
+      "support": 144,
+      "tp": 144,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.993103448275862,
+      "recall": 1.0,
+      "f1": 0.9965397923875432
+    },
+    "Tomato___Septoria_leaf_spot": {
+      "support": 265,
+      "tp": 262,
+      "fp": 0,
+      "fn": 3,
+      "precision": 1.0,
+      "recall": 0.9886792452830189,
+      "f1": 0.9943074003795066
+    },
+    "Tomato___Spider_mites Two-spotted_spider_mite": {
+      "support": 252,
+      "tp": 247,
+      "fp": 1,
+      "fn": 5,
+      "precision": 0.9959677419354839,
+      "recall": 0.9801587301587301,
+      "f1": 0.988
+    },
+    "Tomato___Target_Spot": {
+      "support": 212,
+      "tp": 211,
+      "fp": 1,
+      "fn": 1,
+      "precision": 0.9952830188679245,
+      "recall": 0.9952830188679245,
+      "f1": 0.9952830188679245
+    },
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+      "support": 803,
+      "tp": 803,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "Tomato___Tomato_mosaic_virus": {
+      "support": 55,
+      "tp": 55,
+      "fp": 5,
+      "fn": 0,
+      "precision": 0.9166666666666666,
+      "recall": 1.0,
+      "f1": 0.9565217391304348
+    },
+    "Tomato___healthy": {
+      "support": 237,
+      "tp": 237,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "confusion_matrix": {
+    "class_order": [
+      "Tomato___Bacterial_spot",
+      "Tomato___Early_blight",
+      "Tomato___Late_blight",
+      "Tomato___Leaf_Mold",
+      "Tomato___Septoria_leaf_spot",
+      "Tomato___Spider_mites Two-spotted_spider_mite",
+      "Tomato___Target_Spot",
+      "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+      "Tomato___Tomato_mosaic_virus",
+      "Tomato___healthy"
+    ],
+    "matrix": [
+      [
+        320,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        150,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        282,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        144,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        262,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        247,
+        0,
+        0,
+        5,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        211,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        803,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        55,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        237
+      ]
+    ]
+  },
+  "most_common_error_pairs": [
+    {
+      "true_class": "Tomato___Spider_mites Two-spotted_spider_mite",
+      "predicted_class": "Tomato___Tomato_mosaic_virus",
+      "count": 5
+    },
+    {
+      "true_class": "Tomato___Late_blight",
+      "predicted_class": "Tomato___Early_blight",
+      "count": 2
+    },
+    {
+      "true_class": "Tomato___Septoria_leaf_spot",
+      "predicted_class": "Tomato___Early_blight",
+      "count": 2
+    },
+    {
+      "true_class": "Tomato___Early_blight",
+      "predicted_class": "Tomato___Bacterial_spot",
+      "count": 1
+    },
+    {
+      "true_class": "Tomato___Early_blight",
+      "predicted_class": "Tomato___Late_blight",
+      "count": 1
+    },
+    {
+      "true_class": "Tomato___Late_blight",
+      "predicted_class": "Tomato___Leaf_Mold",
+      "count": 1
+    },
+    {
+      "true_class": "Tomato___Septoria_leaf_spot",
+      "predicted_class": "Tomato___Target_Spot",
+      "count": 1
+    },
+    {
+      "true_class": "Tomato___Target_Spot",
+      "predicted_class": "Tomato___Spider_mites Two-spotted_spider_mite",
+      "count": 1
+    }
+  ],
+  "scientific_scope": {
+    "validation_only": true,
+    "frozen_test_used": false,
+    "final_test_metric": false,
+    "plantvillage_classification_only": true,
+    "real_greenhouse_validation": false,
+    "water_stress_evidence": false
+  },
+  "execution": {
+    "model_modified": false,
+    "training_executed": false,
+    "test_inference_executed": false
+  }
+}

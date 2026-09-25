@@ -1,0 +1,22 @@
+{
+  "freeze_version": "1.0",
+  "frozen_at_utc": "2026-09-23T21:58:27.334035+00:00",
+  "project": "GreenPulse",
+  "crop": "bell_pepper",
+  "selected_experiment": "pepper_tomato_transfer_v1",
+  "selection_reason": "PIPELINE_CONTINUITY_NOT_SUPERIOR_ACCURACY",
+  "pytorch_sha256": "7d04ff121734eb00fc972bbb98e7e0db6101fe68da982e1b8e7fe17992881f9f",
+  "onnx_sha256": "3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7",
+  "split_manifest_sha256": "c9d599bfdbf0c193fe1dc19e8f520f3ea5d41be351797533162a5b1da2100507",
+  "test_sample_manifest_sha256": "82e41203eb9ecc0f6d1ced0905515aeec19c9e748779aa34de807bf07086c27e",
+  "training_report_sha256": "72943ba0b6e67e9a011c354476aedba19ac93e579ef6934d6f76cdb8f90e4196",
+  "validation_report_sha256": "623eb763f954fe5bd1b800e4855a0db8bdcae50e904005531c1f24126d94c8bc",
+  "comparison_report_sha256": "d863d762e0c8d111928cf6876503eb45d8def9310acadb69683e5038ef03e5c4",
+  "onnx_report_sha256": "2d9d811a85f82b3277e7d1078c0f904462b222eef1ee22f29f07a87193653fe1",
+  "final_test_status": "AUTHORIZED_NOT_EXECUTED",
+  "test_predictions_generated": false,
+  "transfer_advantage_demonstrated": false,
+  "real_greenhouse_validated": false,
+  "operational_release_approved": false,
+  "protocol_sha256": "e72de504d45efd0d7b6b385d20da8d1bbf7dd220a314ea4386e843ab0d7a4629"
+}

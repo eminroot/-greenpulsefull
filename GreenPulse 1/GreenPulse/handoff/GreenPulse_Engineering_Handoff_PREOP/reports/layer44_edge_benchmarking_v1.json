@@ -1,0 +1,89 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T17:58:53.612990+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 44,
+  "layer_name": "Edge Benchmarking",
+  "status": "SOFTWARE_BENCHMARK_FRAMEWORK_COMPLETE_REAL_PI5_HAILO_BENCHMARK_PENDING",
+  "framework": {
+    "schema_version": "greenpulse.edge_benchmark.v1",
+    "preprocessing_latency_contract": true,
+    "hailo_inference_latency_contract": true,
+    "postprocessing_latency_contract": true,
+    "fusion_latency_contract": true,
+    "forecasting_latency_contract": true,
+    "decision_latency_contract": true,
+    "end_to_end_latency_contract": true,
+    "api_latency_contract": true,
+    "process_tree_rss_measurement": true,
+    "peak_process_tree_rss_sampling": true,
+    "cpu_equivalent_measurement": true,
+    "accelerator_usage_field": true,
+    "device_temperature_field": true,
+    "csv_export_supported": true,
+    "jury_summary_export_supported": true
+  },
+  "real_edge_environment": {
+    "hailo_platform_available": false,
+    "hailo_sdk_client_available": false,
+    "hailortcli_available": false,
+    "hef_artifact_count": 0,
+    "raspberry_pi_5_benchmark_executed": false,
+    "ai_hat_plus_benchmark_executed": false,
+    "real_hailo_runtime_measured": false,
+    "accelerator_usage_measured": false,
+    "device_temperature_measured": false
+  },
+  "measurements": {
+    "preprocessing_latency_measured": false,
+    "hailo_inference_latency_measured": false,
+    "postprocessing_latency_measured": false,
+    "fusion_latency_measured": false,
+    "forecasting_latency_measured": false,
+    "decision_latency_measured": false,
+    "end_to_end_latency_measured": false,
+    "api_latency_measured": false,
+    "ram_measured_for_target_runtime": false,
+    "peak_ram_measured_for_target_runtime": false,
+    "cpu_measured_for_target_runtime": false
+  },
+  "required_outputs": {
+    "benchmark_results_csv_path": "reports/benchmark_results.csv",
+    "benchmark_results_csv_generated": false,
+    "jury_summary_path": "reports/benchmark_summary.md",
+    "jury_summary_generated": false,
+    "generation_deferred_until_real_benchmark": true
+  },
+  "tests": {
+    "edge_benchmark_framework": {
+      "count": 13,
+      "result": "PASS"
+    }
+  },
+  "artifacts": {
+    "src/edge_benchmark.py": "ce56ba772d31e9065ab3417cc2b8fb8c0675719da0786fd3d738a61d8809660d",
+    "tests/test_edge_benchmark.py": "9e9c37f36b7ca2b4e9daf419cb18156e54808472a670a0c3a04c1756175e7350",
+    "src/resource_monitor.py": "f3b14381bff2cbec4a5e6f4830ef120ecbbce3170536c87edd5a72e1dcd3a039"
+  },
+  "execution": {
+    "model_loaded": false,
+    "inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "api_server_started": false,
+    "hailo_device_contacted": false,
+    "raspberry_pi_contacted": false,
+    "hardware_command_dispatched": false
+  },
+  "claim_boundary": {
+    "software_benchmark_framework_complete": true,
+    "real_edge_benchmark_complete": false,
+    "benchmark_results_csv_is_real_measurement": false,
+    "jury_summary_is_real_measurement": false,
+    "layer44_fully_complete": false
+  },
+  "blockers": [
+    "REAL_HAILO_RUNTIME_NOT_AVAILABLE",
+    "HEF_ARTIFACT_NOT_AVAILABLE",
+    "RASPBERRY_PI_5_AI_HAT_PLUS_BENCHMARK_NOT_EXECUTED"
+  ]
+}

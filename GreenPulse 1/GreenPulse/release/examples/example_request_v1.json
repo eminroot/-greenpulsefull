@@ -1,0 +1,11 @@
+{
+  "schema_version": "greenpulse.example_request.v1",
+  "illustrative_only": true,
+  "api_route_binding": "PENDING_FINAL_API_ROUTE_FREEZE",
+  "image_ref": "fixture://example-image",
+  "sensors": {
+    "soil_moisture": null,
+    "temperature": null,
+    "humidity": null
+  }
+}

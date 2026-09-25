@@ -1,0 +1,11 @@
+class,train_mapped,train_unmapped,test_mapped,test_unmapped
+Tomato___Bacterial_spot,1691,0,436,0
+Tomato___Early_blight,784,1,215,0
+Tomato___Late_blight,748,786,172,203
+Tomato___Leaf_Mold,780,0,172,0
+Tomato___Septoria_leaf_spot,816,618,184,153
+Tomato___Spider_mites Two-spotted_spider_mite,1356,0,320,0
+Tomato___Target_Spot,0,1116,0,288
+Tomato___Tomato_Yellow_Leaf_Curl_Virus,2170,2087,568,532
+Tomato___Tomato_mosaic_virus,0,307,0,66
+Tomato___healthy,775,486,224,106

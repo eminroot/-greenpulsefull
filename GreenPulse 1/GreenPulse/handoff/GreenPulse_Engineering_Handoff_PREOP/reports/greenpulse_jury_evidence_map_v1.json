@@ -1,0 +1,198 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T11:05:29.858550+00:00",
+  "project": "GreenPulse",
+  "purpose": "AI_ML_ARCHITECT_JURY_EVIDENCE_MAP",
+  "verified_visual_count": 16,
+  "storyline_stage_count": 12,
+  "storyline": [
+    {
+      "order": 1,
+      "section": "SYSTEM OVERVIEW",
+      "title": "What exactly did we build?",
+      "primary_visual": "11_end_to_end_ai_architecture.png",
+      "supporting_visuals": [],
+      "jury_question": "Is this merely a classifier demo, or is there an actual system architecture?",
+      "proof": "GreenPulse contains separate vision, sensor-contract, time-sync, registry, safety-gate, active-learning, audit and hardware-contract layers.",
+      "speaker_line": "GreenPulse'u yalnızca bir YOLO modeli olarak kurmadık. Görüntü çıkarımından model kayıt defterine, güvenlik kapısına, insan incelemeli aktif öğrenmeye, denetime ve donanım sözleşmesine kadar modüler bir yapay zekâ mimarisi kurduk.",
+      "do_not_claim": "Do not say real greenhouse closed-loop operation is already validated."
+    },
+    {
+      "order": 2,
+      "section": "SCIENTIFIC VALIDATION",
+      "title": "How did we prevent test leakage?",
+      "primary_visual": "12_frozen_test_protocol_timeline.png",
+      "supporting_visuals": [
+        "16_model_lifecycle_traceability.png"
+      ],
+      "jury_question": "How do we know your final accuracy was not optimized against the test set?",
+      "proof": "Model selection ended on validation. The final checkpoint was frozen before final-test exposure. Tomato final test was consumed once, and post-test analysis used saved predictions only.",
+      "speaker_line": "En önemli metodolojik kararımız budur: nihai test, model seçimine katılmadı. Kontrol noktası önce donduruldu, test yalnızca bir kez açıldı ve sonraki analizler model çıkarımıyla değil, kaydedilmiş tahminler üzerinden yapıldı.",
+      "do_not_claim": "Do not call the full tomato dataset physically leaf-independent; unmapped physical identity remains unknown."
+    },
+    {
+      "order": 3,
+      "section": "TOMATO TRAINING",
+      "title": "Did the model actually converge?",
+      "primary_visual": "01_tomato_training_evidence.png",
+      "supporting_visuals": [],
+      "jury_question": "What happened during training, and was the reported model simply an old checkpoint?",
+      "proof": "A new tomato clean experiment used a generic pretrained base only; the historical tomato checkpoint was not used.",
+      "speaker_line": "Domates modelini önceki domates kontrol noktasından başlatmadık. Genel ön eğitimli bir temelden temiz bir deney kurduk ve model seçimini doğrulama sonuçlarına dayandırdık.",
+      "do_not_claim": "Do not present training accuracy alone as generalization."
+    },
+    {
+      "order": 4,
+      "section": "TOMATO FINAL PERFORMANCE",
+      "title": "What does the frozen test actually show?",
+      "primary_visual": "03_tomato_final_confusion_matrix.png",
+      "supporting_visuals": [
+        "05_tomato_error_pairs.png",
+        "06_tomato_confidence_profile.png"
+      ],
+      "jury_question": "Where does the 10-class tomato model fail?",
+      "proof": "Frozen final-test accuracy = 0.991597, Macro F1 = 0.989933, with 23 errors across 2,737 images.",
+      "speaker_line": "Yalnızca %99 doğruluk demiyoruz. Karışıklık matrisi ve hata çifti analiziyle modelin tam olarak nerede yanıldığını da gösteriyoruz. 2.737 dondurulmuş test örneğinde 23 hata var.",
+      "do_not_claim": "Do not describe 99.16% as real-greenhouse accuracy."
+    },
+    {
+      "order": 5,
+      "section": "EXPLAINABILITY",
+      "title": "Can we inspect what the network attends to?",
+      "primary_visual": "07_tomato_gradcam_evidence.png",
+      "supporting_visuals": [
+        "08_pepper_gradcam_evidence.png"
+      ],
+      "jury_question": "Is the network relying on plausible image regions?",
+      "proof": "Grad-CAM evidence is generated on validation samples with preprocessing parity to standard YOLO inference.",
+      "speaker_line": "Model kararını yalnızca sınıf etiketi olarak saklamıyoruz. Doğrulama örneklerinde Grad-CAM ile ağın dikkat ettiği bölgeleri görsel olarak denetleyebiliyoruz.",
+      "do_not_claim": "Grad-CAM is qualitative explainability, not lesion segmentation, pixel-level localization or causal proof."
+    },
+    {
+      "order": 6,
+      "section": "TRANSFER LEARNING",
+      "title": "Did transfer learning really improve pepper?",
+      "primary_visual": "02_pepper_transfer_vs_generic.png",
+      "supporting_visuals": [],
+      "jury_question": "Did tomato-to-pepper transfer outperform a generic baseline?",
+      "proof": "Both transfer and generic baseline reached identical validation accuracy; therefore transfer advantage was not claimed.",
+      "speaker_line": "Burada sonucu şişirmedik. Domatesten başlayan transfer modeli ile genel temel model doğrulamada aynı sonucu verdi. Bu nedenle transfer üstünlüğünü kanıtlanmış gibi sunmuyoruz.",
+      "do_not_claim": "Do not claim transfer learning demonstrated superiority."
+    },
+    {
+      "order": 7,
+      "section": "PEPPER FINAL PERFORMANCE",
+      "title": "How well did the second crop generalize?",
+      "primary_visual": "04_pepper_final_confusion_matrix.png",
+      "supporting_visuals": [],
+      "jury_question": "Was the second crop independently evaluated?",
+      "proof": "Pepper frozen final-test accuracy = 0.981132, Macro F1 = 0.980212 on 371 images.",
+      "speaker_line": "İkinci ürünü yalnızca doğrulama sonucuyla kapatmadık. 371 örneklik ayrı bir dondurulmuş testte doğruluk %98,11 ve Makro F1 0,9802 oldu.",
+      "do_not_claim": "Do not claim the pepper result proves performance under greenhouse domain shift."
+    },
+    {
+      "order": 8,
+      "section": "EDGE READINESS",
+      "title": "Will the exported model behave like the PyTorch model?",
+      "primary_visual": "09_onnx_parity_evidence.png",
+      "supporting_visuals": [],
+      "jury_question": "How do you know ONNX export did not alter predictions?",
+      "proof": "Tomato and pepper ONNX validation showed matching Top-1 predictions with extremely small probability differences.",
+      "speaker_line": "Uç birim dağıtımı için yalnızca ONNX dışa aktarımı yapmadık. PyTorch ve ONNX çıktılarını örnek örnek karşılaştırarak tahmin eşitliğini ayrıca doğruladık.",
+      "do_not_claim": "ONNX parity is not Raspberry Pi or Hailo deployment validation."
+    },
+    {
+      "order": 9,
+      "section": "MODEL GOVERNANCE",
+      "title": "What happens when the crop is unsupported?",
+      "primary_visual": "14_registry_routing_safety_gate.png",
+      "supporting_visuals": [],
+      "jury_question": "Will the model blindly make a prediction for any crop?",
+      "proof": "Registry contains tomato and bell pepper only. Unsupported crops, including cucumber in current scope, are blocked under ABSTAIN policy.",
+      "speaker_line": "Sistem bilinmeyen bir ürün gördüğünde en yakın modele zorunlu yönlendirme yapmaz. Kayıt defterinde bulunmayan ürün için politika ABSTAIN/BLOCK'tur.",
+      "do_not_claim": "Crop identity itself is currently an unverified external claim."
+    },
+    {
+      "order": 10,
+      "section": "ACTIVE LEARNING",
+      "title": "How does GreenPulse handle uncertainty?",
+      "primary_visual": "13_active_learning_safety_flow.png",
+      "supporting_visuals": [],
+      "jury_question": "Does the system automatically learn from uncertain samples?",
+      "proof": "Low-confidence, OOD, conflict and image-quality cases can enter a human review queue; automatic labeling and retraining remain disabled.",
+      "speaker_line": "Aktif öğrenmeyi özerk yeniden eğitim olarak kurmadık. Riskli ve belirsiz örnekler insan inceleme kuyruğuna düşer; otomatik etiketleme ve otomatik yeniden eğitim yasaktır.",
+      "do_not_claim": "Do not imply the system self-updates in production."
+    },
+    {
+      "order": 11,
+      "section": "FINAL SCORECARD",
+      "title": "What is complete today?",
+      "primary_visual": "10_two_crop_final_scorecard.png",
+      "supporting_visuals": [],
+      "jury_question": "What are the final verified AI/ML results?",
+      "proof": "Computer-side disease classification is closed for tomato and bell pepper, with model, test, explainability, ONNX and governance evidence. Current deployment mode is RESEARCH-ONLY; operational release is not approved and physical actuation remains disabled.",
+      "speaker_line": "Bugün kapatılmış kapsam iki üründür: domates ve dolmalık biber. Her ikisi için dondurulmuş test, açıklanabilirlik, ONNX eşitliği ve kayıt defteri kanıtı mevcuttur. Mevcut dağıtım durumumuz yalnızca araştırmadır; operasyonel sürüm onaylanmamıştır ve fiziksel eyleme devre dışıdır.",
+      "do_not_claim": "Do not say the complete greenhouse product is finished."
+    },
+    {
+      "order": 12,
+      "section": "SCIENTIFIC BOUNDARY",
+      "title": "What is intentionally not claimed yet?",
+      "primary_visual": "15_verified_vs_pending_matrix.png",
+      "supporting_visuals": [],
+      "jury_question": "Which parts still require hardware and greenhouse validation?",
+      "proof": "Real greenhouse, calibrated water stress, Hailo runtime, physical closed loop and measured savings remain pending.",
+      "speaker_line": "Projenin gücü yalnızca yüksek metriklerde değil, kanıtlamadığımız şeyi iddia etmememizdedir. Bu sütunda yazılım tarafında kapattığımız bölümleri, diğer sütunda ise gerçek donanım geldikten sonra ölçülecek bölümleri ayırdık.",
+      "do_not_claim": "Do not claim 45% water saving, 30% energy saving, early stress detection hours, Hailo latency or <3 GB RAM until physically measured."
+    }
+  ],
+  "rapid_fire": [
+    {
+      "question": "Why YOLO11n?",
+      "answer": "We selected a lightweight Ultralytics classification architecture suitable for later edge deployment. Current ONNX parity is verified; Hailo runtime is not yet validated."
+    },
+    {
+      "question": "Why not use test data during model selection?",
+      "answer": "Because that would bias the reported final estimate. Model selection was validation-only, followed by checkpoint freeze and one-time held-out evaluation."
+    },
+    {
+      "question": "Is Grad-CAM proof of disease localization?",
+      "answer": "No. It is a qualitative attention diagnostic only. We do not claim pixel-level lesion segmentation."
+    },
+    {
+      "question": "Did transfer learning beat the baseline?",
+      "answer": "No demonstrated advantage was observed on validation; both candidates reached identical validation accuracy."
+    },
+    {
+      "question": "Can the current system irrigate autonomously?",
+      "answer": "No. Physical actuation is explicitly disabled in the current research-only software state."
+    },
+    {
+      "question": "What happens for cucumber?",
+      "answer": "Cucumber is outside the current two-crop scope and has no registered model, so routing is blocked under the abstention policy."
+    },
+    {
+      "question": "Does ONNX parity mean Hailo deployment is complete?",
+      "answer": "No. It proves export-level consistency only. HEF conversion, Pi/Hailo latency and memory remain hardware-stage tasks."
+    }
+  ],
+  "unused_visuals": [],
+  "scientific_boundary": {
+    "verified_scope": "Tomato + Bell Pepper computer-side disease classification",
+    "operational_release": false,
+    "real_greenhouse_validated": false,
+    "water_stress_validated": false,
+    "hailo_runtime_validated": false,
+    "physical_closed_loop_validated": false
+  },
+  "execution": {
+    "model_loaded": false,
+    "inference_executed": false,
+    "training_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false
+  },
+  "presentation_language": "tr",
+  "language_note": "Konuşmacı cümleleri Türkçedir. Önceki sürümde metin Azerice idi ve dosya cp1252/ASCII bir akışa yazıldığı için özel harfler '?' karakterine dönüşmüştü. Kayıplı bozulma geri getirilemediği için metin tahmin edilerek onarılmadı; TEKNOFEST sunum dili olan Türkçe ile yeniden yazıldı.",
+  "regenerated_at_utc": "2026-09-24T21:38:07.015823+00:00"
+}

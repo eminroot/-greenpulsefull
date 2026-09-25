@@ -1,0 +1,85 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T21:54:26.581367+00:00",
+  "task": "PEPPER_DISEASE_CLASSIFICATION",
+  "comparison_split": "VALIDATION_ONLY",
+  "validation_images": 371,
+  "validation_leaf_groups": 51,
+  "test_images_evaluated": 0,
+  "split_manifest_sha256": "c9d599bfdbf0c193fe1dc19e8f520f3ea5d41be351797533162a5b1da2100507",
+  "transfer_checkpoint_sha256": "7d04ff121734eb00fc972bbb98e7e0db6101fe68da982e1b8e7fe17992881f9f",
+  "baseline_checkpoint_sha256": "49c5531d34925691745f9c19638068e74bd620347c1c876e003c73318fad9929",
+  "transfer_metrics": {
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall": 1.0,
+    "macro_f1": 1.0,
+    "per_class": {
+      "bacterial_spot": {
+        "support": 149,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "healthy": {
+        "support": 222,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    }
+  },
+  "baseline_metrics": {
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall": 1.0,
+    "macro_f1": 1.0,
+    "per_class": {
+      "bacterial_spot": {
+        "support": 149,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "healthy": {
+        "support": 222,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    }
+  },
+  "transfer_confusion": [
+    [
+      149,
+      0
+    ],
+    [
+      0,
+      222
+    ]
+  ],
+  "baseline_confusion": [
+    [
+      149,
+      0
+    ],
+    [
+      0,
+      222
+    ]
+  ],
+  "paired_results": {
+    "both_correct": 371,
+    "transfer_only_correct": 0,
+    "baseline_only_correct": 0,
+    "both_wrong": 0,
+    "different_predictions": 0
+  },
+  "observed_macro_f1_difference": 0.0,
+  "causal_transfer_advantage_established": false,
+  "real_greenhouse_generalization_verified": false,
+  "water_stress_validated": false
+}

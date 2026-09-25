@@ -1,0 +1,78 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T13:06:27.345744+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 34,
+  "layer_name": "Decision Reason & Multimodal Explainability",
+  "status": "SOFTWARE_ENGINE_COMPLETE_REAL_EXPLAINABILITY_VALIDATION_PENDING",
+  "schema_version": "greenpulse.decision_explainability.v1",
+  "standard_reason_codes": [
+    "VISUAL_STRESS_HIGH",
+    "VISUAL_DELTA_HIGH",
+    "LOW_SOIL_MOISTURE",
+    "HIGH_TEMPERATURE",
+    "RISK_TREND_RISING",
+    "FORECAST_RISK_RISING",
+    "TEMPORAL_CONFIRMATION",
+    "LOW_CONFIDENCE",
+    "IMAGE_QUALITY_LOW",
+    "SENSOR_DATA_INVALID",
+    "VISION_SENSOR_CONFLICT"
+  ],
+  "standard_reason_code_count": 11,
+  "human_explanation": {
+    "method": "DETERMINISTIC_TEMPLATE",
+    "llm_used": false,
+    "control_hot_path_llm": false
+  },
+  "fusion_feature_contributions": {
+    "supported_when_model_and_features_available": true,
+    "fusion_feature_count": 54,
+    "method": "EXACT_STANDARDIZED_LINEAR_LOGIT_DECOMPOSITION",
+    "formula": "contribution_i = ((x_i - train_mean_i) / train_scale_i) * logistic_weight_i",
+    "modality_aggregation": [
+      "vision",
+      "sensor",
+      "temporal"
+    ],
+    "causal_importance": false,
+    "global_feature_importance": false,
+    "real_world_validity_established": false
+  },
+  "scientific_guardrails": {
+    "reason_thresholds_inferred_inside_layer34": false,
+    "reason_flags_require_upstream_logic": true,
+    "disease_confidence_used_as_water_stress": false,
+    "fusion_model_real_world_validated": false,
+    "operational_water_stress_explanation": false,
+    "llm_used_in_control_hot_path": false,
+    "physical_action_authorized": false
+  },
+  "tests": {
+    "framework": "unittest",
+    "test_count": 15,
+    "result": "PASS",
+    "fusion_model_fixture": "SYNTHETIC_UNIT_TEST_ONLY"
+  },
+  "artifacts": {
+    "source": {
+      "path": "src/decision_explainability.py",
+      "sha256": "8a7da3926647e49bbe2027a66b6ef6bda7550401a516e793e6bdd34fd4ed6998"
+    },
+    "tests": {
+      "path": "tests/test_decision_explainability.py",
+      "sha256": "3443087f35ba479f4d15bab98b689cca50dfe052bd3e3af9ba946a472cb4b6a1"
+    }
+  },
+  "execution": {
+    "real_fusion_model_loaded": false,
+    "real_multimodal_inference_executed": false,
+    "real_feature_contributions_generated": false,
+    "vision_model_loaded": false,
+    "vision_inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false,
+    "llm_called": false,
+    "physical_action_executed": false
+  }
+}

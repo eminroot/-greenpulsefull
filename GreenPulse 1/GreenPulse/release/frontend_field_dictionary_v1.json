@@ -1,0 +1,118 @@
+{
+  "schema_version": "greenpulse.frontend_field_dictionary.v1",
+  "status": "SOFTWARE_FIELD_DICTIONARY_PREPARED",
+  "fields": [
+    {
+      "field": "plant_state",
+      "datatype": "string|null",
+      "unit": null,
+      "range": null,
+      "null_behavior": "Explicit null when unavailable; never fabricate a value.",
+      "update_frequency": "Per observation / inference response"
+    },
+    {
+      "field": "confidence",
+      "datatype": "number|null",
+      "unit": null,
+      "range": null,
+      "null_behavior": "Explicit null when unavailable; never fabricate a value.",
+      "update_frequency": "Per observation / inference response"
+    },
+    {
+      "field": "risk",
+      "datatype": "number|object|null",
+      "unit": null,
+      "range": null,
+      "null_behavior": "Explicit null when unavailable; never fabricate a value.",
+      "update_frequency": "Per observation / inference response"
+    },
+    {
+      "field": "trend",
+      "datatype": "string|object|null",
+      "unit": null,
+      "range": null,
+      "null_behavior": "Explicit null when unavailable; never fabricate a value.",
+      "update_frequency": "Per observation / inference response"
+    },
+    {
+      "field": "forecast",
+      "datatype": "object|null",
+      "unit": null,
+      "range": null,
+      "null_behavior": "Explicit null when unavailable; never fabricate a value.",
+      "update_frequency": "Per observation / inference response"
+    },
+    {
+      "field": "sensors",
+      "datatype": "object|null",
+      "unit": null,
+      "range": null,
+      "null_behavior": "Explicit null when unavailable; never fabricate a value.",
+      "update_frequency": "Per observation / inference response"
+    },
+    {
+      "field": "uncertainty",
+      "datatype": "object|null",
+      "unit": null,
+      "range": null,
+      "null_behavior": "Explicit null when unavailable; never fabricate a value.",
+      "update_frequency": "Per observation / inference response"
+    },
+    {
+      "field": "decision",
+      "datatype": "string|object|null",
+      "unit": null,
+      "range": null,
+      "null_behavior": "Explicit null when unavailable; never fabricate a value.",
+      "update_frequency": "Per observation / inference response"
+    },
+    {
+      "field": "reasons",
+      "datatype": "array|string|null",
+      "unit": null,
+      "range": null,
+      "null_behavior": "Explicit null when unavailable; never fabricate a value.",
+      "update_frequency": "Per observation / inference response"
+    },
+    {
+      "field": "model_version",
+      "datatype": "string|object|array|null",
+      "unit": null,
+      "range": null,
+      "null_behavior": "Explicit null when unavailable; never fabricate a value.",
+      "update_frequency": "Per observation / inference response"
+    },
+    {
+      "field": "latency",
+      "datatype": "number|object|null",
+      "unit": "runtime-contract dependent",
+      "range": null,
+      "null_behavior": "Explicit null when unavailable; never fabricate a value.",
+      "update_frequency": "Per observation / inference response"
+    },
+    {
+      "field": "system_status",
+      "datatype": "string|null",
+      "unit": null,
+      "range": null,
+      "null_behavior": "Explicit null when unavailable; never fabricate a value.",
+      "update_frequency": "Per observation / inference response"
+    }
+  ],
+  "widgets": [
+    "live_or_annotated_image",
+    "risk_gauge",
+    "risk_trend",
+    "predicted_risk_horizon",
+    "sensor_cards",
+    "decision_explanation",
+    "last_action",
+    "before_after_intervention",
+    "sustainability_score",
+    "system_health"
+  ],
+  "claim_boundary": {
+    "frontend_rendering_implemented": false,
+    "unknown_ranges_invented": false
+  }
+}

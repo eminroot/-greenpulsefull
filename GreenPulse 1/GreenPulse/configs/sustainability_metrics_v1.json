@@ -1,0 +1,22 @@
+{
+  "schema_version": "greenpulse.sustainability_metrics_policy.v1",
+  "policy_status": "DEVELOPMENT_ONLY_UNVALIDATED",
+  "validated_baseline": {
+    "status": "NOT_AVAILABLE",
+    "water_liters": null,
+    "energy_kwh": null,
+    "source": null
+  },
+  "carbon_methodology": {
+    "emissions_factor_kg_co2e_per_kwh": null,
+    "emissions_factor_source": null,
+    "energy_methodology_documented": false
+  },
+  "claim_policy": {
+    "measured_and_estimated_must_be_explicit": true,
+    "water_savings_require_validated_baseline": true,
+    "carbon_savings_require_emissions_factor": true,
+    "carbon_savings_require_energy_methodology": true,
+    "gamification_must_not_modify_engineering_metrics": true
+  }
+}

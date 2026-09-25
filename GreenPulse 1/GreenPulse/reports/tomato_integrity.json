@@ -1,0 +1,17 @@
+{
+    "total_valid": 18160,
+    "total_corrupted": 0,
+    "classes": {
+        "Tomato___Bacterial_spot": 2127,
+        "Tomato___Early_blight": 1000,
+        "Tomato___healthy": 1591,
+        "Tomato___Late_blight": 1909,
+        "Tomato___Leaf_Mold": 952,
+        "Tomato___Septoria_leaf_spot": 1771,
+        "Tomato___Spider_mites Two-spotted_spider_mite": 1676,
+        "Tomato___Target_Spot": 1404,
+        "Tomato___Tomato_mosaic_virus": 373,
+        "Tomato___Tomato_Yellow_Leaf_Curl_Virus": 5357
+    },
+    "corrupted_files": []
+}

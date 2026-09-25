@@ -1,0 +1,53 @@
+{
+  "_about": "Which ONNX file serves which crop, and what each output class means. Copied from the ML team's GreenPulse package (configs/vision_model_registry_v1.json and the reports it cites) on 2026-09-25. When they ship a new model: drop the .onnx here, update its entry, run tools/check_parity.py.",
+  "_severity": "How much harm the finding does if it is left alone, 0..100. The Pi turns the class probabilities into a leaf risk score as the probability-weighted severity, and the server uses that score as the leaf input of the plant stress score. This ranking is an agronomic first cut, not a measurement: review it with an agronomist before trusting the numbers.",
+
+  "tomato": {
+    "file": "tomato_clean_v1.onnx",
+    "sha256": "537db352736bae025d9c91813bb38efea174fe4937952bc2598bc6d68fcf27d9",
+    "version": "tomato_clean_v1",
+    "architecture": "YOLO11n-cls",
+    "input_size": 224,
+    "classes": [
+      { "name": "Tomato___Bacterial_spot", "code": "bacterial_spot", "severity": 70 },
+      { "name": "Tomato___Early_blight", "code": "early_blight", "severity": 65 },
+      { "name": "Tomato___Late_blight", "code": "late_blight", "severity": 95 },
+      { "name": "Tomato___Leaf_Mold", "code": "leaf_mold", "severity": 55 },
+      { "name": "Tomato___Septoria_leaf_spot", "code": "septoria_leaf_spot", "severity": 60 },
+      { "name": "Tomato___Spider_mites Two-spotted_spider_mite", "code": "spider_mites", "severity": 60 },
+      { "name": "Tomato___Target_Spot", "code": "target_spot", "severity": 60 },
+      { "name": "Tomato___Tomato_Yellow_Leaf_Curl_Virus", "code": "yellow_leaf_curl_virus", "severity": 90 },
+      { "name": "Tomato___Tomato_mosaic_virus", "code": "mosaic_virus", "severity": 85 },
+      { "name": "Tomato___healthy", "code": "healthy", "severity": 0 }
+    ],
+    "evaluation": {
+      "dataset": "PlantVillage tomato, leaf-group split, near-duplicates removed",
+      "train_images": 12684,
+      "validation_images": 2725,
+      "test_images": 2737,
+      "test_accuracy": 0.9916,
+      "test_macro_f1": 0.9899,
+      "source": "reports/tomato_final_test_v1.json"
+    }
+  },
+
+  "pepper": {
+    "file": "pepper_transfer_v1.onnx",
+    "sha256": "3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7",
+    "version": "pepper_transfer_v1",
+    "architecture": "YOLO11n-cls",
+    "input_size": 224,
+    "classes": [
+      { "name": "bacterial_spot", "code": "bacterial_spot", "severity": 70 },
+      { "name": "healthy", "code": "healthy", "severity": 0 }
+    ],
+    "evaluation": {
+      "dataset": "PlantVillage bell pepper, leaf-group split",
+      "train_images": 1731,
+      "test_images": 371,
+      "test_accuracy": 0.9811,
+      "test_macro_f1": 0.9802,
+      "source": "reports/pepper_final_test_v1/final_test_report.json"
+    }
+  }
+}

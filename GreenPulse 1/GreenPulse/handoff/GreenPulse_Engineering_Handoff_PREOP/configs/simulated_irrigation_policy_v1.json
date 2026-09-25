@@ -1,0 +1,11 @@
+{
+  "policy_version": "0.1.0",
+  "mode": "SIMULATION_ONLY",
+  "threshold_status": "SYNTHETIC_TEST_VALUE",
+  "synthetic_low_moisture_below_pct": 30.0,
+  "minimum_consecutive_samples": 3,
+  "max_latest_sample_age_seconds": 120,
+  "max_sample_window_seconds": 600,
+  "minimum_simulated_cooldown_seconds": 1800,
+  "physical_actuation_enabled": false
+}

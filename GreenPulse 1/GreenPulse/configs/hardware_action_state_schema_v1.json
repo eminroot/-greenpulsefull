@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "greenpulse.hardware_action_state.v1",
+  "title": "GreenPulse Hardware ACK Action State",
+  "description": "Canonical action-state view for hardware acknowledgements. Simulation and unverified real-hardware claims remain explicitly distinguished.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "command_id",
+    "observation_id",
+    "plant_id",
+    "target",
+    "action_state",
+    "error_code",
+    "state_timestamp",
+    "ack_origin",
+    "source_status",
+    "simulated",
+    "real_hardware_ack",
+    "real_hardware_ack_validated",
+    "physical_actuation",
+    "backend_surface_allowed",
+    "audit_storage_allowed",
+    "scientific_guardrails"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "greenpulse.hardware_action_state.v1"
+    },
+    "command_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "observation_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "plant_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "target": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "action_state": {
+      "enum": [
+        "EXECUTED",
+        "REJECTED",
+        "FAILED",
+        "TIMEOUT"
+      ]
+    },
+    "error_code": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "state_timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ack_origin": {
+      "enum": [
+        "SIMULATED_TEST_HARNESS",
+        "UNVERIFIED_REAL_HARDWARE_CLAIM"
+      ]
+    },
+    "source_status": {
+      "type": "string"
+    },
+    "simulated": {
+      "type": "boolean"
+    },
+    "real_hardware_ack": {
+      "type": "boolean"
+    },
+    "real_hardware_ack_validated": {
+      "const": false
+    },
+    "physical_actuation": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "backend_surface_allowed": {
+      "const": true
+    },
+    "audit_storage_allowed": {
+      "const": true
+    },
+    "scientific_guardrails": {
+      "type": "object"
+    }
+  }
+}

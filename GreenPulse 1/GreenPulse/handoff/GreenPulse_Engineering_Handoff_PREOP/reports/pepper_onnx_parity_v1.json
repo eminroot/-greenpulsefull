@@ -1,0 +1,327 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T21:57:02.508136+00:00",
+  "task": "PEPPER_DISEASE_CLASSIFICATION",
+  "candidate_selection_reason": "CONTINUITY_WITH_EXISTING_GREENPULSE_PIPELINE",
+  "transfer_advantage_demonstrated": false,
+  "source_checkpoint_sha256": "7d04ff121734eb00fc972bbb98e7e0db6101fe68da982e1b8e7fe17992881f9f",
+  "onnx_checkpoint_sha256": "3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7",
+  "onnx_opset": [
+    18
+  ],
+  "onnx_structural_check_passed": true,
+  "parity_samples": 50,
+  "parity_sample_manifest": [
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\3233e1db-99e9-4107-8711-c8b28a8bfda1___JR_B.Spot 3165.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/3233e1db-99e9-4107-8711-c8b28a8bfda1___JR_B.Spot 3165.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "e65ef7a6ed70584d7ad7f2a06190a006f70f784677a3af7dbcf26cb7b2d36d9f"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\8c7fe94d-5e80-4849-a92c-715d3aaf02a3___JR_B.Spot 3218.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/8c7fe94d-5e80-4849-a92c-715d3aaf02a3___JR_B.Spot 3218.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "a2220e430237f768118e18e13cf40bd06ecd2ce55908217de117d085b1df1a57"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\d563f31e-4aec-4c53-baaa-ab3a3faa2a89___JR_B.Spot 3356.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/d563f31e-4aec-4c53-baaa-ab3a3faa2a89___JR_B.Spot 3356.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "e525b3e6423b91583bf8838b060ae2d537ffb155986872b3241d31ee47023b9a"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\d976cf27-8d18-4ecf-9dd1-c462e807e9a3___NREC_B.Spot 9139.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/d976cf27-8d18-4ecf-9dd1-c462e807e9a3___NREC_B.Spot 9139.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "93860e8f87625c11037844c21fa687fff24c6327993f0d5a742a30e43d9c896b"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\2c13c040-2ce6-47c5-899c-8146cd774f79___NREC_B.Spot 1976.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/2c13c040-2ce6-47c5-899c-8146cd774f79___NREC_B.Spot 1976.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "2bcf512262ea2bd08753bb98bb0cfc117074136aae190c3347b3f2dca2bf79c7"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\602b5122-fee8-4615-aaf1-91dcfd54125f___JR_B.Spot 9066.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/602b5122-fee8-4615-aaf1-91dcfd54125f___JR_B.Spot 9066.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "d75a65dfef2dad40800b20ba9f5b87b5a0e9569f09074ce607ca17f5449dcaf1"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\edddf54c-92cf-4094-b4bb-85e053d7622b___NREC_B.Spot 9215.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/edddf54c-92cf-4094-b4bb-85e053d7622b___NREC_B.Spot 9215.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "b7405498394e14fe3b506cd81322847ced3e04916d99bb83171c7d139d7c54b7"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\b5d5a42e-5d4f-4429-8923-aee42e0a0c5d___NREC_B.Spot 9189.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/b5d5a42e-5d4f-4429-8923-aee42e0a0c5d___NREC_B.Spot 9189.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "93bd1bc50ee40c73b268bdb4fd1cff81bc37c800a5f65051902f38f15db553a5"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\e90ac690-4fbd-4ded-94f2-af7373479164___JR_B.Spot 8931.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/e90ac690-4fbd-4ded-94f2-af7373479164___JR_B.Spot 8931.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "b52791c2eb58e11bf6bbc3742b22489d4fb211b64f30215c5d7a8c6d66d93385"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\d22776e6-5234-4c6b-a196-a04b281c3808___JR_B.Spot 3351.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/d22776e6-5234-4c6b-a196-a04b281c3808___JR_B.Spot 3351.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "4d2764c8d30fb1a8924953560dd6e5b53ecd5766e6dad6cf8a7073677bc085d0"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\bb696cc0-eef2-40e1-a0c0-9df002d0d413___NREC_B.Spot 9243.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/bb696cc0-eef2-40e1-a0c0-9df002d0d413___NREC_B.Spot 9243.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "ed356145ff2ae72e8667f6f9a90f312d99b04ed47c5d453c3bda9469e44a5aac"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\665fd560-82b6-4af9-8f0a-0dbace910cb2___JR_B.Spot 9062.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/665fd560-82b6-4af9-8f0a-0dbace910cb2___JR_B.Spot 9062.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "70b3c6ddfe3af83fba4bb4b28cbce4d29f9e98ca9e54f57f560e1fd26c1a2db8"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\00f2e69a-1e56-412d-8a79-fdce794a17e4___JR_B.Spot 3132.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/00f2e69a-1e56-412d-8a79-fdce794a17e4___JR_B.Spot 3132.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "d1b01e4214316f9fb31bb84258cfd2487f3d7c0558e657196f659d9ba6742b5c"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\284b0fae-ce3c-43e7-acc6-e9a22bd6eb6f___JR_B.Spot 9074.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/284b0fae-ce3c-43e7-acc6-e9a22bd6eb6f___JR_B.Spot 9074.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "7f49bc2bdd95a9d9ad00f54c7be8d571825355e7ab92369ab5dee745d455bfd9"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\2def1cb7-36cf-4aed-a8e5-ad7864721a44___JR_B.Spot 8915.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/2def1cb7-36cf-4aed-a8e5-ad7864721a44___JR_B.Spot 8915.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "488aabf2a1e6a3568fb21daf73b731f9687342f25ae40768f513b4e1fb0a9abb"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\7bbe08c8-ca13-4cb9-89d1-d6e2c2d8c1cc___JR_B.Spot 3215.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/7bbe08c8-ca13-4cb9-89d1-d6e2c2d8c1cc___JR_B.Spot 3215.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "74348b843d8df22a9ef473865d9bf81c002812b303234e1c89dd94eb0960c7f5"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\2b710a19-f4cd-4bcf-afbf-e48face96045___NREC_B.Spot 1931.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/2b710a19-f4cd-4bcf-afbf-e48face96045___NREC_B.Spot 1931.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "2b216166eb66a1323f2265bc513b1e4c2894898248aab8c331e446fa28efe03d"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\c66fe682-9e42-4343-a4d4-add4d6244859___NREC_B.Spot 9131.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/c66fe682-9e42-4343-a4d4-add4d6244859___NREC_B.Spot 9131.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "44700fa307fff94fc19daad9ababa5b83b7e99c6aef55a0c600b97adb4ad4524"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\08485974-1e38-4e34-b296-fadd9cc26942___NREC_B.Spot 9193.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/08485974-1e38-4e34-b296-fadd9cc26942___NREC_B.Spot 9193.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "644f67fa8116bb918d8977d1ce20f5c244dc08795c0dcb25303987b8ba6130db"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\e6a69573-7581-4904-91f1-461aa3ad8038___JR_B.Spot 3349.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/e6a69573-7581-4904-91f1-461aa3ad8038___JR_B.Spot 3349.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "c9efc56b2eed1e44c8f3e5788feca154d8b7a3639c1337a601e065ef8cb3eb91"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\8695a15f-cdb4-444f-817b-7f4fc22a7a7a___NREC_B.Spot 9230.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/8695a15f-cdb4-444f-817b-7f4fc22a7a7a___NREC_B.Spot 9230.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "39ee2bf365f93b2b0e4ebc073cfdba652846c6c86962151d1a1b0bd0de391c9b"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\59b6bff9-4aca-4bf4-a129-21179e9cebae___JR_B.Spot 9069.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/59b6bff9-4aca-4bf4-a129-21179e9cebae___JR_B.Spot 9069.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "cbd35567c6a8f5c398f4d4bf8425a157c6569891dd9593886f57c07cca4b9e2a"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\514076ce-e366-4b68-a736-9346cd9a5f61___NREC_B.Spot 9190.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/514076ce-e366-4b68-a736-9346cd9a5f61___NREC_B.Spot 9190.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "d0a6da4963b63fc6d0db497d97ccf446f8f368c6bdf101ceab19fc625b5bbbf9"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\33af0ec5-80ce-4e3c-ba72-42959820f651___JR_B.Spot 8996.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/33af0ec5-80ce-4e3c-ba72-42959820f651___JR_B.Spot 8996.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "ba3537680267b1887d4cc2dcab05cb6e3a21883614247934a83454750c4559d8"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\bacterial_spot\\4683ce17-7653-4718-95a5-7158f3094640___NREC_B.Spot 9196.JPG",
+      "relative_path": "raw/color/Pepper,_bell___Bacterial_spot/4683ce17-7653-4718-95a5-7158f3094640___NREC_B.Spot 9196.JPG",
+      "class_name": "bacterial_spot",
+      "sha256": "c2413e893fd43d1c1743f10a1037071dc9bc554e97b26443e194b57fd28fc5d2"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\6ce25a21-b7c3-4351-93c3-db7a3246a421___JR_HL 7743.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/6ce25a21-b7c3-4351-93c3-db7a3246a421___JR_HL 7743.JPG",
+      "class_name": "healthy",
+      "sha256": "a9cb5fd61be68c63aa34c25afcef4a247005114419c64d211b12977e1f2e448a"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\ef91d789-9549-42a6-b48e-7695ccd64a1f___JR_HL 7586.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/ef91d789-9549-42a6-b48e-7695ccd64a1f___JR_HL 7586.JPG",
+      "class_name": "healthy",
+      "sha256": "2ea6afcca456b19b2e54a98558214a0566e4cb78233f547a50d5ec3bed603d62"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\7541f271-f44a-4c7c-9602-b64149e9fa2a___JR_HL 7571.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/7541f271-f44a-4c7c-9602-b64149e9fa2a___JR_HL 7571.JPG",
+      "class_name": "healthy",
+      "sha256": "9caed6215bd6617f92098f4318eaa7c8bf4892b4ee82ab825a6cb9ca3495b2a9"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\dc962f4d-1d6a-4304-8977-2925bae01f00___JR_HL 8564.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/dc962f4d-1d6a-4304-8977-2925bae01f00___JR_HL 8564.JPG",
+      "class_name": "healthy",
+      "sha256": "54b8c92e6b80c9b4ceb191115bc96014ee1dd1447f42c658e21ff1dea6e17f48"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\9e0133d9-bd97-40cc-8968-c786c229c6bb___JR_HL 8017.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/9e0133d9-bd97-40cc-8968-c786c229c6bb___JR_HL 8017.JPG",
+      "class_name": "healthy",
+      "sha256": "b8c592f8366c7cf2445c7984fd723239a232e4b915d96c7bc19b37dce730891f"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\c60a1541-bc20-4ab7-9e14-d2ca5e01e14d___JR_HL 8832.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/c60a1541-bc20-4ab7-9e14-d2ca5e01e14d___JR_HL 8832.JPG",
+      "class_name": "healthy",
+      "sha256": "96af66f56571c440d84373e35d08c200c822ebb9ed9286f849907e728548bae7"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\17ed106f-ebaf-4049-a325-efb3040e6303___JR_HL 8307.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/17ed106f-ebaf-4049-a325-efb3040e6303___JR_HL 8307.JPG",
+      "class_name": "healthy",
+      "sha256": "dcdaaa286dd7d3527fda88f10284840b77fad3e3b63f5dd6d6d929b831d91b85"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\d72e75e1-39d2-47bc-ba9c-e341bd5d7390___JR_HL 7660.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/d72e75e1-39d2-47bc-ba9c-e341bd5d7390___JR_HL 7660.JPG",
+      "class_name": "healthy",
+      "sha256": "2f8a0c176ec4a3f6479fe6716665dcae2e770f4a8975eadf81ff173c4c21d9ea"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\6ab630ac-c705-4aa8-82ec-1b618cc400f4___JR_HL 8257.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/6ab630ac-c705-4aa8-82ec-1b618cc400f4___JR_HL 8257.JPG",
+      "class_name": "healthy",
+      "sha256": "a23c02280aa8743c33cba5c3700e754a7880408391971c6f87fdd1cf36833f39"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\1b4b5b1f-9390-46c5-908a-d53b93059f5d___JR_HL 8379.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/1b4b5b1f-9390-46c5-908a-d53b93059f5d___JR_HL 8379.JPG",
+      "class_name": "healthy",
+      "sha256": "f0c8789174debf18bf965840b039b38ef66a1f292c488a84b6b874fbbfe68054"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\a8b32b31-a011-4c51-958d-5b49381278f7___JR_HL 7601.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/a8b32b31-a011-4c51-958d-5b49381278f7___JR_HL 7601.JPG",
+      "class_name": "healthy",
+      "sha256": "3fafcb1fc2e4fb0f6123b67d0c8f815a028588b367e05f6d219709a6f03a2fe1"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\a5b86c20-323a-42b3-8b1b-60fe21f844b3___JR_HL 8476.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/a5b86c20-323a-42b3-8b1b-60fe21f844b3___JR_HL 8476.JPG",
+      "class_name": "healthy",
+      "sha256": "e647233780a87d500d9e1573b535fa4b221f740614a7244a8bbef2c25142c6ef"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\5c8400ba-6824-4c5d-ba27-c92d521c1117___JR_HL 7568.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/5c8400ba-6824-4c5d-ba27-c92d521c1117___JR_HL 7568.JPG",
+      "class_name": "healthy",
+      "sha256": "41285978c8a41637e59a893ae28bbf1c1da6ba289300bdadfba3b48cb60f1db4"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\5b0924fb-73aa-4a83-b79c-cfbf60490e85___JR_HL 8010.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/5b0924fb-73aa-4a83-b79c-cfbf60490e85___JR_HL 8010.JPG",
+      "class_name": "healthy",
+      "sha256": "32498373f936fa50ab5bbfcd05604b17a4e305dda11c68dede756ea7e5139cd5"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\8dbc7b65-24aa-47cf-99c6-dd014e8e60f6___JR_HL 8219.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/8dbc7b65-24aa-47cf-99c6-dd014e8e60f6___JR_HL 8219.JPG",
+      "class_name": "healthy",
+      "sha256": "5b5e35418feadf7316c7badc25741a398ff25112fab986d366e654012c3874c3"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\2d117ef0-5705-4814-b191-1d184204452f___JR_HL 7744.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/2d117ef0-5705-4814-b191-1d184204452f___JR_HL 7744.JPG",
+      "class_name": "healthy",
+      "sha256": "e18cb2ce690892f25df5d24621b6fb7d4ca59c98278f505b50f34c9133fc6f24"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\c7cf9ebb-758a-4179-a054-2f8d9faf8455___JR_HL 8311.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/c7cf9ebb-758a-4179-a054-2f8d9faf8455___JR_HL 8311.JPG",
+      "class_name": "healthy",
+      "sha256": "fe47d6dfc98177c0482d97c8976cc614cf354ebddca8bfc769951c484f9928bb"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\d3fb043a-54e7-400f-83ca-3109f38a5212___JR_HL 7581.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/d3fb043a-54e7-400f-83ca-3109f38a5212___JR_HL 7581.JPG",
+      "class_name": "healthy",
+      "sha256": "ccba142ed86f5691a854e06a96873a2fa5b131f545dc752e9ed754673efd428d"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\d5164fae-b799-4dcd-b66d-1e7643bb0fc3___JR_HL 8215.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/d5164fae-b799-4dcd-b66d-1e7643bb0fc3___JR_HL 8215.JPG",
+      "class_name": "healthy",
+      "sha256": "708a286e20992df09130e41573890cef9666123aaa444f5b29a3100477fc0cd4"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\b0c34863-3cd0-4699-86ea-3999a3350099___JR_HL 7563.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/b0c34863-3cd0-4699-86ea-3999a3350099___JR_HL 7563.JPG",
+      "class_name": "healthy",
+      "sha256": "4f52efcbfd2a12781dd7a76af314df4eb642c4af46e6dc1056d10f94a81591c8"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\5ff1097d-5e9e-40bc-8987-ccf15d465d77___JR_HL 8081.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/5ff1097d-5e9e-40bc-8987-ccf15d465d77___JR_HL 8081.JPG",
+      "class_name": "healthy",
+      "sha256": "9ffdaed6098cc201c1fee8c9e766e6298f56a2cff0960f10c2070babd27912c7"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\0414429e-4295-4216-b2ed-96b21cb35928___JR_HL 8250.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/0414429e-4295-4216-b2ed-96b21cb35928___JR_HL 8250.JPG",
+      "class_name": "healthy",
+      "sha256": "27d8e8c64acefe67a69646066169fedd36301c59b06279f7464952ebb9370920"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\d42c38ac-661e-4af1-8352-0a1fd5c56cd7___JR_HL 8019.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/d42c38ac-661e-4af1-8352-0a1fd5c56cd7___JR_HL 8019.JPG",
+      "class_name": "healthy",
+      "sha256": "d5dcc96521d4da12a44ad099a93bf3ab02937f48046a0109bc170b44369f61ac"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\71c6e89b-d7df-4ae7-87ff-d58fcef032a8___JR_HL 5836.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/71c6e89b-d7df-4ae7-87ff-d58fcef032a8___JR_HL 5836.JPG",
+      "class_name": "healthy",
+      "sha256": "4fa4db7a1711b83f197cc6e52ee692f1fbba938a1a308addb4428bc78a87a746"
+    },
+    {
+      "path": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\datasets\\processed\\pepper_cls_leafgroup_v1\\val\\healthy\\710225f8-f924-428c-a7f0-a0e1169318fe___JR_HL 7985.JPG",
+      "relative_path": "raw/color/Pepper,_bell___healthy/710225f8-f924-428c-a7f0-a0e1169318fe___JR_HL 7985.JPG",
+      "class_name": "healthy",
+      "sha256": "de9effdfcf0ba26fbe8cffcd11e06fabb66cb0d5b3972f0ad861691704f5fe19"
+    }
+  ],
+  "matching_top1_predictions": 50,
+  "maximum_probability_difference": 1.1920928955078125e-07,
+  "maximum_allowed_difference": 0.01,
+  "validation_only": true,
+  "test_images_evaluated": 0,
+  "onnx_runtime_checked_on_cpu": true,
+  "hailo_conversion_completed": false,
+  "raspberry_pi_validated": false,
+  "real_greenhouse_validated": false,
+  "water_stress_validated": false,
+  "operational_release_approved": false
+}

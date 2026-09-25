@@ -1,0 +1,119 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T18:49:23.227842+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 47,
+  "layer_name": "Data Logging & Audit Layer",
+  "status": "SOFTWARE_DATA_LOGGING_AND_AUDIT_COMPLETE_REAL_PRODUCTION_LINEAGE_PENDING",
+  "schema": {
+    "schema_version": "greenpulse.data_logging_audit.v1",
+    "required_table_count": 12,
+    "present_required_table_count": 12,
+    "all_required_tables_present": true,
+    "foreign_keys_enabled_in_audit_connection": false,
+    "required_tables": [
+      "observations",
+      "images",
+      "predictions",
+      "sensor_readings",
+      "risk_scores",
+      "forecasts",
+      "decisions",
+      "commands",
+      "actions",
+      "sustainability_metrics",
+      "system_events",
+      "model_versions"
+    ],
+    "production_table_row_counts": {
+      "observations": 13,
+      "images": 0,
+      "predictions": 0,
+      "sensor_readings": 0,
+      "risk_scores": 0,
+      "forecasts": 0,
+      "decisions": 0,
+      "commands": 0,
+      "actions": 0,
+      "sustainability_metrics": 0,
+      "system_events": 0,
+      "model_versions": 0
+    }
+  },
+  "traceability": {
+    "trace_schema_version": "greenpulse.command_trace.v1",
+    "command_id_to_image_supported": true,
+    "command_id_to_sensor_data_supported": true,
+    "command_id_to_model_version_supported": true,
+    "command_id_to_risk_supported": true,
+    "command_id_to_forecast_supported": true,
+    "command_id_to_decision_supported": true,
+    "production_command_count": 0,
+    "real_production_lineage_validated": false
+  },
+  "writer": {
+    "schema_version": "greenpulse.audit_writer.v1",
+    "atomic_bundle_write_supported": true,
+    "cross_observation_lineage_rejection": true,
+    "broken_id_linkage_rejection": true,
+    "partial_write_rollback": true,
+    "model_version_reuse": true,
+    "input_mutation": false
+  },
+  "tests": {
+    "canonical_schema": {
+      "count": 8,
+      "result": "PASS"
+    },
+    "command_traceability": {
+      "count": 10,
+      "result": "PASS"
+    },
+    "atomic_audit_writer": {
+      "count": 10,
+      "result": "PASS"
+    },
+    "total": {
+      "count": 28,
+      "result": "PASS"
+    }
+  },
+  "artifacts": {
+    "src/data_logging_audit.py": "a78676e7e3e185f367345d947043fd42d56045ce59bb2acfe7641cc6b7ace7b0",
+    "src/audit_traceability.py": "9db4bc3353e9c926ed663b33188ca03b00250aacba6ce92243fd704d7640ba74",
+    "src/data_logging_writer.py": "444f5acd474f733af1a365fcc731f093c4e6812dd727383d0dda16aa5a4d73b7",
+    "tests/test_data_logging_audit.py": "fec6923b6d930f626e16657fe00aa2083bfe5e9c090b8b22c496ae71c95b29db",
+    "tests/test_audit_traceability.py": "e19cf5d46e65b5a9816488738bb046dc4854092ee6c9f9273b4c4718cea3d853",
+    "tests/test_data_logging_writer.py": "e54970670711cb399e2dd00be7919790455d937c3e810786744114a91aef7cc2"
+  },
+  "production_database": {
+    "path": "data/greenpulse.db",
+    "sha256": "f76bdabc80c2b7aa2e537ba760f040dca721d9f0c8ce99e5c393a67f91d95218",
+    "required_tables_present": "12/12",
+    "read_only_during_evidence_generation": true,
+    "modified_by_this_step": false
+  },
+  "execution": {
+    "production_audit_bundle_written": false,
+    "real_command_created": false,
+    "real_hardware_action_created": false,
+    "model_loaded": false,
+    "inference_executed": false,
+    "hardware_contacted": false
+  },
+  "scientific_guardrails": {
+    "synthetic_lineage_claimed_real": false,
+    "in_memory_tests_claimed_production_runtime": false,
+    "empty_or_development_tables_claimed_operational_evidence": false,
+    "simulated_action_claimed_real_hardware_action": false
+  },
+  "claim_boundary": {
+    "canonical_sqlite_schema_complete": true,
+    "command_traceability_software_complete": true,
+    "atomic_logging_writer_complete": true,
+    "production_schema_migration_complete": true,
+    "real_production_lineage_validation_complete": false,
+    "software_layer47_complete": true,
+    "layer47_operationally_validated": false
+  }
+}

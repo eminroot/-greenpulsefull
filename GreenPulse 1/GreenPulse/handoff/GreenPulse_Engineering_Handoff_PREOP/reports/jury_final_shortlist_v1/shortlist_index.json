@@ -1,0 +1,157 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T11:10:27.245824+00:00",
+  "project": "GreenPulse",
+  "purpose": "FINAL_AI_ML_JURY_VISUAL_SHORTLIST",
+  "main_deck_visual_count": 7,
+  "backup_visual_count": 9,
+  "main_deck": [
+    {
+      "order": 1,
+      "source": "11_end_to_end_ai_architecture.png",
+      "destination": "S01_end_to_end_ai_architecture.png",
+      "role": "SYSTEM_ARCHITECTURE",
+      "jury_message": "GreenPulse is a modular AI/ML system, not merely a standalone classifier.",
+      "speaker_cue": "We separated vision inference, sensor contracts, registry routing, safety, active learning, audit and hardware handoff into explicit modules.",
+      "source_path": "reports/jury_architecture_visuals_v1/11_end_to_end_ai_architecture.png",
+      "presentation_path": "reports/jury_final_shortlist_v1/main_deck/S01_end_to_end_ai_architecture.png",
+      "sha256": "9761df9b5da47c81485a02fe8429e3b27bbdba583aea88dbc9056163d01cf2cb"
+    },
+    {
+      "order": 2,
+      "source": "12_frozen_test_protocol_timeline.png",
+      "destination": "S02_frozen_test_protocol.png",
+      "role": "SCIENTIFIC_VALIDATION",
+      "jury_message": "Final metrics were protected from test-set leakage.",
+      "speaker_cue": "Model selection stopped at validation. The final checkpoint was frozen before the held-out test was exposed, and the test was consumed once.",
+      "source_path": "reports/jury_architecture_visuals_v1/12_frozen_test_protocol_timeline.png",
+      "presentation_path": "reports/jury_final_shortlist_v1/main_deck/S02_frozen_test_protocol.png",
+      "sha256": "8f530c47b4777c76f006f97bdd2a030b04a7d5733bfa4eccbb44d88e4e0fb884"
+    },
+    {
+      "order": 3,
+      "source": "03_tomato_final_confusion_matrix.png",
+      "destination": "S03_tomato_final_confusion_matrix.png",
+      "role": "PRIMARY_MODEL_EVIDENCE",
+      "jury_message": "The 10-class tomato classifier is evaluated on 2,737 frozen-test images, not only on validation.",
+      "speaker_cue": "Tomato final-test accuracy is 99.1597%, Macro F1 is 0.989933, with 23 errors.",
+      "source_path": "reports/jury_visuals_v1/03_tomato_final_confusion_matrix.png",
+      "presentation_path": "reports/jury_final_shortlist_v1/main_deck/S03_tomato_final_confusion_matrix.png",
+      "sha256": "c986c9c3a6d936c2e2182f156ae11e183c57852812214366f2847ce75d3d84c0"
+    },
+    {
+      "order": 4,
+      "source": "07_tomato_gradcam_evidence.png",
+      "destination": "S04_tomato_gradcam.png",
+      "role": "EXPLAINABILITY",
+      "jury_message": "Model attention can be qualitatively inspected.",
+      "speaker_cue": "These are validation-only Grad-CAM diagnostics. We use them for visual inspection, not as lesion segmentation or causal evidence.",
+      "source_path": "reports/jury_visuals_v1/07_tomato_gradcam_evidence.png",
+      "presentation_path": "reports/jury_final_shortlist_v1/main_deck/S04_tomato_gradcam.png",
+      "sha256": "d3d10acc46bc48cbbf25f841cf571c7a2c2cdf8ed0dc9f89ee016b75eb2a5d9a"
+    },
+    {
+      "order": 5,
+      "source": "02_pepper_transfer_vs_generic.png",
+      "destination": "S05_pepper_transfer_vs_generic.png",
+      "role": "TRANSFER_LEARNING_EVIDENCE",
+      "jury_message": "Transfer learning was tested against a generic baseline rather than assumed to be superior.",
+      "speaker_cue": "Both candidates achieved identical final validation accuracy, so we explicitly do not claim a demonstrated transfer-learning advantage.",
+      "source_path": "reports/jury_visuals_v1/02_pepper_transfer_vs_generic.png",
+      "presentation_path": "reports/jury_final_shortlist_v1/main_deck/S05_pepper_transfer_vs_generic.png",
+      "sha256": "dfdf62152e56f8daf745acb4a144292b9a822d252527b0ad7b4910adba1f7382"
+    },
+    {
+      "order": 6,
+      "source": "09_onnx_parity_evidence.png",
+      "destination": "S06_onnx_parity.png",
+      "role": "EDGE_EXPORT_EVIDENCE",
+      "jury_message": "Export to ONNX preserves classifier behavior.",
+      "speaker_cue": "Both crops maintained Top-1 parity after ONNX export, with extremely small probability differences.",
+      "source_path": "reports/jury_visuals_v1/09_onnx_parity_evidence.png",
+      "presentation_path": "reports/jury_final_shortlist_v1/main_deck/S06_onnx_parity.png",
+      "sha256": "b5ab32a288ae00b8e49f46c6be62be71d16691260e34109d00b57d527b5c8b4c"
+    },
+    {
+      "order": 7,
+      "source": "10_two_crop_final_scorecard.png",
+      "destination": "S07_final_two_crop_scorecard.png",
+      "role": "FINAL_RESULT",
+      "jury_message": "The current verified computer-side scope is complete for tomato and bell pepper.",
+      "speaker_cue": "Tomato reaches 99.16% final-test accuracy and pepper 98.11%, while deployment remains research-only and physical actuation remains disabled.",
+      "source_path": "reports/jury_visuals_v1/10_two_crop_final_scorecard.png",
+      "presentation_path": "reports/jury_final_shortlist_v1/main_deck/S07_final_two_crop_scorecard.png",
+      "sha256": "90fe3540b961594bd40c74b71b7b6df17f37d274f1586de708afd84c0ffef912"
+    }
+  ],
+  "backup_qa": [
+    {
+      "order": 1,
+      "source": "01_tomato_training_evidence.png",
+      "presentation_path": "reports/jury_final_shortlist_v1/backup_qa/B01_01_tomato_training_evidence.png",
+      "sha256": "eaaaca087ad289767feee617f3c04af8e074423b31177b8d33781f775bd3afb7"
+    },
+    {
+      "order": 2,
+      "source": "04_pepper_final_confusion_matrix.png",
+      "presentation_path": "reports/jury_final_shortlist_v1/backup_qa/B02_04_pepper_final_confusion_matrix.png",
+      "sha256": "209ebeda83050d01e5d7200886b59694ae21145c48bf9b03f629c06ce76c433e"
+    },
+    {
+      "order": 3,
+      "source": "05_tomato_error_pairs.png",
+      "presentation_path": "reports/jury_final_shortlist_v1/backup_qa/B03_05_tomato_error_pairs.png",
+      "sha256": "0309e17bb16017d5e52e9038b1ad4ea25a922c0f1aadb12c1b66605b5126ff26"
+    },
+    {
+      "order": 4,
+      "source": "06_tomato_confidence_profile.png",
+      "presentation_path": "reports/jury_final_shortlist_v1/backup_qa/B04_06_tomato_confidence_profile.png",
+      "sha256": "50793d272f7e61230a15d4cbb25f2dc6255c85ceff4672853528de58accd1cbc"
+    },
+    {
+      "order": 5,
+      "source": "08_pepper_gradcam_evidence.png",
+      "presentation_path": "reports/jury_final_shortlist_v1/backup_qa/B05_08_pepper_gradcam_evidence.png",
+      "sha256": "46b7754cced7f1e37092fe3be904d7e874ce8cb3d9a7f55bcc76bcf19c5af844"
+    },
+    {
+      "order": 6,
+      "source": "13_active_learning_safety_flow.png",
+      "presentation_path": "reports/jury_final_shortlist_v1/backup_qa/B06_13_active_learning_safety_flow.png",
+      "sha256": "d9190bdfe11064e57c39ca5a800d15223c14dbf6171fa405c869eb35d1ec9638"
+    },
+    {
+      "order": 7,
+      "source": "14_registry_routing_safety_gate.png",
+      "presentation_path": "reports/jury_final_shortlist_v1/backup_qa/B07_14_registry_routing_safety_gate.png",
+      "sha256": "81fdde47ea73ef802df587801827e195a00275395e1b4998507ade0bf5274d80"
+    },
+    {
+      "order": 8,
+      "source": "15_verified_vs_pending_matrix.png",
+      "presentation_path": "reports/jury_final_shortlist_v1/backup_qa/B08_15_verified_vs_pending_matrix.png",
+      "sha256": "4dde994890016ec852259e3e24bd893c903a498a1cf31cec7354c11606fbe536"
+    },
+    {
+      "order": 9,
+      "source": "16_model_lifecycle_traceability.png",
+      "presentation_path": "reports/jury_final_shortlist_v1/backup_qa/B09_16_model_lifecycle_traceability.png",
+      "sha256": "6d06f001bb2269b72d0e95c2d1cb91d80e8b0a49518673e0d8b6afce39343dc7"
+    }
+  ],
+  "terminology_guardrail": {
+    "yolo_task": "YOLO11n CLASSIFICATION",
+    "do_not_call_it_object_detection": true,
+    "gradcam": "QUALITATIVE_DIAGNOSTIC_ONLY",
+    "deployment_mode": "RESEARCH_ONLY",
+    "physical_actuation": "DISABLED"
+  },
+  "execution": {
+    "model_loaded": false,
+    "inference_executed": false,
+    "training_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false
+  }
+}

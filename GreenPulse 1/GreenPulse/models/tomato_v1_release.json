@@ -1,0 +1,53 @@
+{
+    "project": "GreenPulse",
+    "version": "1.0",
+    "model": "YOLO11n Classification",
+    "crop_scope": "tomato",
+    "task": "leaf_disease_classification",
+    "input_size": [
+        224,
+        224
+    ],
+    "classes": [
+        "Tomato___Bacterial_spot",
+        "Tomato___Early_blight",
+        "Tomato___Late_blight",
+        "Tomato___Leaf_Mold",
+        "Tomato___Septoria_leaf_spot",
+        "Tomato___Spider_mites Two-spotted_spider_mite",
+        "Tomato___Target_Spot",
+        "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "Tomato___Tomato_mosaic_virus",
+        "Tomato___healthy"
+    ],
+    "pytorch": {
+        "file": "models\\greenpulse_tomato_yolo11n_cls_v1.0.pt",
+        "sha256": "a34db932236be048a56816a3a664d4c38ad8663157d1886075e5dca152e51e41"
+    },
+    "onnx": {
+        "file": "models\\greenpulse_tomato_yolo11n_cls_v1.0.onnx",
+        "sha256": "8c5ebdcf44d31ec8109774fcd2ecbcf6954223254cedf40dcb44cba6bbbd62e7"
+    },
+    "test_results": {
+        "images": 3639,
+        "accuracy": 0.9934047815333883,
+        "macro_f1": 0.990864268369579
+    },
+    "onnx_parity": {
+        "status": "PASS",
+        "agreement": 1.0,
+        "maximum_difference": 2.384185791015625e-07
+    },
+    "deployment": {
+        "hailo_validation": "PENDING",
+        "edge_ram_validation": "PENDING",
+        "autonomous_irrigation": "DISABLED"
+    },
+    "limitations": [
+        "Public dataset benchmark only",
+        "Real greenhouse validation pending",
+        "Early water stress detection not validated",
+        "Some physical leaf identities remain unverified",
+        "Dataset licensing review required before distribution"
+    ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "greenpulse.sensor_payload.v1",
+  "title": "GreenPulse Sensor Payload Handoff",
+  "type": "object",
+  "required": [
+    "timestamp",
+    "readings"
+  ],
+  "properties": {
+    "timestamp": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Observation timestamp. Exact synchronization rules remain tied to the runtime sensor contract."
+    },
+    "readings": {
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "number",
+          "string",
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "source": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true,
+  "x-greenpulse-status": "ABSTRACT_HANDOFF_CONTRACT_PENDING_FINAL_SENSOR_MODEL_SELECTION"
+}

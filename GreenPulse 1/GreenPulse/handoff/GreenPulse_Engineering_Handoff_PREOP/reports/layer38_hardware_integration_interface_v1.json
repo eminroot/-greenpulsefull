@@ -1,0 +1,104 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T15:08:28.328889+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 38,
+  "layer_name": "Hardware Integration Interface",
+  "status": "SOFTWARE_INTERFACE_COMPLETE_REAL_HARDWARE_INTEGRATION_PENDING",
+  "request_schema": "greenpulse.standard_actuator_request.v1",
+  "contract_version": "1.0.0",
+  "required_request_fields": {
+    "command_id": true,
+    "plant_id": true,
+    "action": true,
+    "risk_score": true,
+    "confidence": true,
+    "requested_duration_seconds": true,
+    "reason_codes": true,
+    "decision_version": true
+  },
+  "interface_flow": [
+    "AI_DECISION",
+    "STANDARD_ACTUATOR_REQUEST",
+    "HARDWARE_SAFETY_CHECK",
+    "RELAY_OR_MOSFET_CONTROLLER",
+    "PUMP"
+  ],
+  "safety_boundary": {
+    "ai_direct_electrical_control": false,
+    "ai_controls_relay_or_mosfet": false,
+    "hardware_safety_check_required": true,
+    "ai_permits_hardware_dispatch": false,
+    "ai_authorizes_physical_actuation": false
+  },
+  "operational_request_requirements": {
+    "decision": "IRRIGATION_REQUEST",
+    "validated_risk_score_required": true,
+    "confidence_required": true,
+    "operational_confidence_source": "CALIBRATED_MULTIMODAL_FUSION",
+    "validated_safety_policy_required": true,
+    "decision_version_required": true
+  },
+  "current_operational_state": {
+    "real_multimodal_stress_model": false,
+    "validated_operational_risk_available": false,
+    "operational_safety_policy": false,
+    "real_hardware_connected": false,
+    "real_dispatch_enabled": false,
+    "real_physical_actuation_enabled": false
+  },
+  "ack_boundary": {
+    "command_id_linkage_check": true,
+    "real_hardware_ack_validated": false,
+    "ack_state_semantics_owner": "LAYER_39"
+  },
+  "test_fixture": {
+    "synthetic_request_generation": true,
+    "test_only": true,
+    "synthetic_request_is_real_hardware_evidence": false
+  },
+  "legacy_contract": {
+    "path": "src/hardware_contract.py",
+    "modified": false,
+    "legacy_mode": "SIMULATION_ONLY"
+  },
+  "tests": {
+    "framework": "unittest",
+    "count": 13,
+    "result": "PASS"
+  },
+  "artifacts": {
+    "source": {
+      "path": "src/actuator_request_contract.py",
+      "sha256": "2b3532fd0f71bb39c580a615673d2ca14a178551a304b37e9b7d60044895fbdc"
+    },
+    "schema": {
+      "path": "configs/actuator_request_schema_v2.json",
+      "sha256": "83562072d395b70160ff914a20d8bfb300546ed27e75d5707bfc0e471373aad9"
+    },
+    "tests": {
+      "path": "tests/test_actuator_request_contract.py",
+      "sha256": "5e527e3a8c6787d6daeda2fa29124d76e11e1b771d6e7c333b18e3df2de23dd4"
+    },
+    "legacy_hardware_contract": {
+      "path": "src/hardware_contract.py",
+      "sha256": "154dbe44be60e59d6032d10014dfe088d73f76a031e54722b8a6607c5e48ea38"
+    }
+  },
+  "execution": {
+    "server_started": false,
+    "vision_model_loaded": false,
+    "vision_inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false,
+    "real_hardware_command_dispatched": false,
+    "real_hardware_ack_received": false,
+    "physical_action_executed": false
+  },
+  "scientific_guardrails": {
+    "disease_confidence_accepted_as_operational_stress_confidence": false,
+    "synthetic_request_claimed_as_real_request": false,
+    "simulated_ack_claimed_as_real_ack": false,
+    "physical_action_claimed": false
+  }
+}

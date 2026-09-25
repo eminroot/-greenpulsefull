@@ -1,0 +1,55 @@
+{
+  "contract_version": "0.1.0",
+  "project": "GreenPulse",
+  "hardware_status": "SELECTED_NOT_VERIFIED",
+  "devices": [
+    {
+      "id": 1,
+      "name": "Raspberry Pi 5",
+      "specification": "16 GB",
+      "role": "EDGE_CONTROLLER"
+    },
+    {
+      "id": 2,
+      "name": "Raspberry Pi AI HAT+",
+      "specification": "26 TOPS",
+      "role": "AI_ACCELERATOR"
+    },
+    {
+      "id": 3,
+      "name": "ESP32-CAM + OV2640",
+      "role": "IMAGE_ACQUISITION",
+      "communication_protocol": "NOT_CONFIRMED"
+    },
+    {
+      "id": 4,
+      "name": "12V DC Micro Submersible Pump",
+      "role": "MAIN_IRRIGATION",
+      "operational_control_enabled": false
+    },
+    {
+      "id": 5,
+      "name": "ELEGOO EL-CP-004",
+      "role": "ELECTRONICS_PROTOTYPING"
+    },
+    {
+      "id": 6,
+      "name": "BOJACK 130-Piece Breadboard Set",
+      "role": "ELECTRONICS_PROTOTYPING"
+    },
+    {
+      "id": 7,
+      "name": "Gikfun 12V DC Peristaltic Pump",
+      "role": "CONTROLLED_DOSING",
+      "operational_control_enabled": false
+    }
+  ],
+  "additional_requirements": {
+    "soil_moisture_sensor_model": null,
+    "temperature_sensor_model": null,
+    "humidity_sensor_model": null,
+    "ventilation_hardware": null,
+    "pump_driver_and_power_circuit": null
+  },
+  "real_actuation_authorized": false
+}

@@ -1,0 +1,61 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T11:34:17.492757+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 8,
+  "layer_name": "Plant Baseline / Delta Intelligence",
+  "status": "SOFTWARE_ENGINE_COMPLETE",
+  "implemented_capabilities": [
+    "per-plant healthy baseline",
+    "per-cohort healthy baseline",
+    "minimum healthy-observation requirement",
+    "healthy-only baseline construction",
+    "RGB baseline",
+    "HSV baseline",
+    "texture baseline",
+    "confidence baseline",
+    "validated affected-area baseline when available",
+    "color_delta",
+    "texture_delta",
+    "affected_area_delta",
+    "confidence_delta",
+    "deterministic order-independent aggregation",
+    "mean or median aggregation",
+    "observation provenance",
+    "automatic baseline update blocked"
+  ],
+  "scientific_guardrails": {
+    "synthetic_tests_are_real_plant_validation": false,
+    "baseline_is_early_stress_proof": false,
+    "affected_area_requires_validated_masks": true,
+    "automatic_baseline_mutation": false,
+    "physical_action_authorized": false
+  },
+  "real_data_validation": {
+    "status": "PENDING",
+    "reason": "Requires repeated healthy observations from the same real plant or validated cohort."
+  },
+  "tests": {
+    "framework": "unittest",
+    "test_count": 9,
+    "result": "PASS"
+  },
+  "artifacts": {
+    "source": {
+      "path": "src/plant_baseline.py",
+      "sha256": "2103e447e526d1a086074d24ea180716851ba119abe836d09b9c47951a18b5f8"
+    },
+    "tests": {
+      "path": "tests/test_plant_baseline.py",
+      "sha256": "b61953d234ddae75e4c250bffb20087394517ea49c3d4e58947fbaa098c48112"
+    }
+  },
+  "execution": {
+    "model_loaded": false,
+    "inference_executed": false,
+    "training_executed": false,
+    "frozen_test_images_accessed": false,
+    "real_greenhouse_data_used": false,
+    "model_artifacts_modified": false
+  }
+}

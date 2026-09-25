@@ -1,0 +1,32 @@
+{
+  "schema_version": "greenpulse.safety_policy.v1",
+  "policy_version": "development-unvalidated-v1",
+  "policy_status": "DEVELOPMENT_ONLY_UNVALIDATED",
+  "autonomous_request_enabled": false,
+
+  "minimum_confidence": null,
+  "minimum_risk_score": null,
+  "confirmation_count": null,
+  "cooldown_seconds": null,
+  "maximum_requested_action_duration_seconds": null,
+
+  "require_camera_valid": true,
+  "require_sensor_valid": true,
+
+  "manual_override": {
+    "enabled": true,
+    "allowed_modes": [
+      "NONE",
+      "FORCE_BLOCK",
+      "MANUAL_REVIEW"
+    ],
+    "physical_safety_bypass_allowed": false
+  },
+
+  "scientific_guardrails": {
+    "operational_thresholds_validated": false,
+    "real_hardware_safety_validated": false,
+    "manual_override_can_bypass_physical_safety": false,
+    "physical_actuation_authorized": false
+  }
+}

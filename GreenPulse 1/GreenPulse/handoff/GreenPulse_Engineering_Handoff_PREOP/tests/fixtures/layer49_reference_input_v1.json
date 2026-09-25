@@ -1,0 +1,17 @@
+{
+  "schema_version": "greenpulse.layer49.reference_input.v1",
+  "image": {
+    "image_id": "L49-IMG-001",
+    "image_path": "fixture://layer49/reference_leaf_001",
+    "image_sha256": "REFERENCE_FIXTURE_NO_REAL_IMAGE_HASH"
+  },
+  "sensor": {
+    "sensor_reading_id": "L49-SENSOR-001",
+    "sensor_id": "SIM-SOIL-001",
+    "sensor_type": "soil_moisture",
+    "value": 42.0,
+    "unit": "percent",
+    "source": "SIMULATED",
+    "validation_status": "VALID_SIMULATED"
+  }
+}

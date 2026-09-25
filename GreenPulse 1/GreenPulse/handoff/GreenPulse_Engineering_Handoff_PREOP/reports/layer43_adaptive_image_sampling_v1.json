@@ -1,0 +1,123 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T16:16:30.503330+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 43,
+  "layer_name": "Adaptive Image Sampling",
+  "status": "SOFTWARE_ADAPTIVE_SAMPLING_COMPLETE_REAL_RESOURCE_AND_RESPONSE_VALIDATION_PENDING",
+  "canonical_contracts": {
+    "policy": "greenpulse.adaptive_sampling_policy.v1",
+    "decision": "greenpulse.adaptive_sampling_decision.v1",
+    "audit": "greenpulse.adaptive_sampling_audit.v1",
+    "scheduler": "greenpulse.adaptive_sampling_scheduler.v1"
+  },
+  "policy": {
+    "policy_version": "1.0.0-development",
+    "policy_status": "DEVELOPMENT_ONLY_UNVALIDATED",
+    "intervals_seconds": {
+      "stable_healthy": 900,
+      "normal": 300,
+      "elevated": 120,
+      "high": 30
+    },
+    "risk_thresholds": {
+      "elevated": 40.0,
+      "high": 70.0
+    },
+    "forecast_thresholds": {
+      "elevated": 40.0,
+      "high": 70.0
+    },
+    "thresholds_operationally_validated": false
+  },
+  "adaptive_behavior": {
+    "stable_healthy_lower_frequency": true,
+    "rising_risk_higher_frequency": true,
+    "rising_trend_higher_frequency": true,
+    "rising_forecast_higher_frequency": true,
+    "high_signal_shortest_configured_interval": true,
+    "disease_healthy_label_alone_reduces_frequency": false
+  },
+  "auditability": {
+    "config_driven": true,
+    "decision_id": true,
+    "reason_codes": true,
+    "policy_version": true,
+    "input_summary": true,
+    "durable_sqlite_audit": true,
+    "duplicate_decision_overwrite": false,
+    "read_recent": true,
+    "read_by_decision_id": true
+  },
+  "scheduler": {
+    "durable_queue": true,
+    "pending_state": true,
+    "superseded_state": true,
+    "consumed_state": true,
+    "new_decision_supersedes_old_pending_for_same_plant": true,
+    "different_plants_independent": true,
+    "camera_triggered_by_scheduler": false,
+    "image_captured_by_scheduler": false,
+    "inference_triggered_by_scheduler": false
+  },
+  "real_world_validation": {
+    "cpu_reduction_measured": false,
+    "storage_reduction_measured": false,
+    "network_reduction_measured": false,
+    "energy_reduction_measured": false,
+    "response_quality_preservation_validated": false,
+    "real_camera_cadence_validated": false,
+    "real_greenhouse_sampling_validated": false
+  },
+  "tests": {
+    "adaptive_sampling_policy": {
+      "count": 11,
+      "result": "PASS"
+    },
+    "adaptive_sampling_audit": {
+      "count": 10,
+      "result": "PASS"
+    },
+    "adaptive_sampling_scheduler": {
+      "count": 11,
+      "result": "PASS"
+    },
+    "total": {
+      "count": 32,
+      "result": "PASS"
+    }
+  },
+  "artifacts": {
+    "configs/adaptive_sampling_v1.json": "b90035e9c1c74843adbb56914db676570cd4cb55dda49f6c34d71951cf8cc0fb",
+    "src/adaptive_sampling.py": "09d607ec037d4c7347b8fb1221e42ed34802a8192de5929f29f8de1eec89db15",
+    "src/adaptive_sampling_audit.py": "cd0280e88a0662a1c75f62fe05c1da5e4079afceb6e9ee50a999350d77030656",
+    "src/adaptive_sampling_scheduler.py": "de4d70169275ed5f5dcc46581e74a3ac06a15ee3712090eb6c8c99020b9f6dbd",
+    "tests/test_adaptive_sampling.py": "ce1a68773c7f5d550ccf409d89da859de6b61bcc7cc69778ce8940a30425b1bc",
+    "tests/test_adaptive_sampling_audit.py": "9ace301102641a671808c1622a811e725f4adce1b8b70f20eccc5775f41276a7",
+    "tests/test_adaptive_sampling_scheduler.py": "82aea1f4722d779b156f1ae0a3c903861448d15890be638f2d1c5c976c35080b"
+  },
+  "execution": {
+    "production_database_modified": false,
+    "camera_contacted": false,
+    "image_captured": false,
+    "inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "runtime_scheduler_loop_executed": false,
+    "hardware_contacted": false
+  },
+  "scientific_guardrails": {
+    "resource_savings_claimed": false,
+    "energy_savings_claimed": false,
+    "response_quality_preservation_claimed": false,
+    "development_thresholds_claimed_as_operational": false,
+    "disease_classification_used_as_water_stress_proof": false
+  },
+  "claim_boundary": {
+    "software_policy_framework_complete": true,
+    "software_audit_framework_complete": true,
+    "software_scheduler_framework_complete": true,
+    "real_efficiency_validation_complete": false,
+    "real_response_quality_validation_complete": false,
+    "layer43_fully_operationally_validated": false
+  }
+}

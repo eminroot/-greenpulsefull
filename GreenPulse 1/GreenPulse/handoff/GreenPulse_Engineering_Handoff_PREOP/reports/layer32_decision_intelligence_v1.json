@@ -1,0 +1,92 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T12:50:04.139377+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 32,
+  "layer_name": "Decision Intelligence Engine",
+  "status": "SOFTWARE_ENGINE_COMPLETE_REAL_DECISION_VALIDATION_PENDING",
+  "decision_version": "greenpulse.decision_intelligence.v1",
+  "outputs": [
+    "IRRIGATION_REQUEST",
+    "MANUAL_REVIEW",
+    "MONITOR",
+    "NO_ACTION",
+    "RECHECK",
+    "WARNING"
+  ],
+  "inputs": [
+    "vision result",
+    "fusion risk band",
+    "forecast",
+    "temporal consistency",
+    "uncertainty",
+    "sensor validity",
+    "safety state"
+  ],
+  "implemented_logic": [
+    "manual review for RECHECK_REQUIRED uncertainty",
+    "RECHECK for vision/sensor conflict",
+    "RECHECK for invalid operational sensor state",
+    "RECHECK for unvalidated/unknown vision state",
+    "RECHECK when validated risk band is unavailable",
+    "RECHECK for UNCERTAIN model state",
+    "RECHECK for incomplete temporal confirmation",
+    "WARNING when ACTION-level risk cannot safely form a request",
+    "WARNING for validated warning band",
+    "MONITOR for validated monitor band",
+    "NO_ACTION for validated no-action band",
+    "logical IRRIGATION_REQUEST only after all request prerequisites"
+  ],
+  "irrigation_request_contract": {
+    "logical_ai_request_only": true,
+    "hardware_command": false,
+    "dispatch_permitted": false,
+    "physical_actuation": false
+  },
+  "determinism": {
+    "same_validated_inputs_same_output": true,
+    "timestamp_added_inside_decision": false,
+    "versioned_logic": true
+  },
+  "current_operational_constraints": {
+    "validated_operational_risk_thresholds_available": false,
+    "real_forecast_validated": false,
+    "current_safety_gate_action": "NO_AUTONOMOUS_ACTION",
+    "real_irrigation_request_authorized": false,
+    "hardware_dispatch_enabled": false
+  },
+  "scientific_guardrails": {
+    "risk_thresholds_invented_inside_layer32": false,
+    "disease_confidence_used_as_water_stress": false,
+    "unvalidated_forecast_can_request_irrigation": false,
+    "uncertainty_can_request_irrigation": false,
+    "simulated_sensor_can_request_operational_irrigation": false,
+    "physical_action_authorized": false
+  },
+  "tests": {
+    "framework": "unittest",
+    "test_count": 15,
+    "result": "PASS",
+    "irrigation_request_path": "SYNTHETIC_LOGIC_UNIT_TEST_ONLY"
+  },
+  "artifacts": {
+    "source": {
+      "path": "src/decision_intelligence.py",
+      "sha256": "378c3b96ca4a6227b43bf4ba71c9756f693c2a265d12db6d92ea97b33b228ed6"
+    },
+    "tests": {
+      "path": "tests/test_decision_intelligence.py",
+      "sha256": "a45bb2f1c653bf39c429b74fc36675233c15458ab3b6b934192ca540e06d3f22"
+    }
+  },
+  "execution": {
+    "real_irrigation_request_generated": false,
+    "hardware_command_generated": false,
+    "hardware_dispatch_performed": false,
+    "physical_action_executed": false,
+    "vision_model_loaded": false,
+    "vision_inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false
+  }
+}

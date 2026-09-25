@@ -1,0 +1,70 @@
+{
+  "version": "1.0",
+  "mode": "RESEARCH_ONLY",
+  "crop_identity_source": "UNVERIFIED_EXTERNAL_CLAIM",
+  "unknown_crop_policy": "ABSTAIN",
+  "actuation_authorized": false,
+  "models": {
+    "tomato": {
+      "crop": "tomato",
+      "class_count": 10,
+      "class_names": [
+        "Tomato___Bacterial_spot",
+        "Tomato___Early_blight",
+        "Tomato___Late_blight",
+        "Tomato___Leaf_Mold",
+        "Tomato___Septoria_leaf_spot",
+        "Tomato___Spider_mites Two-spotted_spider_mite",
+        "Tomato___Target_Spot",
+        "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "Tomato___Tomato_mosaic_virus",
+        "Tomato___healthy"
+      ],
+      "pytorch": {
+        "path": "models/greenpulse_tomato_yolo11n_cls_v1.0.pt",
+        "sha256": "a34db932236be048a56816a3a664d4c38ad8663157d1886075e5dca152e51e41"
+      },
+      "onnx": {
+        "path": "models/greenpulse_tomato_yolo11n_cls_v1.0.onnx",
+        "sha256": "8c5ebdcf44d31ec8109774fcd2ecbcf6954223254cedf40dcb44cba6bbbd62e7"
+      },
+      "evidence": [],
+      "operational_release_approved": false
+    },
+    "bell_pepper": {
+      "crop": "bell_pepper",
+      "class_count": 2,
+      "class_names": [
+        "bacterial_spot",
+        "healthy"
+      ],
+      "pytorch": {
+        "path": "models/release_candidates/pepper_transfer_v1/pepper_transfer_v1.pt",
+        "sha256": "7d04ff121734eb00fc972bbb98e7e0db6101fe68da982e1b8e7fe17992881f9f"
+      },
+      "onnx": {
+        "path": "models/release_candidates/pepper_transfer_v1/pepper_transfer_v1.onnx",
+        "sha256": "3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7"
+      },
+      "evidence": [
+        {
+          "path": "reports/pepper_candidate_freeze_v1.json",
+          "sha256": "30e6b8bff76a3a63530ba8cb3f88a3872ffac5d570a5946f05506b0c4c8767b8"
+        },
+        {
+          "path": "reports/pepper_final_test_v1/final_test_report.json",
+          "sha256": "47565809bfad1960f9d41808a4aac50c4c5f38a9655e004dd07dd69e0f2ef34e"
+        },
+        {
+          "path": "reports/pepper_posttest_review_v1/posttest_audit.json",
+          "sha256": "eac7ab289345c466ecbf5a5c026f277fdef52b841688f9e0772d5d4abf4e5de1"
+        },
+        {
+          "path": "reports/pepper_onnx_parity_v1.json",
+          "sha256": "2d9d811a85f82b3277e7d1078c0f904462b222eef1ee22f29f07a87193653fe1"
+        }
+      ],
+      "operational_release_approved": false
+    }
+  }
+}

@@ -1,0 +1,385 @@
+{
+  "schema_version": "greenpulse.system_release_manifest.v1",
+  "system_release_id": "greenpulse.system_release.v1",
+  "release_status": "DRAFT_BLOCKED_GIT_PROVENANCE",
+  "registry": {
+    "schema_version": "greenpulse.version_registry.v1",
+    "system_release_id": "greenpulse.system_release.v1",
+    "git": {
+      "git_available": true,
+      "inside_repository": false,
+      "commit": null,
+      "branch": null,
+      "working_tree_dirty": null
+    },
+    "components": [
+      {
+        "component_type": "vision_model",
+        "component_id": "tomato_clean_v1",
+        "artifact_path": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.onnx",
+        "sha256": "537db352736bae025d9c91813bb38efea174fe4937952bc2598bc6d68fcf27d9",
+        "schema_version": null,
+        "trained_model_version": "tomato_clean_v1",
+        "status": "COMPUTER_SIDE_RESEARCH_MODEL_OPERATIONAL_RELEASE_NOT_APPROVED",
+        "operational_release_approved": false,
+        "metrics": {
+          "accuracy": 0.9915966386554622,
+          "macro_f1": 0.9899329671056343,
+          "scope": "FROZEN_DISEASE_CLASSIFICATION_TEST"
+        }
+      },
+      {
+        "component_type": "vision_model",
+        "component_id": "pepper_transfer_v1",
+        "artifact_path": "models/release_candidates/pepper_transfer_v1/pepper_transfer_v1.onnx",
+        "sha256": "3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7",
+        "schema_version": null,
+        "trained_model_version": "pepper_transfer_v1",
+        "status": "COMPUTER_SIDE_RESEARCH_MODEL_OPERATIONAL_RELEASE_NOT_APPROVED",
+        "operational_release_approved": false,
+        "metrics": {
+          "accuracy": 0.9811320754716981,
+          "macro_f1": 0.9802119764402892,
+          "scope": "FROZEN_DISEASE_CLASSIFICATION_TEST"
+        }
+      },
+      {
+        "component_type": "fusion_model",
+        "component_id": "greenpulse.multimodal_stress_fusion_model.v1",
+        "artifact_path": "src/multimodal_fusion_model.py",
+        "sha256": "109638f6373ca68d85c467112e8d0fa5eb63159c706f7a89c45e3aaf4c3ae7db",
+        "schema_version": "greenpulse.multimodal_stress_fusion_model.v1",
+        "trained_model_version": null,
+        "status": "SOFTWARE_FRAMEWORK_COMPLETE_REAL_VALIDATION_PENDING",
+        "operational_release_approved": false,
+        "metrics": null
+      },
+      {
+        "component_type": "forecast_model",
+        "component_id": "greenpulse.predictive_plant_risk.v1",
+        "artifact_path": "src/predictive_risk.py",
+        "sha256": "87d5e5ab9692e72db9cc7f744731c355f7df8e331634f16b37dceacd833f0745",
+        "schema_version": "greenpulse.predictive_plant_risk.v1",
+        "trained_model_version": null,
+        "status": "SOFTWARE_FRAMEWORK_COMPLETE_REAL_FORECAST_VALIDATION_PENDING",
+        "operational_release_approved": false,
+        "metrics": null
+      },
+      {
+        "component_type": "dataset",
+        "component_id": "tomato_training_dataset_v1",
+        "artifact_path": "reports/tomato_training_dataset_v1.json",
+        "sha256": "1e8c77fb5918283d5785e66d7320a6635816e39d97af5510691cf74db8620df1",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_DATASET_MANIFEST",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "dataset",
+        "component_id": "pepper_training_dataset_v1",
+        "artifact_path": "reports/pepper_training_dataset_v1.json",
+        "sha256": "d078bc5c2b091deda618a3843ecc25cb7eeaa4265824df2658aa3b81d755e04c",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_DATASET_MANIFEST",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/ack_error_schema_v1.json",
+        "artifact_path": "configs/ack_error_schema_v1.json",
+        "sha256": "b6d63ac8cffc518cfcf54ec791e80ca205a87726f102d1614a7874bc31c57233",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/active_learning_policy_v1.json",
+        "artifact_path": "configs/active_learning_policy_v1.json",
+        "sha256": "abd6071be064efc3614f95947bd4e780402696707d92e82992a2c0c38e6d10b1",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/actuator_request_schema_v2.json",
+        "artifact_path": "configs/actuator_request_schema_v2.json",
+        "sha256": "83562072d395b70160ff914a20d8bfb300546ed27e75d5707bfc0e471373aad9",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/actuator_schema_v1.json",
+        "artifact_path": "configs/actuator_schema_v1.json",
+        "sha256": "ed2800eb06e4b07ccee4d80f7af594f2ba8ebc1fb1add506b2bdf7bcc0be6fb5",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/adaptive_sampling_v1.json",
+        "artifact_path": "configs/adaptive_sampling_v1.json",
+        "sha256": "b90035e9c1c74843adbb56914db676570cd4cb55dda49f6c34d71951cf8cc0fb",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/closed_loop_response_schema_v1.json",
+        "artifact_path": "configs/closed_loop_response_schema_v1.json",
+        "sha256": "9b1661c5f20d3e59cc355f47267e5e7a6e518c3981e38f5954b80986758ffc98",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/crop_adaptation_protocol_v1.json",
+        "artifact_path": "configs/crop_adaptation_protocol_v1.json",
+        "sha256": "12ebabc5888ee504f4fe939d3092483ea13e2b704f124856dcd06d5b15fcc0fb",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/failure_safe_state_v1.json",
+        "artifact_path": "configs/failure_safe_state_v1.json",
+        "sha256": "69c7401bc496c0a0779c3b0648caaf14bcb7fab9852339890f774be494a7781f",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/hailo_edge_approval_TEMPLATE_v1.json",
+        "artifact_path": "configs/hailo_edge_approval_TEMPLATE_v1.json",
+        "sha256": "5ba6dec920378162604d4ed759a9c3daebab4a15045bcce3a8ea40fb47c2b52e",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/hardware_action_state_schema_v1.json",
+        "artifact_path": "configs/hardware_action_state_schema_v1.json",
+        "sha256": "6042a05dd1a57a1c3a273a2b6410614354b86c22f5fa85e2cf185bfb856f6e61",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/pepper_final_test_protocol_v1.json",
+        "artifact_path": "configs/pepper_final_test_protocol_v1.json",
+        "sha256": "e72de504d45efd0d7b6b385d20da8d1bbf7dd220a314ea4386e843ab0d7a4629",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/pepper_transfer_experiment_v1.json",
+        "artifact_path": "configs/pepper_transfer_experiment_v1.json",
+        "sha256": "2686906d0c806e7e3dc9962611fbdee1553ed98dbd37a8af304f95a2947228c9",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/real_multimodal_sample_schema_v1.json",
+        "artifact_path": "configs/real_multimodal_sample_schema_v1.json",
+        "sha256": "96eb29aac677da2d67c339277a0cb64657986726e7df17658c258d9891a3d552",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/safety_policy.yaml",
+        "artifact_path": "configs/safety_policy.yaml",
+        "sha256": "dfffb39dcbc888600ceeaebcc5d8283827ad17566ba47655948930b403181082",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/sensor_schema_v1.json",
+        "artifact_path": "configs/sensor_schema_v1.json",
+        "sha256": "6fcfef5b85adc7fa08d29fdfa925b4f139f6705273f045f2be8217e89b399e63",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/simulated_irrigation_policy_v1.json",
+        "artifact_path": "configs/simulated_irrigation_policy_v1.json",
+        "sha256": "dee952f113d9f0fbe201b95899f71300f88506a2d651fa850772243b8c6a493e",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/system_release_v1.json",
+        "artifact_path": "configs/system_release_v1.json",
+        "sha256": "eef60a9086830f0bc6afc2c565eef0310b1054bd0d27e3eeb9a80d7b569dfaf7",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/tomato_clean_training_v1.json",
+        "artifact_path": "configs/tomato_clean_training_v1.json",
+        "sha256": "e7c4032c6f0c5c052d253c4df4533f148aa56fde6df702941731967efffac5b8",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/versioning_policy_v1.json",
+        "artifact_path": "configs/versioning_policy_v1.json",
+        "sha256": "204074c09789203efa55d3f24ea131d9886a551a28fe75c0f7e5bc77f74b5504",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "config",
+        "component_id": "configs/vision_model_registry_v1.json",
+        "artifact_path": "configs/vision_model_registry_v1.json",
+        "sha256": "e3a2cde97f073fb8ed35209e877ae106e41ebb77dbf3f2644dafc7f26964398f",
+        "schema_version": null,
+        "trained_model_version": null,
+        "status": "VERSIONED_CONFIG_ARTIFACT",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "api_schema",
+        "component_id": "greenpulse.standard_ai_output.v1",
+        "artifact_path": "src/ai_output_contract.py",
+        "sha256": "93338e66a6c46ed17042e659bc687602806c2fcae4abca988136357f2483661a",
+        "schema_version": "greenpulse.standard_ai_output.v1",
+        "trained_model_version": null,
+        "status": "SOFTWARE_CONTRACT_COMPLETE",
+        "operational_release_approved": null,
+        "metrics": null
+      },
+      {
+        "component_type": "system_release",
+        "component_id": "greenpulse.system_release.v1",
+        "artifact_path": "configs/system_release_v1.json",
+        "sha256": "eef60a9086830f0bc6afc2c565eef0310b1054bd0d27e3eeb9a80d7b569dfaf7",
+        "schema_version": "greenpulse.system_release_config.v1",
+        "trained_model_version": null,
+        "status": "DRAFT_BLOCKED_GIT_PROVENANCE",
+        "operational_release_approved": null,
+        "metrics": null
+      }
+    ],
+    "release_checks": {
+      "required_categories_present": true,
+      "git_commit_present": false,
+      "file_hashes_present": true,
+      "metrics_present": true
+    },
+    "release_complete": false,
+    "blockers": [
+      "GIT_COMMIT_UNAVAILABLE"
+    ],
+    "claim_guards": {
+      "schema_version_is_trained_model_version": false,
+      "onnx_artifact_implies_operational_release": false,
+      "missing_git_commit_fabricated": false
+    }
+  },
+  "metrics_sources": [
+    {
+      "path": "reports/greenpulse_computer_side_completion_v1.json",
+      "sha256": "a0edb5956a02b97d05f0bb723404751432dd34098b0c4a0c6b8e6133b095036a"
+    },
+    {
+      "path": "reports/layer25_multimodal_stress_fusion_v1.json",
+      "sha256": "8d801a8288ebb8102ecbc89e13c4961472ea3c452e0bcdf78d53a39beb3d3bc9"
+    },
+    {
+      "path": "reports/layer29_predictive_risk_forecasting_v1.json",
+      "sha256": "39ad6ff5df3309c95b365196759da30fa9961b1a5ecc50bae3b3b2a1d84cffc8"
+    },
+    {
+      "path": "reports/layer37_standard_ai_output_contract_v1.json",
+      "sha256": "660b12e4464fe55597d9e0be0dc4794fffe8702d0563afd1b515742687772e42"
+    }
+  ],
+  "release_checks": {
+    "required_component_categories_present": true,
+    "git_commit_present": false,
+    "file_hashes_present": true,
+    "component_metrics_present": true,
+    "metrics_source_artifacts_present": true
+  },
+  "release_complete": false,
+  "blockers": [
+    "GIT_COMMIT_UNAVAILABLE"
+  ],
+  "claim_guards": {
+    "draft_manifest_equals_complete_release": false,
+    "schema_version_equals_trained_model_version": false,
+    "release_candidate_equals_operational_release": false,
+    "release_candidate_equals_hailo_approved": false,
+    "missing_git_commit_fabricated": false
+  }
+}

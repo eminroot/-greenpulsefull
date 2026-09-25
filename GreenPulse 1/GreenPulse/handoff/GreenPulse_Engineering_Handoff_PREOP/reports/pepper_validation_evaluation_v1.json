@@ -1,0 +1,72 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T21:46:58.005637+00:00",
+  "project": "GreenPulse",
+  "task": "PEPPER_DISEASE_CLASSIFICATION",
+  "evaluation_split": "VALIDATION_ONLY",
+  "checkpoint_sha256": "7d04ff121734eb00fc972bbb98e7e0db6101fe68da982e1b8e7fe17992881f9f",
+  "split_manifest_sha256": "c9d599bfdbf0c193fe1dc19e8f520f3ea5d41be351797533162a5b1da2100507",
+  "validation_images": 371,
+  "validation_leaf_groups": 51,
+  "test_images_evaluated": 0,
+  "confusion_matrix": {
+    "class_order": [
+      "bacterial_spot",
+      "healthy"
+    ],
+    "rows": "TRUE_LABEL",
+    "columns": "PREDICTED_LABEL",
+    "values": [
+      [
+        149,
+        0
+      ],
+      [
+        0,
+        222
+      ]
+    ]
+  },
+  "metrics": {
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall": 1.0,
+    "macro_f1": 1.0,
+    "per_class": {
+      "bacterial_spot": {
+        "support": 149,
+        "true_positives": 149,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "healthy": {
+        "support": 222,
+        "true_positives": 222,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    }
+  },
+  "error_analysis": {
+    "total_errors": 0,
+    "errors_by_true_class": {},
+    "leaf_groups_with_errors": 0,
+    "high_confidence_errors_0_90": 0,
+    "mean_correct_prediction_confidence": 0.9905203923060888
+  },
+  "limitations": {
+    "controlled_dataset": "PLANTVILLAGE",
+    "physical_plant_identity_verified": false,
+    "real_greenhouse_validation": false,
+    "water_stress_model_trained": false,
+    "confidence_calibrated": false,
+    "transfer_advantage_verified": false
+  }
+}

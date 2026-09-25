@@ -1,0 +1,35 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T21:51:22.934016+00:00",
+  "experiment": "pepper_generic_baseline_v1",
+  "task": "PEPPER_DISEASE_CLASSIFICATION",
+  "initial_checkpoint": "C:\\Users\\Asus ROG\\Desktop\\GreenPulse\\yolo11n-cls.pt",
+  "initial_checkpoint_sha256": "c62d41bf9625777760018bf914d2e6cd472420ccd01706d97a61cb6c82502bd7",
+  "best_checkpoint": "runs\\pepper_transfer\\pepper_generic_baseline_v1\\weights\\best.pt",
+  "best_checkpoint_sha256": "49c5531d34925691745f9c19638068e74bd620347c1c876e003c73318fad9929",
+  "split_manifest_sha256": "c9d599bfdbf0c193fe1dc19e8f520f3ea5d41be351797533162a5b1da2100507",
+  "training_configuration": {
+    "epochs": 15,
+    "imgsz": 224,
+    "batch": 8,
+    "device": "cpu",
+    "workers": 0,
+    "seed": 2026,
+    "deterministic": true,
+    "optimizer": "AdamW",
+    "initial_learning_rate": 0.001,
+    "patience": 5,
+    "cache": false
+  },
+  "completed_epochs": 9,
+  "training_completed": true,
+  "target_classes": [
+    "bacterial_spot",
+    "healthy"
+  ],
+  "validation_evaluation_completed": false,
+  "test_evaluation_completed": false,
+  "transfer_advantage_demonstrated": false,
+  "real_greenhouse_validation": false,
+  "water_stress_model_trained": false
+}

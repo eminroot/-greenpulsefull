@@ -1,0 +1,55 @@
+{
+  "generated_at_utc": "2026-09-24T15:47:53.273683+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 42,
+  "layer_name": "Resource Optimization (<3 GB RAM)",
+  "phase": "SOFTWARE_RESOURCE_ARCHITECTURE",
+  "schema_version": "greenpulse.resource_architecture_guard.v1",
+  "python_file_count": 76,
+  "single_frame_architecture_supported": false,
+  "large_video_buffer_detected": true,
+  "video_buffer_hits": [
+    {
+      "file": "src/resource_architecture_guard.py",
+      "token": "VideoCapture"
+    },
+    {
+      "file": "src/resource_architecture_guard.py",
+      "token": "video_buffer"
+    },
+    {
+      "file": "src/resource_architecture_guard.py",
+      "token": "frame_buffer"
+    },
+    {
+      "file": "src/resource_architecture_guard.py",
+      "token": "read_video"
+    },
+    {
+      "file": "src/resource_architecture_guard.py",
+      "token": "frames.append"
+    }
+  ],
+  "temporal_window_default": null,
+  "small_temporal_buffer_verified": false,
+  "sqlite_present": true,
+  "fastapi_present": true,
+  "local_llm_import_detected": false,
+  "local_llm_import_hits": [],
+  "software_resource_guard_pass": false,
+  "runtime_ram_acceptance_verified": false,
+  "raspberry_pi_5_measured": false,
+  "hailo_runtime_measured": false,
+  "layer42_complete": false,
+  "scientific_guardrails": {
+    "source_scan_equals_runtime_ram_proof": false,
+    "desktop_source_scan_equals_pi5_validation": false,
+    "absence_of_video_api_equals_complete_memory_proof": false,
+    "software_guard_pass_equals_under_3gb_acceptance": false
+  },
+  "hard_acceptance": {
+    "criterion": "TOTAL_AI_SOFTWARE_RUNTIME_RAM_STRICTLY_BELOW_3_GB",
+    "verified": false,
+    "reason": "Final Raspberry Pi 5 + Hailo runtime stability measurement has not been executed."
+  }
+}

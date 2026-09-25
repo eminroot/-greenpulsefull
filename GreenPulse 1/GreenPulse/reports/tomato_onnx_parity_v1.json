@@ -1,0 +1,568 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T23:58:22.422197+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "experiment": "NEW_TOMATO_CLEAN_EXPERIMENT_V1",
+  "task": "DISEASE_CLASSIFICATION",
+  "status": "ONNX_PARITY_PASS",
+  "source_checkpoint": {
+    "path": "runs/tomato_clean/tomato_clean_v1/weights/best.pt",
+    "sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687"
+  },
+  "release_candidate": {
+    "pytorch_path": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.pt",
+    "pytorch_sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687",
+    "onnx_path": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.onnx",
+    "onnx_sha256": "537db352736bae025d9c91813bb38efea174fe4937952bc2598bc6d68fcf27d9"
+  },
+  "onnx_validation": {
+    "checker": "PASS",
+    "runtime_provider": "CPUExecutionProvider",
+    "input_name": "images",
+    "input_shape": [
+      1,
+      3,
+      224,
+      224
+    ],
+    "output_name": "output0",
+    "output_shape": [
+      1,
+      10
+    ]
+  },
+  "parity": {
+    "partition": "VALIDATION_ONLY",
+    "sample_count": 50,
+    "samples_per_class": 5,
+    "class_mismatches": 0,
+    "max_probability_absolute_difference": 5.364418029785156e-07,
+    "mean_sample_max_probability_absolute_difference": 5.212638864653497e-08,
+    "allowed_max_probability_difference": 0.0001,
+    "onnx_output_modes": [
+      "PROBABILITIES"
+    ],
+    "status": "PASS",
+    "samples": [
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Bacterial_spot/001d647b60e356ac7f9285f9e2db44d00c73f816668f0e51fedde74550607a2e.jpg",
+        "folder_class": "Tomato___Bacterial_spot",
+        "pt_class_id": 0,
+        "pt_class_name": "Tomato___Bacterial_spot",
+        "onnx_class_id": 0,
+        "onnx_class_name": "Tomato___Bacterial_spot",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1920928955078125e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Bacterial_spot/0107e3d87263de03aed27084bd0762981547f09cbac99e9c22d6518511d58e54.jpg",
+        "folder_class": "Tomato___Bacterial_spot",
+        "pt_class_id": 0,
+        "pt_class_name": "Tomato___Bacterial_spot",
+        "onnx_class_id": 0,
+        "onnx_class_name": "Tomato___Bacterial_spot",
+        "class_match": true,
+        "max_probability_abs_difference": 2.9103830456733704e-11
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Bacterial_spot/012afc67bb408c4b864cae32f4da39fdaf7215664233a2de3ed2fd29590d8d9d.jpg",
+        "folder_class": "Tomato___Bacterial_spot",
+        "pt_class_id": 0,
+        "pt_class_name": "Tomato___Bacterial_spot",
+        "onnx_class_id": 0,
+        "onnx_class_name": "Tomato___Bacterial_spot",
+        "class_match": true,
+        "max_probability_abs_difference": 1.0822986951097846e-10
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Bacterial_spot/01f02d2f34947060fb066e22b2b791373d9845025f245cce00615abf0df7577c.jpg",
+        "folder_class": "Tomato___Bacterial_spot",
+        "pt_class_id": 0,
+        "pt_class_name": "Tomato___Bacterial_spot",
+        "onnx_class_id": 0,
+        "onnx_class_name": "Tomato___Bacterial_spot",
+        "class_match": true,
+        "max_probability_abs_difference": 7.785274647176266e-10
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Bacterial_spot/0246107abd082b17412cd46e71ebced5c9426f0da48f36dc42edbebbef0b175f.jpg",
+        "folder_class": "Tomato___Bacterial_spot",
+        "pt_class_id": 0,
+        "pt_class_name": "Tomato___Bacterial_spot",
+        "onnx_class_id": 0,
+        "onnx_class_name": "Tomato___Bacterial_spot",
+        "class_match": true,
+        "max_probability_abs_difference": 9.094947017729282e-11
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Early_blight/054076a2398673d5c03701fc5eca9afaf6edcc3b86ad6f4210221e7ac65f5aa4.jpg",
+        "folder_class": "Tomato___Early_blight",
+        "pt_class_id": 1,
+        "pt_class_name": "Tomato___Early_blight",
+        "onnx_class_id": 1,
+        "onnx_class_name": "Tomato___Early_blight",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1920928955078125e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Early_blight/0672f5eb5411c91ded4ba5c7890d6ec57adc87db9cfa03e445c4c55c32d266e3.jpg",
+        "folder_class": "Tomato___Early_blight",
+        "pt_class_id": 1,
+        "pt_class_name": "Tomato___Early_blight",
+        "onnx_class_id": 1,
+        "onnx_class_name": "Tomato___Early_blight",
+        "class_match": true,
+        "max_probability_abs_difference": 1.3642420526593924e-12
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Early_blight/07920b88d4f0637a603a166b637ab8743b4314f7a6ccb7b0fb428441178a35f3.jpg",
+        "folder_class": "Tomato___Early_blight",
+        "pt_class_id": 1,
+        "pt_class_name": "Tomato___Early_blight",
+        "onnx_class_id": 1,
+        "onnx_class_name": "Tomato___Early_blight",
+        "class_match": true,
+        "max_probability_abs_difference": 6.366462912410498e-12
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Early_blight/07b048432094e6b2f48fc6abc81a1f1d2af17fb822245ee777325147d822cb34.jpg",
+        "folder_class": "Tomato___Early_blight",
+        "pt_class_id": 1,
+        "pt_class_name": "Tomato___Early_blight",
+        "onnx_class_id": 1,
+        "onnx_class_name": "Tomato___Early_blight",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1920928955078125e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Early_blight/08cd40cc15c8463316c9580bc417f899a4303a7580ff89f55ff6e8c564545351.jpg",
+        "folder_class": "Tomato___Early_blight",
+        "pt_class_id": 1,
+        "pt_class_name": "Tomato___Early_blight",
+        "onnx_class_id": 1,
+        "onnx_class_name": "Tomato___Early_blight",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1920928955078125e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___healthy/005ed632188510948cea99bdd4b443c31c0b3fe1e3ffa54b13d68c310846e0a3.jpg",
+        "folder_class": "Tomato___healthy",
+        "pt_class_id": 9,
+        "pt_class_name": "Tomato___healthy",
+        "onnx_class_id": 9,
+        "onnx_class_name": "Tomato___healthy",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1920928955078125e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___healthy/00a8b94733205928236d981d8b22e33688505cef8bcbb8c50811f9d5fbec0fd7.jpg",
+        "folder_class": "Tomato___healthy",
+        "pt_class_id": 9,
+        "pt_class_name": "Tomato___healthy",
+        "onnx_class_id": 9,
+        "onnx_class_name": "Tomato___healthy",
+        "class_match": true,
+        "max_probability_abs_difference": 2.8870999813079834e-08
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___healthy/01505cb068c5ed8bb1c318fe6ad0c915cb5673235cf002246caa87692efb31b9.jpg",
+        "folder_class": "Tomato___healthy",
+        "pt_class_id": 9,
+        "pt_class_name": "Tomato___healthy",
+        "onnx_class_id": 9,
+        "onnx_class_name": "Tomato___healthy",
+        "class_match": true,
+        "max_probability_abs_difference": 1.77351466845721e-11
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___healthy/022b86ec227f6b8161669f7704ead4aafa9e51f7144b5d8828b7d08842c722be.jpg",
+        "folder_class": "Tomato___healthy",
+        "pt_class_id": 9,
+        "pt_class_name": "Tomato___healthy",
+        "onnx_class_id": 9,
+        "onnx_class_name": "Tomato___healthy",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1920928955078125e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___healthy/024cbe1f4b20340a397cf8f4c4ea7439ccc6cb90aeb29d7984703d5667b8202a.jpg",
+        "folder_class": "Tomato___healthy",
+        "pt_class_id": 9,
+        "pt_class_name": "Tomato___healthy",
+        "onnx_class_id": 9,
+        "onnx_class_name": "Tomato___healthy",
+        "class_match": true,
+        "max_probability_abs_difference": 7.389644451905042e-13
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Late_blight/00dd20b4764816cc21ce3d55e6f01ed37d0c8d5a428d70f2d5d0147038918c59.jpg",
+        "folder_class": "Tomato___Late_blight",
+        "pt_class_id": 2,
+        "pt_class_name": "Tomato___Late_blight",
+        "onnx_class_id": 2,
+        "onnx_class_name": "Tomato___Late_blight",
+        "class_match": true,
+        "max_probability_abs_difference": 3.979039320256561e-13
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Late_blight/0207801ae4e33292a6c36904bb77950f74d9be2652dd2dc552b9f3a63f34094b.jpg",
+        "folder_class": "Tomato___Late_blight",
+        "pt_class_id": 2,
+        "pt_class_name": "Tomato___Late_blight",
+        "onnx_class_id": 2,
+        "onnx_class_name": "Tomato___Late_blight",
+        "class_match": true,
+        "max_probability_abs_difference": 1.0516032489249483e-12
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Late_blight/02a7015da6f2f6b551541bbcd2bfc5910882d1ba16a5123cfcd93a126facd2d1.jpg",
+        "folder_class": "Tomato___Late_blight",
+        "pt_class_id": 2,
+        "pt_class_name": "Tomato___Late_blight",
+        "onnx_class_id": 2,
+        "onnx_class_name": "Tomato___Late_blight",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1920928955078125e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Late_blight/02cb35304d767a2c8ae2eb8ec66b84a21c951a73bbd03ae2f38c4f53c5735924.jpg",
+        "folder_class": "Tomato___Late_blight",
+        "pt_class_id": 2,
+        "pt_class_name": "Tomato___Late_blight",
+        "onnx_class_id": 2,
+        "onnx_class_name": "Tomato___Late_blight",
+        "class_match": true,
+        "max_probability_abs_difference": 2.6193447411060333e-10
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Late_blight/044ab575d7de35e3523ecc0932db6c0b9a2f7b119fb6ed078daef33799314c3e.jpg",
+        "folder_class": "Tomato___Late_blight",
+        "pt_class_id": 2,
+        "pt_class_name": "Tomato___Late_blight",
+        "onnx_class_id": 2,
+        "onnx_class_name": "Tomato___Late_blight",
+        "class_match": true,
+        "max_probability_abs_difference": 1.6298145055770874e-09
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Leaf_Mold/0c8584b7702307ba6ed9f65e3f36c08a1107231ff2061c7f5edc7956402d3000.jpg",
+        "folder_class": "Tomato___Leaf_Mold",
+        "pt_class_id": 3,
+        "pt_class_name": "Tomato___Leaf_Mold",
+        "onnx_class_id": 3,
+        "onnx_class_name": "Tomato___Leaf_Mold",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1920928955078125e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Leaf_Mold/0ca0807d7e8509f331bf8f8c8430055af91dde948d3ada92c20c1f4b9ea00a80.jpg",
+        "folder_class": "Tomato___Leaf_Mold",
+        "pt_class_id": 3,
+        "pt_class_name": "Tomato___Leaf_Mold",
+        "onnx_class_id": 3,
+        "onnx_class_name": "Tomato___Leaf_Mold",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1920928955078125e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Leaf_Mold/0d8dffc2fe687e37046b2baf156a524f80ffbaefd04c12a3927eb36611700602.jpg",
+        "folder_class": "Tomato___Leaf_Mold",
+        "pt_class_id": 3,
+        "pt_class_name": "Tomato___Leaf_Mold",
+        "onnx_class_id": 3,
+        "onnx_class_name": "Tomato___Leaf_Mold",
+        "class_match": true,
+        "max_probability_abs_difference": 4.689582056016661e-13
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Leaf_Mold/0e663e2a75c3736b4ad9ca4d3106cd052ea231a7e8ed3df5d254e39e7e1268e4.jpg",
+        "folder_class": "Tomato___Leaf_Mold",
+        "pt_class_id": 3,
+        "pt_class_name": "Tomato___Leaf_Mold",
+        "onnx_class_id": 3,
+        "onnx_class_name": "Tomato___Leaf_Mold",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1920928955078125e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Leaf_Mold/0e70c8ee0af9651f861b2fa03e98fe2c756ead2b6162fbb5937d5b7cd43d25c2.jpg",
+        "folder_class": "Tomato___Leaf_Mold",
+        "pt_class_id": 3,
+        "pt_class_name": "Tomato___Leaf_Mold",
+        "onnx_class_id": 3,
+        "onnx_class_name": "Tomato___Leaf_Mold",
+        "class_match": true,
+        "max_probability_abs_difference": 5.364418029785156e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Septoria_leaf_spot/0095655b23059201e7937e0f99ae8f24e7738d2fd2ae8c45216fc74699297d53.jpg",
+        "folder_class": "Tomato___Septoria_leaf_spot",
+        "pt_class_id": 4,
+        "pt_class_name": "Tomato___Septoria_leaf_spot",
+        "onnx_class_id": 4,
+        "onnx_class_name": "Tomato___Septoria_leaf_spot",
+        "class_match": true,
+        "max_probability_abs_difference": 2.9831426218152046e-10
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Septoria_leaf_spot/01e5dec8e80c2f1fe748d6143afcb6d69cea9ae7f49cc2535f0caa0f4c825904.jpg",
+        "folder_class": "Tomato___Septoria_leaf_spot",
+        "pt_class_id": 4,
+        "pt_class_name": "Tomato___Septoria_leaf_spot",
+        "onnx_class_id": 4,
+        "onnx_class_name": "Tomato___Septoria_leaf_spot",
+        "class_match": true,
+        "max_probability_abs_difference": 6.548361852765083e-11
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Septoria_leaf_spot/04198035b44dd923e424dd753e5d5db0ee252eefbe5c48ee42be87b212db4f51.jpg",
+        "folder_class": "Tomato___Septoria_leaf_spot",
+        "pt_class_id": 4,
+        "pt_class_name": "Tomato___Septoria_leaf_spot",
+        "onnx_class_id": 4,
+        "onnx_class_name": "Tomato___Septoria_leaf_spot",
+        "class_match": true,
+        "max_probability_abs_difference": 6.730260793119669e-11
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Septoria_leaf_spot/046ee0f82c26de2b98f9392c534a5aa8485dc81d71e85a05fa12caad4e747830.jpg",
+        "folder_class": "Tomato___Septoria_leaf_spot",
+        "pt_class_id": 4,
+        "pt_class_name": "Tomato___Septoria_leaf_spot",
+        "onnx_class_id": 4,
+        "onnx_class_name": "Tomato___Septoria_leaf_spot",
+        "class_match": true,
+        "max_probability_abs_difference": 5.587935447692871e-09
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Septoria_leaf_spot/04ffb1ad3843536138a1a6da84af0d5a4028974f83525d0bc566872ab0948d43.jpg",
+        "folder_class": "Tomato___Septoria_leaf_spot",
+        "pt_class_id": 4,
+        "pt_class_name": "Tomato___Septoria_leaf_spot",
+        "onnx_class_id": 4,
+        "onnx_class_name": "Tomato___Septoria_leaf_spot",
+        "class_match": true,
+        "max_probability_abs_difference": 7.639755494892597e-11
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Spider_mites Two-spotted_spider_mite/0048af59889df01c8c715b95152dbaf3afbb8c053be18c23d1d6abe01a39171f.jpg",
+        "folder_class": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "pt_class_id": 5,
+        "pt_class_name": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "onnx_class_id": 5,
+        "onnx_class_name": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "class_match": true,
+        "max_probability_abs_difference": 5.638867150992155e-11
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Spider_mites Two-spotted_spider_mite/0163abf36c2bf324465d9d5425f15c5a171e693612dac50f7fb187d631cd9323.jpg",
+        "folder_class": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "pt_class_id": 5,
+        "pt_class_name": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "onnx_class_id": 5,
+        "onnx_class_name": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1920928955078125e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Spider_mites Two-spotted_spider_mite/01bf7013d276cc58dc40ae73f4f7b879d81774e1f7b55594f8848908efda7d2d.jpg",
+        "folder_class": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "pt_class_id": 5,
+        "pt_class_name": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "onnx_class_id": 5,
+        "onnx_class_name": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1920928955078125e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Spider_mites Two-spotted_spider_mite/03acc31955c7e38d1b3083c1718baa3e191df428f5d19bd45881e14760988005.jpg",
+        "folder_class": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "pt_class_id": 5,
+        "pt_class_name": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "onnx_class_id": 5,
+        "onnx_class_name": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "class_match": true,
+        "max_probability_abs_difference": 2.384185791015625e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Spider_mites Two-spotted_spider_mite/0522f5ba96d3c491b3e330521870dfc79b668581bc9d4c11e5a5e1ac7c2ece69.jpg",
+        "folder_class": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "pt_class_id": 5,
+        "pt_class_name": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "onnx_class_id": 5,
+        "onnx_class_name": "Tomato___Spider_mites Two-spotted_spider_mite",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1920928955078125e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Target_Spot/02d7f1f933dff95a7edbc76476fe279cd880a507f6cf444e64dc7d6085c40a53.jpg",
+        "folder_class": "Tomato___Target_Spot",
+        "pt_class_id": 6,
+        "pt_class_name": "Tomato___Target_Spot",
+        "onnx_class_id": 6,
+        "onnx_class_name": "Tomato___Target_Spot",
+        "class_match": true,
+        "max_probability_abs_difference": 5.122274160385132e-09
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Target_Spot/0439acc0bc18f19a703f3bf9c32caffb41bffd01040f525162535d59e2ab4ba5.jpg",
+        "folder_class": "Tomato___Target_Spot",
+        "pt_class_id": 6,
+        "pt_class_name": "Tomato___Target_Spot",
+        "onnx_class_id": 6,
+        "onnx_class_name": "Tomato___Target_Spot",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1920928955078125e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Target_Spot/06a631afb5be56d5008f8ef4ce60e71cef07a07c9183022bbb0106fc4a4ec8d2.jpg",
+        "folder_class": "Tomato___Target_Spot",
+        "pt_class_id": 6,
+        "pt_class_name": "Tomato___Target_Spot",
+        "onnx_class_id": 6,
+        "onnx_class_name": "Tomato___Target_Spot",
+        "class_match": true,
+        "max_probability_abs_difference": 5.638867150992155e-11
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Target_Spot/06b0421bfc25d8a9dd26ddc3be94a468aa0d29e7f9c70c2dda918af808287522.jpg",
+        "folder_class": "Tomato___Target_Spot",
+        "pt_class_id": 6,
+        "pt_class_name": "Tomato___Target_Spot",
+        "onnx_class_id": 6,
+        "onnx_class_name": "Tomato___Target_Spot",
+        "class_match": true,
+        "max_probability_abs_difference": 9.185896487906575e-11
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Target_Spot/0787e4c83d58960ea1a3b7518b50f91754c4896ef0d4e9cad7dec7363af95831.jpg",
+        "folder_class": "Tomato___Target_Spot",
+        "pt_class_id": 6,
+        "pt_class_name": "Tomato___Target_Spot",
+        "onnx_class_id": 6,
+        "onnx_class_name": "Tomato___Target_Spot",
+        "class_match": true,
+        "max_probability_abs_difference": 1.7337242752546445e-12
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Tomato_mosaic_virus/0369f1c75142eb21cc7b2bb384518555659c9178df82e88b4b206734fd588439.jpg",
+        "folder_class": "Tomato___Tomato_mosaic_virus",
+        "pt_class_id": 8,
+        "pt_class_name": "Tomato___Tomato_mosaic_virus",
+        "onnx_class_id": 8,
+        "onnx_class_name": "Tomato___Tomato_mosaic_virus",
+        "class_match": true,
+        "max_probability_abs_difference": 9.947598300641403e-14
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Tomato_mosaic_virus/03e1824956bb0533808baa742d9c4ff1f8d76ceb944fc460c3b36ab36a6fa20b.jpg",
+        "folder_class": "Tomato___Tomato_mosaic_virus",
+        "pt_class_id": 8,
+        "pt_class_name": "Tomato___Tomato_mosaic_virus",
+        "onnx_class_id": 8,
+        "onnx_class_name": "Tomato___Tomato_mosaic_virus",
+        "class_match": true,
+        "max_probability_abs_difference": 1.8474111129762605e-13
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Tomato_mosaic_virus/0781d0febbb755da2b5c6b712bb35f5a197778096832d628d0e45c341b4ecbde.jpg",
+        "folder_class": "Tomato___Tomato_mosaic_virus",
+        "pt_class_id": 8,
+        "pt_class_name": "Tomato___Tomato_mosaic_virus",
+        "onnx_class_id": 8,
+        "onnx_class_name": "Tomato___Tomato_mosaic_virus",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1920928955078125e-07
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Tomato_mosaic_virus/0c003dce5c2bf563e4bbcb20f4392081895886a5f3abf15e2f5ed6b7104918a2.jpg",
+        "folder_class": "Tomato___Tomato_mosaic_virus",
+        "pt_class_id": 8,
+        "pt_class_name": "Tomato___Tomato_mosaic_virus",
+        "onnx_class_id": 8,
+        "onnx_class_name": "Tomato___Tomato_mosaic_virus",
+        "class_match": true,
+        "max_probability_abs_difference": 9.640643838793039e-11
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Tomato_mosaic_virus/0c5c4ec20c49a18703e50aa2db355808e17bed44e5360adada5c11400f4ac158.jpg",
+        "folder_class": "Tomato___Tomato_mosaic_virus",
+        "pt_class_id": 8,
+        "pt_class_name": "Tomato___Tomato_mosaic_virus",
+        "onnx_class_id": 8,
+        "onnx_class_name": "Tomato___Tomato_mosaic_virus",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1901590823981678e-13
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Tomato_Yellow_Leaf_Curl_Virus/002ee33465e8bd5375c78c9079c224bf827891df67056afdbfbdfdf80aec6738.jpg",
+        "folder_class": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "pt_class_id": 7,
+        "pt_class_name": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "onnx_class_id": 7,
+        "onnx_class_name": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "class_match": true,
+        "max_probability_abs_difference": 5.204170427930421e-17
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Tomato_Yellow_Leaf_Curl_Virus/00543807eb522c197e73f23f9ce97c1f388ae52f8642614fe0786c004b856cd9.jpg",
+        "folder_class": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "pt_class_id": 7,
+        "pt_class_name": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "onnx_class_id": 7,
+        "onnx_class_name": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "class_match": true,
+        "max_probability_abs_difference": 3.218725199566341e-20
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Tomato_Yellow_Leaf_Curl_Virus/00f0bb7304ea47125518491069631bc3640a9dc8a4828d83bd8d94b06f4a0a60.jpg",
+        "folder_class": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "pt_class_id": 7,
+        "pt_class_name": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "onnx_class_id": 7,
+        "onnx_class_name": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "class_match": true,
+        "max_probability_abs_difference": 1.4823076576950256e-20
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Tomato_Yellow_Leaf_Curl_Virus/018f972f44f8bd698e364f2d99c57b542ca6d55b6f9d80050249d3963ec4ae64.jpg",
+        "folder_class": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "pt_class_id": 7,
+        "pt_class_name": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "onnx_class_id": 7,
+        "onnx_class_name": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "class_match": true,
+        "max_probability_abs_difference": 1.1368683772161603e-12
+      },
+      {
+        "image": "datasets/processed/tomato_hybrid_v1/val/Tomato___Tomato_Yellow_Leaf_Curl_Virus/01c64185aa25d04494a933e98fe2c4e69d11c92442987dd71a88076782717b9f.jpg",
+        "folder_class": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "pt_class_id": 7,
+        "pt_class_name": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "onnx_class_id": 7,
+        "onnx_class_name": "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+        "class_match": true,
+        "max_probability_abs_difference": 1.4230153513872246e-19
+      }
+    ]
+  },
+  "test_policy": {
+    "frozen_test_images_used": 0,
+    "test_inference_executed": false,
+    "test_used_for_export_validation": false
+  },
+  "scientific_scope": {
+    "onnx_parity_verified_on_validation_sample": true,
+    "onnx_parity_is_not_hailo_validation": true,
+    "raspberry_pi_runtime_validated": false,
+    "hailo_hef_created": false,
+    "real_greenhouse_validation": false,
+    "operational_release_authorized": false
+  },
+  "execution": {
+    "training_executed": false,
+    "source_checkpoint_modified": false,
+    "release_pt_modified_after_copy": false
+  }
+}

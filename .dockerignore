@@ -1,0 +1,27 @@
+# The Caddy image builds from the repository root (it needs web/ and the
+# Caddyfile), so keep the build context small and free of local state.
+**/node_modules
+**/.venv
+**/venv
+**/__pycache__
+**/dist
+**/.expo
+**/*.db
+**/*.db-shm
+**/*.db-wal
+**/.env
+**/.git
+server/data
+server/.pytest_cache
+greenpulse/greenpulse/runs
+greenpulse/greenpulse/dataset
+app
+src
+assets
+scripts
+skills
+slides
+# The ML team's package: 5 GB of datasets, never needed by the server or the
+# panel. The model runs on the Pi, from the LeafNode repo's pi/weights.
+GreenPulse 1
+GreenPulse 1.zip

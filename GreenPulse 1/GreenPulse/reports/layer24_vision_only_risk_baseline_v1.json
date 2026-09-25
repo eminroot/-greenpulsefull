@@ -1,0 +1,77 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T11:49:17.367302+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 24,
+  "layer_name": "Vision-Only Risk Baseline",
+  "status": "SOFTWARE_FRAMEWORK_COMPLETE_REAL_VALIDATION_PENDING",
+  "model_schema_version": "greenpulse.vision_only_baseline.v1",
+  "model_type": "DETERMINISTIC_NUMPY_LOGISTIC_REGRESSION",
+  "feature_count": 31,
+  "feature_sources": [
+    "Layer 07 visual_feature_vector_v1",
+    "Layer 08 plant delta when available"
+  ],
+  "implemented_capabilities": [
+    "versioned visual feature ingestion",
+    "optional plant-delta feature ingestion",
+    "binary vision-only stress baseline",
+    "train-only scaling",
+    "deterministic full-batch logistic regression",
+    "L2 regularization",
+    "probability output",
+    "binary threshold",
+    "accuracy",
+    "precision",
+    "recall",
+    "F1",
+    "false-positive rate",
+    "false-negative rate",
+    "confusion counts",
+    "JSON serialization",
+    "JSON restoration",
+    "external train/evaluation split"
+  ],
+  "anti_leakage_controls": {
+    "internal_random_split": false,
+    "scaler_fit_scope": "TRAIN_ONLY",
+    "frozen_tomato_test_used": false,
+    "frozen_pepper_test_used": false
+  },
+  "scientific_guardrails": {
+    "disease_class_name_used_as_model_feature": false,
+    "gradcam_used_as_model_feature": false,
+    "disease_classification_confidence_is_water_stress_probability": false,
+    "synthetic_unit_test_metrics_are_real_performance": false,
+    "real_visual_stress_accuracy_claim_allowed": false,
+    "operational_water_stress_probability_claim_allowed": false,
+    "physical_action_authorized": false
+  },
+  "real_evaluation": {
+    "status": "PENDING",
+    "reason": "No validated labeled visual-stress / water-stress dataset is currently available for this risk target."
+  },
+  "tests": {
+    "framework": "unittest",
+    "test_count": 11,
+    "result": "PASS"
+  },
+  "artifacts": {
+    "source": {
+      "path": "src/vision_only_baseline.py",
+      "sha256": "f163c1ae2bf049797123ec534630a1a94908cbd5b9da25dd830ce15b2919e8e7"
+    },
+    "tests": {
+      "path": "tests/test_vision_only_baseline.py",
+      "sha256": "ea594d325401460b7bd012b0002c07ef77bf271fb60c204f7857b89d8f528a5f"
+    }
+  },
+  "execution": {
+    "real_model_trained": false,
+    "synthetic_fixture_used_for_unit_testing": true,
+    "vision_model_loaded": false,
+    "vision_inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false
+  }
+}

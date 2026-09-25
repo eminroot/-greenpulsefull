@@ -1,0 +1,76 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T12:35:18.399805+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 30,
+  "layer_name": "AI Uncertainty & Out-of-Distribution Layer",
+  "status": "SOFTWARE_ENGINE_COMPLETE_REAL_OOD_VALIDATION_PENDING",
+  "schema_version": "greenpulse.ai_uncertainty_ood.v1",
+  "states": [
+    "CONFIDENT",
+    "UNCERTAIN",
+    "RECHECK_REQUIRED"
+  ],
+  "implemented_triggers": [
+    "missing model confidence",
+    "low model confidence",
+    "missing confidence threshold",
+    "unvalidated confidence threshold",
+    "image-quality failure",
+    "missing sensor",
+    "invalid sensor",
+    "stale sensor",
+    "simulated sensor for operational path",
+    "inference/model failure",
+    "explicit OOD suspicion",
+    "explicit unusual feature combination"
+  ],
+  "existing_contract_alignment": {
+    "image_quality": "src/image_quality.py",
+    "sensor_validation": "src/sensor_validator.py",
+    "safety_gate": "src/safety_gate.py",
+    "active_learning_trigger_semantics": "ALIGNED_WHERE_APPLICABLE"
+  },
+  "ood_scope": {
+    "trained_ood_detector": false,
+    "ood_input": "EXPLICIT_UPSTREAM_FLAG_ONLY",
+    "unusual_feature_input": "EXPLICIT_UPSTREAM_FLAG_ONLY",
+    "real_ood_dataset_evaluated": false
+  },
+  "scientific_guardrails": {
+    "real_confidence_threshold_validated": false,
+    "blur_threshold_validated": false,
+    "unvalidated_blur_used_as_hard_gate": false,
+    "trained_ood_model_claimed": false,
+    "real_ood_performance_claimed": false,
+    "operational_confident_state_validated": false,
+    "uncertain_observation_allows_automatic_action": false,
+    "physical_action_authorized": false
+  },
+  "tests": {
+    "framework": "unittest",
+    "test_count": 12,
+    "result": "PASS",
+    "synthetic_signals_only": true
+  },
+  "artifacts": {
+    "source": {
+      "path": "src/ai_uncertainty.py",
+      "sha256": "55dddb1de1ace208301a3311e6643e6727d330c0d5ecbf9cd39ac3844c12dcb4"
+    },
+    "tests": {
+      "path": "tests/test_ai_uncertainty.py",
+      "sha256": "0c75b9b8145b23c367660818fdb97f315d054745908ca8daf47f03825be3af52"
+    }
+  },
+  "execution": {
+    "ood_model_trained": false,
+    "real_ood_data_used": false,
+    "real_confidence_threshold_selected": false,
+    "vision_model_loaded": false,
+    "vision_inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false,
+    "physical_action_executed": false
+  }
+}

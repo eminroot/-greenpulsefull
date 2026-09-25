@@ -1,0 +1,14 @@
+ultralytics>=8.3.0
+opencv-python-headless>=4.9.0
+numpy>=1.26.0
+streamlit>=1.38.0
+pandas>=2.2.0
+psutil>=5.9.0
+
+# Mobile app edge bridge (server.py) — serves the pipeline over LAN to the app
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.9
+
+# Opsional — yalnız Layer 1-də real ESP32 hardware-ə qoşulanda lazımdır
+# pyserial>=3.5

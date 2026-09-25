@@ -1,0 +1,12 @@
+{
+  "schema_version": "greenpulse.hailo_edge_approval.v1",
+  "approved_by_role": "ENGINEER_1",
+  "approval_status": "PENDING_ENGINEER_1_REVIEW",
+  "approved_onnx": {
+    "path": null,
+    "sha256": null
+  },
+  "reviewed_at_utc": null,
+  "review_notes": null,
+  "important": "This template is NOT an approval. Do not change approval_status to APPROVED_FOR_HAILO_CONVERSION unless Engineer 1 actually reviews and approves one exact ONNX artifact."
+}

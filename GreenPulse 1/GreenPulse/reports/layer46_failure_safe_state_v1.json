@@ -1,0 +1,127 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T18:27:42.451390+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 46,
+  "layer_name": "Failure & Safe-State Engine",
+  "status": "SOFTWARE_FAILURE_SAFE_STATE_COMPLETE_REAL_FAILURE_VALIDATION_PENDING",
+  "contracts": {
+    "policy_schema": "greenpulse.failure_safe_state_policy.v1",
+    "result_schema": "greenpulse.failure_safe_state_result.v1",
+    "integration_schema": "greenpulse.failure_safe_state_integration.v1"
+  },
+  "policy": {
+    "policy_version": "1.0.0-development",
+    "policy_status": "DEVELOPMENT_ONLY_UNVALIDATED",
+    "allowed_safe_states": [
+      "SAFE_MODE",
+      "MONITOR",
+      "MANUAL_REVIEW"
+    ],
+    "state_priority": [
+      "MONITOR",
+      "MANUAL_REVIEW",
+      "SAFE_MODE"
+    ],
+    "failure_mapping": {
+      "CAMERA_MISSING": "SAFE_MODE",
+      "CAMERA_TIMEOUT": "SAFE_MODE",
+      "BLURRED_IMAGE": "MANUAL_REVIEW",
+      "SENSOR_MISSING": "MANUAL_REVIEW",
+      "SENSOR_INVALID": "MANUAL_REVIEW",
+      "SENSOR_STALE": "MONITOR",
+      "WIFI_FAILURE": "SAFE_MODE",
+      "LOW_CONFIDENCE": "MANUAL_REVIEW",
+      "VISION_SENSOR_CONFLICT": "MANUAL_REVIEW",
+      "DB_FAILURE": "SAFE_MODE",
+      "HARDWARE_TIMEOUT": "SAFE_MODE"
+    }
+  },
+  "required_failure_scenarios": {
+    "camera_missing": true,
+    "camera_timeout": true,
+    "blurred_image": true,
+    "sensor_missing": true,
+    "sensor_invalid": true,
+    "sensor_stale": true,
+    "wifi_failure": true,
+    "low_confidence": true,
+    "vision_sensor_conflict": true,
+    "db_failure": true,
+    "hardware_timeout": true
+  },
+  "safe_behavior": {
+    "safe_mode_supported": true,
+    "monitor_supported": true,
+    "manual_review_supported": true,
+    "most_conservative_active_state_wins": true,
+    "normal_decision_suppressed_on_failure": true,
+    "original_decision_preserved_for_audit": true,
+    "source_output_mutated": false,
+    "engine_requests_process_crash": false
+  },
+  "actuation_safety": {
+    "hardware_dispatch_permitted_on_failure": false,
+    "physical_actuation_authorized_on_failure": false,
+    "direct_electrical_control_permitted": false,
+    "blind_actuation_permitted": false
+  },
+  "real_failure_validation": {
+    "camera_missing_real_test": false,
+    "camera_timeout_real_test": false,
+    "blurred_image_real_test": false,
+    "sensor_missing_real_test": false,
+    "sensor_invalid_real_test": false,
+    "sensor_stale_real_test": false,
+    "wifi_failure_real_test": false,
+    "db_failure_real_test": false,
+    "hardware_timeout_real_test": false,
+    "real_hardware_failure_validation_complete": false
+  },
+  "tests": {
+    "failure_safe_state_engine": {
+      "count": 22,
+      "result": "PASS"
+    },
+    "failure_safe_state_integration": {
+      "count": 12,
+      "result": "PASS"
+    },
+    "total": {
+      "count": 34,
+      "result": "PASS"
+    }
+  },
+  "artifacts": {
+    "configs/failure_safe_state_v1.json": "69c7401bc496c0a0779c3b0648caaf14bcb7fab9852339890f774be494a7781f",
+    "src/failure_safe_state.py": "0ec051031e6f70e1ba3d427cbbdabab5d6c83a21b24d166a2d6a9f4a5b72db83",
+    "src/failure_safe_state_integration.py": "8367c215f4c9cf7c02737bd52ea6ddbea629113c4f54c279208ec74194b8fe5e",
+    "tests/test_failure_safe_state.py": "1db107d5644b6bba98b0a719cc84081c975262b37b31a4241b694f69cfbb716c",
+    "tests/test_failure_safe_state_integration.py": "8d435f1103e7f7f2a6c907bd188e5d0274a90c775284f69eac4b762ecdeea34d"
+  },
+  "execution": {
+    "production_database_modified": false,
+    "model_loaded": false,
+    "inference_executed": false,
+    "camera_contacted": false,
+    "sensor_contacted": false,
+    "wifi_failure_injected": false,
+    "database_failure_injected": false,
+    "hardware_contacted": false,
+    "hardware_timeout_injected": false,
+    "physical_actuation": false
+  },
+  "scientific_guardrails": {
+    "development_policy_claimed_operational": false,
+    "software_failure_test_claimed_real_failure": false,
+    "software_safe_state_claimed_hardware_validated": false,
+    "blind_actuation_claimed_safe": false
+  },
+  "claim_boundary": {
+    "software_failure_engine_complete": true,
+    "software_safe_state_integration_complete": true,
+    "real_failure_injection_validation_complete": false,
+    "real_hardware_fail_safe_validation_complete": false,
+    "layer46_operationally_validated": false
+  }
+}

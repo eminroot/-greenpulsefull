@@ -1,0 +1,32 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T22:50:41.550874+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "status": "FROZEN_BEFORE_TRAINING",
+  "training_protocol_sha256": "e7c4032c6f0c5c052d253c4df4533f148aa56fde6df702941731967efffac5b8",
+  "detected_device": {
+    "cuda_available": false,
+    "training_device": "cpu",
+    "description": "CPU"
+  },
+  "preflight": {
+    "train_images": 12684,
+    "validation_images": 2725,
+    "classes": 10,
+    "test_directory_present": false,
+    "near_duplicate_screen": "PASS",
+    "training_gate": "OPEN",
+    "historical_tomato_checkpoint_allowed": false
+  },
+  "evidence": {
+    "dataset_report_sha256": "1e8c77fb5918283d5785e66d7320a6635816e39d97af5510691cf74db8620df1",
+    "split_report_sha256": "1c0da3e4cec35d0e4d7b9180bb32ea4a7a76293105dc2457db6e1dab5e13fbe9",
+    "near_duplicate_report_sha256": "68998e5ae785a3c371bde9cf2163150d103c4de4d21853a05178fa93b79ba0ab"
+  },
+  "execution": {
+    "training_executed": false,
+    "test_inference_executed": false,
+    "model_modified": false
+  }
+}

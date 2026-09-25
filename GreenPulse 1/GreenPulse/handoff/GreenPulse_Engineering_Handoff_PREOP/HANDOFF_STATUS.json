@@ -1,0 +1,23 @@
+{
+  "schema_version": "greenpulse.engineering_handoff_status.v1",
+  "generated_at_utc": "2026-09-24T20:51:51.319569+00:00",
+  "package_status": "PRE_OPERATIONAL_ENGINEERING_HANDOFF",
+  "software_handoff_complete": true,
+  "openapi_exported": true,
+  "openapi_version": "3.1.0",
+  "openapi_route_count": 11,
+  "real_measurement_templates": 8,
+  "operational_release_complete": false,
+  "pending": [
+    "Engineer 1 Hailo approval",
+    "HEF generation",
+    "ONNX vs Hailo parity validation",
+    "Pi5 + AI HAT+ real benchmark",
+    "real long-run stability",
+    "real hardware end-to-end validation",
+    "real multimodal temporal forecast evaluation",
+    "real sustainability measurements",
+    "final Git commit and GitHub provenance"
+  ],
+  "git_actions_performed": false
+}

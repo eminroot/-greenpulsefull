@@ -1,0 +1,89 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T11:45:24.938926+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 23,
+  "layer_name": "Sensor-Only Baseline Model",
+  "status": "SOFTWARE_FRAMEWORK_COMPLETE_REAL_VALIDATION_PENDING",
+  "model_schema_version": "greenpulse.sensor_only_baseline.v1",
+  "model_type": "DETERMINISTIC_NUMPY_LOGISTIC_REGRESSION",
+  "feature_count": 18,
+  "feature_names": [
+    "soil_moisture_pct",
+    "temperature_c",
+    "humidity_pct",
+    "rolling_soil_moisture_pct",
+    "rolling_temperature_c",
+    "rolling_humidity_pct",
+    "rolling_available",
+    "soil_moisture_baseline_delta",
+    "temperature_baseline_delta",
+    "humidity_baseline_delta",
+    "baseline_available",
+    "soil_moisture_change_per_hour",
+    "temperature_change_per_hour",
+    "humidity_change_per_hour",
+    "rate_available",
+    "soil_moisture_trend_code",
+    "temperature_trend_code",
+    "humidity_trend_code"
+  ],
+  "implemented_capabilities": [
+    "Layer-20 feature-vector ingestion",
+    "binary sensor-only stress baseline",
+    "train-only feature standardization",
+    "deterministic full-batch logistic regression",
+    "L2 regularization",
+    "probability output",
+    "binary decision threshold",
+    "accuracy",
+    "precision",
+    "recall",
+    "F1",
+    "false-positive rate",
+    "false-negative rate",
+    "confusion counts",
+    "JSON model serialization",
+    "JSON model restoration",
+    "explicit external train/evaluation split"
+  ],
+  "anti_leakage_controls": {
+    "internal_random_split": false,
+    "scaler_fit_scope": "TRAIN_ONLY",
+    "simulation_source_indicator_used_as_model_feature": false
+  },
+  "scientific_guardrails": {
+    "synthetic_test_metrics_are_real_sensor_performance": false,
+    "real_sensor_stress_accuracy_claim_allowed": false,
+    "probability_is_calibrated_operational_risk": false,
+    "physical_action_authorized": false
+  },
+  "real_evaluation": {
+    "status": "PENDING",
+    "reason": "No validated real labeled sensor-stress dataset has been supplied yet."
+  },
+  "tests": {
+    "framework": "unittest",
+    "test_count": 10,
+    "result": "PASS"
+  },
+  "artifacts": {
+    "source": {
+      "path": "src/sensor_only_baseline.py",
+      "sha256": "3739d7ba20e3f48188a6c27e70d3a3915759835483c28b9fa505293bbf8529e3"
+    },
+    "tests": {
+      "path": "tests/test_sensor_only_baseline.py",
+      "sha256": "593d6bbac28159d1518b3988509abf30c7d5a590b29e66992e8d562581f25bfc"
+    }
+  },
+  "execution": {
+    "real_model_trained": false,
+    "synthetic_fixture_used_for_unit_testing": true,
+    "real_sensor_data_used": false,
+    "vision_model_loaded": false,
+    "vision_inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "vision_model_artifacts_modified": false
+  }
+}

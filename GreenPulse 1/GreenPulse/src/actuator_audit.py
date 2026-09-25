@@ -1,0 +1,196 @@
+
+import json
+import sqlite3
+
+from datetime import datetime, timezone
+from pathlib import Path
+
+from jsonschema import Draft202012Validator, FormatChecker
+
+from src.actuator_simulator import simulate_actuator
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+DEFAULT_DB = ROOT / "data" / "greenpulse.db"
+
+SCHEMA_DIR = ROOT / "configs"
+
+COMMAND_SCHEMA = json.loads(
+    (SCHEMA_DIR / "actuator_schema_v1.json").read_text(
+        encoding="utf-8-sig"
+    )
+)
+
+ACK_SCHEMA = json.loads(
+    (SCHEMA_DIR / "ack_error_schema_v1.json").read_text(
+        encoding="utf-8-sig"
+    )
+)
+
+Draft202012Validator.check_schema(COMMAND_SCHEMA)
+Draft202012Validator.check_schema(ACK_SCHEMA)
+
+COMMAND_VALIDATOR = Draft202012Validator(
+    COMMAND_SCHEMA,
+    format_checker=FormatChecker()
+)
+
+ACK_VALIDATOR = Draft202012Validator(
+    ACK_SCHEMA,
+    format_checker=FormatChecker()
+)
+
+
+from contextlib import contextmanager
+
+
+@contextmanager
+def safe_connection(db):
+    """
+    Transactional SQLite connection.
+
+    Commits successful transactions,
+    rolls back failed transactions,
+    and ALWAYS closes the connection.
+    """
+
+    conn = sqlite3.connect(
+        db,
+        timeout=10
+    )
+
+    try:
+        with conn:
+            yield conn
+
+    finally:
+        conn.close()
+
+
+def initialize_actuator_audit(db_path=None):
+    """Create a separate table for simulated actions."""
+
+    db = Path(db_path) if db_path else DEFAULT_DB
+
+    if not db.parent.exists():
+        raise FileNotFoundError(
+            "Database directory does not exist."
+        )
+
+    with safe_connection(db) as conn:
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS
+            simulated_actuator_events (
+                command_id TEXT PRIMARY KEY,
+                test_observation_id TEXT NOT NULL,
+                plant_id TEXT NOT NULL,
+                target TEXT NOT NULL,
+                scenario TEXT NOT NULL,
+                status TEXT NOT NULL,
+                error_code TEXT,
+                command_json TEXT NOT NULL,
+                result_json TEXT NOT NULL,
+                origin TEXT NOT NULL
+                    CHECK(origin = 'TEST_HARNESS'),
+                simulated INTEGER NOT NULL
+                    CHECK(simulated = 1),
+                physical_actuation INTEGER NOT NULL
+                    CHECK(physical_actuation = 0),
+                logged_at_utc TEXT NOT NULL
+            )
+        """)
+
+    return db
+
+
+def simulate_and_log(command, scenario="SUCCESS", db_path=None):
+    """
+    Validate, simulate and audit a development-only command.
+
+    Never communicates with physical hardware.
+    """
+
+    # Reject malformed and operational commands
+    # before running any simulation.
+    COMMAND_VALIDATOR.validate(command)
+
+    if scenario not in (
+        "SUCCESS",
+        "FAILURE",
+        "TIMEOUT"
+    ):
+        raise ValueError("Unsupported simulation scenario.")
+
+    result = simulate_actuator(
+        command,
+        scenario=scenario
+    )
+
+    ACK_VALIDATOR.validate(result)
+
+    # Prevent mismatched command/result records.
+    for field in (
+        "command_id",
+        "observation_id",
+        "plant_id",
+        "target"
+    ):
+        if result[field] != command[field]:
+            raise ValueError(
+                f"Command/result mismatch: {field}"
+            )
+
+    if (
+        result["simulated"] is not True
+        or result["physical_actuation"] is not False
+        or result["real_hardware_ack"] is not None
+    ):
+        raise ValueError(
+            "Unsafe or non-simulated result."
+        )
+
+    db = initialize_actuator_audit(db_path)
+
+    # A repeated command_id raises an integrity error.
+    # Existing evidence is never silently overwritten.
+    with safe_connection(db) as conn:
+        conn.execute(
+            """
+            INSERT INTO simulated_actuator_events (
+                command_id,
+                test_observation_id,
+                plant_id,
+                target,
+                scenario,
+                status,
+                error_code,
+                command_json,
+                result_json,
+                origin,
+                simulated,
+                physical_actuation,
+                logged_at_utc
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                command["command_id"],
+                command["observation_id"],
+                command["plant_id"],
+                command["target"],
+                scenario,
+                result["status"],
+                result["error_code"],
+                json.dumps(command, sort_keys=True),
+                json.dumps(result, sort_keys=True),
+                "TEST_HARNESS",
+                1,
+                0,
+                datetime.now(
+                    timezone.utc
+                ).isoformat()
+            )
+        )
+
+    return result

@@ -1,0 +1,65 @@
+{
+  "version": "2.0",
+  "generated_at_utc": "2026-09-23T22:14:35.897549+00:00",
+  "project": "GreenPulse",
+  "crop": "bell_pepper",
+  "task": "DISEASE_CLASSIFICATION",
+  "computer_side_layers": {
+    "dataset_pipeline": true,
+    "dataset_integrity_audit": true,
+    "near_duplicate_screening": true,
+    "group_aware_split": true,
+    "transfer_training": true,
+    "generic_baseline_comparison": true,
+    "validation_evaluation": true,
+    "frozen_final_test": true,
+    "post_test_error_analysis": true,
+    "onnx_export_and_parity": true,
+    "model_registry": true,
+    "active_learning": true,
+    "vision_explainability": true,
+    "crop_adaptation_logic": true
+  },
+  "computer_side_complete": true,
+  "final_test": {
+    "images": 371,
+    "accuracy": 0.9811320754716981,
+    "macro_f1": 0.9802119764402892,
+    "errors": 7,
+    "false_negatives": 7,
+    "false_positives": 0,
+    "high_confidence_errors": 3
+  },
+  "transfer_learning": {
+    "source_initialized_fine_tuning": true,
+    "transfer_advantage_demonstrated": false,
+    "backbone_freeze_documented": false,
+    "future_protocol_requires_predeclared_freeze": true
+  },
+  "explainability": {
+    "gradcam_available": true,
+    "qualitative_only": true,
+    "lesion_localization_validated": false,
+    "causal_explanation": false
+  },
+  "active_learning": {
+    "review_queue_available": true,
+    "automatic_retraining": false,
+    "automatic_labeling": false,
+    "final_test_reuse_forbidden": true
+  },
+  "still_pending_real_world": [
+    "independent real-greenhouse pepper validation",
+    "verified pepper water-stress detection",
+    "real synchronized camera/sensor evaluation",
+    "Raspberry Pi 5 deployment validation",
+    "Hailo HEF conversion and hardware validation",
+    "real irrigation calibration",
+    "physical closed-loop irrigation validation"
+  ],
+  "real_greenhouse_complete": false,
+  "water_stress_complete": false,
+  "hailo_deployment_complete": false,
+  "physical_actuation_complete": false,
+  "operational_release_approved": false
+}

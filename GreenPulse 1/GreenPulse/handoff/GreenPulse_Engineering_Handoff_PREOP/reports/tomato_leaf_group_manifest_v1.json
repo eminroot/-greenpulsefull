@@ -1,0 +1,134 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T22:34:41.252074+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "images": 18146,
+  "mapped_images": 12815,
+  "unmapped_images": 5331,
+  "metadata_derived_leaf_groups": 3205,
+  "class_statistics": {
+    "Tomato___Bacterial_spot": {
+      "images": 2127,
+      "mapped": 2127,
+      "unmapped": 0,
+      "metadata_leaf_groups": 532,
+      "mapping_methods": {
+        "UUID_STRIPPED_EXACT_STEM": 2127
+      }
+    },
+    "Tomato___Early_blight": {
+      "images": 1000,
+      "mapped": 999,
+      "unmapped": 1,
+      "metadata_leaf_groups": 250,
+      "mapping_methods": {
+        "UUID_STRIPPED_EXACT_STEM": 999,
+        "UNMAPPED": 1
+      }
+    },
+    "Tomato___Late_blight": {
+      "images": 1901,
+      "mapped": 920,
+      "unmapped": 981,
+      "metadata_leaf_groups": 230,
+      "mapping_methods": {
+        "UUID_STRIPPED_EXACT_STEM": 920,
+        "UNMAPPED": 981
+      }
+    },
+    "Tomato___Leaf_Mold": {
+      "images": 952,
+      "mapped": 952,
+      "unmapped": 0,
+      "metadata_leaf_groups": 238,
+      "mapping_methods": {
+        "UUID_STRIPPED_EXACT_STEM": 952
+      }
+    },
+    "Tomato___Septoria_leaf_spot": {
+      "images": 1771,
+      "mapped": 1000,
+      "unmapped": 771,
+      "metadata_leaf_groups": 250,
+      "mapping_methods": {
+        "UNMAPPED": 771,
+        "UUID_STRIPPED_EXACT_STEM": 1000
+      }
+    },
+    "Tomato___Spider_mites Two-spotted_spider_mite": {
+      "images": 1676,
+      "mapped": 1676,
+      "unmapped": 0,
+      "metadata_leaf_groups": 419,
+      "mapping_methods": {
+        "UUID_STRIPPED_EXACT_STEM": 1676
+      }
+    },
+    "Tomato___Target_Spot": {
+      "images": 1404,
+      "mapped": 1404,
+      "unmapped": 0,
+      "metadata_leaf_groups": 351,
+      "mapping_methods": {
+        "TARGET_SPOT_NUMERIC_ALIAS": 1404
+      }
+    },
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+      "images": 5357,
+      "mapped": 2738,
+      "unmapped": 2619,
+      "metadata_leaf_groups": 685,
+      "mapping_methods": {
+        "UUID_STRIPPED_EXACT_STEM": 2738,
+        "UNMAPPED": 2619
+      }
+    },
+    "Tomato___Tomato_mosaic_virus": {
+      "images": 373,
+      "mapped": 0,
+      "unmapped": 373,
+      "metadata_leaf_groups": 0,
+      "mapping_methods": {
+        "UNMAPPED": 373
+      }
+    },
+    "Tomato___healthy": {
+      "images": 1585,
+      "mapped": 999,
+      "unmapped": 586,
+      "metadata_leaf_groups": 250,
+      "mapping_methods": {
+        "UNMAPPED": 586,
+        "UUID_STRIPPED_EXACT_STEM": 999
+      }
+    }
+  },
+  "target_spot_alias": {
+    "rule": "Com.G_TgS_FL <-> Com.G_FL by identical final numeric ID",
+    "mapped_images": 1404,
+    "metadata_leaf_groups": 351,
+    "deterministic_one_to_one": true,
+    "physical_identity_independently_verified": false
+  },
+  "mosaic": {
+    "images": 373,
+    "mapped_images": 0,
+    "reason": "NO_FILE_LEVEL_LEAF_METADATA_FOUND"
+  },
+  "scientific_scope": {
+    "metadata_leaf_group_is_not_independent_physical_identity_proof": true,
+    "unmapped_images_have_no_invented_group_identity": true,
+    "full_physical_leaf_identity_verified": false,
+    "split_created": false,
+    "dataset_modified": false,
+    "training_executed": false,
+    "inference_executed": false
+  },
+  "evidence": {
+    "clean_manifest_sha256": "b0dbd3e87fe98888c43c8a4ec63613c0d5009682f1c9501f233069cd58b3832b",
+    "special_mapping_audit_sha256": "c85fbb593d3a2e9935af7231c42488df299f98c824a56edc9fefe5a6cfba66c2",
+    "workbook_audit_sha256": "0754968486ae82db14f12047c7f3bc6b84e6e3e404e7d87d07157ee089a0e46d",
+    "canonical_manifest_sha256": "f1b3c88f33632778ac1581958e5c4048342c74e4c6b634dd8b0135dbe7d97205"
+  }
+}

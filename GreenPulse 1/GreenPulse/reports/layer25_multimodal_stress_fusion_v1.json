@@ -1,0 +1,79 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T12:01:15.128092+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 25,
+  "layer_name": "Multimodal Stress Fusion Model",
+  "status": "SOFTWARE_FRAMEWORK_COMPLETE_REAL_VALIDATION_PENDING",
+  "model_schema_version": "greenpulse.multimodal_stress_fusion_model.v1",
+  "feature_vector_version": "multimodal_feature_vector_v1",
+  "feature_count": 54,
+  "model_type": "DETERMINISTIC_NUMPY_LOGISTIC_REGRESSION",
+  "implemented_capabilities": [
+    "Layer-22 fused feature-vector ingestion",
+    "train-only feature scaling",
+    "deterministic full-batch logistic regression",
+    "L2 regularization",
+    "binary positive-class probability",
+    "configurable decision threshold",
+    "accuracy",
+    "precision",
+    "recall",
+    "F1",
+    "false-positive rate",
+    "false-negative rate",
+    "confusion counts",
+    "JSON model serialization",
+    "JSON model restoration",
+    "external train/evaluation split"
+  ],
+  "comparison_readiness": {
+    "sensor_only_layer_23": true,
+    "vision_only_layer_24": true,
+    "fusion_layer_25": true,
+    "multimodal_benefit_measured": false,
+    "ablation_layer_51": "PENDING"
+  },
+  "anti_leakage_controls": {
+    "internal_random_split": false,
+    "scaler_fit_scope": "TRAIN_ONLY",
+    "frozen_tomato_test_used": false,
+    "frozen_pepper_test_used": false
+  },
+  "scientific_guardrails": {
+    "synthetic_unit_test_metrics_are_real_performance": false,
+    "real_multimodal_performance_validated": false,
+    "multimodal_superiority_claim_allowed": false,
+    "positive_class_probability_is_operational_water_stress_probability": false,
+    "operational_risk_score_authorized": false,
+    "physical_action_authorized": false
+  },
+  "real_evaluation": {
+    "status": "PENDING",
+    "reason": "No validated labeled real multimodal stress dataset is available."
+  },
+  "tests": {
+    "framework": "unittest",
+    "test_count": 10,
+    "result": "PASS"
+  },
+  "artifacts": {
+    "source": {
+      "path": "src/multimodal_fusion_model.py",
+      "sha256": "109638f6373ca68d85c467112e8d0fa5eb63159c706f7a89c45e3aaf4c3ae7db"
+    },
+    "tests": {
+      "path": "tests/test_multimodal_fusion_model.py",
+      "sha256": "869a80ea5ca5f273793906935a68a2c9d0080397678f8c08ef057378ca877f47"
+    }
+  },
+  "execution": {
+    "real_fusion_model_trained": false,
+    "synthetic_fixture_used_for_unit_testing": true,
+    "real_multimodal_data_used": false,
+    "vision_model_loaded": false,
+    "vision_inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "vision_model_artifacts_modified": false
+  }
+}

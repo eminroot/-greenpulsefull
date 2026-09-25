@@ -1,0 +1,30 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T21:43:03.215018+00:00",
+  "project": "GreenPulse",
+  "task": "PEPPER_DISEASE_CLASSIFICATION",
+  "experiment": "pepper_tomato_transfer_v1",
+  "initial_checkpoint": "models\\greenpulse_tomato_yolo11n_cls_v1.0.pt",
+  "initial_checkpoint_sha256": "a34db932236be048a56816a3a664d4c38ad8663157d1886075e5dca152e51e41",
+  "best_checkpoint": "runs\\pepper_transfer\\pepper_tomato_transfer_v1\\weights\\best.pt",
+  "best_checkpoint_sha256": "7d04ff121734eb00fc972bbb98e7e0db6101fe68da982e1b8e7fe17992881f9f",
+  "last_checkpoint_exists": true,
+  "source_classes": 10,
+  "target_classes": [
+    "bacterial_spot",
+    "healthy"
+  ],
+  "training_images": 1731,
+  "validation_images": 371,
+  "reserved_test_images": 371,
+  "maximum_epochs": 15,
+  "completed_epochs": 11,
+  "training_completed": true,
+  "test_evaluation_completed": false,
+  "comparison_experiment_completed": false,
+  "transfer_advantage_demonstrated": false,
+  "physical_plant_identity_verified": false,
+  "real_greenhouse_validation": false,
+  "water_stress_model_trained": false,
+  "physical_actuation_authorized": false
+}

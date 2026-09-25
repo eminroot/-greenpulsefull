@@ -1,0 +1,144 @@
+{
+  "audit_version": "1.0",
+  "generated_at_utc": "2026-09-23T21:12:14.251506+00:00",
+  "project": "GreenPulse",
+  "test_results": {
+    "hardware_safety": {
+      "passed": true,
+      "expected_tests": 10,
+      "executed_tests": 10
+    },
+    "multimodal_contract": {
+      "passed": true,
+      "expected_tests": 6,
+      "executed_tests": 6
+    },
+    "real_data_staging": {
+      "passed": true,
+      "expected_tests": 6,
+      "executed_tests": 6
+    },
+    "dataset_integrity": {
+      "passed": true,
+      "expected_tests": 5,
+      "executed_tests": 5
+    },
+    "dataset_manifest": {
+      "passed": true,
+      "expected_tests": 5,
+      "executed_tests": 5
+    }
+  },
+  "passed_regression_tests": 32,
+  "software_artifacts": {
+    "vision_inference": {
+      "path": "src/vision_inference.py",
+      "exists": true
+    },
+    "fastapi": {
+      "path": "src/api.py",
+      "exists": true
+    },
+    "sensor_validation": {
+      "path": "src/sensor_validator.py",
+      "exists": true
+    },
+    "sensor_features": {
+      "path": "src/sensor_features.py",
+      "exists": true
+    },
+    "sensor_history": {
+      "path": "src/sensor_history.py",
+      "exists": true
+    },
+    "sensor_window": {
+      "path": "src/sensor_window.py",
+      "exists": true
+    },
+    "fusion_input_contract": {
+      "path": "src/fusion_contract.py",
+      "exists": true
+    },
+    "decision_safety": {
+      "path": "src/safety_gate.py",
+      "exists": true
+    },
+    "hardware_handoff": {
+      "path": "src/hardware_contract.py",
+      "exists": true
+    },
+    "actuator_simulator": {
+      "path": "src/actuator_simulator.py",
+      "exists": true
+    },
+    "actuator_audit": {
+      "path": "src/actuator_audit.py",
+      "exists": true
+    },
+    "closed_loop": {
+      "path": "src/closed_loop_simulator.py",
+      "exists": true
+    },
+    "closed_loop_api_contract": {
+      "path": "src/closed_loop_feedback_contract.py",
+      "exists": true
+    },
+    "real_data_intake": {
+      "path": "src/real_data_staging.py",
+      "exists": true
+    },
+    "dataset_integrity": {
+      "path": "src/staging_integrity_audit.py",
+      "exists": true
+    },
+    "dataset_manifest": {
+      "path": "src/candidate_dataset_manifest.py",
+      "exists": true
+    },
+    "hardware_inventory": {
+      "path": "handoff/hardware_intake_v1/hardware_inventory_v1.json",
+      "exists": true
+    },
+    "hardware_readme": {
+      "path": "handoff/hardware_intake_v1/README.md",
+      "exists": true
+    },
+    "hardware_intake_cli": {
+      "path": "scripts/stage_hardware_candidate.py",
+      "exists": true
+    }
+  },
+  "vision_model_integrity": {
+    "pytorch": {
+      "exists": true,
+      "path": "models/greenpulse_tomato_yolo11n_cls_v1.0.pt",
+      "sha256": "a34db932236be048a56816a3a664d4c38ad8663157d1886075e5dca152e51e41",
+      "matches_previous_release": true
+    },
+    "onnx": {
+      "exists": true,
+      "path": "models/greenpulse_tomato_yolo11n_cls_v1.0.onnx",
+      "sha256": "8c5ebdcf44d31ec8109774fcd2ecbcf6954223254cedf40dcb44cba6bbbd62e7",
+      "matches_previous_release": true
+    }
+  },
+  "seven_device_inventory_count": 7,
+  "computer_side_audit_passed": true,
+  "real_hardware_validated": false,
+  "multimodal_water_stress_model_validated": false,
+  "automatic_physical_irrigation_authorized": false,
+  "pepper_transfer_learning_completed": false,
+  "pending_work": [
+    "Real greenhouse vision evaluation",
+    "Verified tomato water-stress ground truth",
+    "Trained and calibrated multimodal stress model",
+    "Validated predictive risk forecasting",
+    "Verified physical sensor models and calibration",
+    "Real irrigation and hardware safety commissioning",
+    "Real ventilation hardware integration",
+    "ONNX to Hailo HEF conversion and validation",
+    "Raspberry Pi runtime RAM benchmark below 3 GB",
+    "Measured water and energy savings",
+    "Pepper transfer-learning dataset and evaluation"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+    "project": "GreenPulse",
+    "model_name": "YOLO11n Classification",
+    "version": "1.0",
+    "crop": "tomato",
+    "classes": 10,
+    "status": "VALIDATION_COMPLETE_TEST_PENDING",
+    "training_device": "CPU",
+    "epochs_configured": 15,
+    "image_size": 224,
+    "validation_top1": 0.996,
+    "pytorch_version": "2.14.0+cpu",
+    "ultralytics_version": "8.4.160",
+    "model_path": "models\\greenpulse_tomato_yolo11n_cls_v1.0.pt",
+    "model_sha256": "a34db932236be048a56816a3a664d4c38ad8663157d1886075e5dca152e51e41",
+    "dataset_manifest_sha256": {
+        "train": "eac1d428b48729d3a91512dbc6153bcf2fbec317b53d8773613a036040f82dcf",
+        "validation": "89903d68db229b975aafa0523d58a5df40f35a1f6e393bd1834739ff9f9d7ece",
+        "test": "cec810e5c37232b5c4150a90f8ea2d3bbc5a2e217987308de4300a1c4109633f"
+    },
+    "registered_at": "2026-09-23T17:47:57.176785+00:00"
+}

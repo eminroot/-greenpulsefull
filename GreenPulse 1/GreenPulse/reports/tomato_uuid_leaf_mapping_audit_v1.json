@@ -1,0 +1,181 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T22:26:21.105040+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "clean_images": 18146,
+  "uuid_prefixed_filenames": 18146,
+  "mapped_images": 11411,
+  "ambiguous_images": 0,
+  "unmapped_images": 6735,
+  "fully_mapped_classes": [
+    "Tomato___Bacterial_spot",
+    "Tomato___Leaf_Mold",
+    "Tomato___Spider_mites Two-spotted_spider_mite"
+  ],
+  "partially_mapped_classes": [
+    "Tomato___Early_blight",
+    "Tomato___Late_blight",
+    "Tomato___Septoria_leaf_spot",
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+    "Tomato___healthy"
+  ],
+  "zero_mapped_classes": [
+    "Tomato___Target_Spot",
+    "Tomato___Tomato_mosaic_virus"
+  ],
+  "class_reports": {
+    "Tomato___Bacterial_spot": {
+      "images": 2127,
+      "leafmap_available": true,
+      "leafmap_rows": 2128,
+      "mapped": 2127,
+      "ambiguous": 0,
+      "unmapped": 0,
+      "unique_leaf_groups": 532,
+      "unmapped_examples": []
+    },
+    "Tomato___Early_blight": {
+      "images": 1000,
+      "leafmap_available": true,
+      "leafmap_rows": 1000,
+      "mapped": 999,
+      "ambiguous": 0,
+      "unmapped": 1,
+      "unique_leaf_groups": 250,
+      "unmapped_examples": [
+        "RS_Erly.B 6341.JPG"
+      ]
+    },
+    "Tomato___Late_blight": {
+      "images": 1901,
+      "leafmap_available": true,
+      "leafmap_rows": 920,
+      "mapped": 920,
+      "ambiguous": 0,
+      "unmapped": 981,
+      "unique_leaf_groups": 230,
+      "unmapped_examples": [
+        "GHLB2 Leaf 8556.JPG",
+        "GHLB2 Leaf 9100.JPG",
+        "GHLB2 Leaf 8831.JPG",
+        "GHLB2ES Leaf 69.1.JPG",
+        "GHLB_PS Leaf 17 Day 9.jpg",
+        "GHLB Leaf 2.1 Day 16.JPG",
+        "GHLB2 Leaf 8824.JPG",
+        "GHLB2 Leaf 121.JPG"
+      ]
+    },
+    "Tomato___Leaf_Mold": {
+      "images": 952,
+      "leafmap_available": true,
+      "leafmap_rows": 952,
+      "mapped": 952,
+      "ambiguous": 0,
+      "unmapped": 0,
+      "unique_leaf_groups": 238,
+      "unmapped_examples": []
+    },
+    "Tomato___Septoria_leaf_spot": {
+      "images": 1771,
+      "leafmap_available": true,
+      "leafmap_rows": 1000,
+      "mapped": 1000,
+      "ambiguous": 0,
+      "unmapped": 771,
+      "unique_leaf_groups": 250,
+      "unmapped_examples": [
+        "Keller.St_CG 1831.JPG",
+        "JR_Sept.L.S 8368.JPG",
+        "JR_Sept.L.S 8431.JPG",
+        "JR_Sept.L.S 2504.JPG",
+        "JR_Sept.L.S 2506.JPG",
+        "Keller.St_CG 1939.JPG",
+        "JR_Sept.L.S 8562.JPG",
+        "JR_Sept.L.S 8522.JPG"
+      ]
+    },
+    "Tomato___Spider_mites Two-spotted_spider_mite": {
+      "images": 1676,
+      "leafmap_available": true,
+      "leafmap_rows": 1676,
+      "mapped": 1676,
+      "ambiguous": 0,
+      "unmapped": 0,
+      "unique_leaf_groups": 419,
+      "unmapped_examples": []
+    },
+    "Tomato___Target_Spot": {
+      "images": 1404,
+      "leafmap_available": true,
+      "leafmap_rows": 1404,
+      "mapped": 0,
+      "ambiguous": 0,
+      "unmapped": 1404,
+      "unique_leaf_groups": 0,
+      "unmapped_examples": [
+        "Com.G_TgS_FL 8360.JPG",
+        "Com.G_TgS_FL 8121.JPG",
+        "Com.G_TgS_FL 7908.JPG",
+        "Com.G_TgS_FL 9844.JPG",
+        "Com.G_TgS_FL 7949.JPG",
+        "Com.G_TgS_FL 0013.JPG",
+        "Com.G_TgS_FL 8241.JPG",
+        "Com.G_TgS_FL 0779.JPG"
+      ]
+    },
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+      "images": 5357,
+      "leafmap_available": true,
+      "leafmap_rows": 2740,
+      "mapped": 2738,
+      "ambiguous": 0,
+      "unmapped": 2619,
+      "unique_leaf_groups": 685,
+      "unmapped_examples": [
+        "UF.GRC_YLCV_Lab 01999.JPG",
+        "UF.GRC_YLCV_Lab 01755.JPG",
+        "UF.GRC_YLCV_Lab 02644.JPG",
+        "UF.GRC_YLCV_Lab 02748.JPG",
+        "UF.GRC_YLCV_Lab 01441.JPG",
+        "UF.GRC_YLCV_Lab 03161.JPG",
+        "UF.GRC_YLCV_Lab 02979.JPG",
+        "UF.GRC_YLCV_Lab 02344.JPG"
+      ]
+    },
+    "Tomato___Tomato_mosaic_virus": {
+      "images": 373,
+      "leafmap_available": false,
+      "mapped": 0,
+      "unmapped": 373,
+      "ambiguous": 0,
+      "unique_leaf_groups": 0
+    },
+    "Tomato___healthy": {
+      "images": 1585,
+      "leafmap_available": true,
+      "leafmap_rows": 1000,
+      "mapped": 999,
+      "ambiguous": 0,
+      "unmapped": 586,
+      "unique_leaf_groups": 250,
+      "unmapped_examples": [
+        "GH_HL Leaf 259.1.JPG",
+        "GH_HL Leaf 308.1.JPG",
+        "GH_HL Leaf 422.1.JPG",
+        "GH_HL Leaf 297.JPG",
+        "GH_HL Leaf 439.JPG",
+        "GH_HL Leaf 503.1.JPG",
+        "GH_HL Leaf 299.JPG",
+        "GH_HL Leaf 325.1.JPG"
+      ]
+    }
+  },
+  "scientific_status": {
+    "full_10_class_leaf_group_split_ready": false,
+    "physical_leaf_identity_verified_for_all": false,
+    "dataset_modified": false,
+    "training_executed": false,
+    "inference_executed": false
+  }
+}

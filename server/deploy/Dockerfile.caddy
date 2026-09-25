@@ -1,0 +1,23 @@
+# Caddy with the web panel baked in.
+#
+# The panel is served from the same origin as the API, so the browser makes
+# relative requests, there is no CORS to configure, and the two can never point
+# at different servers by accident.
+#
+# Built from the repository root (see docker-compose.yml), because it needs both
+# web/ and the Caddyfile under server/.
+
+FROM node:20-alpine AS panel
+WORKDIR /app
+
+COPY web/package.json web/package-lock.json ./
+RUN npm ci
+
+COPY web/ ./
+# Baked in at build time. Leave it unset and the panel simply hides the button.
+ARG VITE_GOOGLE_CLIENT_ID=""
+ENV VITE_GOOGLE_CLIENT_ID=$VITE_GOOGLE_CLIENT_ID
+RUN npm run build
+
+FROM caddy:2-alpine
+COPY --from=panel /app/dist /srv/panel

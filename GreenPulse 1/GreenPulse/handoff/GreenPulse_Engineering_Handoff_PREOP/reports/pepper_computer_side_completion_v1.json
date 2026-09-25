@@ -1,0 +1,159 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T22:04:50.757883+00:00",
+  "project": "GreenPulse",
+  "crop": "bell_pepper",
+  "core_artifacts": {
+    "source_manifest": {
+      "path": "reports/pepper_source_manifest_v1.json",
+      "exists": true,
+      "sha256": "a55e38e05afea585158292ea6816c14b17a55f1919c986fd23d8d49e6e234431"
+    },
+    "dataset_audit": {
+      "path": "reports/pepper_dataset_audit_v1.json",
+      "exists": true,
+      "sha256": "770e45bdc8f0e9ab75ca0a3be4f3cc3d4c27827248f4e6dccaa9a4ef672e0154"
+    },
+    "near_duplicate_audit": {
+      "path": "reports/pepper_near_duplicate_audit_v1.json",
+      "exists": true,
+      "sha256": "69fb0f72d16860ee5e2bef86391e2278e278c6e30bd95d77d0362838b7c8ebd6"
+    },
+    "group_split": {
+      "path": "reports/pepper_group_split_v1.json",
+      "exists": true,
+      "sha256": "c9d599bfdbf0c193fe1dc19e8f520f3ea5d41be351797533162a5b1da2100507"
+    },
+    "training_dataset": {
+      "path": "reports/pepper_training_dataset_v1.json",
+      "exists": true,
+      "sha256": "d078bc5c2b091deda618a3843ecc25cb7eeaa4265824df2658aa3b81d755e04c"
+    },
+    "transfer_readiness": {
+      "path": "reports/pepper_transfer_readiness_v1.json",
+      "exists": true,
+      "sha256": "c5bda1e75ce593887ea64f9791d83be084efc0da1c4e7ef4391d377a2418e882"
+    },
+    "transfer_training": {
+      "path": "reports/pepper_transfer_training_v1.json",
+      "exists": true,
+      "sha256": "72943ba0b6e67e9a011c354476aedba19ac93e579ef6934d6f76cdb8f90e4196"
+    },
+    "validation_evaluation": {
+      "path": "reports/pepper_validation_evaluation_v1.json",
+      "exists": true,
+      "sha256": "623eb763f954fe5bd1b800e4855a0db8bdcae50e904005531c1f24126d94c8bc"
+    },
+    "baseline_training": {
+      "path": "reports/pepper_generic_baseline_training_v1.json",
+      "exists": true,
+      "sha256": "8ab32b592bbf666d28ccf5f6013e68d98d6e974214bd148eedff82b0c6089db7"
+    },
+    "baseline_validation": {
+      "path": "reports/pepper_generic_baseline_validation_v1.json",
+      "exists": true,
+      "sha256": "30e0badbb67c2b5bfc72ee8dc41bdbadbbc60379ba411b7ee45accf6d5e3edcb"
+    },
+    "model_comparison": {
+      "path": "reports/pepper_model_comparison_v1.json",
+      "exists": true,
+      "sha256": "d863d762e0c8d111928cf6876503eb45d8def9310acadb69683e5038ef03e5c4"
+    },
+    "onnx_parity": {
+      "path": "reports/pepper_onnx_parity_v1.json",
+      "exists": true,
+      "sha256": "2d9d811a85f82b3277e7d1078c0f904462b222eef1ee22f29f07a87193653fe1"
+    },
+    "candidate_freeze": {
+      "path": "reports/pepper_candidate_freeze_v1.json",
+      "exists": true,
+      "sha256": "30e6b8bff76a3a63530ba8cb3f88a3872ffac5d570a5946f05506b0c4c8767b8"
+    },
+    "final_test": {
+      "path": "reports/pepper_final_test_v1/final_test_report.json",
+      "exists": true,
+      "sha256": "47565809bfad1960f9d41808a4aac50c4c5f38a9655e004dd07dd69e0f2ef34e"
+    },
+    "final_predictions": {
+      "path": "reports/pepper_final_test_v1/predictions.csv",
+      "exists": true,
+      "sha256": "f39be4f76bd2b81aade6bb5a4057e2a766e6af6ec450a4f4685bdd01b3adebc2"
+    },
+    "final_errors": {
+      "path": "reports/pepper_final_test_v1/errors.csv",
+      "exists": true,
+      "sha256": "64dedaf9d4eca7baec76fd19cd21a78d7fe91c57ba9d490d03e657685fa0310c"
+    },
+    "posttest_audit": {
+      "path": "reports/pepper_posttest_review_v1/posttest_audit.json",
+      "exists": true,
+      "sha256": "eac7ab289345c466ecbf5a5c026f277fdef52b841688f9e0772d5d4abf4e5de1"
+    },
+    "model_card": {
+      "path": "reports/pepper_posttest_review_v1/model_card.md",
+      "exists": true,
+      "sha256": "9b143046975494690957a764bc244b534d005813f8f4227ee9849b2323a98e2e"
+    },
+    "registry": {
+      "path": "configs/vision_model_registry_v1.json",
+      "exists": true,
+      "sha256": "0801d895b03e09f63daa0511d29d03c0ae80dbc50f524252b8e168fe3c7e7d00"
+    },
+    "pepper_pt": {
+      "path": "models/release_candidates/pepper_transfer_v1/pepper_transfer_v1.pt",
+      "exists": true,
+      "sha256": "7d04ff121734eb00fc972bbb98e7e0db6101fe68da982e1b8e7fe17992881f9f"
+    },
+    "pepper_onnx": {
+      "path": "models/release_candidates/pepper_transfer_v1/pepper_transfer_v1.onnx",
+      "exists": true,
+      "sha256": "3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7"
+    }
+  },
+  "core_evidence_complete": true,
+  "final_evidence_consistency": true,
+  "computer_side_layers": {
+    "active_learning": {
+      "status": "PENDING",
+      "detected_files": [],
+      "candidate_paths_checked": [
+        "src/active_learning.py",
+        "src/review_queue.py"
+      ]
+    },
+    "vision_explainability": {
+      "status": "PENDING",
+      "detected_files": [],
+      "candidate_paths_checked": [
+        "src/vision_explainability.py",
+        "src/gradcam.py"
+      ]
+    },
+    "crop_adaptation_logic": {
+      "status": "PENDING",
+      "detected_files": [],
+      "candidate_paths_checked": [
+        "src/transfer_learning.py",
+        "src/crop_adaptation_eval.py"
+      ]
+    }
+  },
+  "missing_computer_side_layers": [
+    "active_learning",
+    "vision_explainability",
+    "crop_adaptation_logic"
+  ],
+  "computer_side_complete": false,
+  "hardware_dependent_pending": [
+    "independent real-greenhouse pepper evaluation",
+    "verified pepper water-stress model",
+    "real synchronized image/sensor validation",
+    "real crop-specific irrigation calibration",
+    "Raspberry Pi 5 inference validation",
+    "Hailo HEF conversion and hardware regression",
+    "physical closed-loop irrigation validation"
+  ],
+  "real_greenhouse_complete": false,
+  "water_stress_complete": false,
+  "physical_actuation_complete": false
+}

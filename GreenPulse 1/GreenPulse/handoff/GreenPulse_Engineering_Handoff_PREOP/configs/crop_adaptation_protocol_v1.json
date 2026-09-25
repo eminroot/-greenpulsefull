@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "mode": "RESEARCH_ONLY",
+
+  "required_experiment_arms": [
+    "SOURCE_CROP_PRETRAINED",
+    "GENERIC_PRETRAINED_BASELINE"
+  ],
+
+  "required_controls": {
+    "same_target_dataset": true,
+    "same_train_validation_split": true,
+    "same_random_seed": true,
+    "same_image_size": true,
+    "same_epoch_budget": true,
+    "same_optimizer_family": true,
+    "same_learning_rate": true,
+    "same_early_stopping_policy": true
+  },
+
+  "future_adaptation_training": {
+    "freeze_strategy_must_be_declared_before_training": true,
+    "selected_backbone_freeze_required_for_protocol_arm": true,
+    "freeze_configuration_must_be_recorded": true
+  },
+
+  "model_selection_split": "VALIDATION",
+
+  "held_out_test_policy": {
+    "use_for_model_selection": false,
+    "use_for_threshold_tuning": false,
+    "single_final_evaluation_only": true
+  },
+
+  "minimum_reported_metrics": [
+    "accuracy",
+    "balanced_accuracy",
+    "macro_precision",
+    "macro_recall",
+    "macro_f1",
+    "per_class_precision",
+    "per_class_recall",
+    "per_class_f1",
+    "confusion_matrix"
+  ],
+
+  "transfer_advantage_policy": {
+    "validation_difference_required": true,
+    "do_not_claim_advantage_when_metrics_tie": true,
+    "causal_advantage_claim_allowed": false
+  },
+
+  "real_greenhouse_generalization_required_for_operational_claim": true,
+
+  "physical_actuation_allowed": false
+}

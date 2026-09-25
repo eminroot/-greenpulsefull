@@ -1,0 +1,15 @@
+# Lower bounds rather than exact pins: current Raspberry Pi OS ships Python
+# 3.13, and older exact pins (numpy 1.26) have no wheels for it, so pip would
+# try to compile numpy on the Pi and fail.
+fastapi>=0.115,<1
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+opencv-python-headless>=4.10
+numpy>=1.26
+requests>=2.32
+
+# The leaf disease model (leaf_classifier.py). No torch: onnxruntime runs the
+# exported network, and loading it adds about 35 MB of RAM. Its Pi wheels are
+# 64-bit only, so the Pi needs the 64-bit Raspberry Pi OS; setup.sh checks.
+onnxruntime>=1.20
+pillow>=10.4

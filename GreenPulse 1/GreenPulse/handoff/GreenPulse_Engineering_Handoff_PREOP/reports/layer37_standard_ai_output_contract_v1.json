@@ -1,0 +1,97 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T13:50:03.440188+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 37,
+  "layer_name": "Standard AI Output Contract",
+  "status": "SOFTWARE_CONTRACT_COMPLETE_REAL_OPERATIONAL_OUTPUT_VALIDATION_PENDING",
+  "schema_version": "greenpulse.standard_ai_output.v1",
+  "collection_schema_version": "greenpulse.standard_ai_output_collection.v1",
+  "null_policy_version": "greenpulse.standard_ai_output_null_policy.v1",
+  "standardized_fields": [
+    "observation_id",
+    "plant_id",
+    "timestamp",
+    "vision",
+    "sensor",
+    "risk",
+    "trend",
+    "forecast",
+    "uncertainty",
+    "decision",
+    "reason_codes",
+    "model_versions",
+    "latency"
+  ],
+  "source_adapters": {
+    "master_ai_inference_pipeline": true,
+    "legacy_api_observation": true
+  },
+  "api_integration": {
+    "/inference": "STANDARD_AI_OUTPUT",
+    "/latest": "STANDARD_AI_OUTPUT",
+    "/plants/{plant_id}": "STANDARD_AI_OUTPUT_COLLECTION",
+    "measured_inference_latency": true,
+    "observation_freshness_preserved": true,
+    "legacy_audit_record_format_preserved": true
+  },
+  "null_fallback_behavior": {
+    "explicit": true,
+    "missing_risk_invented": false,
+    "missing_trend_invented": false,
+    "missing_forecast_invented": false,
+    "missing_uncertainty_invented": false,
+    "missing_model_version_invented": false,
+    "missing_latency_invented": false
+  },
+  "scientific_guardrails": {
+    "legacy_sensor_window_reinterpreted_as_risk_trend": false,
+    "disease_classification_reinterpreted_as_water_stress": false,
+    "sensor_source_field_is_authentication": false,
+    "operational_water_stress_model_validated": false,
+    "physical_action_authorized": false
+  },
+  "tests": {
+    "contract_engine": {
+      "count": 14,
+      "result": "PASS"
+    },
+    "api_integration": {
+      "count": 7,
+      "result": "PASS"
+    },
+    "total": {
+      "count": 21,
+      "result": "PASS"
+    }
+  },
+  "artifacts": {
+    "contract_source": {
+      "path": "src/ai_output_contract.py",
+      "sha256": "93338e66a6c46ed17042e659bc687602806c2fcae4abca988136357f2483661a"
+    },
+    "api_source": {
+      "path": "src/api.py",
+      "sha256": "031426ab37089cbd4bafa3c7bf61e0cff441d05267d35dcc48969349680d3dc1"
+    },
+    "contract_tests": {
+      "path": "tests/test_ai_output_contract.py",
+      "sha256": "ccd045eee117fffc14b57e2a1c72f526095580be902cf9e6408a262023ef977b"
+    },
+    "api_integration_tests": {
+      "path": "tests/test_ai_output_api_integration.py",
+      "sha256": "c52a4073e67b8c45692349909f2cbafbbc46dce64dadf430fe2fcbd589283e27"
+    }
+  },
+  "execution": {
+    "server_started": false,
+    "vision_model_instantiated": false,
+    "vision_inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false,
+    "production_database_modified": false,
+    "hardware_command_generated": false,
+    "hardware_dispatch_performed": false,
+    "physical_action_executed": false
+  }
+}

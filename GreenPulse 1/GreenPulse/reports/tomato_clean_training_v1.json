@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T23:33:07.898133+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "experiment": "NEW_TOMATO_CLEAN_EXPERIMENT_V1",
+  "status": "TRAINING_COMPLETED",
+  "initialization": {
+    "type": "GENERIC_PRETRAINED_BASE_ONLY",
+    "model": "yolo11n-cls.pt",
+    "historical_tomato_checkpoint_used": false
+  },
+  "dataset": {
+    "train_images": 12684,
+    "validation_images": 2725,
+    "frozen_test_images": 2737,
+    "test_directory_present_during_training": false,
+    "test_used_for_training": false,
+    "test_used_for_validation": false,
+    "test_used_for_model_selection": false
+  },
+  "training": {
+    "max_epochs": 15,
+    "epochs_completed": 15,
+    "image_size": 224,
+    "batch": 32,
+    "optimizer": "AdamW",
+    "seed": 42,
+    "device": "cpu",
+    "deterministic": true
+  },
+  "model_selection": {
+    "partition": "validation",
+    "best_epoch_from_results_csv": 15,
+    "best_validation_top1_from_results_csv": 0.99486,
+    "final_test_used": false
+  },
+  "artifacts": {
+    "run_directory": "runs/tomato_clean/tomato_clean_v1",
+    "best_checkpoint": "runs/tomato_clean/tomato_clean_v1/weights/best.pt",
+    "best_checkpoint_sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687",
+    "last_checkpoint": "runs/tomato_clean/tomato_clean_v1/weights/last.pt",
+    "last_checkpoint_sha256": "36d9efe1dbff0220f9de7bb3abcc5cd0b0bb6e575207d064262f97f3a1e748b6"
+  },
+  "scientific_scope": {
+    "plantvillage_leaf_disease_classification": true,
+    "real_greenhouse_validation": false,
+    "water_stress_detection": false,
+    "early_stress_detection": false,
+    "physical_leaf_identity_verified_for_all": false,
+    "operational_release_approved": false
+  },
+  "evidence": {
+    "frozen_training_config_sha256": "e7c4032c6f0c5c052d253c4df4533f148aa56fde6df702941731967efffac5b8"
+  }
+}

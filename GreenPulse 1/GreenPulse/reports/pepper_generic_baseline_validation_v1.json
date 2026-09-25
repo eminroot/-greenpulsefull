@@ -1,0 +1,50 @@
+{
+  "version": "1.0",
+  "evaluation_split": "VALIDATION_ONLY",
+  "checkpoint_sha256": "49c5531d34925691745f9c19638068e74bd620347c1c876e003c73318fad9929",
+  "split_manifest_sha256": "c9d599bfdbf0c193fe1dc19e8f520f3ea5d41be351797533162a5b1da2100507",
+  "validation_images": 371,
+  "validation_leaf_groups": 51,
+  "test_images_evaluated": 0,
+  "confusion_matrix": {
+    "class_order": [
+      "bacterial_spot",
+      "healthy"
+    ],
+    "rows": "TRUE_LABEL",
+    "columns": "PREDICTED_LABEL",
+    "values": [
+      [
+        149,
+        0
+      ],
+      [
+        0,
+        222
+      ]
+    ]
+  },
+  "metrics": {
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "macro_precision": 1.0,
+    "macro_recall": 1.0,
+    "macro_f1": 1.0,
+    "per_class": {
+      "bacterial_spot": {
+        "support": 149,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "healthy": {
+        "support": 222,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    }
+  },
+  "real_greenhouse_validation": false,
+  "water_stress_validated": false
+}

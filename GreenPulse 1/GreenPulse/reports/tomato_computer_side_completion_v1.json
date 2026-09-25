@@ -1,0 +1,202 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T00:20:08.036191+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "task": "PLANTVILLAGE_LEAF_DISEASE_CLASSIFICATION",
+  "experiment": "NEW_TOMATO_CLEAN_EXPERIMENT_V1",
+  "status": "COMPUTER_SIDE_DISEASE_CLASSIFICATION_COMPLETE",
+  "computer_side_complete": true,
+  "computer_side_layers": {
+    "dataset_integrity_audit": true,
+    "metadata_aware_leaf_grouping": true,
+    "group_aware_hybrid_split": true,
+    "exact_duplicate_leakage_control": true,
+    "near_duplicate_screening": true,
+    "train_validation_materialization": true,
+    "training_protocol_freeze": true,
+    "clean_model_training": true,
+    "validation_evaluation": true,
+    "validation_error_analysis": true,
+    "pre_test_model_freeze": true,
+    "vision_explainability": true,
+    "onnx_export_and_parity": true,
+    "one_time_frozen_final_test": true,
+    "post_test_error_analysis": true,
+    "model_card": true,
+    "model_registry": true,
+    "active_learning_review_routing": true
+  },
+  "dataset": {
+    "total_images": 18146,
+    "train": 12684,
+    "validation": 2725,
+    "frozen_test": 2737,
+    "exact_sha_cross_split_overlap": 0,
+    "mapped_leaf_group_cross_split_overlap": 0,
+    "near_duplicate_screen": "PASS",
+    "full_physical_leaf_independence_verified": false
+  },
+  "training": {
+    "initialization": "GENERIC_PRETRAINED_BASE_ONLY",
+    "base_model": "yolo11n-cls.pt",
+    "historical_tomato_checkpoint_used": false,
+    "final_checkpoint_sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687"
+  },
+  "final_test": {
+    "status": "CONSUMED",
+    "evaluation_count": 1,
+    "images": 2737,
+    "correct": 2714,
+    "errors": 23,
+    "accuracy": 0.9915966386554622,
+    "balanced_accuracy": 0.9908985098371288,
+    "macro_precision": 0.9890671267991993,
+    "macro_recall": 0.9908985098371288,
+    "macro_f1": 0.9899329671056343,
+    "high_confidence_errors_ge_0_90": 3,
+    "additional_inference_forbidden": true
+  },
+  "onnx": {
+    "status": "PASS",
+    "sha256": "537db352736bae025d9c91813bb38efea174fe4937952bc2598bc6d68fcf27d9",
+    "parity_samples": 50,
+    "class_mismatches": 0,
+    "max_probability_absolute_difference": 5.364418029785156e-07
+  },
+  "explainability": {
+    "gradcam_available": true,
+    "preprocessing_parity_verified": true,
+    "qualitative_only": true,
+    "lesion_localization_validated": false,
+    "causal_explanation": false
+  },
+  "active_learning": {
+    "human_review_routing": true,
+    "threshold": 0.65,
+    "threshold_validated": false,
+    "automatic_labeling": false,
+    "automatic_retraining": false,
+    "physical_actuation": false,
+    "final_test_reuse_forbidden": true
+  },
+  "registry": {
+    "mode": "RESEARCH_ONLY",
+    "crop_identity_verified": false,
+    "unknown_crop_policy": "ABSTAIN",
+    "actuation_authorized": false,
+    "operational_release_approved": false
+  },
+  "still_pending_real_world_or_hardware": [
+    "independent real-greenhouse tomato validation",
+    "real tomato water-stress validation",
+    "early-stress temporal validation",
+    "real synchronized camera/sensor fusion validation",
+    "Raspberry Pi 5 runtime validation",
+    "Hailo HEF conversion and execution",
+    "deployment RAM validation",
+    "real pump-flow calibration",
+    "physical closed-loop irrigation validation",
+    "measured water savings",
+    "measured energy savings"
+  ],
+  "scientific_limitations": {
+    "full_physical_leaf_independence_verified": false,
+    "globally_pristine_relative_to_all_historical_models": false,
+    "real_greenhouse_validation": false,
+    "water_stress_detection_validated": false,
+    "early_stress_detection_validated": false,
+    "hailo_deployment_validated": false,
+    "physical_closed_loop_validated": false,
+    "operational_release_approved": false
+  },
+  "artifact_manifest": {
+    "leaf_group_manifest": {
+      "path": "reports/tomato_leaf_group_manifest_v1.json",
+      "sha256": "36c065416e7f8258575a958f0252c828e0ca75d106ee1933e5ab12fd15ff4db6"
+    },
+    "hybrid_split": {
+      "path": "reports/tomato_hybrid_split_v1.json",
+      "sha256": "1c0da3e4cec35d0e4d7b9180bb32ea4a7a76293105dc2457db6e1dab5e13fbe9"
+    },
+    "near_duplicate": {
+      "path": "reports/tomato_near_duplicate_audit_v1.json",
+      "sha256": "68998e5ae785a3c371bde9cf2163150d103c4de4d21853a05178fa93b79ba0ab"
+    },
+    "training_dataset": {
+      "path": "reports/tomato_training_dataset_v1.json",
+      "sha256": "1e8c77fb5918283d5785e66d7320a6635816e39d97af5510691cf74db8620df1"
+    },
+    "training_protocol": {
+      "path": "reports/tomato_training_protocol_freeze_v1.json",
+      "sha256": "cdadf7e78e813bebace80499d60986fe216777f619197d1e9c1171d2a7c4ae40"
+    },
+    "training": {
+      "path": "reports/tomato_clean_training_v1.json",
+      "sha256": "baf0d53820f61f8e6e39f75e983133c2165c4d47fa8afed73b26169007275bcf"
+    },
+    "validation": {
+      "path": "reports/tomato_validation_evaluation_v1.json",
+      "sha256": "3984b45cba3f3e1067006361132580ded60b7990598f747446d71417d9412483"
+    },
+    "freeze": {
+      "path": "reports/tomato_final_model_freeze_v1.json",
+      "sha256": "de8fd89dace2479031829b965874e0bdf9b406e66ee767b913f43b3bc90011ec"
+    },
+    "explainability_patch": {
+      "path": "reports/vision_explainability_preprocessing_patch_v1.json",
+      "sha256": "45fb1bfbbb4e651b141623276f29cd8bca03bea103a986bd76d201a5ddf01b8e"
+    },
+    "explainability": {
+      "path": "reports/tomato_explainability_v1.json",
+      "sha256": "96789beeab1e14ecde2ccb77a0e3427171ef44607a4d631b1dabef676d1490e7"
+    },
+    "onnx_parity": {
+      "path": "reports/tomato_onnx_parity_v1.json",
+      "sha256": "11efb0986adbc863332ac5328d4ede8166226dc161546274d85536de7a8ebf8a"
+    },
+    "final_test": {
+      "path": "reports/tomato_final_test_v1.json",
+      "sha256": "cbfca02f2eee81ccf09512ba65906167fc68754ad8887dc84eaa1bfa8af2de0c"
+    },
+    "final_test_attempt": {
+      "path": "reports/tomato_final_test_attempt_v1.json",
+      "sha256": "67d331bc5048fcaf14432c5c7b813645f97ebf5a71285779f122c03859d2af3d"
+    },
+    "post_test": {
+      "path": "reports/tomato_post_test_error_analysis_v1.json",
+      "sha256": "714e56fcff0ac826079ba7e6a48e6391a187b52a0f339490ab497ba6f92683fe"
+    },
+    "model_card": {
+      "path": "reports/tomato_model_card_v1.json",
+      "sha256": "37d634fb4a2afba5c272e4370b4390fb2e917a7fe15ee99d8c929e4528102afb"
+    },
+    "registry_migration": {
+      "path": "reports/tomato_registry_migration_v1.json",
+      "sha256": "fe786e928e74eadf8abd27fcf2cd51a5afdea137241ae3bc4db9e78256e1df90"
+    },
+    "active_learning": {
+      "path": "reports/tomato_active_learning_v1.json",
+      "sha256": "9b0957ac2e3e2267e6253a50c11f4040871f018348c4b89d862cd925e9882860"
+    },
+    "registry": {
+      "path": "configs/vision_model_registry_v1.json",
+      "sha256": "e3a2cde97f073fb8ed35209e877ae106e41ebb77dbf3f2644dafc7f26964398f"
+    },
+    "final_pytorch": {
+      "path": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.pt",
+      "sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687"
+    },
+    "final_onnx": {
+      "path": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.onnx",
+      "sha256": "537db352736bae025d9c91813bb38efea174fe4937952bc2598bc6d68fcf27d9"
+    }
+  },
+  "closure_execution": {
+    "model_loaded": false,
+    "inference_executed": false,
+    "training_executed": false,
+    "frozen_test_accessed": false,
+    "saved_evidence_only": true
+  }
+}

@@ -1,0 +1,485 @@
+{
+  "schema_version": "greenpulse.prez.v1",
+  "generated_at_utc": "2026-09-24T22:05:03.024832+00:00",
+  "generated_by": "scripts/build_prez.py",
+  "language": "tr",
+  "format": "1920x1080 PNG / 16:9",
+  "slide_count": 78,
+  "evidence_tier_counts": {
+    "SOFTWARE": 37,
+    "MEASURED": 15,
+    "PENDING": 25,
+    "ESTIMATED": 1
+  },
+  "rule": "Metrik ve donanim sonucu UYDURULMAZ. GERCEK TEST BEKLIYOR rozetli slaytlarda sayi gosterilmez.",
+  "slides": [
+    {
+      "file": "01_giris.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/greenpulse_56_layer_master_status_v1.json",
+      "claim": "Sistem kapsamı ve akış tanımı"
+    },
+    {
+      "file": "02_sistem_mimarisi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "src/ (94 modül) + reports/layer*.json",
+      "claim": "Katman ayrımı ve veri akışı"
+    },
+    {
+      "file": "03_risk_tabanli_sulama_hatti.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer26_*.json, reports/layer27_*.json",
+      "claim": "Risk bantları ve eylem eşlemesi"
+    },
+    {
+      "file": "04_kapali_dongu_cevrimi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer40_closed_loop_feedback_intelligence_v1.json",
+      "claim": "Kapalı döngü adımları (yazılım)"
+    },
+    {
+      "file": "05_performans_karnesi.png",
+      "evidence_tier": "MEASURED",
+      "data_source": "reports/tomato_final_test_v1.json, reports/pepper_final_test_v1/final_test_report.json",
+      "claim": "Dondurulmuş test metrikleri"
+    },
+    {
+      "file": "06_domates_karisiklik_matrisi.png",
+      "evidence_tier": "MEASURED",
+      "data_source": "reports/tomato_final_test_v1.json",
+      "claim": "Sınıf düzeyinde hata yapısı"
+    },
+    {
+      "file": "07_biber_karisiklik_matrisi.png",
+      "evidence_tier": "MEASURED",
+      "data_source": "reports/pepper_final_test_v1/final_test_report.json",
+      "claim": "İki sınıflı hata yapısı"
+    },
+    {
+      "file": "08_domates_gradcam.png",
+      "evidence_tier": "MEASURED",
+      "data_source": "reports/tomato_explainability_v1",
+      "claim": "Domates Grad-CAM görselleri"
+    },
+    {
+      "file": "09_biber_gradcam.png",
+      "evidence_tier": "MEASURED",
+      "data_source": "reports/pepper_explainability_v1",
+      "claim": "Biber Grad-CAM görselleri"
+    },
+    {
+      "file": "10_domates_egitim_egrisi.png",
+      "evidence_tier": "MEASURED",
+      "data_source": "runs/greenpulse/tomato_cpu_v1/results.csv",
+      "claim": "Eğitim / doğrulama eğrisi"
+    },
+    {
+      "file": "11_domates_hata_ciftleri.png",
+      "evidence_tier": "MEASURED",
+      "data_source": "reports/tomato_final_test_v1.json",
+      "claim": "En sık karışan sınıf çiftleri"
+    },
+    {
+      "file": "12_domates_guven_dagilimi.png",
+      "evidence_tier": "MEASURED",
+      "data_source": "reports/tomato_final_test_predictions_v1.csv",
+      "claim": "Güven dağılımı ve yüksek güvenli hata sayısı"
+    },
+    {
+      "file": "13_veri_butunlugu.png",
+      "evidence_tier": "MEASURED",
+      "data_source": "reports/tomato_cross_split_near_duplicates_v1.csv, reports/tomato_perceptual_hashes_v1.csv",
+      "claim": "Sızıntı kontrol adımları"
+    },
+    {
+      "file": "14_veri_bolmesi.png",
+      "evidence_tier": "MEASURED",
+      "data_source": "reports/tomato_model_card_v1.json",
+      "claim": "Bölme sayıları ve dondurma disiplini"
+    },
+    {
+      "file": "15_onnx_paritesi.png",
+      "evidence_tier": "MEASURED",
+      "data_source": "reports/tomato_model_card_v1.json",
+      "claim": "ONNX dışa aktarma eşitliği"
+    },
+    {
+      "file": "16_biber_transfer_karsilastirma.png",
+      "evidence_tier": "MEASURED",
+      "data_source": "reports/pepper_model_comparison_v1.json",
+      "claim": "Transfer vs temel model karşılaştırması"
+    },
+    {
+      "file": "17_fuzyon_mimarisi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer22_*.json, reports/layer25_*.json",
+      "claim": "Füzyon girdi şeması ve akışı"
+    },
+    {
+      "file": "18_risk_skoru_gostergesi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer26_*.json, reports/layer27_*.json",
+      "claim": "Risk bantları ve eylem eşlemesi"
+    },
+    {
+      "file": "19_sensor_kartlari.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer20_sensor_feature_engineering_v1.json",
+      "claim": "Sensör alanları ve geçerlilik durumları"
+    },
+    {
+      "file": "20_risk_egilim_zaman_cizgisi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer28_temporal_intelligence_v1.json",
+      "claim": "Risk bantları ve zamansal okuma mantığı"
+    },
+    {
+      "file": "21_zamansal_zeka.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer28_temporal_intelligence_v1.json",
+      "claim": "Eğilim/hız/ivme kavramları"
+    },
+    {
+      "file": "22_ongoru_ufku.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer29_predictive_risk_forecasting_v1.json",
+      "claim": "Öngörü çerçevesi ve guardrail'ler"
+    },
+    {
+      "file": "23_ablasyon_karsilastirma.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer51_ablation_study_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "24_sinif_duzeyinde_metrikler.png",
+      "evidence_tier": "MEASURED",
+      "data_source": "reports/tomato_final_test_v1.json",
+      "claim": "Sınıf düzeyinde precision/recall/F1"
+    },
+    {
+      "file": "25_tek_kare_vs_zamansal.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer28_temporal_intelligence_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "26_tahmin_vs_gercek.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer29_predictive_risk_forecasting_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "27_tahmin_onde_gitme_suresi.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer29_predictive_risk_forecasting_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "28_belirsizlik_ve_celiski.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer31_vision_sensor_conflict_v1.json",
+      "claim": "Çelişki ve belirsizlik çıktıları"
+    },
+    {
+      "file": "29_guvenlik_karar_kapisi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer33_decision_safety_v1.json",
+      "claim": "Güvenlik kapısı koşulları"
+    },
+    {
+      "file": "30_guvenli_durum_matrisi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer33_decision_safety_v1.json",
+      "claim": "Hata → güvenli mod eşlemesi"
+    },
+    {
+      "file": "31_hata_durumu_isi_haritasi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "tests/ + reports/layer33_*.json",
+      "claim": "Hata türü / yakalayan katman eşlemesi"
+    },
+    {
+      "file": "32_gerekce_kodlari.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer34_decision_reason_explainability_v1.json",
+      "claim": "Gerekçe kodu sözlüğü"
+    },
+    {
+      "file": "33_izlenebilirlik_zinciri.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer35_*.json, tests/test_audit_traceability.py",
+      "claim": "İzlenebilirlik zinciri"
+    },
+    {
+      "file": "34_risk_sulama_ack_yolu.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer38_*.json, reports/layer39_*.json",
+      "claim": "Eylem yolu adımları"
+    },
+    {
+      "file": "35_ack_durum_makinesi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer39_hardware_ack_action_state_v1.json",
+      "claim": "ACK durumları ve geçişleri"
+    },
+    {
+      "file": "36_ack_zaman_cizgisi.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer39_hardware_ack_action_state_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "37_sulama_oncesi_sonrasi_risk.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer40_closed_loop_feedback_intelligence_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "38_toprak_nemi_tepkisi.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer40_closed_loop_feedback_intelligence_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "39_gercek_mudahale_zaman_cizgisi.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer40_closed_loop_feedback_intelligence_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "40_fiziksel_donanim_mimarisi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer38_hardware_integration_interface_v1.json",
+      "claim": "Donanım bileşenleri ve rolleri"
+    },
+    {
+      "file": "41_uc_birim_yerlesimi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer38_hardware_integration_interface_v1.json",
+      "claim": "Uç birim bileşen zinciri ve bilinen tuzaklar"
+    },
+    {
+      "file": "42_prototip_fotografi.png",
+      "evidence_tier": "PENDING",
+      "data_source": "—",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "43_hailo_dagitim_hatti.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer41_hailo_edge_readiness_v1.json",
+      "claim": "Dağıtım hattı durumu — son üç adım ölçülmedi"
+    },
+    {
+      "file": "44_onnx_vs_hailo_paritesi.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer41_hailo_edge_readiness_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "45_hailo_guven_farki.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer41_hailo_edge_readiness_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "46_gecikme_selalesi.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer44_edge_benchmarking_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "47_uctan_uca_gecikme.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer44_edge_benchmarking_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "48_ram_kullanimi.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer44_edge_benchmarking_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "49_tepe_ram.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer44_edge_benchmarking_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "50_cpu_kullanimi.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer44_edge_benchmarking_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "51_cihaz_sicakligi.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer44_edge_benchmarking_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "52_kararlilik_panosu.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer44_edge_benchmarking_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "53_hata_ozeti.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer44_edge_benchmarking_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "54_uyarlanabilir_ornekleme.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer43_adaptive_image_sampling_v1.json",
+      "claim": "Örnekleme modları"
+    },
+    {
+      "file": "55_kaynak_optimizasyonu.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer42_resource_optimization_v1.json",
+      "claim": "Kaynak tasarım kararları"
+    },
+    {
+      "file": "56_sistem_saglik_panosu.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "src/ sağlık denetimi + reports/layer55_*.json",
+      "claim": "Sağlık denetimleri ve dürüst durum bildirimi"
+    },
+    {
+      "file": "57_arayuz_kontrol_paneli.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "release/frontend_field_dictionary_v1.json",
+      "claim": "Ön uç alan düzeni"
+    },
+    {
+      "file": "58_aciklamali_bitki_ekrani.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "release/frontend_field_dictionary_v1.json",
+      "claim": "Ekran alanları"
+    },
+    {
+      "file": "59_son_eylem_bileseni.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "release/frontend_field_dictionary_v1.json",
+      "claim": "Durum bileşeni alanları"
+    },
+    {
+      "file": "60_surdurulebilirlik_yontemi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/layer53_sustainability_intelligence_v1.json",
+      "claim": "Tasarruf hesaplama yöntemi"
+    },
+    {
+      "file": "61_su_kullanimi_vs_temel.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer53_sustainability_intelligence_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "62_su_tasarrufu.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer53_sustainability_intelligence_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "63_mudahale_sayisi.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer53_sustainability_intelligence_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "64_kaynak_verimliligi.png",
+      "evidence_tier": "ESTIMATED",
+      "data_source": "reports/layer53_sustainability_intelligence_v1.json",
+      "claim": "Verimlilik bileşenleri (formül)"
+    },
+    {
+      "file": "65_enerji_kullanimi.png",
+      "evidence_tier": "PENDING",
+      "data_source": "reports/layer53_sustainability_intelligence_v1.json",
+      "claim": "Ölçüm protokolü — sonuç yok"
+    },
+    {
+      "file": "66_karbon_tahmini.png",
+      "evidence_tier": "PENDING",
+      "data_source": "—",
+      "claim": "Karbon tahmini yapılmadı"
+    },
+    {
+      "file": "67_kanit_rozet_sistemi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "scripts/prez_design.py",
+      "claim": "Rozet sistemi tanımı"
+    },
+    {
+      "file": "68_muhendislik_kanit_panosu.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "release/, tests/, handoff/",
+      "claim": "Mühendislik hazırlık göstergeleri"
+    },
+    {
+      "file": "69_arka_uc_hazirligi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "release/openapi_v1.json",
+      "claim": "Uç nokta listesi"
+    },
+    {
+      "file": "70_on_uc_hazirligi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "release/frontend_field_dictionary_v1.json",
+      "claim": "Ön uç sözleşmesi"
+    },
+    {
+      "file": "71_donanim_sozlesmesi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "release/hardware_handoff_v1.json",
+      "claim": "Donanım şemaları"
+    },
+    {
+      "file": "72_test_kaniti.png",
+      "evidence_tier": "MEASURED",
+      "data_source": "tests/ (pytest)",
+      "claim": "Test sayısı ve kapsamı"
+    },
+    {
+      "file": "73_56_katman_matrisi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/greenpulse_56_layer_master_status_v1.json",
+      "claim": "Katman durum dağılımı"
+    },
+    {
+      "file": "74_kanit_panosu.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/greenpulse_jury_evidence_map_v1.json",
+      "claim": "Kanıt seviyesi dağılımı"
+    },
+    {
+      "file": "75_iddia_siniri.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "reports/jury_final_shortlist_v1/ai_ml_defense_pack.json",
+      "claim": "Asla söylenmeyecekler listesi"
+    },
+    {
+      "file": "76_dogrulama_yol_haritasi.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "jury_evidence/real_measurements/",
+      "claim": "Doğrulama sırası"
+    },
+    {
+      "file": "77_urunlestirme_teslim.png",
+      "evidence_tier": "SOFTWARE",
+      "data_source": "handoff/, release/",
+      "claim": "Teslim akışı"
+    },
+    {
+      "file": "78_neden_greenpulse.png",
+      "evidence_tier": "MEASURED",
+      "data_source": "reports/tomato_final_test_v1.json, reports/pepper_final_test_v1/final_test_report.json",
+      "claim": "Kapanış özeti"
+    }
+  ]
+}

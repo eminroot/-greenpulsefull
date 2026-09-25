@@ -1,0 +1,98 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T12:16:17.148601+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 27,
+  "layer_name": "Risk Calibration & Threshold Optimization",
+  "status": "SOFTWARE_FRAMEWORK_COMPLETE_REAL_VALIDATION_PENDING",
+  "calibration_schema_version": "greenpulse.risk_calibration.v1",
+  "calibrator_schema_version": "greenpulse.platt_calibrator.v1",
+  "implemented_capabilities": [
+    "Brier score",
+    "log loss",
+    "expected calibration error",
+    "reliability-bin statistics",
+    "deterministic Platt scaling",
+    "calibration before/after comparison",
+    "threshold confusion statistics",
+    "false-negative rate",
+    "false-positive rate",
+    "intervention rate",
+    "explicit false-negative / false-positive policy costs",
+    "optional minimum recall constraint",
+    "optional minimum precision constraint",
+    "MONITOR candidate threshold optimization",
+    "WARNING candidate threshold optimization",
+    "ACTION candidate threshold optimization",
+    "candidate threshold ordering check",
+    "candidate calibration artifact generation",
+    "Layer-26 rejection of non-VALIDATED calibration artifact"
+  ],
+  "threshold_policy": {
+    "hardcoded_operational_thresholds": false,
+    "demo_selected_thresholds": false,
+    "validation_data_required": true,
+    "explicit_tradeoff_required": true,
+    "false_negative_vs_unnecessary_intervention_documented": true,
+    "automatic_operational_approval": false
+  },
+  "scientific_guardrails": {
+    "real_labeled_multimodal_validation_available": false,
+    "real_calibration_performed": false,
+    "validated_calibration_artifact_created": false,
+    "operational_monitor_threshold_selected": false,
+    "operational_warning_threshold_selected": false,
+    "operational_action_threshold_selected": false,
+    "synthetic_unit_test_thresholds_are_real_thresholds": false,
+    "synthetic_unit_test_calibration_is_real_calibration": false,
+    "physical_action_authorized": false
+  },
+  "software_validation": {
+    "unit_test_framework": "unittest",
+    "test_count": 10,
+    "tests_passed": 10,
+    "tests_failed": 0,
+    "result": "PASS",
+    "synthetic_fixture_only": true,
+    "bugfix_applied": {
+      "description": "Internal threshold-evaluation boundary converts NumPy float binary labels 0.0/1.0 to integer 0/1 before validation.",
+      "tests_modified": false,
+      "calibration_method_changed": false,
+      "threshold_policy_changed": false,
+      "operational_thresholds_created": false
+    }
+  },
+  "real_validation": {
+    "status": "PENDING",
+    "blocking_reason": "Validated labeled real multimodal stress validation data is not currently available.",
+    "validated_calibration_status": "NOT_AVAILABLE",
+    "operational_threshold_status": "NOT_SELECTED"
+  },
+  "layer26_integration": {
+    "required_schema": "greenpulse.risk_calibration.v1",
+    "required_status": "VALIDATED",
+    "candidate_only_artifact_accepted": false,
+    "operational_risk_score_unblocked": false
+  },
+  "artifacts": {
+    "source": {
+      "path": "src/risk_calibration.py",
+      "sha256": "aafda9bbaedb80471999103188716a52fb30b2083ad57f5ecba73eb363bdbf4a"
+    },
+    "tests": {
+      "path": "tests/test_risk_calibration.py",
+      "sha256": "587b05d617c8d949fb24881e613c2f2123e05e11745002cadc38dcc914ce36af"
+    }
+  },
+  "execution": {
+    "real_calibration_performed": false,
+    "real_thresholds_selected": false,
+    "validated_artifact_created": false,
+    "real_multimodal_data_used": false,
+    "fusion_model_trained": false,
+    "vision_model_loaded": false,
+    "vision_inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false
+  }
+}

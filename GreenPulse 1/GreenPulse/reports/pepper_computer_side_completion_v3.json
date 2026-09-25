@@ -1,0 +1,94 @@
+{
+  "version": "3.0",
+  "generated_at_utc": "2026-09-24T10:48:47.565445+00:00",
+  "project": "GreenPulse",
+  "crop": "bell_pepper",
+  "task": "DISEASE_CLASSIFICATION",
+  "computer_side_layers": {
+    "dataset_pipeline": true,
+    "dataset_integrity_audit": true,
+    "near_duplicate_screening": true,
+    "group_aware_split": true,
+    "transfer_training": true,
+    "generic_baseline_comparison": true,
+    "validation_evaluation": true,
+    "frozen_final_test": true,
+    "post_test_error_analysis": true,
+    "onnx_export_and_parity": true,
+    "model_registry": true,
+    "active_learning": true,
+    "vision_explainability": true,
+    "crop_adaptation_logic": true
+  },
+  "computer_side_complete": true,
+  "final_test": {
+    "images": 371,
+    "accuracy": 0.9811320754716981,
+    "macro_f1": 0.9802119764402892,
+    "errors": 7,
+    "false_negatives": 7,
+    "false_positives": 0,
+    "high_confidence_errors": 3
+  },
+  "transfer_learning": {
+    "source_initialized_fine_tuning": true,
+    "transfer_advantage_demonstrated": false,
+    "backbone_freeze_documented": false,
+    "future_protocol_requires_predeclared_freeze": true
+  },
+  "explainability": {
+    "gradcam_available": true,
+    "report": "reports/pepper_explainability_v2.json",
+    "report_sha256": "50640d5c9e1fba2fe1bf2ee776edbfd8a443cfbcff463d3ade673d4bdd095aca",
+    "checkpoint_sha256": "7d04ff121734eb00fc972bbb98e7e0db6101fe68da982e1b8e7fe17992881f9f",
+    "shared_preprocessing_patch_verified": true,
+    "standard_yolo_gradcam_class_parity": true,
+    "max_confidence_absolute_difference": 0.0,
+    "source_partition": "VALIDATION_ONLY",
+    "sample_count": 2,
+    "final_test_images_used": 0,
+    "qualitative_only": true,
+    "lesion_localization_validated": false,
+    "causal_explanation": false,
+    "old_v1_superseded_for_explainability_only": true,
+    "classification_metrics_invalidated": false
+  },
+  "active_learning": {
+    "review_queue_available": true,
+    "automatic_retraining": false,
+    "automatic_labeling": false,
+    "final_test_reuse_forbidden": true
+  },
+  "still_pending_real_world": [
+    "independent real-greenhouse pepper validation",
+    "verified pepper water-stress detection",
+    "real synchronized camera/sensor evaluation",
+    "Raspberry Pi 5 deployment validation",
+    "Hailo HEF conversion and hardware validation",
+    "real irrigation calibration",
+    "physical closed-loop irrigation validation"
+  ],
+  "real_greenhouse_complete": false,
+  "water_stress_complete": false,
+  "hailo_deployment_complete": false,
+  "physical_actuation_complete": false,
+  "operational_release_approved": false,
+  "final_artifacts": {
+    "pytorch": {
+      "path": "models/release_candidates/pepper_transfer_v1/pepper_transfer_v1.pt",
+      "sha256": "7d04ff121734eb00fc972bbb98e7e0db6101fe68da982e1b8e7fe17992881f9f"
+    },
+    "onnx": {
+      "path": "models/release_candidates/pepper_transfer_v1/pepper_transfer_v1.onnx",
+      "sha256": "3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7"
+    }
+  },
+  "completion_refresh": {
+    "reason": "Pepper Grad-CAM evidence refreshed after shared Ultralytics preprocessing parity correction.",
+    "classification_pipeline_reopened": false,
+    "training_rerun": false,
+    "final_test_rerun": false,
+    "model_modified": false,
+    "computer_side_complete": true
+  }
+}

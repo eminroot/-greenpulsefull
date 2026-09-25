@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "task": "PEPPER_DISEASE_CLASSIFICATION",
+  "dataset_path": "datasets\\processed\\pepper_cls_leafgroup_v1",
+  "split_manifest_sha256": "c9d599bfdbf0c193fe1dc19e8f520f3ea5d41be351797533162a5b1da2100507",
+  "training_images": 1731,
+  "validation_images": 371,
+  "reserved_test_images": 371,
+  "excluded_images": 2,
+  "training_and_validation_copied": true,
+  "test_copied": false,
+  "class_mapping": {
+    "0": {
+      "folder": "bacterial_spot",
+      "original_class": "Pepper,_bell___Bacterial_spot"
+    },
+    "1": {
+      "folder": "healthy",
+      "original_class": "Pepper,_bell___healthy"
+    }
+  },
+  "claimed_leaf_groups_disjoint": true,
+  "exact_hashes_disjoint": true,
+  "physical_plant_identity_verified": false,
+  "source_license": "CC BY-SA 3.0 reported in source dataset documentation",
+  "original_image_rights_reviewed": false,
+  "external_redistribution_approved": false,
+  "transfer_learning_started": false,
+  "real_greenhouse_validation": false,
+  "water_stress_validated": false
+}

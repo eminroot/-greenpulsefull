@@ -1,0 +1,10 @@
+{
+    "train": 14521,
+    "test": 3639,
+    "overlapping_paths": 0,
+    "cross_split_exact_duplicates": 5,
+    "cross_split_known_leaf_groups": 0,
+    "unmapped_train": 5401,
+    "unmapped_test": 1348,
+    "missing_files": 0
+}

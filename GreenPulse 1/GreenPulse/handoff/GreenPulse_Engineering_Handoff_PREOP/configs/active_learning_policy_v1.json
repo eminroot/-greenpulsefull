@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "mode": "RESEARCH_ONLY",
+  "low_confidence_threshold": 0.65,
+  "threshold_validated": false,
+  "allowed_triggers": [
+    "LOW_CONFIDENCE",
+    "VISION_SENSOR_CONFLICT",
+    "IMAGE_QUALITY_FAILURE",
+    "MODEL_FAILURE",
+    "OOD_SUSPECTED"
+  ],
+  "forbidden_source_partitions": [
+    "TEST",
+    "FINAL_TEST",
+    "HELD_OUT_TEST",
+    "FROZEN_FINAL_TEST"
+  ],
+  "automatic_retraining_allowed": false,
+  "automatic_labeling_allowed": false,
+  "physical_actuation_allowed": false
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": "greenpulse.real_measurement_protocol.v1",
+  "measurement_policy": {
+    "synthetic_values_allowed": false,
+    "manually_invented_values_allowed": false,
+    "missing_values_should_remain_blank": true,
+    "measured_and_estimated_values_must_be_distinguished": true
+  },
+  "datasets": {
+    "edge_benchmark": "templates/edge_benchmark_real.csv",
+    "hailo_onnx_parity": "templates/hailo_onnx_parity_real.csv",
+    "long_run_stability": "templates/long_run_stability_real.csv",
+    "ablation": "templates/ablation_real.csv",
+    "temporal": "templates/temporal_real.csv",
+    "forecast": "templates/forecast_real.csv",
+    "hardware_actions": "templates/hardware_actions_real.csv",
+    "sustainability": "templates/sustainability_real.csv"
+  },
+  "jury_visual_targets": {
+    "edge_benchmark": [
+      "Latency waterfall",
+      "RAM / CPU / temperature dashboard"
+    ],
+    "hailo_onnx_parity": [
+      "ONNX vs Hailo parity score",
+      "Confidence-difference distribution"
+    ],
+    "long_run_stability": [
+      "RAM over time",
+      "CPU over time",
+      "Temperature over time",
+      "Crash / timeout summary"
+    ],
+    "ablation": [
+      "Sensor Only vs Vision Only vs Fusion",
+      "Precision / Recall / F1 / FPR / FNR"
+    ],
+    "temporal": [
+      "Single-frame vs Temporal Verification",
+      "False-positive / false-negative comparison"
+    ],
+    "forecast": [
+      "Actual vs Forecast vs Naive",
+      "MAE / RMSE comparison",
+      "Lead-time distribution",
+      "False-alarm rate"
+    ],
+    "hardware_actions": [
+      "ACK / FAIL / TIMEOUT distribution",
+      "Command latency",
+      "Safety-event summary"
+    ],
+    "sustainability": [
+      "Water usage vs validated baseline",
+      "Water saving",
+      "Energy usage",
+      "Intervention count"
+    ]
+  }
+}

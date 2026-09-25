@@ -1,0 +1,71 @@
+# TLS is automatic: point DOMAIN at this server and Caddy fetches and renews the
+# certificate on its own. The phone refuses plain http in release builds, so
+# this is not optional.
+#
+# On a box where another web server already owns 80/443, this Caddy runs behind
+# it instead (deploy/docker-compose.behind-proxy.yml): DOMAIN becomes ":80",
+# the front server does TLS, and TRUSTED_PROXIES lets this one believe the
+# client address the front server passes on. Without that, every request would
+# seem to come from the front server, and one busy user would trip the sign-in
+# limit for everybody.
+{
+	servers {
+		trusted_proxies static {$TRUSTED_PROXIES:127.0.0.1/32}
+	}
+}
+
+{$DOMAIN} {
+	encode zstd gzip
+
+	# --- API and live stream -------------------------------------------------
+	@api path /api/* /health /docs /openapi.json
+	handle @api {
+		reverse_proxy api:8000 {
+			header_up X-Real-IP {client_ip}
+		}
+	}
+
+	# --- the web panel -------------------------------------------------------
+	# A single page app, so an unknown path is the router's business, not a 404.
+	handle {
+		root * /srv/panel
+		try_files {path} /index.html
+		file_server
+
+		# Scoped to the panel, so it does not override the stricter policy the
+		# API sets on its own responses.
+		#   'unsafe-inline' style: the panel uses React inline style attributes
+		#   accounts.google.com:   the Google sign in button, when configured
+		#   blob:                  leaf photos, fetched with auth and shown as object urls
+		header Content-Security-Policy "default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; frame-src https://accounts.google.com; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; object-src 'none'"
+	}
+
+	request_body {
+		# Leaf photos. Keep in step with GP_MAX_IMAGE_BYTES.
+		max_size 10MB
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy strict-origin-when-cross-origin
+		-Server
+	}
+
+	# Hashed asset filenames, so they can be cached hard. index.html must not be.
+	@assets path /assets/*
+	header @assets Cache-Control "public, max-age=31536000, immutable"
+
+	log {
+		output file /data/access.log {
+			roll_size 10MB
+			roll_keep 5
+		}
+		# Query strings are dropped. Websocket URLs carry a stream ticket, and a
+		# log is the wrong place to keep any credential, however short lived.
+		format json {
+			request>uri_query ""
+		}
+	}
+}

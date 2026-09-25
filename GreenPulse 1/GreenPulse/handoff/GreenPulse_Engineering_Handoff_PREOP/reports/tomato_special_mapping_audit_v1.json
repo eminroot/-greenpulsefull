@@ -1,0 +1,55 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T22:30:52.619980+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "target_spot": {
+    "candidate_alias_rule": "Com.G_TgS_FL <-> Com.G_FL by identical final numeric ID",
+    "dataset_images": 1404,
+    "leafmap_rows": 1404,
+    "shared_numeric_ids": 1404,
+    "unique_one_to_one_matches": 1404,
+    "candidate_leaf_groups": 351,
+    "dataset_only_ids": 0,
+    "map_only_ids": 0,
+    "ambiguous_dataset_ids": 0,
+    "ambiguous_map_ids": 0,
+    "safe_to_accept_automatically": false
+  },
+  "mosaic": {
+    "images": 373,
+    "explicit_metadata_candidates": [],
+    "tomato_metadata_candidates": [
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/filtered_leafmaps/Tomato___Bacterial_spot.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/filtered_leafmaps/Tomato___Early_blight.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/filtered_leafmaps/Tomato___Late_blight.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/filtered_leafmaps/Tomato___Leaf_Mold.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/filtered_leafmaps/Tomato___Septoria_leaf_spot.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/filtered_leafmaps/Tomato___Spider_mites Two-spotted_spider_mite.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/filtered_leafmaps/Tomato___Target_Spot.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/filtered_leafmaps/Tomato___Tomato_Yellow_Leaf_Curl_Virus.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/filtered_leafmaps/Tomato___healthy.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato Leaf Counts.xlsx",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Bacterial Spot Bacteria.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Early Blight Fungus.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Healthy.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Late Blight Water Mold.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Leaf Mold Fungus.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Septoria Leaf Spot Fungus.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Spider Mite Damage Insect.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_Target Spot Bacteria.csv",
+      "datasets/external/.pepper_download_incomplete/leaf_grouping/leaf_maps/Tomato_YLCV Virus.csv"
+    ]
+  },
+  "decision": {
+    "target_spot_alias_full_coverage": true,
+    "target_spot_alias_accepted": false,
+    "target_spot_requires_manual_or_source_provenance_confirmation": true,
+    "mosaic_explicit_metadata_candidates": [],
+    "full_10_class_physical_leaf_independence_ready": false,
+    "safe_fallback_if_metadata_cannot_be_recovered": "HYBRID_SPLIT: group-aware for mapped images; strict exact-hash/near-duplicate-disjoint stratified split for unmapped images; explicitly do not claim physical-leaf independence for the unmapped subset.",
+    "dataset_modified": false,
+    "training_executed": false,
+    "inference_executed": false
+  }
+}

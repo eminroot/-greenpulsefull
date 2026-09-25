@@ -1,0 +1,74 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T11:41:18.702580+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 20,
+  "layer_name": "Sensor Feature Engineering",
+  "status": "SOFTWARE_ENGINE_COMPLETE",
+  "schema_version": "greenpulse.sensor_feature_engineering.v1",
+  "feature_vector_version": "sensor_feature_vector_v1",
+  "feature_vector_length": 19,
+  "implemented_capabilities": [
+    "current sensor values",
+    "rolling sample means",
+    "sensor baseline deltas",
+    "soil moisture rate-of-change",
+    "temperature rate-of-change",
+    "humidity rate-of-change",
+    "RISING/FALLING/STABLE trend states",
+    "configurable trend deadbands",
+    "stable versioned feature vector",
+    "explicit physical units",
+    "explicit availability flags",
+    "optional versioned normalization artifact",
+    "deterministic history ordering",
+    "timestamp conflict rejection",
+    "sensor provenance preservation"
+  ],
+  "existing_components_preserved": [
+    "src/sensor_features.py",
+    "src/sensor_window.py",
+    "src/sensor_validator.py",
+    "src/sensor_contract_guard.py",
+    "src/fusion_contract.py"
+  ],
+  "scientific_guardrails": {
+    "simulated_data_is_real_sensor_evidence": false,
+    "source_field_is_device_authentication": false,
+    "sensor_features_are_water_stress_probability": false,
+    "trend_is_early_stress_proof": false,
+    "physical_action_authorized": false
+  },
+  "normalization": {
+    "supported": true,
+    "applied_without_artifact": false,
+    "fit_on_test_or_runtime_packet": false
+  },
+  "tests": {
+    "framework": "unittest",
+    "test_count": 10,
+    "result": "PASS"
+  },
+  "real_sensor_validation": {
+    "status": "PENDING",
+    "owned_by_layer": 19
+  },
+  "artifacts": {
+    "source": {
+      "path": "src/sensor_feature_engineering.py",
+      "sha256": "b1e7c9ab33dfbece89c979a1da03e83fa1229802da87aa0394f9a848dab07695"
+    },
+    "tests": {
+      "path": "tests/test_sensor_feature_engineering.py",
+      "sha256": "4a6e9816934832539945569c502daa1400ebb050f0543501a3f09bfe8bc61c7f"
+    }
+  },
+  "execution": {
+    "model_loaded": false,
+    "inference_executed": false,
+    "training_executed": false,
+    "frozen_test_images_accessed": false,
+    "real_sensor_data_used": false,
+    "model_artifacts_modified": false
+  }
+}

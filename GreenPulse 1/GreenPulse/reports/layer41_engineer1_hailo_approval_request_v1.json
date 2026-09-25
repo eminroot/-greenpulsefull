@@ -1,0 +1,51 @@
+{
+  "schema_version": "greenpulse.hailo_engineer1_approval_request.v1",
+  "generated_at_utc": "2026-09-24T15:40:20.634841+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 41,
+  "purpose": "Engineer 1 review before any ONNX-to-HEF conversion is permitted.",
+  "approval_state": "PENDING_ENGINEER_1_REVIEW",
+  "approval_granted": false,
+  "candidates": [
+    {
+      "crop": "tomato",
+      "onnx_path": "models/release_candidates/tomato_clean_v1/tomato_clean_v1.onnx",
+      "registry_sha256": "537db352736bae025d9c91813bb38efea174fe4937952bc2598bc6d68fcf27d9",
+      "actual_sha256": "537db352736bae025d9c91813bb38efea174fe4937952bc2598bc6d68fcf27d9",
+      "artifact_exists": true,
+      "hash_verified": true,
+      "operational_release_approved": false,
+      "current_registry_mode": "RESEARCH_ONLY",
+      "hailo_conversion_approved": false
+    },
+    {
+      "crop": "bell_pepper",
+      "onnx_path": "models/release_candidates/pepper_transfer_v1/pepper_transfer_v1.onnx",
+      "registry_sha256": "3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7",
+      "actual_sha256": "3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7",
+      "artifact_exists": true,
+      "hash_verified": true,
+      "operational_release_approved": false,
+      "current_registry_mode": "RESEARCH_ONLY",
+      "hailo_conversion_approved": false
+    }
+  ],
+  "review_requirements": [
+    "Select exactly one ONNX artifact for the Hailo conversion attempt.",
+    "Verify the selected ONNX path and SHA256 against this request.",
+    "Confirm that approval is specifically for Hailo conversion and does not imply operational greenhouse release.",
+    "Do not change the ONNX file after approval; any SHA256 change requires a new approval."
+  ],
+  "current_blockers": [
+    "ENGINEER1_HAILO_APPROVAL_EVIDENCE_MISSING",
+    "HAILO_CONVERSION_TOOLCHAIN_NOT_AVAILABLE"
+  ],
+  "current_claims": {
+    "hef_generated": false,
+    "onnx_to_hef_verified": false,
+    "hailo_onnx_regression_verified": false,
+    "raspberry_pi_5_verified": false,
+    "ai_hat_plus_verified": false,
+    "operational_release_claimed": false
+  }
+}

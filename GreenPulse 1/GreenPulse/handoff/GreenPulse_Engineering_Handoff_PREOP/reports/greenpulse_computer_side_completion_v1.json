@@ -1,0 +1,114 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T10:51:24.666937+00:00",
+  "project": "GreenPulse",
+  "scope": "PRE_HARDWARE_COMPUTER_SIDE_TWO_CROP_DISEASE_CLASSIFICATION",
+  "included_crops": [
+    "tomato",
+    "bell_pepper"
+  ],
+  "excluded_from_current_scope": [
+    "cucumber"
+  ],
+  "status": "CURRENT_COMPUTER_SIDE_SCOPE_COMPLETE",
+  "system_layers": {
+    "tomato_dataset_integrity": true,
+    "tomato_clean_training": true,
+    "tomato_frozen_final_test": true,
+    "tomato_onnx_parity": true,
+    "tomato_explainability": true,
+    "tomato_active_learning": true,
+    "tomato_model_registry": true,
+    "pepper_dataset_integrity": true,
+    "pepper_transfer_training": true,
+    "pepper_baseline_comparison": true,
+    "pepper_frozen_final_test": true,
+    "pepper_onnx_parity": true,
+    "pepper_explainability_refreshed": true,
+    "pepper_active_learning": true,
+    "pepper_model_registry": true,
+    "shared_research_only_registry": true,
+    "unknown_crop_abstention": true,
+    "automatic_retraining_disabled": true,
+    "automatic_labeling_disabled": true,
+    "physical_actuation_disabled": true,
+    "jury_evidence_manifest": true
+  },
+  "system_layers_complete": true,
+  "tomato": {
+    "classes": 10,
+    "train": 12684,
+    "validation": 2725,
+    "frozen_test": 2737,
+    "accuracy": 0.9915966386554622,
+    "macro_f1": 0.9899329671056343,
+    "errors": 23,
+    "frozen_test_status": "CONSUMED_ONCE"
+  },
+  "bell_pepper": {
+    "classes": 2,
+    "train": 1731,
+    "validation": 371,
+    "frozen_test": 371,
+    "accuracy": 0.9811320754716981,
+    "macro_f1": 0.9802119764402892,
+    "errors": 7
+  },
+  "registry": {
+    "mode": "RESEARCH_ONLY",
+    "registered_crops": [
+      "tomato",
+      "bell_pepper"
+    ],
+    "crop_identity_verified": false,
+    "unknown_crop_policy": "ABSTAIN",
+    "autonomous_actuation_allowed": false,
+    "physical_actuation_allowed": false
+  },
+  "active_learning": {
+    "mode": "RESEARCH_ONLY",
+    "human_review_only": true,
+    "threshold_validated": false,
+    "automatic_labeling": false,
+    "automatic_retraining": false,
+    "physical_actuation": false
+  },
+  "deployment_artifacts": {
+    "tomato_pt_sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687",
+    "tomato_onnx_sha256": "537db352736bae025d9c91813bb38efea174fe4937952bc2598bc6d68fcf27d9",
+    "pepper_pt_sha256": "7d04ff121734eb00fc972bbb98e7e0db6101fe68da982e1b8e7fe17992881f9f",
+    "pepper_onnx_sha256": "3eed4fd5ce39fd165f49ff923a4b11b5affb716b178ed5bb4f656d5b8b3ea7e7"
+  },
+  "still_pending_before_real_operational_release": [
+    "independent real-greenhouse validation",
+    "real synchronized camera/sensor dataset",
+    "validated water-stress model",
+    "validated early-stress temporal prediction",
+    "real multimodal fusion evaluation",
+    "Raspberry Pi 5 runtime validation",
+    "Hailo HEF conversion and hardware validation",
+    "deployment RAM validation",
+    "real pump-flow calibration",
+    "physical closed-loop irrigation validation",
+    "measured water savings",
+    "measured energy savings"
+  ],
+  "real_greenhouse_complete": false,
+  "water_stress_complete": false,
+  "hailo_deployment_complete": false,
+  "physical_closed_loop_complete": false,
+  "operational_release_approved": false,
+  "jury_evidence_manifest": {
+    "path": "reports/greenpulse_jury_evidence_manifest_v1.json",
+    "sha256": "6a037b1bfbe1752f6d005b156aefc9a3eca947940ad4a9ae051633b530caf354"
+  },
+  "closure_execution": {
+    "model_loaded": false,
+    "inference_executed": false,
+    "training_executed": false,
+    "tomato_frozen_test_accessed": false,
+    "pepper_frozen_test_accessed": false,
+    "cucumber_training_executed": false,
+    "saved_evidence_only": true
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": "greenpulse.adaptive_sampling_policy.v1",
+  "policy_version": "1.0.0-development",
+  "policy_status": "DEVELOPMENT_ONLY_UNVALIDATED",
+  "intervals_seconds": {
+    "stable_healthy": 900,
+    "normal": 300,
+    "elevated": 120,
+    "high": 30
+  },
+  "risk_thresholds": {
+    "elevated": 40.0,
+    "high": 70.0
+  },
+  "forecast_thresholds": {
+    "elevated": 40.0,
+    "high": 70.0
+  },
+  "trend_states": {
+    "stable": [
+      "STABLE",
+      "DECREASING"
+    ],
+    "rising": [
+      "RISING",
+      "INCREASING"
+    ],
+    "rapid_rise": [
+      "RISING_FAST",
+      "RAPID_RISE"
+    ]
+  },
+  "scientific_guardrails": {
+    "disease_healthy_label_is_stable_water_stress_evidence": false,
+    "sampling_policy_claims_energy_savings": false,
+    "sampling_policy_claims_response_quality_preserved": false,
+    "thresholds_operationally_validated": false
+  }
+}

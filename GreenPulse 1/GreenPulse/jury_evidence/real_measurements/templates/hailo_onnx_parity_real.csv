@@ -1,0 +1,1 @@
+sample_id,crop,true_label,onnx_prediction,onnx_confidence,hailo_prediction,hailo_confidence,prediction_match,absolute_confidence_difference

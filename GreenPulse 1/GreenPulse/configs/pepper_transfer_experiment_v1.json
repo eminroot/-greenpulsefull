@@ -1,0 +1,51 @@
+{
+  "experiment_version": "1.0",
+  "project": "GreenPulse",
+  "experiment_name": "pepper_tomato_transfer_v1",
+  "task": "DISEASE_CLASSIFICATION",
+  "source_crop": "tomato",
+  "target_crop": "bell_pepper",
+  "source_checkpoint": "models\\greenpulse_tomato_yolo11n_cls_v1.0.pt",
+  "source_checkpoint_sha256": "a34db932236be048a56816a3a664d4c38ad8663157d1886075e5dca152e51e41",
+  "source_classes": 10,
+  "target_classes": [
+    "bacterial_spot",
+    "healthy"
+  ],
+  "dataset": "datasets\\processed\\pepper_cls_leafgroup_v1",
+  "split_manifest": "reports\\pepper_group_split_v1.json",
+  "split_manifest_sha256": "c9d599bfdbf0c193fe1dc19e8f520f3ea5d41be351797533162a5b1da2100507",
+  "dataset_build_report_sha256": "d078bc5c2b091deda618a3843ecc25cb7eeaa4265824df2658aa3b81d755e04c",
+  "training": {
+    "epochs": 15,
+    "imgsz": 224,
+    "batch": 8,
+    "device": "cpu",
+    "workers": 0,
+    "seed": 2026,
+    "deterministic": true,
+    "optimizer": "AdamW",
+    "initial_learning_rate": 0.001,
+    "patience": 5,
+    "cache": false
+  },
+  "evaluation": {
+    "validation_enabled": true,
+    "test_reserved": true,
+    "primary_metrics": [
+      "macro_f1",
+      "balanced_accuracy",
+      "per_class_precision",
+      "per_class_recall",
+      "confusion_matrix"
+    ]
+  },
+  "limitations": {
+    "physical_plant_identity_verified": false,
+    "greenhouse_generalization_verified": false,
+    "pepper_water_stress_trained": false,
+    "transfer_advantage_demonstrated": false,
+    "real_hardware_validated": false
+  },
+  "training_started": false
+}

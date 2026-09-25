@@ -1,0 +1,206 @@
+
+import re
+import sqlite3
+
+from datetime import datetime, timezone
+from pathlib import Path
+from uuid import UUID, uuid4
+
+from src.simulated_irrigation_policy import (
+    evaluate_simulated_irrigation
+)
+
+from src.actuator_audit import (
+    initialize_actuator_audit,
+    simulate_and_log,
+    safe_connection
+)
+
+
+FLOW_VERSION = "0.1.0"
+
+
+def run_simulated_irrigation_flow(
+    payload,
+    scenario="SUCCESS",
+    db_path=None
+):
+    """
+    Synthetic test harness only.
+
+    Connects:
+    simulated decision -> actuator simulator -> SQLite.
+
+    NEVER sends requests to physical hardware.
+    """
+
+    def blocked(reason):
+        return {
+            "flow_version": FLOW_VERSION,
+            "mode": "SIMULATION_ONLY",
+            "status": "SIMULATED_NO_COMMAND",
+            "reason_codes": [reason],
+            "command": None,
+            "simulated_ack": None,
+            "water_stress_risk": None,
+            "physical_actuation": False
+        }
+
+    if not isinstance(payload, dict):
+        return blocked("INVALID_TEST_PAYLOAD")
+
+    if (
+        payload.get("mode") != "SIMULATION_ONLY"
+        or payload.get("origin") != "TEST_HARNESS"
+        or payload.get("test_only") is not True
+        or payload.get("dataset_origin")
+        != "SYNTHETIC_FIXTURE"
+    ):
+        return blocked("SYNTHETIC_TEST_MODE_REQUIRED")
+
+    plant_id = payload.get("plant_id")
+
+    if (
+        not isinstance(plant_id, str)
+        or not re.fullmatch(
+            r"TEST-[A-Z0-9-]{1,59}",
+            plant_id
+        )
+    ):
+        return blocked("INVALID_SYNTHETIC_PLANT_ID")
+
+    try:
+        observation_id = str(
+            UUID(str(payload["observation_id"]))
+        )
+
+    except (
+        KeyError,
+        ValueError,
+        TypeError,
+        AttributeError
+    ):
+        return blocked("INVALID_TEST_OBSERVATION_ID")
+
+    if scenario not in (
+        "SUCCESS",
+        "FAILURE",
+        "TIMEOUT"
+    ):
+        return blocked("INVALID_TEST_SCENARIO")
+
+    # Database initialization does not perform
+    # any hardware operation.
+    db = initialize_actuator_audit(db_path)
+
+    now = datetime.now(timezone.utc)
+
+    # Cooldown is derived from our own audit database.
+    # Caller-provided cooldown information is ignored.
+    with safe_connection(db) as conn:
+        row = conn.execute(
+            """
+            SELECT logged_at_utc
+            FROM simulated_actuator_events
+            WHERE plant_id = ?
+              AND target = 'MAIN_IRRIGATION_PUMP'
+              AND status = 'SIMULATED_EXECUTED'
+            ORDER BY logged_at_utc DESC
+            LIMIT 1
+            """,
+            (plant_id,)
+        ).fetchone()
+
+    cooldown = None
+
+    if row is not None:
+        try:
+            previous = datetime.fromisoformat(
+                row[0]
+            )
+
+            if previous.tzinfo is None:
+                return blocked(
+                    "INVALID_AUDIT_TIMESTAMP"
+                )
+
+            cooldown = (
+                now - previous
+            ).total_seconds()
+
+            if cooldown < 0:
+                return blocked(
+                    "SIMULATED_CLOCK_ANOMALY"
+                )
+
+        except (TypeError, ValueError):
+            return blocked(
+                "INVALID_AUDIT_TIMESTAMP"
+            )
+
+    # The test harness supplies its own clock
+    # and trusted simulated cooldown.
+    policy_input = {
+        **payload,
+        "reference_at": now.isoformat(),
+        "seconds_since_last_simulated_action":
+            cooldown
+    }
+
+    decision = evaluate_simulated_irrigation(
+        policy_input
+    )
+
+    if not decision[
+        "eligible_for_simulated_pump"
+    ]:
+        result = blocked(
+            "SIMULATED_POLICY_DID_NOT_APPROVE"
+        )
+
+        result["reason_codes"] = decision[
+            "reason_codes"
+        ]
+
+        result["policy_result"] = decision
+
+        return result
+
+    # Generate a NEW command exclusively inside
+    # the trusted synthetic test harness.
+    command = {
+        "command_id": str(uuid4()),
+        "observation_id": observation_id,
+        "plant_id": plant_id,
+        "mode": "SIMULATION_ONLY",
+        "test_only": True,
+        "origin": "TEST_HARNESS",
+        "action": "IRRIGATION_TEST",
+        "target": "MAIN_IRRIGATION_PUMP"
+    }
+
+    simulated_ack = simulate_and_log(
+        command,
+        scenario=scenario,
+        db_path=db
+    )
+
+    assert simulated_ack[
+        "physical_actuation"
+    ] is False
+
+    assert simulated_ack[
+        "real_hardware_ack"
+    ] is None
+
+    return {
+        "flow_version": FLOW_VERSION,
+        "mode": "SIMULATION_ONLY",
+        "status": "SIMULATED_TEST_RECORDED",
+        "reason_codes": decision["reason_codes"],
+        "policy_result": decision,
+        "command": command,
+        "simulated_ack": simulated_ack,
+        "water_stress_risk": None,
+        "physical_actuation": False
+    }

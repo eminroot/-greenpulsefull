@@ -1,0 +1,68 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T20:06:00.866329+00:00",
+  "architecture_layer": 54,
+  "layer_name": "Backend & Frontend Intelligence Outputs",
+  "status": "SOFTWARE_BACKEND_FRONTEND_OUTPUT_CONTRACT_COMPLETE_REAL_FRONTEND_RENDERING_PENDING",
+  "backend_contract": {
+    "required_fields_total": 12,
+    "required_fields_supported": 12,
+    "fields": [
+      "plant_state",
+      "confidence",
+      "risk",
+      "trend",
+      "forecast",
+      "sensors",
+      "uncertainty",
+      "decision",
+      "reasons",
+      "model_version",
+      "latency",
+      "system_status"
+    ],
+    "missing_values_fabricated": false,
+    "plant_state_when_unavailable": null
+  },
+  "frontend_contract": {
+    "required_widgets_total": 10,
+    "required_widget_payloads_supported": 10,
+    "widgets": [
+      "live_or_annotated_image",
+      "risk_gauge",
+      "risk_trend",
+      "predicted_risk_horizon",
+      "sensor_cards",
+      "decision_explanation",
+      "last_action",
+      "before_after_intervention",
+      "sustainability_score",
+      "system_health"
+    ],
+    "actual_frontend_rendering_implemented": false
+  },
+  "tests": {
+    "count": 13,
+    "result": "PASS"
+  },
+  "artifacts": {
+    "src/intelligence_output_view.py": "7b4eec549b15c9e676b2dc2594334c413627ce694029602209014595c7f5a9c9",
+    "tests/test_intelligence_output_view.py": "e4a0b8db3f2510b4efbfbaf2a73964d4e4b0dd1af77d96c2b1ca78491ddf4ecb",
+    "reports/layer37_standard_ai_output_contract_v1.json": "660b12e4464fe55597d9e0be0dc4794fffe8702d0563afd1b515742687772e42",
+    "reports/layer53_sustainability_intelligence_v1.json": "40ed58b525f7ac82d2941719929b51577e335c9f9bf13b0a819ac72aae0ffbb7"
+  },
+  "production_database": {
+    "modified": false,
+    "sha256_before": "f76bdabc80c2b7aa2e537ba760f040dca721d9f0c8ce99e5c393a67f91d95218",
+    "sha256_after": "f76bdabc80c2b7aa2e537ba760f040dca721d9f0c8ce99e5c393a67f91d95218"
+  },
+  "claim_boundary": {
+    "software_output_contract_complete": true,
+    "backend_contract_operationally_populated_for_all_fields": false,
+    "frontend_widget_payload_contract_complete": true,
+    "frontend_rendering_implemented": false,
+    "frontend_rendering_operationally_validated": false,
+    "missing_values_may_be_fabricated": false,
+    "layer54_operationally_validated": false
+  }
+}

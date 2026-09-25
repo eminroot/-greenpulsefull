@@ -1,0 +1,18 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Existing app images (kept as-is).
+    match /images/{file} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // GreenPulse leaf photos. Each user can only write under their own uid.
+    // Reads are public so the web panel can render images by URL.
+    match /greenpulse/users/{uid}/{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.uid == uid;
+    }
+  }
+}

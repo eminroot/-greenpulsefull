@@ -1,0 +1,170 @@
+{
+  "version": "1.0",
+  "project": "GreenPulse",
+  "purpose": "JURY_ARCHITECTURE_AND_METHODOLOGY_VISUAL_EVIDENCE",
+  "scope": [
+    "tomato",
+    "bell_pepper"
+  ],
+  "visual_count": 6,
+  "visuals": [
+    {
+      "file": "reports/jury_architecture_visuals_v1/11_end_to_end_ai_architecture.png",
+      "sha256": "9761df9b5da47c81485a02fe8429e3b27bbdba583aea88dbc9056163d01cf2cb"
+    },
+    {
+      "file": "reports/jury_architecture_visuals_v1/12_frozen_test_protocol_timeline.png",
+      "sha256": "8f530c47b4777c76f006f97bdd2a030b04a7d5733bfa4eccbb44d88e4e0fb884"
+    },
+    {
+      "file": "reports/jury_architecture_visuals_v1/13_active_learning_safety_flow.png",
+      "sha256": "d9190bdfe11064e57c39ca5a800d15223c14dbf6171fa405c869eb35d1ec9638"
+    },
+    {
+      "file": "reports/jury_architecture_visuals_v1/14_registry_routing_safety_gate.png",
+      "sha256": "81fdde47ea73ef802df587801827e195a00275395e1b4998507ade0bf5274d80"
+    },
+    {
+      "file": "reports/jury_architecture_visuals_v1/15_verified_vs_pending_matrix.png",
+      "sha256": "4dde994890016ec852259e3e24bd893c903a498a1cf31cec7354c11606fbe536"
+    },
+    {
+      "file": "reports/jury_architecture_visuals_v1/16_model_lifecycle_traceability.png",
+      "sha256": "6d06f001bb2269b72d0e95c2d1cb91d80e8b0a49518673e0d8b6afce39343dc7"
+    }
+  ],
+  "source_modules": {
+    "vision": {
+      "path": "src/vision_inference.py",
+      "sha256": "56764f7df485b67df312baa6b4520b488a3de6c97171e15efe4a8a79103e385c",
+      "functions": [
+        "sha256"
+      ],
+      "classes": [
+        "GreenPulseVision"
+      ]
+    },
+    "sensor_validator": {
+      "path": "src/sensor_validator.py",
+      "sha256": "58d80bdfd902fb43a01ab64fe3a1ea4d05a72d1536b42680bd8dcfcd4b1954f8",
+      "functions": [
+        "validate_sensor"
+      ],
+      "classes": []
+    },
+    "sensor_guard": {
+      "path": "src/sensor_contract_guard.py",
+      "sha256": "169e5b010b2c79e84d7cf3511cfe4c2557481d8e755a7d126a708e84a356c552",
+      "functions": [
+        "check_sensor_contract"
+      ],
+      "classes": []
+    },
+    "time_sync": {
+      "path": "src/time_sync.py",
+      "sha256": "ac8b8d72387103ee78080a7817517845d3159b4f1ffbfb61368cee3590cde40a",
+      "functions": [
+        "parse_timestamp",
+        "synchronize"
+      ],
+      "classes": []
+    },
+    "fusion": {
+      "path": "src/fusion_contract.py",
+      "sha256": "c077a4f0eb31b1523e5b0b21024e152d05efe62a848369f5600b6ac4b65db51f",
+      "functions": [
+        "prepare_fusion_inputs"
+      ],
+      "classes": []
+    },
+    "safety": {
+      "path": "src/safety_gate.py",
+      "sha256": "ca0b7cc868a0dad4e63412f8d8da333b7684b958e2ccb79a043f9ecc64de03e5",
+      "functions": [
+        "evaluate_safety"
+      ],
+      "classes": []
+    },
+    "hardware": {
+      "path": "src/hardware_contract.py",
+      "sha256": "154dbe44be60e59d6032d10014dfe088d73f76a031e54722b8a6607c5e48ea38",
+      "functions": [
+        "prepare_hardware_handoff"
+      ],
+      "classes": []
+    },
+    "active_learning": {
+      "path": "src/active_learning.py",
+      "sha256": "b2dab47a197edf67423b5689b2602e7995087f73bd0bf637bb819a0c81103f27",
+      "functions": [
+        "load_policy",
+        "parse_time",
+        "validate_sha256",
+        "assess_for_review",
+        "route_review_candidate"
+      ],
+      "classes": []
+    },
+    "review_queue": {
+      "path": "src/review_queue.py",
+      "sha256": "9903868bf76231d7b844b772357df42cd56eb5abed048c01361d563c9dc76e07",
+      "functions": [
+        "connection",
+        "initialize_review_queue",
+        "enqueue_review",
+        "list_pending_reviews"
+      ],
+      "classes": []
+    },
+    "registry": {
+      "path": "src/vision_model_registry.py",
+      "sha256": "7f94709ef5d3a74847184361b426c59effac7a203064f283394e1be0d8d6cc47",
+      "functions": [
+        "sha256_file",
+        "blocked",
+        "verified_file",
+        "resolve_diagnostic_model"
+      ],
+      "classes": []
+    },
+    "audit": {
+      "path": "src/audit_db.py",
+      "sha256": "c56119a298f6810e3c07e82a5566a948c98d96729b0e6d375da6657ed840d068",
+      "functions": [
+        "log_observation",
+        "get_latest_observation",
+        "get_plant_history"
+      ],
+      "classes": []
+    },
+    "api": {
+      "path": "src/api.py",
+      "sha256": "b287282f28cf8eb5926d7d0ea9cf65bb592e6c0831f7f5f8c4208a497969ea15",
+      "functions": [
+        "get_vision",
+        "status",
+        "latest",
+        "plant_history",
+        "read_simulated_actuator_events",
+        "read_simulated_closed_loop_feedback"
+      ],
+      "classes": []
+    }
+  },
+  "claims": {
+    "current_computer_side_scope_complete": true,
+    "real_greenhouse_validated": false,
+    "water_stress_validated": false,
+    "hailo_runtime_validated": false,
+    "physical_actuation_validated": false,
+    "operational_release_approved": false
+  },
+  "execution": {
+    "model_loaded": false,
+    "inference_executed": false,
+    "training_executed": false,
+    "frozen_test_images_accessed": false,
+    "source_code_modified": false,
+    "model_artifacts_modified": false
+  }
+}

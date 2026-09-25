@@ -1,0 +1,18 @@
+{
+  "schema_version": "greenpulse.drift_monitoring_policy.v1",
+  "policy_status": "DEVELOPMENT_ONLY_UNVALIDATED",
+  "thresholds": {
+    "confidence_mean_drop_absolute": 0.15,
+    "prediction_total_variation_distance": 0.20,
+    "risk_mean_relative_shift": 0.25,
+    "sensor_mean_relative_shift": 0.25
+  },
+  "workflow": {
+    "warning_action": "REVIEW_RETRAINING_WORKFLOW",
+    "automatic_model_deployment_allowed": false
+  },
+  "production_baseline": {
+    "status": "NOT_AVAILABLE",
+    "source": null
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "schema_version": "greenpulse.team_real_test_handoff.v1",
+  "status": "READY_FOR_EXTERNAL_REAL_TESTING",
+  "global_rules": [
+    "Do not enter synthetic, guessed or presentation-only values.",
+    "Leave unavailable measurements blank.",
+    "Preserve raw measurements and timestamps.",
+    "Do not modify frozen Tomato/Pepper test sets.",
+    "Do not claim Hailo deployment before actual HEF/runtime validation.",
+    "Do not treat simulated ACK as physical hardware ACK.",
+    "Do not actuate a pump directly from Raspberry Pi GPIO."
+  ],
+  "backend_ai_team": {
+    "required_files_to_fill": [
+      "templates/ablation_real.csv",
+      "templates/temporal_real.csv",
+      "templates/forecast_real.csv"
+    ],
+    "tests": [
+      {
+        "name": "Three-way ablation",
+        "input_requirement": "The SAME real labeled observations must be evaluated through SENSOR ONLY, VISION ONLY and VISION+SENSOR FUSION.",
+        "record": [
+          "sample_id",
+          "true_label",
+          "sensor_only_prediction",
+          "vision_only_prediction",
+          "fusion_prediction"
+        ],
+        "final_metrics": [
+          "precision",
+          "recall",
+          "F1",
+          "false positive rate",
+          "false negative rate"
+        ],
+        "claim_rule": "Do not claim multimodal superiority unless measured results demonstrate it."
+      },
+      {
+        "name": "Single-frame vs temporal verification",
+        "input_requirement": "Use real time-ordered observations with known reference state/label.",
+        "record": [
+          "sample_id",
+          "timestamp_utc",
+          "true_state",
+          "single_frame_decision",
+          "temporal_verified_decision"
+        ],
+        "final_metrics": [
+          "F1",
+          "false positive rate",
+          "false negative rate",
+          "false alarm reduction"
+        ]
+      },
+      {
+        "name": "Forecast evaluation",
+        "input_requirement": "Use a real temporal dataset with future observed target values.",
+        "record": [
+          "true_future_risk",
+          "forecast_risk",
+          "naive_baseline_risk",
+          "event_flag",
+          "forecast_alert",
+          "lead_time_minutes",
+          "false_alarm"
+        ],
+        "final_metrics": [
+          "MAE",
+          "RMSE",
+          "naive baseline comparison",
+          "mean actionable lead time",
+          "false alarm rate"
+        ]
+      }
+    ],
+    "return_package": [
+      "Completed ablation_real.csv",
+      "Completed temporal_real.csv",
+      "Completed forecast_real.csv",
+      "Raw labeled/reference dataset or immutable reference to it",
+      "Exact inference/config versions used",
+      "Any runtime error log"
+    ]
+  },
+  "hardware_edge_team": {
+    "required_files_to_fill": [
+      "templates/edge_benchmark_real.csv",
+      "templates/hailo_onnx_parity_real.csv",
+      "templates/long_run_stability_real.csv",
+      "templates/hardware_actions_real.csv"
+    ],
+    "prerequisites": [
+      "Engineer 1 approval for selected ONNX model",
+      "Actual Hailo conversion/toolchain available",
+      "HEF artifact generated",
+      "Raspberry Pi 5 + AI HAT+ available",
+      "Sensor models and electrical bindings finalized",
+      "Pump driver/power interface finalized"
+    ],
+    "tests": [
+      {
+        "name": "ONNX vs Hailo parity",
+        "method": "Run the SAME reference samples through approved ONNX runtime and actual Hailo HEF runtime.",
+        "record": [
+          "true_label",
+          "onnx_prediction",
+          "onnx_confidence",
+          "hailo_prediction",
+          "hailo_confidence",
+          "prediction_match",
+          "absolute_confidence_difference"
+        ],
+        "return": "Completed hailo_onnx_parity_real.csv"
+      },
+      {
+        "name": "Edge latency benchmark",
+        "method": "Measure each stage independently and end-to-end on Raspberry Pi 5 + AI HAT+.",
+        "required_stages": [
+          "preprocessing",
+          "Hailo inference",
+          "postprocessing",
+          "fusion",
+          "forecasting",
+          "decision",
+          "API",
+          "end-to-end"
+        ],
+        "resource_metrics": [
+          "RAM",
+          "peak RAM",
+          "CPU",
+          "accelerator utilization if available",
+          "device temperature"
+        ],
+        "return": "Completed edge_benchmark_real.csv"
+      },
+      {
+        "name": "Long-run stability",
+        "durations": [
+          "30 minutes",
+          "1 hour",
+          "multi-hour"
+        ],
+        "monitor": [
+          "RAM growth",
+          "peak RAM",
+          "CPU",
+          "temperature",
+          "DB size growth",
+          "model crashes",
+          "API crashes",
+          "camera timeouts",
+          "sensor timeouts"
+        ],
+        "hard_rule": "Do not claim <3 GB runtime compliance until actual stability measurement confirms it.",
+        "return": "Completed long_run_stability_real.csv"
+      },
+      {
+        "name": "Physical actuator / ACK validation",
+        "method": "Send real commands through the hardware interface and record physical outcome plus ACK/FAIL/TIMEOUT.",
+        "record": [
+          "command_id",
+          "requested_action",
+          "ack_status",
+          "error_code",
+          "response_time_ms",
+          "physical_action_observed",
+          "safe_state_triggered"
+        ],
+        "safety_rules": [
+          "No direct pump drive from Raspberry Pi GPIO.",
+          "Invalid/stale/uncertain input must not authorize blind actuation.",
+          "TIMEOUT must never be recorded as success."
+        ],
+        "return": "Completed hardware_actions_real.csv"
+      }
+    ],
+    "return_package": [
+      "Approved HEF file",
+      "HEF SHA256 hash",
+      "Completed hailo_onnx_parity_real.csv",
+      "Completed edge_benchmark_real.csv",
+      "Completed long_run_stability_real.csv",
+      "Completed hardware_actions_real.csv",
+      "Hardware wiring/pin mapping",
+      "Sensor model list",
+      "Driver/power specification",
+      "Hailo runtime/toolchain versions",
+      "Photos or video evidence of physical test setup"
+    ]
+  },
+  "joint_integration_team": {
+    "required_file": "templates/sustainability_real.csv",
+    "test_requirement": "Collect actual water/energy/action measurements and compare only against a documented validated baseline.",
+    "required_evidence": [
+      "Measured water usage",
+      "Validated baseline water usage",
+      "Intervention count",
+      "Energy measurement or explicitly documented estimate",
+      "Validated baseline energy value if used",
+      "Emissions factor source if carbon estimate is shown"
+    ],
+    "claim_rules": [
+      "Water saving requires a validated baseline.",
+      "Estimated values must be labelled ESTIMATED.",
+      "Carbon saving requires documented emissions factor and energy methodology."
+    ]
+  },
+  "final_return_to_ai_owner": {
+    "folder_structure": [
+      "All 8 completed CSV files where applicable",
+      "Raw logs",
+      "Model/runtime/config versions",
+      "Photos/screenshots/video evidence",
+      "Hardware specification",
+      "Any anomalies or failed runs"
+    ],
+    "after_return": "Run the GreenPulse Jury Visual Pack v2 generator to produce competition-ready measured charts."
+  }
+}

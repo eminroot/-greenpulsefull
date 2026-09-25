@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-23T23:55:30.428639+00:00",
+  "project": "GreenPulse",
+  "component": "vision_explainability",
+  "change": "ULTRALYTICS_CLASSIFICATION_PREPROCESSING_PARITY_FIX",
+  "module": {
+    "path": "src/vision_explainability.py",
+    "old_sha256": "eb4f234a6ec3b8f0aa428148bd2e6ff7548e148fc5b005a6897e9942f381a50c",
+    "new_sha256": "4bd7c63cb10bbb82b91146dd67ec866e0c02c5c2f6b3fe0a617e8b42b787993c",
+    "backup": "src/vision_explainability.py.bak_before_native_preprocess_v1"
+  },
+  "parity": {
+    "reference_class_id": 8,
+    "reference_class_name": "Tomato___Tomato_mosaic_virus",
+    "reference_confidence": 0.9999710321426392,
+    "shared_class_id": 8,
+    "shared_class_name": "Tomato___Tomato_mosaic_virus",
+    "shared_confidence": 0.9999710321426392,
+    "class_match": true,
+    "confidence_absolute_difference": 0.0
+  },
+  "regression_test": {
+    "framework": "unittest",
+    "command": "python -m unittest discover -s tests -p test_vision_explainability_v1.py -v",
+    "passed": true,
+    "stdout": "",
+    "stderr": "test_01_last_conv_found (test_vision_explainability_v1.ExplainabilityTests.test_01_last_conv_found) ... ok\ntest_02_gradcam_shape (test_vision_explainability_v1.ExplainabilityTests.test_02_gradcam_shape) ... ok\ntest_03_gradcam_range (test_vision_explainability_v1.ExplainabilityTests.test_03_gradcam_range) ... ok\ntest_04_prediction_valid (test_vision_explainability_v1.ExplainabilityTests.test_04_prediction_valid) ... ok\ntest_05_explicit_target (test_vision_explainability_v1.ExplainabilityTests.test_05_explicit_target) ... ok\ntest_06_invalid_target_rejected (test_vision_explainability_v1.ExplainabilityTests.test_06_invalid_target_rejected) ... ok\ntest_07_bad_input_rejected (test_vision_explainability_v1.ExplainabilityTests.test_07_bad_input_rejected) ... ok\ntest_08_frozen_model_supported (test_vision_explainability_v1.ExplainabilityTests.test_08_frozen_model_supported) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.023s\n\nOK"
+  },
+  "safety": {
+    "training_executed": false,
+    "frozen_test_accessed": false,
+    "tomato_checkpoint_modified": false,
+    "rollback_required": false
+  }
+}

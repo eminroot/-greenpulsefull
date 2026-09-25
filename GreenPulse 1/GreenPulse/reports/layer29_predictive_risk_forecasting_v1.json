@@ -1,0 +1,79 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T12:29:52.345145+00:00",
+  "project": "GreenPulse",
+  "architecture_layer": 29,
+  "layer_name": "Predictive Plant Risk Engine",
+  "status": "SOFTWARE_FRAMEWORK_COMPLETE_REAL_FORECAST_VALIDATION_PENDING",
+  "model_schema_version": "greenpulse.predictive_plant_risk.v1",
+  "model_type": "LIGHTWEIGHT_RIDGE_LINEAR_REGRESSION",
+  "feature_count": 16,
+  "feature_sources": [
+    "current stress-risk score",
+    "Layer 28 risk trend",
+    "Layer 28 risk velocity",
+    "Layer 28 risk acceleration",
+    "Layer 28 sensor trends",
+    "Layer 08 visual plant delta when available"
+  ],
+  "implemented_capabilities": [
+    "configurable forecast horizon per model",
+    "sufficient-temporal-history gate",
+    "lightweight ridge regression",
+    "train-only feature scaling",
+    "bounded 0-100 future-risk output",
+    "training-residual uncertainty indicator",
+    "model version output",
+    "forecast horizon output",
+    "naive current-risk-unchanged baseline",
+    "MAE comparison",
+    "RMSE comparison",
+    "serialization",
+    "deterministic training"
+  ],
+  "naive_baseline": {
+    "method": "CURRENT_RISK_REMAINS_UNCHANGED",
+    "comparison_required": true
+  },
+  "uncertainty": {
+    "method": "TRAINING_RESIDUAL_STD",
+    "predictive_interval_calibrated": false
+  },
+  "scientific_guardrails": {
+    "real_temporal_forecast_dataset_available": false,
+    "real_forecast_model_trained": false,
+    "real_forecast_accuracy_validated": false,
+    "forecast_superiority_over_naive_established": false,
+    "full_physical_digital_twin_claimed": false,
+    "physical_action_authorized": false
+  },
+  "real_evaluation": {
+    "status": "PENDING",
+    "reason": "No validated real temporal dataset with future stress-risk targets is currently available."
+  },
+  "tests": {
+    "framework": "unittest",
+    "test_count": 10,
+    "result": "PASS",
+    "synthetic_training_only": true
+  },
+  "artifacts": {
+    "source": {
+      "path": "src/predictive_risk.py",
+      "sha256": "87d5e5ab9692e72db9cc7f744731c355f7df8e331634f16b37dceacd833f0745"
+    },
+    "tests": {
+      "path": "tests/test_predictive_risk.py",
+      "sha256": "eed75fc53dc7a061d5e8dfa7049fdaff2bba7e7e7cabefa6523704227761d240"
+    }
+  },
+  "execution": {
+    "real_forecast_model_trained": false,
+    "synthetic_fixture_used_for_unit_testing": true,
+    "real_temporal_data_used": false,
+    "vision_model_loaded": false,
+    "vision_inference_executed": false,
+    "frozen_test_images_accessed": false,
+    "model_artifacts_modified": false
+  }
+}

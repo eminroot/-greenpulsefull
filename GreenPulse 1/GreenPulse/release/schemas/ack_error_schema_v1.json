@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "greenpulse.hardware_ack_error.v1",
+  "title": "GreenPulse Hardware ACK/Error Handoff",
+  "type": "object",
+  "required": [
+    "command_id",
+    "status"
+  ],
+  "properties": {
+    "command_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACK",
+        "FAIL",
+        "TIMEOUT"
+      ]
+    },
+    "error_code": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "message": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,165 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-09-24T00:12:09.118187+00:00",
+  "project": "GreenPulse",
+  "crop": "tomato",
+  "task": "DISEASE_CLASSIFICATION_ACTIVE_LEARNING_REVIEW_ROUTING",
+  "model": {
+    "sha256": "7cb92b640bcb42811a226171702bdac44313eea2933cb1bde42e8fd7001a4687",
+    "registry_verified": true,
+    "model_card_verified": true
+  },
+  "policy": {
+    "path": "configs/active_learning_policy_v1.json",
+    "sha256": "abd6071be064efc3614f95947bd4e780402696707d92e82992a2c0c38e6d10b1",
+    "mode": "RESEARCH_ONLY",
+    "low_confidence_threshold": 0.65,
+    "threshold_validated": false,
+    "allowed_triggers": [
+      "LOW_CONFIDENCE",
+      "VISION_SENSOR_CONFLICT",
+      "IMAGE_QUALITY_FAILURE",
+      "MODEL_FAILURE",
+      "OOD_SUSPECTED"
+    ],
+    "forbidden_source_partitions": [
+      "TEST",
+      "FINAL_TEST",
+      "HELD_OUT_TEST",
+      "FROZEN_FINAL_TEST"
+    ],
+    "automatic_retraining_allowed": false,
+    "automatic_labeling_allowed": false,
+    "physical_actuation_allowed": false
+  },
+  "shared_regression_tests": {
+    "framework": "unittest",
+    "test_file": "tests/test_active_learning_v1.py",
+    "passed": true,
+    "scenario_count": 7,
+    "stdout": "",
+    "stderr": "test_01_low_confidence_queued (test_active_learning_v1.ActiveLearningTests.test_01_low_confidence_queued) ... ok\ntest_02_high_confidence_clean_not_queued (test_active_learning_v1.ActiveLearningTests.test_02_high_confidence_clean_not_queued) ... ok\ntest_03_conflict_is_reviewed (test_active_learning_v1.ActiveLearningTests.test_03_conflict_is_reviewed) ... ok\ntest_04_final_test_forbidden (test_active_learning_v1.ActiveLearningTests.test_04_final_test_forbidden) ... ok\ntest_05_duplicate_queue_is_idempotent (test_active_learning_v1.ActiveLearningTests.test_05_duplicate_queue_is_idempotent) ... ok\ntest_06_unsafe_retraining_policy_rejected (test_active_learning_v1.ActiveLearningTests.test_06_unsafe_retraining_policy_rejected) ... ok\ntest_07_quality_failure_is_reviewed (test_active_learning_v1.ActiveLearningTests.test_07_quality_failure_is_reviewed) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.096s\n\nOK"
+  },
+  "tomato_integration": {
+    "synthetic_contract_events_only": true,
+    "real_test_images_used": 0,
+    "model_inference_executed": false,
+    "clean_high_confidence_event": "NO_REVIEW_REQUIRED",
+    "trigger_scenarios": [
+      {
+        "scenario": "HIGH_CONFIDENCE_CLEAN",
+        "status": "NO_REVIEW_REQUIRED",
+        "queued": false,
+        "review_triggers": []
+      },
+      {
+        "scenario": "LOW_CONFIDENCE",
+        "status": "PENDING_HUMAN_REVIEW",
+        "queued": true,
+        "review_triggers": [
+          "LOW_CONFIDENCE"
+        ],
+        "training_eligible": false,
+        "automatic_labeling_allowed": false,
+        "automatic_retraining_allowed": false,
+        "physical_actuation_allowed": false
+      },
+      {
+        "scenario": "VISION_SENSOR_CONFLICT",
+        "status": "PENDING_HUMAN_REVIEW",
+        "queued": true,
+        "review_triggers": [
+          "VISION_SENSOR_CONFLICT"
+        ],
+        "training_eligible": false,
+        "automatic_labeling_allowed": false,
+        "automatic_retraining_allowed": false,
+        "physical_actuation_allowed": false
+      },
+      {
+        "scenario": "IMAGE_QUALITY_FAILURE",
+        "status": "PENDING_HUMAN_REVIEW",
+        "queued": true,
+        "review_triggers": [
+          "IMAGE_QUALITY_FAILURE"
+        ],
+        "training_eligible": false,
+        "automatic_labeling_allowed": false,
+        "automatic_retraining_allowed": false,
+        "physical_actuation_allowed": false
+      },
+      {
+        "scenario": "MODEL_FAILURE",
+        "status": "PENDING_HUMAN_REVIEW",
+        "queued": true,
+        "review_triggers": [
+          "MODEL_FAILURE"
+        ],
+        "training_eligible": false,
+        "automatic_labeling_allowed": false,
+        "automatic_retraining_allowed": false,
+        "physical_actuation_allowed": false
+      },
+      {
+        "scenario": "OOD_SUSPECTED",
+        "status": "PENDING_HUMAN_REVIEW",
+        "queued": true,
+        "review_triggers": [
+          "OOD_SUSPECTED"
+        ],
+        "training_eligible": false,
+        "automatic_labeling_allowed": false,
+        "automatic_retraining_allowed": false,
+        "physical_actuation_allowed": false
+      }
+    ],
+    "threshold_boundary_triggered": true,
+    "forbidden_test_partitions": [
+      {
+        "partition": "TEST",
+        "blocked": true,
+        "reason": "FINAL_TEST_DATA_FORBIDDEN"
+      },
+      {
+        "partition": "FINAL_TEST",
+        "blocked": true,
+        "reason": "FINAL_TEST_DATA_FORBIDDEN"
+      },
+      {
+        "partition": "HELD_OUT_TEST",
+        "blocked": true,
+        "reason": "FINAL_TEST_DATA_FORBIDDEN"
+      },
+      {
+        "partition": "FROZEN_FINAL_TEST",
+        "blocked": true,
+        "reason": "FINAL_TEST_DATA_FORBIDDEN"
+      }
+    ],
+    "duplicate_queue_idempotent": true,
+    "temporary_pending_review_count": 6
+  },
+  "safety": {
+    "human_review_required_for_triggered_samples": true,
+    "training_eligible": false,
+    "automatic_labeling": false,
+    "automatic_retraining": false,
+    "physical_actuation": false,
+    "frozen_final_test_reuse": false
+  },
+  "scientific_scope": {
+    "active_learning_means_review_routing_only": true,
+    "threshold_is_validated": false,
+    "no_claim_of_improved_model_performance": true,
+    "no_online_learning": true,
+    "no_autonomous_retraining": true
+  },
+  "execution": {
+    "model_loaded": false,
+    "inference_executed": false,
+    "training_executed": false,
+    "frozen_test_accessed": false,
+    "persistent_project_review_queue_modified": false,
+    "temporary_review_queue_used": true
+  }
+}

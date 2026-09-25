@@ -1,0 +1,15 @@
+{
+  "schema_version": "greenpulse.system_release_config.v1",
+  "system_release_id": "greenpulse.system_release.v1",
+  "release_status": "DRAFT_BLOCKED_GIT_PROVENANCE",
+  "identity_origin": "IMPLEMENTATION_ASSIGNED_CURRENT_RELEASE_ID",
+  "created_at_utc": "2026-09-24T19:11:22.162754+00:00",
+  "git_commit": null,
+  "git_provenance_status": "BLOCKED_NOT_A_GIT_REPOSITORY",
+  "claim_boundary": {
+    "complete_release": false,
+    "operational_release": false,
+    "hailo_release": false,
+    "hardware_validated_release": false
+  }
+}
