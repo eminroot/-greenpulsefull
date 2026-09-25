@@ -1,5 +1,5 @@
-import { type ReactNode } from 'react';
-import { View, useWindowDimensions, type ViewStyle } from 'react-native';
+import { useState, type ReactNode } from 'react';
+import { View, useWindowDimensions, type LayoutChangeEvent, type ViewStyle } from 'react-native';
 import Svg, { Defs, RadialGradient, Stop, Rect, Circle } from 'react-native-svg';
 import { colors } from '@/theme';
 import { useTheme } from '@/theme/theme-context';
@@ -15,9 +15,18 @@ interface Props {
 // (emerald + lime) painted with SVG so it renders crisply at any size. The
 // glows are dimmed and the bottom hue lightened for the light theme.
 export function ScreenBackground({ children, style, intensity = 1 }: Props) {
-  const { width, height } = useWindowDimensions();
+  const win = useWindowDimensions();
+  // Painted to the view's own size, not the window's: on Android the window
+  // leaves out the strip behind the navigation bar, and the glow stopped short
+  // of it in a visible seam.
+  const [size, setSize] = useState<{ w: number; h: number } | null>(null);
+  const onLayout = (e: LayoutChangeEvent) => {
+    const { width: w, height: hh } = e.nativeEvent.layout;
+    setSize((s) => (s && s.w === w && s.h === hh ? s : { w, h: hh }));
+  };
+  const width = size?.w ?? win.width;
   const { mode } = useTheme();
-  const h = Math.max(height, 1);
+  const h = Math.max(size?.h ?? win.height, 1);
   const light = mode === 'light';
 
   const aOp = (light ? 0.1 : 0.32) * intensity;
@@ -26,7 +35,7 @@ export function ScreenBackground({ children, style, intensity = 1 }: Props) {
   const cColor = light ? '#34D399' : '#064E3B';
 
   return (
-    <View style={[{ flex: 1, backgroundColor: colors.bg }, style]}>
+    <View onLayout={onLayout} style={[{ flex: 1, backgroundColor: colors.bg }, style]}>
       <Svg width={width} height={h} style={{ position: 'absolute', top: 0, left: 0 }} pointerEvents="none">
         <Defs>
           <RadialGradient id="glowA" cx="20%" cy="6%" r="62%">
