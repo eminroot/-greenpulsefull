@@ -1,3 +1,7 @@
+# Named, so the containers and volumes read greenpulse-* rather than taking
+# the folder's name (server-*), which says nothing on a box shared with others.
+name: greenpulse
+
 services:
   db:
     image: postgres:16-alpine
