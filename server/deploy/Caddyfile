@@ -62,10 +62,16 @@
 			roll_size 10MB
 			roll_keep 5
 		}
-		# Query strings are dropped. Websocket URLs carry a stream ticket, and a
-		# log is the wrong place to keep any credential, however short lived.
-		format json {
-			request>uri_query ""
+		# The stream ticket is blanked. Websocket URLs carry it in the query
+		# string, and a log is the wrong place to keep any credential, however
+		# short lived. Authorization headers Caddy already redacts on its own.
+		format filter {
+			wrap json
+			fields {
+				request>uri query {
+					replace ticket REDACTED
+				}
+			}
 		}
 	}
 }
