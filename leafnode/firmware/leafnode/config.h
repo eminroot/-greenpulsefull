@@ -28,8 +28,10 @@
 #define DEVICE_ID        "leafnode-01"
 
 // --- Capture cadence -------------------------------------------------------
-// How long to wait between autonomous captures, in seconds.
-#define CAPTURE_INTERVAL_S   300
+// How long to wait between autonomous captures, in seconds. This is only the
+// starting value: the Pi can change it over Wi-Fi without a reflash
+// (leafnode interval 300), and the board remembers it.
+#define CAPTURE_INTERVAL_S   60
 
 // Use deep sleep between captures instead of staying awake.
 // 0 = stay awake (fast, good for a live demo, ~160 mA idle)
@@ -40,8 +42,9 @@
 
 // --- Photo on request ------------------------------------------------------
 // Between captures the node listens on this port. The Pi asks it for a photo
-// (POST /capture with the node key) when the farmer taps "take a photo now".
-// GET /status answers without the key and says nothing secret.
+// (POST /capture with the node key) when the farmer taps "take a photo now",
+// checks in (POST /hello), and changes saved networks, the interval or the
+// firmware. GET /status answers without the key and says nothing secret.
 #define ENABLE_CAPTURE_SERVER 1
 #define CAPTURE_SERVER_PORT   80
 
@@ -72,5 +75,8 @@
 
 // --- Behaviour -------------------------------------------------------------
 #define HTTP_TIMEOUT_MS      20000  // the Pi may take seconds on first inference
+// Short on purpose: after a network change the old Pi address is dead, and
+// while the node waits on it, it cannot answer the Pi's hello either.
+#define HTTP_CONNECT_TIMEOUT_MS 4000
 #define WIFI_CONNECT_TIMEOUT_MS 20000
 #define MAX_UPLOAD_RETRIES   3

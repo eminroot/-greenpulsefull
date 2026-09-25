@@ -57,3 +57,32 @@ class EventHub:
 
 
 hub = EventHub()
+
+
+class Wakeups:
+    """Wakes a long poll the moment there is work for it.
+
+    The Pi holds GET /ingest/jobs open waiting for a scan or a camera request.
+    Without this it would find a new job only on its next look at the
+    database; with it, queueing the job wakes the poll at once. The periodic
+    look stays as the safety net.
+    """
+
+    def __init__(self) -> None:
+        self._events: dict[str, asyncio.Event] = {}
+
+    def waiter(self, key: str) -> asyncio.Event:
+        """Take this before checking for work, so a job queued in between still
+        wakes the wait that follows."""
+        event = self._events.get(key)
+        if event is None or event.is_set():
+            event = self._events[key] = asyncio.Event()
+        return event
+
+    def notify(self, key: str) -> None:
+        event = self._events.pop(key, None)
+        if event is not None:
+            event.set()
+
+
+job_wakeups = Wakeups()

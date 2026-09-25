@@ -113,32 +113,59 @@ def leaf_jpeg() -> bytes:
 
 
 class FakeCamera:
-    """The ESP32's /capture: checks the node key, answers with a JPEG, the
-    sensors in X-Sensors and its id in X-Device-Id, like the firmware does."""
+    """The ESP32's web server as firmware 1.2 runs it: /capture checks the node
+    key and answers with a JPEG (sensors in X-Sensors, id in X-Device-Id),
+    /hello is the Pi checking in, /status answers without a key."""
 
     SENSORS = {"temperature": 24.0, "humidity": 58.0, "soil_moisture": 44.0}
+    FIRMWARE = "1.2.0-e2e"
 
     def __init__(self, port: int, jpeg: bytes) -> None:
         self.jpeg = jpeg
         self.refuse = False
         self.hits = 0
+        self.hellos = 0
         cam = self
 
         class Handler(BaseHTTPRequestHandler):
+            def reply_json(self, body: dict) -> None:
+                data = json.dumps(body).encode()
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Content-Length", str(len(data)))
+                self.end_headers()
+                self.wfile.write(data)
+
+            def status(self) -> dict:
+                return {"device_id": "e2e-camera", "firmware": FakeCamera.FIRMWARE, "ip": "127.0.0.1",
+                        "ssid": "e2e-wifi", "rssi": -50, "interval_s": 60}
+
+            def do_GET(self) -> None:
+                if self.path.split("?")[0] == "/status":
+                    self.reply_json(self.status())
+                else:
+                    self.send_error(404)
+
             def do_POST(self) -> None:
-                if self.path.split("?")[0] != "/capture":
+                path = self.path.split("?")[0]
+                if path not in ("/capture", "/hello"):
                     self.send_error(404)
                     return
-                cam.hits += 1
                 if cam.refuse or self.headers.get("X-Node-Key") != NODE_KEY:
                     self.send_response(401)
                     self.send_header("Content-Length", "0")
                     self.end_headers()
                     return
+                if path == "/hello":
+                    cam.hellos += 1
+                    self.reply_json(self.status())
+                    return
+                cam.hits += 1
                 self.send_response(200)
                 self.send_header("Content-Type", "image/jpeg")
                 self.send_header("Content-Length", str(len(cam.jpeg)))
                 self.send_header("X-Device-Id", "e2e-camera")
+                self.send_header("X-Firmware", FakeCamera.FIRMWARE)
                 self.send_header("X-Sensors", json.dumps(FakeCamera.SENSORS))
                 self.end_headers()
                 self.wfile.write(cam.jpeg)
@@ -210,6 +237,9 @@ def main() -> int:
                 # Not leafnode-01: its .local fallback would reach a real board
                 # on the same Wi-Fi.
                 "LEAFNODE_CAMERA_ID": "e2e-camera",
+                # Check in every second, and never sweep the laptop's subnet.
+                "LEAFNODE_HELLO_EVERY": "1",
+                "LEAFNODE_CAMERA_SCAN": "0",
                 "PYTHONUNBUFFERED": "1",
             },
             stdout=p_log.open("w"),
@@ -448,6 +478,16 @@ def main() -> int:
                 return sub, status, time.time() - t0
 
             try:
+                for _ in range(40):
+                    cam_info = requests.get(f"{P}/health").json()["cameras"].get("e2e-camera", {})
+                    if cam_info.get("firmware"):
+                        break
+                    time.sleep(0.25)
+                check("the Pi checks in with the camera and knows its firmware",
+                      camera.hellos > 0 and cam_info.get("firmware") == FakeCamera.FIRMWARE
+                      and cam_info.get("on_request") is True,
+                      json.dumps({k: cam_info.get(k) for k in ("firmware", "on_request", "ssid")}))
+
                 sub, status, took = camera_request()
                 check("a photo on request is taken by the camera and comes back scored",
                       sub.get("kind") == "camera" and status.get("status") == "done"
@@ -481,6 +521,16 @@ def main() -> int:
             _, status, took = camera_request()
             check("a camera that does not answer ends the request with a reason",
                   status.get("status") == "failed" and status.get("error") == "camera_unreachable",
+                  f"{status.get('status')} error={status.get('error')} in {took:.1f}s")
+
+            # 10. Old firmware: the camera keeps posting frames but has no photo
+            #     server. The farmer is told so at once, not after the retries.
+            requests.post(f"{P}/analyze", files={"image": ("leaf.jpg", jpeg, "image/jpeg")},
+                          data={"device_id": "e2e-camera"}, headers=node, timeout=30)
+            _, status, took = camera_request()
+            check("a camera on old firmware says so within seconds",
+                  status.get("status") == "failed" and status.get("error") == "camera_outdated"
+                  and took < 4,
                   f"{status.get('status')} error={status.get('error')} in {took:.1f}s")
         finally:
             agent.terminate()

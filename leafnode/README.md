@@ -37,7 +37,7 @@ scheduled frame. A sleeping node cannot answer, so this needs
 
 ```
 firmware/leafnode/
-  leafnode.ino        capture, sensors, upload, status LED, /capture on request
+  leafnode.ino        capture, sensors, upload, status LED, the web server the Pi talks to
   config.h            Pi address, interval, which sensors exist, capture server
   secrets.example.h   copy to secrets.h: Wi-Fi name, password, node key
 pi/
@@ -49,13 +49,14 @@ pi/
   bench.py            latency and memory of the model on this machine
   uploader.py         disk-backed queue + retry to your server
   agent.py            answers the app: scores phone photos, asks the camera for new ones
+  leafnode.py         the `leafnode` command: Wi-Fi, interval, status, over-the-air update
   fake_node.py        pretends to be the ESP32, for testing with no hardware
   flash_esp32.sh      flash the ESP32-CAM through the Pi (no USB-TTL needed)
   requirements.txt
   .env.example
   leafnode.service        systemd unit for server.py
   leafnode-agent.service  systemd unit for agent.py
-tools/check_chain.py  real server + real Pi service on a laptop, 30 checks
+tools/check_chain.py  real server + real Pi service on a laptop, 32 checks
 tools/check_parity.py the Pi's code vs ultralytics on the validation images
 WIRING.md           the breadboard, the flashing header, the traps
 wiring-diagram.svg  the same thing as a picture
@@ -138,6 +139,64 @@ whose `NODE_KEY` does not match the Pi's as 502 `camera_refused`. The app
 shows both as plain reasons, not a spinner that never ends.
 
 ---
+
+## Taking it somewhere else (a phone hotspot)
+
+The Pi and the camera both keep a list of Wi-Fi networks and join whichever
+known one is in range. So before you leave, while both are still on the home
+Wi-Fi, add the hotspot to both with one command:
+
+```bash
+ssh -t emin@leafnode.local leafnode wifi add
+```
+
+It lists the networks the Pi can hear (turn the hotspot on first to pick it
+from the list), asks for the password without showing it, and saves it on the
+Pi and on the camera. Neither leaves the home Wi-Fi; at the venue, turn the
+hotspot on and both move to it by themselves.
+
+- The hotspot must be **2.4 GHz** with **WPA2**. On an iPhone turn on
+  *Maximize Compatibility*; on Android set the band to 2.4 GHz and security to
+  WPA2-Personal. The camera cannot see 5 GHz or WPA3-only networks.
+- Keep the hotspot's name and password exactly as saved. iPhone names often
+  contain a curly apostrophe (Emin’s iPhone); picking it from the list avoids
+  typing it.
+- On the new network the two find each other on their own: every 30 s the Pi
+  asks for the camera by name (`leafnode-01.local`), or sweeps its subnet if
+  the hotspot drops name lookups, and says hello. The camera takes the Pi's
+  address from that hello. The first photo lands within a minute of both
+  joining.
+
+Other commands, all run on the Pi:
+
+| | |
+|---|---|
+| `leafnode status` | which network each is on, firmware, signal, photo interval |
+| `leafnode wifi list` | the networks each one knows |
+| `leafnode wifi remove NAME` | forget one on both (never the one the Pi was installed with) |
+| `leafnode interval 60` | how often the camera takes a photo, 10 to 3600 s, remembered |
+| `leafnode photo` | take a photo now and print the verdict |
+| `leafnode update` | put `~/leafnode/build/leafnode.ino.bin` on the camera over Wi-Fi |
+
+The network in `secrets.h` is always tried too, so nothing saved later can lock
+the camera out of the home Wi-Fi.
+
+## Updating the firmware
+
+Firmware 1.2 and later update over Wi-Fi: build, copy `leafnode.ino.bin` (the
+app, not the merged image) to the Pi's `~/leafnode/build/`, run
+`leafnode update`. The camera writes it to its spare slot and restarts into it
+only if the whole image arrived.
+
+It builds with the OTA partition layout, which leaves 1.9 MB for the app:
+
+```bash
+arduino-cli compile --fqbn esp32:esp32:esp32cam:PartitionScheme=min_spiffs --export-binaries firmware/leafnode
+```
+
+Going from an older firmware to 1.2 takes the serial jumpers once, because the
+old layout has no spare slot: `bash ~/leafnode/pi/flash_esp32.sh flash
+~/leafnode/build/leafnode.ino.merged.bin` with IO0 grounded.
 
 ## The model
 
@@ -269,4 +328,5 @@ is unplugged.
 | 6 fast blinks | critical |
 | 2 slow winks | could not reach the Pi |
 | solid for about a second, between shots | taking a photo someone asked for |
+| solid for several seconds, then a restart | writing a firmware update |
 | 5 fast, repeating forever | camera failed to initialise |

@@ -75,7 +75,7 @@ _SAFE_ID = re.compile(r"^[A-Za-z0-9._-]{1,64}$")
 
 # No CORS middleware: nothing legitimate calls this from a browser, and allowing
 # every origin let any web page opened on the LAN post fake readings.
-app = FastAPI(title="LeafNode Pi Service", version="1.2.0", docs_url=None, redoc_url=None)
+app = FastAPI(title="LeafNode Pi Service", version="1.3.0", docs_url=None, redoc_url=None)
 
 _started_at = time.time()
 _stats = {
@@ -102,6 +102,7 @@ def _startup() -> None:
     os.makedirs(CAPTURE_DIR, exist_ok=True)
     _load_cameras()
     uploader.start_worker()
+    threading.Thread(target=_camera_keeper, name="leafnode-camera", daemon=True).start()
     if not NODE_KEY:
         print("[server] LEAFNODE_NODE_KEY is empty: every /analyze call will be refused. "
               "Run setup.sh or set it in .env.", flush=True)
@@ -144,12 +145,26 @@ def health() -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Cameras. Each ESP32 posts its frames here, which tells us its address; that
-# is the address a photo on request is asked for.
+# Cameras. The Pi keeps track of each ESP32 two ways:
+#   - every frame it posts here says where it is (the request's address);
+#   - every HELLO_EVERY seconds the Pi calls on it (POST /hello). That tells
+#     the camera where the Pi is, which is what lets both find each other on a
+#     new network such as a phone hotspot, and it tells the Pi the camera's
+#     firmware, network and whether it can take a photo on request.
 # ---------------------------------------------------------------------------
+
+HELLO_EVERY_S = float(os.environ.get("LEAFNODE_HELLO_EVERY", "30"))
+# Last resort when neither the frames' address nor DEVICE_ID.local finds the
+# camera, e.g. a hotspot that drops mDNS: ask every address on our subnet.
+CAMERA_SCAN = os.environ.get("LEAFNODE_CAMERA_SCAN", "1") == "1"
+SCAN_EVERY_S = 120
+# A camera heard from this recently is on; if it then refuses the photo port,
+# it is running firmware older than photo on request.
+FRAME_FRESH_S = 15 * 60
 
 _cameras: dict[str, dict] = {}
 _cameras_lock = threading.Lock()
+_last_scan = 0.0
 
 
 def _load_cameras() -> None:
@@ -168,19 +183,7 @@ def _load_cameras() -> None:
             )
 
 
-def _remember_camera(device_id: str, host: str | None) -> None:
-    # The agent posts phone photos from this same Pi. That is not a camera.
-    if not host or host in {"127.0.0.1", "::1", "localhost", "testclient"}:
-        return
-    now = datetime.now(timezone.utc).isoformat()
-    with _cameras_lock:
-        known = _cameras.get(device_id, {})
-        moved = known.get("host") != host
-        _cameras[device_id] = {"host": host, "seen_at": now}
-        snapshot = dict(_cameras)
-    if not moved:
-        return
-    print(f"[camera] {device_id} is at {host}", flush=True)
+def _save_cameras(snapshot: dict) -> None:
     try:
         os.makedirs(os.path.dirname(CAMERAS_PATH), exist_ok=True)
         tmp = CAMERAS_PATH + ".tmp"
@@ -191,9 +194,45 @@ def _remember_camera(device_id: str, host: str | None) -> None:
         print(f"[camera] could not save {CAMERAS_PATH}: {exc}", flush=True)
 
 
+def _update_camera(device_id: str, **fields: Any) -> None:
+    """Merge what we just learned about a camera. Saved to disk only when its
+    address changes, so the file is not rewritten every half minute."""
+    with _cameras_lock:
+        entry = dict(_cameras.get(device_id, {}))
+        moved = "host" in fields and fields["host"] and entry.get("host") != fields["host"]
+        entry.update({k: v for k, v in fields.items() if v is not None})
+        _cameras[device_id] = entry
+        snapshot = dict(_cameras)
+    if moved:
+        print(f"[camera] {device_id} is at {fields['host']}", flush=True)
+        _save_cameras(snapshot)
+
+
+def _now() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def _age_s(stamp: str | None) -> float | None:
+    if not stamp:
+        return None
+    try:
+        return (datetime.now(timezone.utc) - datetime.fromisoformat(stamp)).total_seconds()
+    except ValueError:
+        return None
+
+
+def _remember_camera(device_id: str, host: str | None) -> None:
+    # The agent posts phone photos from this same Pi, and a test from here
+    # posts from loopback too. Neither address is a camera's.
+    if not host or host in {"127.0.0.1", "::1", "localhost", "testclient"}:
+        _update_camera(device_id, frame_at=_now())
+        return
+    _update_camera(device_id, host=host, seen_at=_now(), frame_at=_now())
+
+
 def _camera_candidates(device_id: str) -> list[str]:
-    """Where to ask, best first: the override, the address its frames came
-    from, then its mDNS name (the firmware announces DEVICE_ID.local)."""
+    """Where to ask, best first: the override, the address we last saw it at,
+    then its mDNS name (the firmware announces DEVICE_ID.local)."""
     urls = [CAMERA_URL] if CAMERA_URL else []
     with _cameras_lock:
         host = _cameras.get(device_id, {}).get("host")
@@ -201,6 +240,126 @@ def _camera_candidates(device_id: str) -> list[str]:
         urls.append(f"http://{host}")
     urls.append(f"http://{device_id}.local")
     return list(dict.fromkeys(urls))
+
+
+def _refused(exc: BaseException) -> bool:
+    """Something answered at that address but nothing listens on the port:
+    Linux says "Connection refused", Windows "actively refused it"."""
+    return "refused" in str(exc).lower()
+
+
+def _frames_are_fresh(device_id: str) -> bool:
+    with _cameras_lock:
+        age = _age_s(_cameras.get(device_id, {}).get("frame_at"))
+    return age is not None and age < FRAME_FRESH_S
+
+
+def _host_of(base: str) -> str:
+    return base.split("://", 1)[-1].split("/", 1)[0].split(":", 1)[0]
+
+
+def _hello(device_id: str) -> bool:
+    """Calls on the camera. True when it answered."""
+    for base in _camera_candidates(device_id):
+        try:
+            res = requests.post(f"{base}/hello", headers={"X-Node-Key": NODE_KEY}, timeout=(3, 5))
+        except requests.RequestException as exc:
+            if _refused(exc) and _frames_are_fresh(device_id):
+                # It sends frames but has no photo server: older firmware.
+                _update_camera(device_id, on_request=False, hello_error="refused")
+            continue
+        if res.status_code == 401:
+            _update_camera(device_id, on_request=False, hello_error="bad node key")
+            continue
+        if res.status_code != 200:
+            continue
+        try:
+            info = res.json()
+        except ValueError:
+            continue
+        # An override address is where the camera is, by definition. Otherwise
+        # keep the address it reports, so the next call skips the name lookup.
+        host = None if base == CAMERA_URL else (info.get("ip") or _host_of(base))
+        _update_camera(
+            device_id,
+            host=host if host and not host.endswith(".local") else None,
+            hello_at=_now(),
+            on_request=True,
+            hello_error="",
+            firmware=str(info.get("firmware") or "")[:20] or None,
+            ssid=str(info.get("ssid") or "")[:40] or None,
+            rssi=info.get("rssi"),
+            interval_s=info.get("interval_s"),
+        )
+        return True
+    return False
+
+
+def _local_networks() -> list:
+    """The IPv4 networks this Pi is on (small ones only; a scan must stay quick)."""
+    import ipaddress
+    import subprocess
+
+    try:
+        out = subprocess.run(["ip", "-4", "-o", "addr", "show", "scope", "global"],
+                             capture_output=True, text=True, timeout=5).stdout
+    except (OSError, subprocess.SubprocessError):
+        return []
+    nets = []
+    for line in out.splitlines():
+        parts = line.split()
+        if len(parts) >= 4:
+            try:
+                iface = ipaddress.ip_interface(parts[3])
+            except ValueError:
+                continue
+            if iface.network.prefixlen >= 22:
+                nets.append(iface)
+    return nets
+
+
+def _scan_for_camera(device_id: str) -> str | None:
+    """Asks every address on our subnets for GET /status (no key needed, says
+    nothing secret) and returns the one that is this camera."""
+    from concurrent.futures import ThreadPoolExecutor
+
+    hosts = [str(h) for iface in _local_networks() for h in iface.network.hosts() if h != iface.ip]
+    if not hosts:
+        return None
+
+    def probe(ip: str) -> str | None:
+        try:
+            res = requests.get(f"http://{ip}/status", timeout=(0.6, 1.5))
+            return ip if res.ok and res.json().get("device_id") == device_id else None
+        except (requests.RequestException, ValueError):
+            return None
+
+    with ThreadPoolExecutor(max_workers=64) as pool:
+        for found in pool.map(probe, hosts):
+            if found:
+                return found
+    return None
+
+
+def _camera_keeper() -> None:
+    global _last_scan
+    while True:
+        with _cameras_lock:
+            targets = {CAMERA_ID} | {k for k, v in _cameras.items() if v.get("host")}
+        for device_id in sorted(targets):
+            try:
+                if _hello(device_id):
+                    continue
+                if CAMERA_SCAN and time.monotonic() - _last_scan > SCAN_EVERY_S:
+                    _last_scan = time.monotonic()
+                    found = _scan_for_camera(device_id)
+                    if found:
+                        print(f"[camera] found {device_id} at {found} by asking the subnet", flush=True)
+                        _update_camera(device_id, host=found)
+                        _hello(device_id)
+            except Exception as exc:  # the keeper must never die
+                print(f"[camera] keeper error for {device_id}: {exc}", flush=True)
+        time.sleep(HELLO_EVERY_S)
 
 
 class CameraError(Exception):
@@ -227,6 +386,16 @@ def _photo_from_camera(device_id: str) -> tuple[bytes, str | None, str, str]:
                     timeout=(min(4.0, left), min(20.0, left)),
                 )
             except requests.RequestException as exc:
+                if _refused(exc) and _frames_are_fresh(device_id):
+                    # Its photos keep arriving, so it is on and on the network,
+                    # but nothing listens for requests: firmware from before
+                    # photo on request. Waiting will not change that, so say
+                    # so now rather than after the whole budget.
+                    _update_camera(device_id, on_request=False)
+                    raise CameraError(
+                        "camera_outdated",
+                        f"{base} sends frames but refuses photo requests; flash firmware 1.2 or later",
+                    ) from exc
                 tried.append(f"{base}: {type(exc).__name__}")
                 continue
             if res.status_code == 401:
@@ -238,16 +407,17 @@ def _photo_from_camera(device_id: str) -> tuple[bytes, str | None, str, str]:
                 tried.append(f"{base}: HTTP {res.status_code}")
                 continue
             reported = res.headers.get("X-Device-Id", "").strip()
-            return (
-                res.content,
-                res.headers.get("X-Sensors") or None,
-                reported if _SAFE_ID.match(reported) else device_id,
-                base,
+            reported = reported if _SAFE_ID.match(reported) else device_id
+            _update_camera(
+                reported,
+                on_request=True,
+                firmware=(res.headers.get("X-Firmware") or "")[:20] or None,
             )
+            return (res.content, res.headers.get("X-Sensors") or None, reported, base)
         if deadline - time.monotonic() <= 3:
             raise CameraError("camera_unreachable", "; ".join(tried[-6:]) or "no address to try")
         # Most likely busy sending its scheduled frame. Give it a moment.
-        time.sleep(2)
+        time.sleep(1)
 
 
 # ---------------------------------------------------------------------------
@@ -384,8 +554,10 @@ async def analyze(
 
     raw = await _read_capped(image)
     # A frame the ESP32 posted says where the ESP32 is. That is how a photo on
-    # request finds it later.
-    _remember_camera(device_id, request.client.host if request.client else None)
+    # request finds it later. A phone photo from agent.py carries a job id and
+    # is not a camera frame.
+    if job_id is None:
+        _remember_camera(device_id, request.client.host if request.client else None)
 
     reply = await _score(raw, device_id, sensor, job_id, None, received_at, t0)
     return JSONResponse(reply)
@@ -414,8 +586,9 @@ async def capture(device_id: str | None = None, job_id: str | None = None) -> JS
     except CameraError as exc:
         _stats["camera_errors"] += 1
         print(f"[capture] {device_id}: {exc.code}: {exc}", flush=True)
-        # 504 when nobody answered, 502 when the camera answered wrongly. The
-        # code is what the farmer's app turns into words.
+        # 504 when nobody answered, 502 when the camera answered wrongly or
+        # cannot take photos on request. The code is what the farmer's app
+        # turns into words.
         status = 504 if exc.code == "camera_unreachable" else 502
         return JSONResponse({"detail": exc.code, "why": str(exc)}, status_code=status)
     if len(raw) > MAX_IMAGE_BYTES:
@@ -435,11 +608,16 @@ async def capture(device_id: str | None = None, job_id: str | None = None) -> JS
 
 
 def _default_camera() -> str:
-    """The camera heard from most recently, or the configured one."""
+    """The camera heard from most recently on the network, or the configured
+    one. Entries with no address (frames posted from this Pi itself) are not
+    cameras anyone can ask."""
     with _cameras_lock:
-        if _cameras:
-            return max(_cameras.items(), key=lambda kv: kv[1].get("seen_at", ""))[0]
-    return CAMERA_ID
+        located = [
+            (max(v.get("seen_at", ""), v.get("hello_at", "")), k)
+            for k, v in _cameras.items()
+            if v.get("host")
+        ]
+    return max(located)[1] if located else CAMERA_ID
 
 
 async def _score(

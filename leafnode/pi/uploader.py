@@ -124,11 +124,16 @@ def _image_b64(payload: dict) -> str | None:
         return base64.b64encode(fh.read()).decode("ascii")
 
 
+# One kept-alive connection for the worker thread. Without it every reading
+# pays a fresh TLS handshake to the server, a few hundred ms from a greenhouse.
+_session = requests.Session()
+
+
 def _post(body: dict) -> requests.Response:
     headers = {"Content-Type": "application/json"}
     if UPSTREAM_TOKEN:
         headers["Authorization"] = f"Bearer {UPSTREAM_TOKEN}"
-    return requests.post(UPSTREAM_URL, json=body, headers=headers, timeout=30)
+    return _session.post(UPSTREAM_URL, json=body, headers=headers, timeout=30)
 
 
 def _deliver(payload: dict) -> tuple[str, str]:

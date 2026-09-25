@@ -27,6 +27,7 @@ from ..db import get_session
 from ..deps import as_utc, current_device
 from ..engine.diagnosis import parse_diagnosis
 from ..engine.gpss import NothingToScore
+from ..events import job_wakeups
 from ..models import Capture, Device, ScanJob, Site
 from ..schemas import (
     DeviceOut,
@@ -45,7 +46,8 @@ router = APIRouter(prefix="/ingest", tags=["ingest"])
 # How long a node may hold /jobs open waiting for work. Long enough that a scan
 # feels immediate to the farmer, short enough to sit well inside proxy timeouts.
 JOB_WAIT_SECONDS = 25
-JOB_POLL_INTERVAL = 1.0
+# Only the safety net: a new job wakes the poll straight away (events.py).
+JOB_POLL_INTERVAL = 5.0
 JOB_KINDS = {"photo", "camera"}
 
 
@@ -259,6 +261,7 @@ async def claim_job(
     deadline = asyncio.get_running_loop().time() + max(0, min(wait, JOB_WAIT_SECONDS))
 
     while True:
+        ready = job_wakeups.waiter(site_id)
         await expire_stale_jobs(session, site_id)
         job = (
             await session.execute(
@@ -288,11 +291,15 @@ async def claim_job(
                 created_at=as_utc(job.created_at),
             )
 
-        if asyncio.get_running_loop().time() >= deadline:
+        remaining = deadline - asyncio.get_running_loop().time()
+        if remaining <= 0:
             response.status_code = status.HTTP_204_NO_CONTENT
             return None
 
-        await asyncio.sleep(JOB_POLL_INTERVAL)
+        try:
+            await asyncio.wait_for(ready.wait(), timeout=min(remaining, JOB_POLL_INTERVAL))
+        except asyncio.TimeoutError:
+            pass
 
 
 @router.get("/jobs/{job_id}/image")

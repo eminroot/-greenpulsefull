@@ -153,3 +153,35 @@ def test_camera_request_needs_the_greenhouse_owner(client, grower):
     )
     assert res.status_code == 404
     assert client.post(f"/api/v1/sites/{grower['site']['id']}/camera/capture").status_code == 401
+
+
+def test_a_waiting_node_is_woken_the_moment_a_photo_is_asked_for(client, node, grower, auth):
+    """The Pi sits in the long poll. Queueing a request must reach it now, not
+    on the poll's next look at the database a few seconds later."""
+    import threading
+    import time
+
+    _drain(client, node)
+    result: dict = {}
+
+    def pi_waiting() -> None:
+        started = time.monotonic()
+        res = client.get("/api/v1/ingest/jobs", params={"kinds": "photo,camera", "wait": 15},
+                         headers=node["headers"])
+        result["status"] = res.status_code
+        result["job"] = res.json() if res.status_code == 200 else None
+        result["claimed_at"] = time.monotonic()
+        result["started"] = started
+
+    waiting = threading.Thread(target=pi_waiting)
+    waiting.start()
+    time.sleep(0.6)  # the poll has looked, found nothing, and is waiting
+    asked_at = time.monotonic()
+    job_id = _request(client, grower, auth)["job_id"]
+    waiting.join(timeout=20)
+
+    assert result["status"] == 200 and result["job"]["job_id"] == job_id
+    # The safety net would take up to 5 s; being woken takes a blink.
+    assert result["claimed_at"] - asked_at < 1.5, result["claimed_at"] - asked_at
+    client.post("/api/v1/ingest/jobs/fail", json={"job_id": job_id, "error": "test cleanup"},
+                headers=node["headers"])

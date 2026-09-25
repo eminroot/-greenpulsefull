@@ -52,6 +52,9 @@ POLL_WAIT = int(os.environ.get("GREENPULSE_POLL_WAIT", "25"))
 KINDS = "photo,camera"
 
 HEADERS = {"Authorization": f"Bearer {TOKEN}"}
+# Kept alive between polls, so claiming a job does not start with a new TLS
+# handshake to the server.
+SERVER_SESSION = requests.Session()
 
 
 def log(message: str) -> None:
@@ -60,7 +63,7 @@ def log(message: str) -> None:
 
 def claim_job() -> dict | None:
     """Long polls for work. Returns None when there is nothing to do."""
-    res = requests.get(
+    res = SERVER_SESSION.get(
         f"{SERVER}/api/v1/ingest/jobs",
         params={"wait": POLL_WAIT, "kinds": KINDS},
         headers=HEADERS,
@@ -73,7 +76,7 @@ def claim_job() -> dict | None:
 
 
 def fetch_photo(job: dict) -> bytes:
-    res = requests.get(f"{SERVER}{job['image_url']}", headers=HEADERS, timeout=30)
+    res = SERVER_SESSION.get(f"{SERVER}{job['image_url']}", headers=HEADERS, timeout=30)
     res.raise_for_status()
     return res.content
 
@@ -94,7 +97,8 @@ def score_locally(job: dict, photo: bytes) -> dict:
 
 class CameraFailed(Exception):
     """The camera could not produce a photo. The message is the code the app
-    turns into words: camera_unreachable, camera_refused, camera_failed."""
+    turns into words: camera_unreachable, camera_refused, camera_outdated,
+    camera_failed."""
 
 
 def take_photo(job: dict) -> dict:
@@ -124,7 +128,7 @@ def take_photo(job: dict) -> dict:
 def fail(job: dict, error: str) -> None:
     """Tell the server so the farmer sees a real failure instead of waiting."""
     try:
-        requests.post(
+        SERVER_SESSION.post(
             f"{SERVER}/api/v1/ingest/jobs/fail",
             json={"job_id": job["job_id"], "error": error[:500]},
             headers=HEADERS,

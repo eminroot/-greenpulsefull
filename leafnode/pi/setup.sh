@@ -66,6 +66,11 @@ sudo systemctl daemon-reload
 sudo systemctl enable --quiet leafnode
 sudo systemctl restart leafnode
 
+# `leafnode wifi add`, `leafnode status` and friends, from anywhere.
+printf '#!/bin/sh\nexec "%s/.venv/bin/python" "%s/leafnode.py" "$@"\n' "$DIR" "$DIR" \
+  | sudo tee /usr/local/bin/leafnode >/dev/null
+sudo chmod 755 /usr/local/bin/leafnode
+
 set -a; . ./.env; set +a
 if [ -n "${LEAFNODE_UPSTREAM_URL:-}" ] && [ -n "${LEAFNODE_UPSTREAM_TOKEN:-}" ]; then
   sudo systemctl enable --quiet leafnode-agent
@@ -117,4 +122,5 @@ Put these in the ESP32 firmware before flashing:
   secrets.h   #define NODE_KEY  "$LEAFNODE_NODE_KEY"
 
 Logs:  journalctl -u leafnode -f      journalctl -u leafnode-agent -f
+Wi-Fi: leafnode wifi add   (a phone hotspot, saved on the Pi and the camera)
 EOF

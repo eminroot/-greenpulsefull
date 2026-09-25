@@ -15,6 +15,7 @@ from ..db import get_session
 from ..deps import as_utc, current_user, is_online, owned_site
 from ..engine.decision import decide
 from ..engine.gpss import compute_gpss
+from ..events import job_wakeups
 from ..models import ActuatorEvent, Capture, Device, Reading, ScanJob, Site, User
 from ..ratelimit import scan_limiter
 from ..schemas import (
@@ -371,6 +372,7 @@ async def submit_scan(
 
     job.image_path = path
     await session.commit()
+    job_wakeups.notify(site.id)
 
     return await _submitted(session, site, job)
 
@@ -415,6 +417,7 @@ async def request_camera_capture(
     job = ScanJob(site_id=site.id, user_id=user.id, kind="camera", image_path="")
     session.add(job)
     await session.commit()
+    job_wakeups.notify(site.id)
     return await _submitted(session, site, job)
 
 

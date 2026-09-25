@@ -7,8 +7,10 @@
 //   3. POST image + sensor JSON to the Raspberry Pi
 //   4. read the risk score the Pi sends back and blink it out on the red LED
 //
-// In between, it answers the Pi's POST /capture with a fresh JPEG, which is
-// how "take a photo now" in the app reaches the camera.
+// In between, it answers the Pi: POST /capture with a fresh JPEG, which is
+// how "take a photo now" in the app reaches the camera, and a few settings
+// the Pi can change over Wi-Fi (extra networks, the photo interval, a new
+// firmware). So a phone hotspot for a demo is added from the Pi, no reflash.
 //
 // The Pi does all the thinking. This board never sees the model.
 // ---------------------------------------------------------------------------
@@ -19,11 +21,14 @@
 #include <ESPmDNS.h>
 #include <HTTPClient.h>
 #include <WebServer.h>
+#include <WiFiMulti.h>
+#include <Preferences.h>
+#include <Update.h>
 #include <ArduinoJson.h>
 #include "esp_camera.h"
 #include "esp_sleep.h"
 
-#define FIRMWARE_VERSION "1.1.0"
+#define FIRMWARE_VERSION "1.2.0"
 
 #if ENABLE_CAPTURE_SERVER && USE_DEEP_SLEEP
   #warning "USE_DEEP_SLEEP is on, so the node sleeps between captures and cannot take a photo on request"
@@ -150,13 +155,14 @@ bool initCamera() {
 
 // The first frame after power-up is usually green or washed out while the
 // sensor settles its exposure. Throw a few away before the one that counts.
-camera_fb_t* captureSettledFrame() {
+// `discard` is how many: 3 for a scheduled shot, 1 when someone is waiting.
+camera_fb_t* captureSettledFrame(int discard) {
 #if USE_FLASH_LED
   digitalWrite(LED_FLASH_PIN, HIGH);
   delay(120);
 #endif
 
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < discard; i++) {
     camera_fb_t* warmup = esp_camera_fb_get();
     if (warmup) esp_camera_fb_return(warmup);
     delay(80);
@@ -207,37 +213,91 @@ String readSensorsJson() {
 }
 
 // ---------------------------------------------------------------------------
-// Wi-Fi
+// Settings kept in flash (NVS), so the Pi can change them over Wi-Fi without
+// a rebuild: extra Wi-Fi networks (a phone hotspot for a demo, say) and how
+// often to take a photo. The network in secrets.h is always tried as well, so
+// a mistake here can never lock the board out of its home Wi-Fi.
+// ---------------------------------------------------------------------------
+#define MAX_SAVED_NETWORKS 5
+
+struct SavedNetwork { String ssid; String pass; };
+SavedNetwork savedNetworks[MAX_SAVED_NETWORKS];
+int savedCount = 0;
+uint32_t captureIntervalS = CAPTURE_INTERVAL_S;
+
+Preferences prefs;
+
+void loadSettings() {
+  prefs.begin("leafnode", true);
+  savedCount = prefs.getInt("n", 0);
+  if (savedCount < 0 || savedCount > MAX_SAVED_NETWORKS) savedCount = 0;
+  for (int i = 0; i < savedCount; i++) {
+    savedNetworks[i].ssid = prefs.getString(("s" + String(i)).c_str(), "");
+    savedNetworks[i].pass = prefs.getString(("p" + String(i)).c_str(), "");
+  }
+  captureIntervalS = prefs.getUInt("interval", CAPTURE_INTERVAL_S);
+  prefs.end();
+  if (captureIntervalS < 10 || captureIntervalS > 3600) captureIntervalS = CAPTURE_INTERVAL_S;
+  Serial.printf("[cfg] %d saved network(s), photo every %u s\n", savedCount, (unsigned)captureIntervalS);
+}
+
+void saveNetworks() {
+  prefs.begin("leafnode", false);
+  for (int i = 0; i < MAX_SAVED_NETWORKS; i++) {
+    prefs.remove(("s" + String(i)).c_str());
+    prefs.remove(("p" + String(i)).c_str());
+  }
+  for (int i = 0; i < savedCount; i++) {
+    prefs.putString(("s" + String(i)).c_str(), savedNetworks[i].ssid);
+    prefs.putString(("p" + String(i)).c_str(), savedNetworks[i].pass);
+  }
+  prefs.putInt("n", savedCount);
+  prefs.end();
+}
+
+// ---------------------------------------------------------------------------
+// Wi-Fi. Every known network is offered, and the strongest one in range wins:
+// at home that is the home Wi-Fi, at a venue the phone hotspot saved earlier.
 // ---------------------------------------------------------------------------
 bool connectWifi() {
   if (WiFi.status() == WL_CONNECTED) return true;
 
   WiFi.mode(WIFI_STA);
+  WiFi.setHostname(DEVICE_ID);
   WiFi.setSleep(false);          // sleep here costs more in retries than it saves
-  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 
-  Serial.print("[wifi] connecting");
-  unsigned long start = millis();
-  while (WiFi.status() != WL_CONNECTED) {
-    if (millis() - start > WIFI_CONNECT_TIMEOUT_MS) {
-      Serial.println(" timed out");
-      return false;
-    }
-    delay(400);
-    Serial.print(".");
+  WiFiMulti multi;
+  multi.addAP(WIFI_SSID, WIFI_PASSWORD);
+  for (int i = 0; i < savedCount; i++) {
+    multi.addAP(savedNetworks[i].ssid.c_str(),
+                savedNetworks[i].pass.length() ? savedNetworks[i].pass.c_str() : NULL);
   }
-  Serial.printf(" ok, ip=%s rssi=%d\n", WiFi.localIP().toString().c_str(), WiFi.RSSI());
+
+  Serial.printf("[wifi] looking for %d known network(s)\n", 1 + savedCount);
+  if (multi.run(WIFI_CONNECT_TIMEOUT_MS) != WL_CONNECTED) {
+    Serial.println("[wifi] none of them answered");
+    return false;
+  }
+  Serial.printf("[wifi] on %s, ip=%s rssi=%d\n", WiFi.SSID().c_str(),
+                WiFi.localIP().toString().c_str(), WiFi.RSSI());
   return true;
 }
 
 // ---------------------------------------------------------------------------
-// Finding the Pi. Asked by name every cycle, so the node follows the Pi to a
-// new address; the last answer (or PI_HOST) is kept when mDNS is silent.
+// Finding the Pi. Two ways, whichever comes first:
+//   - the Pi says hello (POST /hello, with the node key) every half minute;
+//     the address it calls from is the Pi. This works on any network, a
+//     phone hotspot included, because the Pi goes looking for the camera.
+//   - the camera asks for leafnode.local over mDNS before each upload.
+// The last answer is kept (PI_HOST before there is one).
 // ---------------------------------------------------------------------------
 String piHost = PI_HOST;
+unsigned long piHelloAt = 0;       // millis() of the last hello, 0 = never
+bool lastUploadOk = true;
+bool captureSoon = false;          // set when a hello finds us after a failed upload
 
-// Also announces this board as DEVICE_ID.local, which is the Pi's fallback
-// for finding it when it has not posted a frame since the Pi restarted.
+// Also announces this board as DEVICE_ID.local, which the Pi uses to find it
+// on a network where it has not posted a frame yet.
 bool startMdns() {
   static bool mdnsUp = false;
   if (mdnsUp || WiFi.status() != WL_CONNECTED) return mdnsUp;
@@ -252,6 +312,9 @@ bool startMdns() {
 }
 
 void resolvePi() {
+  // A hello in the last ten minutes already told us where the Pi is. Asking
+  // mDNS again would only add up to two seconds to every photo.
+  if (piHelloAt && millis() - piHelloAt < 600000UL) return;
   if (strlen(PI_MDNS_NAME) == 0) return;
   if (!startMdns()) return;
 
@@ -303,7 +366,7 @@ bool uploadFrame(camera_fb_t* fb, const String& sensorJson) {
 
   HTTPClient http;
   http.setTimeout(HTTP_TIMEOUT_MS);
-  http.setConnectTimeout(HTTP_TIMEOUT_MS);
+  http.setConnectTimeout(HTTP_CONNECT_TIMEOUT_MS);
   http.begin(url);
   http.addHeader("Content-Type", "multipart/form-data; boundary=" + boundary);
   http.addHeader("X-Node-Key", NODE_KEY);
@@ -342,9 +405,15 @@ bool uploadFrame(camera_fb_t* fb, const String& sensorJson) {
 }
 
 // ---------------------------------------------------------------------------
-// Photo on request. The Pi calls POST /capture when the farmer taps "take a
-// photo now". The answer is the JPEG itself, with the sensor readings in a
-// header; the Pi scores it and sends it upstream like a scheduled frame.
+// The node's own small web server, answered between captures. Everything but
+// /status needs the node key, the same one the Pi checks on /analyze.
+//   POST /capture   take a photo now; the answer is the JPEG (the Pi scores it)
+//   POST /hello     the Pi checking in; tells the node where the Pi is
+//   GET  /wifi      the saved networks (names only)
+//   POST /wifi      action=add|remove, ssid, password: change them
+//   POST /config    interval_s: how often to take a photo
+//   POST /update    a new firmware .bin, written over the air, then a reboot
+//   GET  /status    who this is, which network, when the next photo is due
 // ---------------------------------------------------------------------------
 #define CAPTURE_SERVER_ON (ENABLE_CAPTURE_SERVER && !USE_DEEP_SLEEP)
 
@@ -354,8 +423,8 @@ unsigned long nextCaptureAt = 0;
 WebServer web(CAPTURE_SERVER_PORT);
 uint32_t photosOnRequest = 0;
 
-// The same key the Pi checks on /analyze. Every byte is compared whatever
-// the length, so the time taken says nothing about how close a guess was.
+// Every byte is compared whatever the length, so the time taken says nothing
+// about how close a guess was.
 bool keyMatches(const String& given) {
   const char* want = NODE_KEY;
   size_t wantLen = strlen(want);
@@ -367,25 +436,43 @@ bool keyMatches(const String& given) {
   return diff == 0;
 }
 
+bool authorised() {
+  if (keyMatches(web.header("X-Node-Key"))) return true;
+  Serial.printf("[web] refused %s from %s: bad node key\n", web.uri().c_str(),
+                web.client().remoteIP().toString().c_str());
+  web.send(401, "application/json", "{\"detail\":\"bad node key\"}");
+  return false;
+}
+
+void sendJson(int code, JsonDocument& doc) {
+  String out;
+  serializeJson(doc, out);
+  web.send(code, "application/json", out);
+}
+
+void sendError(int code, const char* detail) {
+  JsonDocument doc;
+  doc["detail"] = detail;
+  sendJson(code, doc);
+}
+
 void handleCapture() {
-  if (!keyMatches(web.header("X-Node-Key"))) {
-    Serial.printf("[web] refused /capture from %s: bad node key\n",
-                  web.client().remoteIP().toString().c_str());
-    web.send(401, "application/json", "{\"detail\":\"bad node key\"}");
-    return;
-  }
+  if (!authorised()) return;
 
   ledOn();
-  camera_fb_t* fb = captureSettledFrame();
+  // The sensor runs all the time between captures, so its exposure is already
+  // settled: one stale frame to drop is enough, which keeps the tap quick.
+  camera_fb_t* fb = captureSettledFrame(1);
   if (!fb) {
     ledOff();
     Serial.println("[web] photo on request: camera gave no frame");
-    web.send(503, "application/json", "{\"detail\":\"camera_failed\"}");
+    sendError(503, "camera_failed");
     return;
   }
 
   String sensorJson = readSensorsJson();
   web.sendHeader("X-Device-Id", DEVICE_ID);
+  web.sendHeader("X-Firmware", FIRMWARE_VERSION);
   if (sensorJson.length()) web.sendHeader("X-Sensors", sensorJson);
   web.sendHeader("Cache-Control", "no-store");
   web.send_P(200, "image/jpeg", (const char*)fb->buf, fb->len);
@@ -397,49 +484,191 @@ void handleCapture() {
   photosOnRequest++;
 }
 
-void handleStatus() {
-  JsonDocument doc;
+void fillStatus(JsonDocument& doc) {
   doc["device_id"]         = DEVICE_ID;
   doc["firmware"]          = FIRMWARE_VERSION;
   doc["uptime_s"]          = millis() / 1000;
+  doc["ip"]                = WiFi.localIP().toString();
+  doc["ssid"]              = WiFi.SSID();
   doc["rssi"]              = WiFi.RSSI();
+  doc["interval_s"]        = captureIntervalS;
   long wait = (long)(nextCaptureAt - millis()) / 1000;
   doc["next_capture_s"]    = wait > 0 ? wait : 0;
   doc["photos_on_request"] = photosOnRequest;
+  doc["saved_networks"]    = savedCount;
   doc["free_heap"]         = ESP.getFreeHeap();
-  String out;
-  serializeJson(doc, out);
-  web.send(200, "application/json", out);
+}
+
+void handleStatus() {
+  JsonDocument doc;
+  fillStatus(doc);
+  sendJson(200, doc);
+}
+
+void handleHello() {
+  if (!authorised()) return;
+  String from = web.client().remoteIP().toString();
+  if (from != piHost) Serial.printf("[pi] the Pi is at %s\n", from.c_str());
+  piHost = from;
+  piHelloAt = millis();
+  if (!piHelloAt) piHelloAt = 1;
+  // The last photo could not be delivered, most likely because the Pi was not
+  // known yet on this network. Now it is, so do not make the dashboard wait.
+  if (!lastUploadOk) captureSoon = true;
+
+  JsonDocument doc;
+  fillStatus(doc);
+  doc["pi_host"] = piHost;
+  sendJson(200, doc);
+}
+
+void sendNetworks() {
+  JsonDocument doc;
+  doc["built_in"] = WIFI_SSID;
+  JsonArray list = doc["saved"].to<JsonArray>();
+  for (int i = 0; i < savedCount; i++) list.add(savedNetworks[i].ssid);
+  doc["connected"] = WiFi.SSID();
+  sendJson(200, doc);
+}
+
+void handleWifiGet() {
+  if (!authorised()) return;
+  sendNetworks();
+}
+
+void handleWifiPost() {
+  if (!authorised()) return;
+  String action = web.arg("action");
+  String ssid   = web.arg("ssid");
+  String pass   = web.arg("password");
+
+  if (ssid.length() < 1 || ssid.length() > 32) return sendError(400, "ssid must be 1 to 32 bytes");
+
+  int found = -1;
+  for (int i = 0; i < savedCount; i++) if (savedNetworks[i].ssid == ssid) found = i;
+
+  if (action == "add") {
+    // WPA2 needs 8 to 63 characters; empty means an open network.
+    if (pass.length() && (pass.length() < 8 || pass.length() > 63)) {
+      return sendError(400, "password must be 8 to 63 characters, or empty for an open network");
+    }
+    if (found < 0) {
+      if (savedCount >= MAX_SAVED_NETWORKS) return sendError(409, "already 5 saved networks; remove one first");
+      found = savedCount++;
+    }
+    savedNetworks[found].ssid = ssid;
+    savedNetworks[found].pass = pass;
+    Serial.printf("[cfg] saved network %s\n", ssid.c_str());
+  } else if (action == "remove") {
+    if (found < 0) return sendError(404, "no saved network by that name");
+    for (int i = found; i < savedCount - 1; i++) savedNetworks[i] = savedNetworks[i + 1];
+    savedCount--;
+    Serial.printf("[cfg] forgot network %s\n", ssid.c_str());
+  } else {
+    return sendError(400, "action must be add or remove");
+  }
+  saveNetworks();
+  sendNetworks();
+}
+
+void handleConfig() {
+  if (!authorised()) return;
+  if (web.hasArg("interval_s")) {
+    long s = web.arg("interval_s").toInt();
+    if (s < 10 || s > 3600) return sendError(400, "interval_s must be 10 to 3600");
+    captureIntervalS = (uint32_t)s;
+    prefs.begin("leafnode", false);
+    prefs.putUInt("interval", captureIntervalS);
+    prefs.end();
+    // Applies to the wait already under way, not only the next one.
+    unsigned long due = millis() + captureIntervalS * 1000UL;
+    if ((long)(nextCaptureAt - due) > 0) nextCaptureAt = due;
+    Serial.printf("[cfg] photo every %u s\n", (unsigned)captureIntervalS);
+  }
+  JsonDocument doc;
+  fillStatus(doc);
+  sendJson(200, doc);
+}
+
+// Over-the-air update. The Pi posts the sketch's .bin (not the merged one) as
+// multipart field "firmware"; it is written to the spare app slot and booted
+// only if the whole image arrived and checked out.
+bool otaAuthorised = false;
+
+void handleUpdateUpload() {
+  HTTPUpload& up = web.upload();
+  if (up.status == UPLOAD_FILE_START) {
+    otaAuthorised = keyMatches(web.header("X-Node-Key"));
+    if (!otaAuthorised) return;
+    Serial.printf("[ota] receiving %s\n", up.filename.c_str());
+    ledOn();
+    if (!Update.begin(UPDATE_SIZE_UNKNOWN)) Update.printError(Serial);
+  } else if (up.status == UPLOAD_FILE_WRITE) {
+    if (otaAuthorised && Update.isRunning() &&
+        Update.write(up.buf, up.currentSize) != up.currentSize) {
+      Update.printError(Serial);
+    }
+  } else if (up.status == UPLOAD_FILE_END) {
+    if (otaAuthorised) {
+      if (Update.end(true)) Serial.printf("[ota] %u bytes written\n", (unsigned)up.totalSize);
+      else Update.printError(Serial);
+    }
+  } else if (up.status == UPLOAD_FILE_ABORTED) {
+    if (otaAuthorised) Update.abort();
+    Serial.println("[ota] upload aborted");
+  }
+}
+
+void handleUpdateDone() {
+  ledOff();
+  if (!otaAuthorised) {
+    Serial.printf("[web] refused /update from %s: bad node key\n",
+                  web.client().remoteIP().toString().c_str());
+    return sendError(401, "bad node key");
+  }
+  otaAuthorised = false;
+  if (Update.hasError() || !Update.isFinished()) return sendError(500, "update_failed");
+  web.send(200, "application/json", "{\"status\":\"ok\",\"rebooting\":true}");
+  Serial.println("[ota] rebooting into the new firmware");
+  delay(400);
+  ESP.restart();
 }
 
 void startWebServer() {
   static const char* headerKeys[] = {"X-Node-Key"};
   web.collectHeaders(headerKeys, 1);
   web.on("/capture", HTTP_POST, handleCapture);
+  web.on("/hello", HTTP_POST, handleHello);
+  web.on("/wifi", HTTP_GET, handleWifiGet);
+  web.on("/wifi", HTTP_POST, handleWifiPost);
+  web.on("/config", HTTP_POST, handleConfig);
+  web.on("/update", HTTP_POST, handleUpdateDone, handleUpdateUpload);
   web.on("/status", HTTP_GET, handleStatus);
-  web.onNotFound([]() { web.send(404, "application/json", "{\"detail\":\"not found\"}"); });
+  web.onNotFound([]() { sendError(404, "not found"); });
   web.begin();
-  Serial.printf("[web] listening on port %d for photos on request\n", CAPTURE_SERVER_PORT);
+  Serial.printf("[web] listening on port %d\n", CAPTURE_SERVER_PORT);
 }
 #endif
 
 // Waits for the next scheduled capture while answering the Pi. Also brings
-// Wi-Fi back if it dropped, so the node can be reached between shots and not
-// only once it next has a frame of its own to send.
+// Wi-Fi back if it dropped, trying every known network, so the node can be
+// reached between shots and not only once it next has a frame to send.
 void waitForNextCapture() {
-  nextCaptureAt = millis() + (unsigned long)CAPTURE_INTERVAL_S * 1000UL;
+  nextCaptureAt = millis() + captureIntervalS * 1000UL;
   unsigned long lastWifiTry = millis();
-  while ((long)(nextCaptureAt - millis()) > 0) {
+  while ((long)(nextCaptureAt - millis()) > 0 && !captureSoon) {
 #if CAPTURE_SERVER_ON
     web.handleClient();
 #endif
     if (WiFi.status() != WL_CONNECTED && millis() - lastWifiTry > 30000UL) {
+      Serial.println("[wifi] link lost, looking again");
+      connectWifi();
+      startMdns();
       lastWifiTry = millis();
-      Serial.println("[wifi] link lost, reconnecting");
-      WiFi.reconnect();
     }
-    delay(5);
+    delay(2);
   }
+  captureSoon = false;
 }
 
 // ---------------------------------------------------------------------------
@@ -448,7 +677,7 @@ void waitForNextCapture() {
 void runCaptureCycle() {
   ledOn();   // LED stays on for the whole working phase
 
-  camera_fb_t* fb = captureSettledFrame();
+  camera_fb_t* fb = captureSettledFrame(3);
   if (!fb) {
     Serial.println("[cam] capture failed");
     ledOff();
@@ -463,6 +692,7 @@ void runCaptureCycle() {
 
   bool sent = false;
   if (connectWifi()) {
+    startMdns();
     resolvePi();
     for (int attempt = 1; attempt <= MAX_UPLOAD_RETRIES && !sent; attempt++) {
       if (attempt > 1) {
@@ -472,6 +702,7 @@ void runCaptureCycle() {
       sent = uploadFrame(fb, sensorJson);
     }
   }
+  lastUploadOk = sent;
 
   esp_camera_fb_return(fb);   // always give the buffer back, success or not
   ledOff();
@@ -486,7 +717,7 @@ void runCaptureCycle() {
 void setup() {
   Serial.begin(115200);
   delay(300);
-  Serial.println("\n[boot] LeafNode " DEVICE_ID);
+  Serial.println("\n[boot] LeafNode " DEVICE_ID " firmware " FIRMWARE_VERSION);
 
   pinMode(LED_STATUS_PIN, OUTPUT);
   ledOff();
@@ -494,6 +725,8 @@ void setup() {
   pinMode(LED_FLASH_PIN, OUTPUT);
   digitalWrite(LED_FLASH_PIN, LOW);
 #endif
+
+  loadSettings();
 
   if (!initCamera()) {
     // Nothing useful left to do. Blink forever so the fault is visible.
@@ -518,9 +751,9 @@ void setup() {
   // In deep sleep mode setup() IS the loop: do one cycle, then sleep. The chip
   // reboots into setup() again when the timer fires.
   runCaptureCycle();
-  Serial.printf("[sleep] deep sleeping %d s\n", CAPTURE_INTERVAL_S);
+  Serial.printf("[sleep] deep sleeping %u s\n", (unsigned)captureIntervalS);
   Serial.flush();
-  esp_sleep_enable_timer_wakeup((uint64_t)CAPTURE_INTERVAL_S * 1000000ULL);
+  esp_sleep_enable_timer_wakeup((uint64_t)captureIntervalS * 1000000ULL);
   esp_deep_sleep_start();
 #endif
 }

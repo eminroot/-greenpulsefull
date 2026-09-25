@@ -18,7 +18,7 @@ const POLL_MS = 2000;
 const GIVE_UP_MS = 200000;
 
 const UNREADABLE = ['too_dark', 'overexposed', 'no_leaf', 'too_small'];
-const CAMERA_ERRORS = ['camera_unreachable', 'camera_refused', 'camera_failed'];
+const CAMERA_ERRORS = ['camera_unreachable', 'camera_refused', 'camera_outdated', 'camera_failed'];
 
 // The node reports why a photo was not taken as a code. Each gets its own text.
 function failureKey(status: ScanStatus['status'] | 'gave_up', error: string | null): string {
