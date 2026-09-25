@@ -14,16 +14,29 @@ greenpulse.5.189.178.58.sslip.io {
 		max_size 10MB
 	}
 
-	reverse_proxy 127.0.0.1:8095 {
-		# Set, never appended: the stack trusts this address for its rate
-		# limits, so a client must not be able to choose it.
-		header_up X-Forwarded-For {remote_host}
-		header_up X-Real-IP {remote_host}
+	# The Android app, for installing straight from the phone's browser. Put
+	# the APK in /opt/greenpulse-downloads/<a random folder name>/ and share
+	# https://<host>/download/<that name>/GreenPulse.apk; nothing is listed.
+	handle_path /download/* {
+		root * /opt/greenpulse-downloads
+		@apk path *.apk
+		header @apk Content-Type application/vnd.android.package-archive
+		header @apk Content-Disposition "attachment; filename=GreenPulse.apk"
+		file_server
+	}
 
-		transport http {
-			dial_timeout 5s
-			# No read timeout: the live dashboard is a long lived websocket,
-			# and the Pi holds /ingest/jobs open for 25 s waiting for work.
+	handle {
+		reverse_proxy 127.0.0.1:8095 {
+			# Set, never appended: the stack trusts this address for its rate
+			# limits, so a client must not be able to choose it.
+			header_up X-Forwarded-For {remote_host}
+			header_up X-Real-IP {remote_host}
+
+			transport http {
+				dial_timeout 5s
+				# No read timeout: the live dashboard is a long lived websocket,
+				# and the Pi holds /ingest/jobs open for 25 s waiting for work.
+			}
 		}
 	}
 
