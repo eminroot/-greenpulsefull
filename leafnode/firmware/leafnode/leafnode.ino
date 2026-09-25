@@ -28,7 +28,7 @@
 #include "esp_camera.h"
 #include "esp_sleep.h"
 
-#define FIRMWARE_VERSION "1.2.0"
+#define FIRMWARE_VERSION "1.2.1"
 
 #if ENABLE_CAPTURE_SERVER && USE_DEEP_SLEEP
   #warning "USE_DEEP_SLEEP is on, so the node sleeps between captures and cannot take a photo on request"
@@ -94,8 +94,16 @@ void signalRisk(const char* riskLevel) {
 // ---------------------------------------------------------------------------
 // Camera
 // ---------------------------------------------------------------------------
-bool initCamera() {
-  camera_config_t config;
+// Set by initCamera(): which layout worked, or empty while the camera is down.
+const char* cameraMode = "";
+bool cameraOk = false;
+
+// One attempt at a given buffer layout. The config is zeroed first on purpose:
+// camera_config_t has fields this sketch never names (jpeg_buffer_size,
+// conv_mode, sccb_i2c_port), and left as stack garbage they asked the driver
+// for an impossible frame buffer. 1.2.0 shipped with exactly that bug.
+esp_err_t tryCamera(framesize_t size, int quality, int fbCount, camera_fb_location_t where) {
+  camera_config_t config = {};
   config.ledc_channel = LEDC_CHANNEL_0;
   config.ledc_timer   = LEDC_TIMER_0;
   config.pin_d0       = Y2_GPIO_NUM;
@@ -117,25 +125,48 @@ bool initCamera() {
   config.xclk_freq_hz = 20000000;
   config.pixel_format = PIXFORMAT_JPEG;
   config.grab_mode    = CAMERA_GRAB_LATEST;
-  config.fb_location  = CAMERA_FB_IN_PSRAM;
+  config.frame_size   = size;
+  config.jpeg_quality = quality;
+  config.fb_count     = fbCount;
+  config.fb_location  = where;
+  config.jpeg_buffer_size = 0;   // the driver's own size for this frame
+  return esp_camera_init(&config);
+}
 
-  if (psramFound()) {
-    config.frame_size   = CAMERA_FRAMESIZE;
-    config.jpeg_quality = CAMERA_JPEG_QUALITY;
-    config.fb_count     = 2;
-  } else {
-    // No PSRAM means no room for a large frame. Should not happen on a real
-    // AI-Thinker board; if you land here the PSRAM chip or its solder is bad.
-    Serial.println("[cam] WARNING: no PSRAM found, falling back to a small buffer");
-    config.frame_size   = FRAMESIZE_SVGA;
-    config.jpeg_quality = 12;
-    config.fb_count     = 1;
-    config.fb_location  = CAMERA_FB_IN_DRAM;
+bool initCamera() {
+  Serial.printf("[mem] psram %s, %u KB free (largest %u KB); internal %u KB free (largest %u KB)\n",
+                psramFound() ? "found" : "MISSING",
+                (unsigned)(heap_caps_get_free_size(MALLOC_CAP_SPIRAM) / 1024),
+                (unsigned)(heap_caps_get_largest_free_block(MALLOC_CAP_SPIRAM) / 1024),
+                (unsigned)(heap_caps_get_free_size(MALLOC_CAP_INTERNAL) / 1024),
+                (unsigned)(heap_caps_get_largest_free_block(MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT) / 1024));
+
+  // Best first. The later ones are for a board whose PSRAM is missing or
+  // failing: fewer or smaller frames, but a camera that works.
+  struct Layout { framesize_t size; int quality; int fbCount; camera_fb_location_t where; const char* name; };
+  const Layout layouts[] = {
+    { CAMERA_FRAMESIZE, CAMERA_JPEG_QUALITY, 2, CAMERA_FB_IN_PSRAM, "psram x2" },
+    { CAMERA_FRAMESIZE, CAMERA_JPEG_QUALITY, 1, CAMERA_FB_IN_PSRAM, "psram x1" },
+    { FRAMESIZE_SVGA,   12,                  1, CAMERA_FB_IN_DRAM,  "dram svga" },
+    { FRAMESIZE_VGA,    12,                  1, CAMERA_FB_IN_DRAM,  "dram vga" },
+  };
+
+  cameraOk = false;
+  for (const Layout& l : layouts) {
+    if (l.where == CAMERA_FB_IN_PSRAM && !psramFound()) continue;
+    esp_err_t err = tryCamera(l.size, l.quality, l.fbCount, l.where);
+    if (err == ESP_OK) {
+      cameraMode = l.name;
+      cameraOk = true;
+      Serial.printf("[cam] ready (%s)\n", l.name);
+      break;
+    }
+    Serial.printf("[cam] %s failed: 0x%x\n", l.name, err);
+    esp_camera_deinit();
+    delay(100);
   }
-
-  esp_err_t err = esp_camera_init(&config);
-  if (err != ESP_OK) {
-    Serial.printf("[cam] init failed: 0x%x\n", err);
+  if (!cameraOk) {
+    cameraMode = "";
     return false;
   }
 
@@ -458,6 +489,7 @@ void sendError(int code, const char* detail) {
 
 void handleCapture() {
   if (!authorised()) return;
+  if (!cameraOk && !initCamera()) return sendError(503, "camera_failed");
 
   ledOn();
   // The sensor runs all the time between captures, so its exposure is already
@@ -497,6 +529,8 @@ void fillStatus(JsonDocument& doc) {
   doc["photos_on_request"] = photosOnRequest;
   doc["saved_networks"]    = savedCount;
   doc["free_heap"]         = ESP.getFreeHeap();
+  doc["camera"]            = cameraOk ? cameraMode : "failed";
+  doc["psram"]             = psramFound();
 }
 
 void handleStatus() {
@@ -675,6 +709,11 @@ void waitForNextCapture() {
 // One full cycle.
 // ---------------------------------------------------------------------------
 void runCaptureCycle() {
+  if (!cameraOk && !initCamera()) {
+    blink(5, 80, 80);   // fast flutter = camera fault, retried every cycle
+    return;
+  }
+
   ledOn();   // LED stays on for the whole working phase
 
   camera_fb_t* fb = captureSettledFrame(3);
@@ -728,9 +767,12 @@ void setup() {
 
   loadSettings();
 
+  // A camera that will not start is reported and retried, but it no longer
+  // stops the board before Wi-Fi: staying reachable is what lets the Pi read
+  // its status and send it a fixed firmware over the air.
   if (!initCamera()) {
-    // Nothing useful left to do. Blink forever so the fault is visible.
-    while (true) blink(5, 80, 80);
+    Serial.println("[cam] camera did not start; carrying on without it and retrying");
+    blink(5, 80, 80);
   }
 
 #if ENABLE_DHT

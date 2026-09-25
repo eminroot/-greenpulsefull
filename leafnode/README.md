@@ -183,7 +183,7 @@ the camera out of the home Wi-Fi.
 
 ## Updating the firmware
 
-Firmware 1.2 and later update over Wi-Fi: build, copy `leafnode.ino.bin` (the
+Firmware 1.2.1 and later update over Wi-Fi: build, copy `leafnode.ino.bin` (the
 app, not the merged image) to the Pi's `~/leafnode/build/`, run
 `leafnode update`. The camera writes it to its spare slot and restarts into it
 only if the whole image arrived.

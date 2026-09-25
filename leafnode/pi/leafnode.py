@@ -85,19 +85,27 @@ def camera_bases() -> list[str]:
 
 def camera(method: str, path: str, **kwargs) -> tuple[requests.Response | None, str]:
     """Calls the camera wherever it answers. Returns (response or None, where)."""
-    last = ""
+    errors = []
     timeout = kwargs.pop("timeout", (4, 20))
     for base in camera_bases():
         try:
             res = requests.request(method, f"{base}{path}", headers=KEY, timeout=timeout, **kwargs)
             return res, base
         except requests.RequestException as exc:
-            last = f"{base}: {type(exc).__name__}"
-    return None, last
+            if "refused" in str(exc).lower():
+                # On the network, but nothing listens: firmware older than 1.2.
+                return None, "refused"
+            errors.append(f"{base}: {str(exc)[:160]}")
+    return None, "; ".join(errors)
 
 
 def camera_json(method: str, path: str, **kwargs) -> dict | None:
     res, where = camera(method, path, **kwargs)
+    if res is None and where == "refused":
+        say("  The camera is on, but its firmware is older than 1.2 and has no settings to change.")
+        say("  Flash 1.2 once over the serial jumpers: bash ~/leafnode/pi/flash_esp32.sh flash "
+            "~/leafnode/build/leafnode.ino.merged.bin")
+        return None
     if res is None:
         say(f"  The camera did not answer ({where}). Is it on, and on the same Wi-Fi?")
         return None
@@ -191,7 +199,7 @@ def cmd_status() -> None:
         say(f"Camera:      {body.get('device_id')} at {body.get('ip')}, firmware {body.get('firmware')}, "
             f"on {body.get('ssid')} ({body.get('rssi')} dBm), photo every {body.get('interval_s')} s")
     elif cam:
-        say(f"Camera:      last seen at {cam.get('host')}, last frame {cam.get('frame_at')}")
+        say(f"Camera:      last seen at {cam.get('host')}, {cam.get('frame_at') or cam.get('seen_at')}")
 
 
 def cmd_wifi_list() -> None:
@@ -302,17 +310,37 @@ def cmd_update(path: str | None) -> None:
         fail(f"No firmware at {firmware}. Build leafnode.ino.bin (not the merged .bin) and copy it there.")
     if firmware.stat().st_size > 1_966_080:
         fail("That file is too big for an app slot; is it the merged .bin? Use leafnode.ino.bin.")
-    say(f"Sending {firmware.name} ({firmware.stat().st_size // 1024} KB) to the camera...")
-    with firmware.open("rb") as fh:
-        res, where = camera("POST", "/update", files={"firmware": (firmware.name, fh, "application/octet-stream")},
-                            timeout=(5, 180))
-    if res is None:
-        fail(f"The camera did not answer ({where}).")
-    if res.status_code == 404:
-        fail("This camera's firmware cannot update over Wi-Fi yet: flash 1.2 over the serial jumpers once.")
-    if res.status_code != 200:
-        fail(f"The update did not take ({res.status_code}): {res.text[:200]}. The old firmware keeps running.")
-    say("Written. The camera is restarting into it; give it about 15 seconds.")
+    base = next((b for b in camera_bases() if _answers(b)), None)
+    if base is None:
+        fail("The camera did not answer. Is it on, and on the same Wi-Fi?")
+
+    say(f"Sending {firmware.name} ({firmware.stat().st_size // 1024} KB) to the camera at {base}...")
+    # curl, not requests: the ESP32's upload parser aborts on the way requests
+    # streams a large multipart body (every try, 2026-09-25) and takes curl's
+    # (every try). The key goes in on stdin, so it is never in the process list.
+    for attempt in (1, 2):
+        res = subprocess.run(
+            ["curl", "-sS", "-m", "180", "-K", "-", "-o", "-", "-w", "\n%{http_code}",
+             "-F", f"firmware=@{firmware}", f"{base}/update"],
+            input=f'header = "X-Node-Key: {NODE_KEY}"\n', capture_output=True, text=True,
+        )
+        body, _, code = res.stdout.rpartition("\n")
+        if code == "200":
+            say("Written. The camera is restarting into it; give it about 15 seconds.")
+            return
+        if code == "404":
+            fail("This camera's firmware cannot update over Wi-Fi yet: flash 1.2 over the serial jumpers once.")
+        if code == "401":
+            fail("The camera refused the node key: NODE_KEY in secrets.h is not LEAFNODE_NODE_KEY.")
+        say(f"  Attempt {attempt} did not take ({code or res.stderr.strip()[:120]}): {body[:120]}")
+    fail("The update did not take. The old firmware keeps running; try again closer to the router.")
+
+
+def _answers(base: str) -> bool:
+    try:
+        return requests.get(f"{base}/status", timeout=(3, 5)).ok
+    except requests.RequestException:
+        return False
 
 
 def main(argv: list[str]) -> None:
